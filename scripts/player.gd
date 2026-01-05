@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var hands: Node2D = $Model/Hands
 
 #movement variables
-var speed : int = 1000 # 20
+var speed : int = 1000 #1000
 var friction : float = 0.7
 var direction : Vector2
 var last_positions : Array[Vector2] = []

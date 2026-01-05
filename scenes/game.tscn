@@ -1012,7 +1012,7 @@ variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 base_font = SubResource("FontFile_ssvqc")
 variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 
-[sub_resource type="Image" id="Image_37s47"]
+[sub_resource type="Image" id="Image_ssvqc"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1022,7 +1022,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_bt5mj"]
-image = SubResource("Image_37s47")
+image = SubResource("Image_ssvqc")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
 content_margin_left = 4.0
@@ -1118,6 +1118,9 @@ texture = SubResource("NoiseTexture2D_u5sy4")
 modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
 position = Vector2(384, 0)
 texture = SubResource("NoiseTexture2D_u5sy4")
+
+[node name="TrashSpawner" type="Node2D" parent="Level"]
+y_sort_enabled = true
 
 [node name="Shadow" type="TileMapLayer" parent="Level"]
 tile_map_data = PackedByteArray("AADo//7/AQAAAAAAAADo//3/AQAAAAAAAADo//z/AQAAAAAAAADo//v/AQAAAAAAAADo//r/AQAAAAAAAADo//n/AQAAAAAAAADo//j/AQAAAAAAAADo/w8AAQAAAAAAAADo/w4AAQAAAAAAAADo/w0AAQAAAAAAAADo/wwAAQAAAAAAAADo/wsAAQAAAAAAAADo/woAAQAAAAAAAADo/wkAAQAAAAAAAADo/wgAAQAAAAAAAADo/wcAAQAAAAAAAADo/wYAAQAAAAAAAADo/wUAAQAAAAAAAADo/wQAAQAAAAAAAADo/wMAAQAAAAAAAADo/wIAAQAAAAAAAADo/wEAAQAAAAAAAADo//D/AQAAAAAAAADo//H/AQAAAAAAAADo//L/AQAAAAAAAADo//P/AQAAAAAAAADo//T/AQAAAAAAAADo//X/AQAAAAAAAADo//b/AQAAAAAAAADo//f/AQAAAAAAAAA=")
