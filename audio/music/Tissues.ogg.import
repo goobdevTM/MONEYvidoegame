@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Tissues.ogg-26422771e90ce795acee8cdc0fa219ba.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0.0
 bpm=116.0
 beat_count=336

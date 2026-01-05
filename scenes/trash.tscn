@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blwgbgbei4tsn"]
+
+[ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="1_3xixx"]
+
+[node name="Trash" type="Node2D"]
+
+[node name="TrashBagSmall" type="Sprite2D" parent="."]
+texture = ExtResource("1_3xixx")

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Smelly Socks.ogg-0a70aac894e1ee6dd69758be883b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0.0
 bpm=124.0
 beat_count=236
