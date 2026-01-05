@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://6nia0edfdeaj"]
+
+[ext_resource type="Script" uid="uid://do5njh3duccyx" path="res://scripts/litter.gd" id="1_dqed2"]
+[ext_resource type="Texture2D" uid="uid://cro8d4w40plyr" path="res://sprites/trash_atlas_1.png" id="2_dqed2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjfgb"]
+atlas = ExtResource("2_dqed2")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44tm8"]
+atlas = ExtResource("2_dqed2")
+region = Rect2(24, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vppg0"]
+atlas = ExtResource("2_dqed2")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wna10"]
+atlas = ExtResource("2_dqed2")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uldc"]
+atlas = ExtResource("2_dqed2")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd8d5"]
+atlas = ExtResource("2_dqed2")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt2qx"]
+atlas = ExtResource("2_dqed2")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41p3s"]
+atlas = ExtResource("2_dqed2")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_018gq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjfgb")
+}],
+"loop": true,
+"name": &"CANDY_WRAPPER",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44tm8")
+}],
+"loop": true,
+"name": &"PLUSHIE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vppg0")
+}],
+"loop": true,
+"name": &"POOP",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wna10")
+}],
+"loop": true,
+"name": &"SOCK",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uldc")
+}],
+"loop": true,
+"name": &"SODA_CAN",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd8d5")
+}],
+"loop": true,
+"name": &"SODA_CUP",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt2qx")
+}],
+"loop": true,
+"name": &"TISSUE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41p3s")
+}],
+"loop": true,
+"name": &"WATER_BOTTLE",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqed2"]
+radius = 4.0
+
+[node name="Litter" type="Node2D"]
+script = ExtResource("1_dqed2")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_018gq")
+animation = &"PLUSHIE"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dqed2")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

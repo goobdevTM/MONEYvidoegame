@@ -7,12 +7,18 @@ extends CharacterBody2D
 @onready var hands: Node2D = $Model/Hands
 
 #movement variables
-var speed : int = 1000 #1000
+var speed : int = 800 #1000
 var friction : float = 0.7
 var direction : Vector2
 var last_positions : Array[Vector2] = []
 
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_pressed("sprint"):
+		speed = 1600
+	else:
+		speed = 800
+		
 	#append to last positions
 	last_positions.append(position)
 	

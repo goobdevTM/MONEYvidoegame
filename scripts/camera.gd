@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var player: Player = $"../Player"
+@onready var player: Player = $"../Level/TrashSpawner/Player"
 @onready var ground: TileMapLayer = $"../Level/Ground"
 @onready var noise_overlay: Node2D = $"../Level/NoiseOverlay"
 @onready var level: Level = $"../Level"

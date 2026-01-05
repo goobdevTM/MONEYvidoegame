@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=52 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -14,8 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://bb6xgxabnpt4p" path="res://sprites/slot.png" id="10_kvuet"]
 [ext_resource type="AudioStream" uid="uid://d0mq3gt6uuvoc" path="res://audio/music/Smelly Socks.ogg" id="10_vtaks"]
 [ext_resource type="AudioStream" uid="uid://dtuuh2gop4fli" path="res://audio/music/Tissues.ogg" id="11_dinhu"]
+[ext_resource type="Script" uid="uid://bbsa73xastegl" path="res://scripts/inventory.gd" id="11_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://cro8d4w40plyr" path="res://sprites/trash_atlas_1.png" id="11_trtic"]
+[ext_resource type="Script" uid="uid://c46we8d76srr7" path="res://scripts/slot.gd" id="12_264po"]
 [ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="12_ir15t"]
+[ext_resource type="AudioStream" uid="uid://iacca0nebmsr" path="res://audio/music/SodaCan.ogg" id="17_rysoc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("1_lbhrr")
@@ -28,7 +31,7 @@ sources/0 = SubResource("TileSetAtlasSource_gee14")
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
 offsets = PackedFloat32Array(0, 0.36, 0.78)
-colors = PackedColorArray(0.21489415, 0.17411798, 0.22730136, 1, 0.2846, 0.234, 0.3, 1, 0.491215, 0.4233, 0.51, 1)
+colors = PackedColorArray(0.35041875, 0.24899107, 0.17881739, 1, 0.21948591, 0.2743099, 0.19046855, 1, 0.43223354, 0.47029358, 0.3392457, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_p57ef"]
 
@@ -38,30 +41,6 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_iywne")
 seamless = true
 seamless_blend_skirt = 0.221
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
-texture = ExtResource("3_gee14")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vtaks"]
-texture = ExtResource("4_0tnpc")
-texture_region_size = Vector2i(18, 18)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_vtaks"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_0tnpc")
-sources/1 = SubResource("TileSetAtlasSource_vtaks")
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
-normal = Vector2(1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtaks"]
-normal = Vector2(0, 1)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dinhu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtaks"]
 radius = 8.0
@@ -99,20 +78,29 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvpfn"]
 radius = 8.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
-atlas = ExtResource("11_trtic")
-region = Rect2(8, 0, 8, 8)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
+texture = ExtResource("3_gee14")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ca42v"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ir15t")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vtaks"]
+texture = ExtResource("4_0tnpc")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vtaks"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_0tnpc")
+sources/1 = SubResource("TileSetAtlasSource_vtaks")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtaks"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dinhu"]
 
 [sub_resource type="Image" id="Image_trtic"]
 data = {
@@ -1086,6 +1074,21 @@ RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_bt5mj")
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_e1j6l")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_pl11u")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+atlas = ExtResource("11_trtic")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ca42v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir15t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Game" type="Node2D"]
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -1119,8 +1122,62 @@ modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
 position = Vector2(384, 0)
 texture = SubResource("NoiseTexture2D_u5sy4")
 
+[node name="4" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
+position = Vector2(-384, 0)
+texture = SubResource("NoiseTexture2D_u5sy4")
+
+[node name="5" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
+texture = SubResource("NoiseTexture2D_u5sy4")
+
+[node name="6" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
+position = Vector2(384, 0)
+texture = SubResource("NoiseTexture2D_u5sy4")
+
+[node name="LitterSpawner" type="Node2D" parent="Level"]
+
 [node name="TrashSpawner" type="Node2D" parent="Level"]
 y_sort_enabled = true
+
+[node name="Player" type="CharacterBody2D" parent="Level/TrashSpawner"]
+collision_layer = 2
+script = ExtResource("2_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
+shape = SubResource("CircleShape2D_vtaks")
+
+[node name="Model" type="Node2D" parent="Level/TrashSpawner/Player"]
+
+[node name="Body" type="Sprite2D" parent="Level/TrashSpawner/Player/Model"]
+texture = ExtResource("3_p57ef")
+
+[node name="Eyes" type="AnimatedSprite2D" parent="Level/TrashSpawner/Player/Model"]
+sprite_frames = SubResource("SpriteFrames_kvpfn")
+
+[node name="Smile" type="AnimatedSprite2D" parent="Level/TrashSpawner/Player/Model"]
+sprite_frames = SubResource("SpriteFrames_0tnpc")
+
+[node name="Hands" type="Node2D" parent="Level/TrashSpawner/Player/Model"]
+
+[node name="LeftHand" type="Sprite2D" parent="Level/TrashSpawner/Player/Model/Hands"]
+position = Vector2(-12, 0)
+texture = ExtResource("6_p57ef")
+
+[node name="RightHand" type="Sprite2D" parent="Level/TrashSpawner/Player/Model/Hands"]
+position = Vector2(12, 0)
+texture = ExtResource("6_p57ef")
+
+[node name="Anim" type="AnimationPlayer" parent="Level/TrashSpawner/Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_gee14")
+}
+
+[node name="BorderDetect" type="Area2D" parent="Level/TrashSpawner/Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/TrashSpawner/Player/BorderDetect"]
+shape = SubResource("CircleShape2D_kvpfn")
 
 [node name="Shadow" type="TileMapLayer" parent="Level"]
 tile_map_data = PackedByteArray("AADo//7/AQAAAAAAAADo//3/AQAAAAAAAADo//z/AQAAAAAAAADo//v/AQAAAAAAAADo//r/AQAAAAAAAADo//n/AQAAAAAAAADo//j/AQAAAAAAAADo/w8AAQAAAAAAAADo/w4AAQAAAAAAAADo/w0AAQAAAAAAAADo/wwAAQAAAAAAAADo/wsAAQAAAAAAAADo/woAAQAAAAAAAADo/wkAAQAAAAAAAADo/wgAAQAAAAAAAADo/wcAAQAAAAAAAADo/wYAAQAAAAAAAADo/wUAAQAAAAAAAADo/wQAAQAAAAAAAADo/wMAAQAAAAAAAADo/wIAAQAAAAAAAADo/wEAAQAAAAAAAADo//D/AQAAAAAAAADo//H/AQAAAAAAAADo//L/AQAAAAAAAADo//P/AQAAAAAAAADo//T/AQAAAAAAAADo//X/AQAAAAAAAADo//b/AQAAAAAAAADo//f/AQAAAAAAAAA=")
@@ -1147,45 +1204,8 @@ shape = SubResource("WorldBoundaryShape2D_vtaks")
 position = Vector2(0, 256)
 shape = SubResource("WorldBoundaryShape2D_dinhu")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-collision_layer = 2
-script = ExtResource("2_iywne")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_vtaks")
-
-[node name="Model" type="Node2D" parent="Player"]
-
-[node name="Body" type="Sprite2D" parent="Player/Model"]
-texture = ExtResource("3_p57ef")
-
-[node name="Eyes" type="AnimatedSprite2D" parent="Player/Model"]
-sprite_frames = SubResource("SpriteFrames_kvpfn")
-
-[node name="Smile" type="AnimatedSprite2D" parent="Player/Model"]
-sprite_frames = SubResource("SpriteFrames_0tnpc")
-
-[node name="Hands" type="Node2D" parent="Player/Model"]
-
-[node name="LeftHand" type="Sprite2D" parent="Player/Model/Hands"]
-position = Vector2(-12, 0)
-texture = ExtResource("6_p57ef")
-
-[node name="RightHand" type="Sprite2D" parent="Player/Model/Hands"]
-position = Vector2(12, 0)
-texture = ExtResource("6_p57ef")
-
-[node name="Anim" type="AnimationPlayer" parent="Player"]
-libraries = {
-&"": SubResource("AnimationLibrary_gee14")
-}
-
-[node name="BorderDetect" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/BorderDetect"]
-shape = SubResource("CircleShape2D_kvpfn")
-
 [node name="INVENTORY" type="CanvasLayer" parent="."]
+script = ExtResource("11_ssvqc")
 
 [node name="Control" type="Control" parent="INVENTORY"]
 layout_mode = 3
@@ -1207,272 +1227,69 @@ scale = Vector2(4, 4)
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="Slot0" type="Control" parent="INVENTORY/Control/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot0"]
-z_index = -10
-position = Vector2(8, 9)
-texture = ExtResource("10_kvuet")
-
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot0"]
-z_index = 10
-position = Vector2(8, 9)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot0"]
-z_index = 100
-clip_contents = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-text = "0
-"
-
-[node name="Slot1" type="Control" parent="INVENTORY/Control/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot1"]
-z_index = -10
-position = Vector2(8, 9)
-texture = ExtResource("10_kvuet")
-
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot1"]
-z_index = 10
-position = Vector2(8, 9)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot1"]
-z_index = 100
-clip_contents = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-text = "0
-"
-
-[node name="Slot2" type="Control" parent="INVENTORY/Control/HBoxContainer"]
+[node name="Slot" type="Control" parent="INVENTORY/Control"]
 visible = false
 custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 404.0
+offset_right = 304.0
+offset_bottom = 420.0
+script = ExtResource("12_264po")
 
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot2"]
-z_index = -10
-position = Vector2(8, 9)
-texture = ExtResource("10_kvuet")
-
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot2"]
-z_index = 10
-position = Vector2(8, 9)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot2"]
+[node name="amount" type="RichTextLabel" parent="INVENTORY/Control/Slot"]
 z_index = 100
 clip_contents = false
 layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 207.92627
+offset_bottom = 152.74591
+scale = Vector2(0.036, 0.036)
 mouse_filter = 2
 theme = SubResource("Theme_bhx41")
 text = "0
 "
 
-[node name="Slot3" type="Control" parent="INVENTORY/Control/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+[node name="number" type="RichTextLabel" parent="INVENTORY/Control/Slot"]
+z_index = 100
+clip_contents = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 215.92627
+offset_bottom = 161.74591
+scale = Vector2(0.05198082, 0.05198082)
+mouse_filter = 2
+theme = SubResource("Theme_bhx41")
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+text = "x1
+"
 
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot3"]
+[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/Slot"]
 z_index = -10
 position = Vector2(8, 9)
 texture = ExtResource("10_kvuet")
 
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot3"]
+[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/Slot"]
 z_index = 10
 position = Vector2(8, 9)
 sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot3"]
-z_index = 100
-clip_contents = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-text = "0
-"
-
-[node name="Slot4" type="Control" parent="INVENTORY/Control/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot4"]
-z_index = -10
-position = Vector2(8, 9)
-texture = ExtResource("10_kvuet")
-
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot4"]
-z_index = 10
-position = Vector2(8, 9)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot4"]
-z_index = 100
-clip_contents = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-text = "0
-"
-
-[node name="Slot5" type="Control" parent="INVENTORY/Control/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot5"]
-z_index = -10
-position = Vector2(8, 9)
-texture = ExtResource("10_kvuet")
-
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot5"]
-z_index = 10
-position = Vector2(8, 9)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot5"]
-z_index = 100
-clip_contents = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-text = "0
-"
-
-[node name="Slot6" type="Control" parent="INVENTORY/Control/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot6"]
-z_index = -10
-position = Vector2(8, 9)
-texture = ExtResource("10_kvuet")
-
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot6"]
-z_index = 10
-position = Vector2(8, 9)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot6"]
-z_index = 100
-clip_contents = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-text = "0
-"
-
-[node name="Slot7" type="Control" parent="INVENTORY/Control/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot7"]
-z_index = -10
-position = Vector2(8, 9)
-texture = ExtResource("10_kvuet")
-
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot7"]
-z_index = 10
-position = Vector2(8, 9)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot7"]
-z_index = 100
-clip_contents = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-text = "0
-"
-
-[node name="Slot8" type="Control" parent="INVENTORY/Control/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-
-[node name="SlotBG" type="Sprite2D" parent="INVENTORY/Control/HBoxContainer/Slot8"]
-z_index = -10
-position = Vector2(8, 9)
-texture = ExtResource("10_kvuet")
-
-[node name="Item" type="AnimatedSprite2D" parent="INVENTORY/Control/HBoxContainer/Slot8"]
-z_index = 10
-position = Vector2(8, 9)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="INVENTORY/Control/HBoxContainer/Slot8"]
-z_index = 100
-clip_contents = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 216.92627
-offset_bottom = 160.74591
-scale = Vector2(0.072489604, 0.072489604)
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-text = "0
-"
 
 [node name="MusicController" type="Node" parent="."]
 script = ExtResource("10_kvpfn")
 
 [node name="Tissues" type="AudioStreamPlayer" parent="MusicController"]
 stream = ExtResource("11_dinhu")
+volume_db = -1.726
 bus = &"Music"
 
 [node name="SmellySocks" type="AudioStreamPlayer" parent="MusicController"]
 stream = ExtResource("10_vtaks")
 volume_db = -3.884
+bus = &"Music"
+
+[node name="SodaCan" type="AudioStreamPlayer" parent="MusicController"]
+stream = ExtResource("17_rysoc")
+volume_db = -1.295
 bus = &"Music"
