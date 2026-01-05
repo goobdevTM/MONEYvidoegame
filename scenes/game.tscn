@@ -1,0 +1,194 @@
+[gd_scene load_steps=28 format=4 uid="uid://7xb7pi6ik7sv"]
+
+[ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
+[ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
+[ext_resource type="Script" uid="uid://bcxv7rji0cs1r" path="res://scripts/player.gd" id="2_iywne"]
+[ext_resource type="Texture2D" uid="uid://f87h168v8mn4" path="res://sprites/brick.png" id="3_gee14"]
+[ext_resource type="Texture2D" uid="uid://cjdxlfykxk3aw" path="res://sprites/body.png" id="3_p57ef"]
+[ext_resource type="Texture2D" uid="uid://c7c1eqy34y7vb" path="res://sprites/outline.png" id="4_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://g1o8ecnn5v5q" path="res://sprites/eyes.png" id="5_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://dhmrky64vb7jk" path="res://sprites/smile.png" id="6_gee14"]
+[ext_resource type="Texture2D" uid="uid://bsa68mp2vvgv6" path="res://sprites/hand.png" id="6_p57ef"]
+[ext_resource type="AudioStream" uid="uid://d0mq3gt6uuvoc" path="res://audio/music/Smelly Socks.ogg" id="10_vtaks"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
+texture = ExtResource("1_lbhrr")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0tnpc"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_gee14")
+
+[sub_resource type="Gradient" id="Gradient_iywne"]
+offsets = PackedFloat32Array(0, 0.36, 0.78)
+colors = PackedColorArray(0.21489415, 0.17411798, 0.22730136, 1, 0.2846, 0.234, 0.3, 1, 0.491215, 0.4233, 0.51, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p57ef"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u5sy4"]
+width = 384
+noise = SubResource("FastNoiseLite_p57ef")
+color_ramp = SubResource("Gradient_iywne")
+seamless = true
+seamless_blend_skirt = 0.221
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
+texture = ExtResource("3_gee14")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vtaks"]
+texture = ExtResource("4_0tnpc")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vtaks"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_0tnpc")
+sources/1 = SubResource("TileSetAtlasSource_vtaks")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtaks"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dinhu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtaks"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvpfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_u5sy4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0tnpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gee14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_u5sy4"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gee14"]
+_data = {
+&"idle": SubResource("Animation_u5sy4")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvpfn"]
+radius = 8.0
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = -384
+limit_top = -256
+limit_bottom = 256
+script = ExtResource("1_iywne")
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="Level"]
+z_index = -4096
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_0tnpc")
+
+[node name="NoiseOverlay" type="Node2D" parent="Level"]
+
+[node name="1" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
+position = Vector2(-384, 0)
+texture = SubResource("NoiseTexture2D_u5sy4")
+
+[node name="2" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
+texture = SubResource("NoiseTexture2D_u5sy4")
+
+[node name="3" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
+position = Vector2(384, 0)
+texture = SubResource("NoiseTexture2D_u5sy4")
+
+[node name="Shadow" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AADo//7/AQAAAAAAAADo//3/AQAAAAAAAADo//z/AQAAAAAAAADo//v/AQAAAAAAAADo//r/AQAAAAAAAADo//n/AQAAAAAAAADo//j/AQAAAAAAAADo/w8AAQAAAAAAAADo/w4AAQAAAAAAAADo/w0AAQAAAAAAAADo/wwAAQAAAAAAAADo/wsAAQAAAAAAAADo/woAAQAAAAAAAADo/wkAAQAAAAAAAADo/wgAAQAAAAAAAADo/wcAAQAAAAAAAADo/wYAAQAAAAAAAADo/wUAAQAAAAAAAADo/wQAAQAAAAAAAADo/wMAAQAAAAAAAADo/wIAAQAAAAAAAADo/wEAAQAAAAAAAADo//D/AQAAAAAAAADo//H/AQAAAAAAAADo//L/AQAAAAAAAADo//P/AQAAAAAAAADo//T/AQAAAAAAAADo//X/AQAAAAAAAADo//b/AQAAAAAAAADo//f/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_vtaks")
+
+[node name="Bricks" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AADo//D/AAAAAAAAAADo//H/AAAAAAAAAADo//L/AAAAAAAAAADo//P/AAAAAAAAAADo//T/AAAAAAAAAADo//X/AAAAAAAAAADo//b/AAAAAAAAAADo//f/AAAAAAAAAADo//j/AAAAAAAAAADo//n/AAAAAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAAAAADo//z/AAAAAAAAAADo//3/AAAAAAAAAADo//7/AAAAAAAAAADo/wEAAAAAAAAAAADo/wIAAAAAAAAAAADo/wMAAAAAAAAAAADo/wQAAAAAAAAAAADo/wUAAAAAAAAAAADo/wYAAAAAAAAAAADo/wcAAAAAAAAAAADo/wgAAAAAAAAAAADo/wkAAAAAAAAAAADo/woAAAAAAAAAAADo/wsAAAAAAAAAAADo/wwAAAAAAAAAAADo/w0AAAAAAAAAAADo/w4AAAAAAAAAAADo/w8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_vtaks")
+
+[node name="House" type="Area2D" parent="Level"]
+collision_layer = 128
+
+[node name="Collision" type="CollisionShape2D" parent="Level/House"]
+position = Vector2(-384, 0)
+shape = SubResource("WorldBoundaryShape2D_kvpfn")
+
+[node name="Borders" type="StaticBody2D" parent="Level"]
+
+[node name="Top" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(0, -256)
+shape = SubResource("WorldBoundaryShape2D_vtaks")
+
+[node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(0, 256)
+shape = SubResource("WorldBoundaryShape2D_dinhu")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+collision_layer = 2
+script = ExtResource("2_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_vtaks")
+
+[node name="Model" type="Node2D" parent="Player"]
+
+[node name="Body" type="Sprite2D" parent="Player/Model"]
+texture = ExtResource("3_p57ef")
+
+[node name="Eyes" type="AnimatedSprite2D" parent="Player/Model"]
+sprite_frames = SubResource("SpriteFrames_kvpfn")
+
+[node name="Smile" type="AnimatedSprite2D" parent="Player/Model"]
+sprite_frames = SubResource("SpriteFrames_0tnpc")
+
+[node name="Hands" type="Node2D" parent="Player/Model"]
+
+[node name="LeftHand" type="Sprite2D" parent="Player/Model/Hands"]
+position = Vector2(-12, 0)
+texture = ExtResource("6_p57ef")
+
+[node name="RightHand" type="Sprite2D" parent="Player/Model/Hands"]
+position = Vector2(12, 0)
+texture = ExtResource("6_p57ef")
+
+[node name="Anim" type="AnimationPlayer" parent="Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_gee14")
+}
+
+[node name="BorderDetect" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/BorderDetect"]
+shape = SubResource("CircleShape2D_kvpfn")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_vtaks")
+autoplay = true
+bus = &"Music"

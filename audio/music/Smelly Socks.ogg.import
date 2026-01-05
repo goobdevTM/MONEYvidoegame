@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d0mq3gt6uuvoc"
+path="res://.godot/imported/Smelly Socks.ogg-0a70aac894e1ee6dd69758be883b367d.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Smelly Socks.ogg"
+dest_files=["res://.godot/imported/Smelly Socks.ogg-0a70aac894e1ee6dd69758be883b367d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=124.0
+beat_count=236
+bar_beats=4
