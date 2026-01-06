@@ -26,6 +26,12 @@ enum Types {
 
 var type : int = 0
 var old : bool = false
+var amounts_of_trash : Array[int] = [
+	3,
+	5,
+	7,
+	10
+]
 var percentages : Array[float] = [
 	1,
 	0.25,
@@ -63,12 +69,12 @@ func _ready() -> void:
 			static_body.get_child(i).queue_free()
 	
 	#SPAWNS LITTER
-	await get_tree().create_timer(0).timeout
+	await get_tree().create_timer(randf_range(0,0.05)).timeout
 	for i in randi_range(3, 5):
 		var clone_litter = LITTER.instantiate()
 		litter_spawner.add_child(clone_litter)
 		clone_litter.global_position = global_position + Vector2(randi_range(-40, 40), randi_range(-40, 40))
-	
+		await get_tree().create_timer(randf_range(0,0.05)).timeout
 
 
 
@@ -78,3 +84,8 @@ func _on_area_area_entered(area: Area2D) -> void:
 			queue_free()
 		else:
 			area.get_parent().queue_free()
+
+
+#too far away from player?
+func _on_delete_check_area_entered(area: Area2D) -> void:
+	queue_free()

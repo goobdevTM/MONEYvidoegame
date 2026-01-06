@@ -2,15 +2,14 @@ extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite
 
-var type : int = 0
+var type : int = -1
 var old : bool = false
 
 
 func _ready() -> void:
 	
-	for i in range(len(Globals.items)):
-		if randf_range(0.0, 1.0) <= Globals.items[i]['chance']:
-			type = i
+	if type == -1:
+		type = Globals.get_item_with_chance()
 	
 	#ANIMATION
 	var randi_bool: bool = bool(randi_range(0, 1))
@@ -24,3 +23,8 @@ func _ready() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("trash"):
 		queue_free()
+
+
+#too far away from player?
+func _on_delete_check_area_entered(area: Area2D) -> void:
+	queue_free()

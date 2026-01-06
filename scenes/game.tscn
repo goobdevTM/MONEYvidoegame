@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=29 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://f87h168v8mn4" path="res://sprites/brick.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://c7c1eqy34y7vb" path="res://sprites/outline.png" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="5_trtic"]
-[ext_resource type="AudioStream" uid="uid://dcatsatn7becm" path="res://audio/music/Settings.ogg" id="10_ir15t"]
 [ext_resource type="Script" uid="uid://droxdxl825kw2" path="res://scripts/music_controller.gd" id="10_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://d0mq3gt6uuvoc" path="res://audio/music/SmellySocks.ogg" id="10_vtaks"]
 [ext_resource type="AudioStream" uid="uid://dtuuh2gop4fli" path="res://audio/music/Tissues.ogg" id="11_dinhu"]
@@ -16,6 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
 [ext_resource type="AudioStream" uid="uid://cp3yrh48rmxy6" path="res://audio/music/Dumpster.ogg" id="16_ca42v"]
 [ext_resource type="AudioStream" uid="uid://iacca0nebmsr" path="res://audio/music/SodaCan.ogg" id="17_rysoc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ir15t"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ca42v"]
+normal = Vector2(-1, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("1_lbhrr")
@@ -75,6 +80,18 @@ script = ExtResource("1_iywne")
 
 [node name="Level" type="Node2D" parent="."]
 script = ExtResource("2_ca42v")
+
+[node name="DeleteTrash" type="Area2D" parent="Level"]
+collision_layer = 8
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/DeleteTrash"]
+position = Vector2(-256, 0)
+shape = SubResource("WorldBoundaryShape2D_ir15t")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/DeleteTrash"]
+position = Vector2(512, 0)
+shape = SubResource("WorldBoundaryShape2D_ca42v")
 
 [node name="Ground" type="TileMapLayer" parent="Level"]
 z_index = -4096
@@ -174,9 +191,6 @@ texture = ExtResource("3_ca42v")
 centered = false
 
 [node name="Settings" parent="." instance=ExtResource("13_264po")]
-
-[node name="Music" type="AudioStreamPlayer" parent="Settings"]
-stream = ExtResource("10_ir15t")
 
 [node name="MusicController" type="Node" parent="."]
 script = ExtResource("10_kvpfn")

@@ -2,11 +2,14 @@ extends CanvasLayer
 
 @onready var bg: ColorRect = $BG
 @onready var control: Control = $Control
+@onready var master_slider: HSlider = $Control/TabContainer/Audio/Master
 @onready var music: AudioStreamPlayer = $Music
 
 
 func _ready() -> void:
 	hide()
+	_on_volume_value_changed(Globals.master_volume)
+	master_slider.value = Globals.master_volume
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("settings"):

@@ -3,7 +3,7 @@ extends Node
 signal slot_selected
 
 var money : int = 0
-var trash_amount : int = 150
+var trash_amount : int = 40
 
 #INVENTORY
 var inventory_slots : int = 3
@@ -46,6 +46,13 @@ var in_game : bool = false
 
 #SETTINGS
 var master_volume : float = 0
+
+#get random item int based on percentages
+func get_item_with_chance() -> int:
+	for i in range(len(Globals.items)):
+		if randf_range(0.0, 1.0) <= Globals.items[i]['chance']:
+			return i
+	return 0 #in case big bug crash
 
 func _input(event: InputEvent) -> void:
 	#sets selected_slot to number keys
