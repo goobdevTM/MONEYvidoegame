@@ -238,9 +238,10 @@ theme_override_icons/tick = SubResource("ImageTexture_ir15t")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ca42v")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ir15t")
 value = 100.0
+editable = false
 
 [node name="Viginette" type="Sprite2D" parent="INVENTORY"]
-self_modulate = Color(1, 1, 1, 0.21568628)
+self_modulate = Color(0, 0, 0, 0.21568628)
 z_index = 999
 scale = Vector2(1.33, 1.33)
 texture = ExtResource("3_ca42v")

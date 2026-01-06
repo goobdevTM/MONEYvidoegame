@@ -46,7 +46,7 @@ var in_game : bool = false
 
 #SETTINGS
 var master_volume : float = 50
-var stamina_bar_opacity: float = 50
+var stamina_bar_opacity: float = 1
 
 func _ready() -> void:
 	load_data()

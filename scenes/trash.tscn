@@ -58,7 +58,7 @@ size = Vector2(46, 20)
 load_path = "res://.godot/imported/smell.png-192bcd279f602cfeba5a1d0b7edc7aeb.ctex"
 
 [sub_resource type="Curve" id="Curve_24v10"]
-_data = [Vector2(0, 0.8860759), 0.0, 0.0, 0, 0, Vector2(0.4974748, 0.65189874), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.07435898, 0), 0.0, 0.9163534, 0, 0, Vector2(0.52820516, 0.80921054), 0.29096588, 0.29096588, 0, 0, Vector2(1, 0), -2.966696, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_2g7r5"]
