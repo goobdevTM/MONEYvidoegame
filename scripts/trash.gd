@@ -20,6 +20,7 @@ enum Types {
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var timer: Timer = $Timer
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
+@onready var static_body: StaticBody2D = $StaticBody2D
 
 var type : int = 0
 var old : bool = false
@@ -38,13 +39,18 @@ func _ready() -> void:
 		if randf_range(0.0, 1.0) <= percentages[i]:
 			type = i
 	
-	#ANIMATIONdw
+	#ANIMATION
 	sprite.play(str(Types.find_key(type)))
 	
-	#COLLISION
+	#COLLISION (AREA)
 	var new_collision : Area2D = collision_scenes[type].instantiate()
 	new_collision.area_entered.connect(_on_area_area_entered)
 	add_child(new_collision)
+	
+	#COLLISION (STATICBODY)
+	for i in range(Types.size()):
+		if not i == type:
+			static_body.get_child(i).queue_free()
 	
 	#SPAWNS LITTER
 	await get_tree().create_timer(0).timeout

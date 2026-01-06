@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://0m87sdsyy8cg"]
+
+[ext_resource type="Script" uid="uid://d1c78rfpi3vgn" path="res://scripts/settings.gd" id="1_5p8wc"]
+
+[node name="Settings" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_5p8wc")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(320, 240)
+
+[node name="TabContainer" type="TabContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Audio" type="Control" parent="Control/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Master" type="HSlider" parent="Control/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = 31.0
+offset_right = -83.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+rounded = true
+
+[node name="Video" type="Control" parent="Control/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[connection signal="value_changed" from="Control/TabContainer/Audio/Master" to="." method="_on_volume_value_changed"]

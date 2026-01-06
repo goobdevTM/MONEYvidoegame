@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://blwgbgbei4tsn"]
+[gd_scene load_steps=11 format=3 uid="uid://blwgbgbei4tsn"]
 
 [ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="1_3xixx"]
 [ext_resource type="Script" uid="uid://b0iydxyh8p3xh" path="res://scripts/trash.gd" id="1_exrr5"]
@@ -41,12 +41,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24v10"]
+size = Vector2(12, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g7r5"]
+size = Vector2(20, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sf1q"]
+size = Vector2(14, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3mh6"]
+size = Vector2(46, 20)
+
 [node name="Trash" type="Node2D"]
 script = ExtResource("1_exrr5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r3mh6")
-animation = &"TRASH_BAG_SMALL"
+animation = &"TRASH_CAN"
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="TRASH_BAG_SMALL" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_24v10")
+
+[node name="TRASH_BAG" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_2g7r5")
+
+[node name="TRASH_CAN" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_4sf1q")
+
+[node name="DUMPSTER" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_r3mh6")
