@@ -20,4 +20,4 @@ func generate_trash(spawn_x: int) -> void:
 	for i in range(Globals.trash_amount):
 		var new_trash : Node2D = TRASH.instantiate()
 		trash_spawner.add_child(new_trash)
-		new_trash.position = Vector2(randi_range(spawn_x, spawn_x + 768), randi_range(top.position.y + 64, bottom.position.y - 64))
+		new_trash.position = Vector2(randi_range(spawn_x, spawn_x + 768), randi_range(top.position.y + 24, bottom.position.y - 24))

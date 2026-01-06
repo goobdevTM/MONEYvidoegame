@@ -13,8 +13,8 @@ func _ready() -> void:
 			type = i
 	
 	#ANIMATION
-	var randi_bool: int = randi_range(0, 1)
-	sprite.flip_h = bool(randi_bool)
+	var randi_bool: bool = bool(randi_range(0, 1))
+	sprite.flip_h = randi_bool
 	sprite.rotation = deg_to_rad(randi_range(0, 4) * 90)
 	print(Globals.items[type])
 	sprite.texture = sprite.texture.duplicate()
@@ -22,4 +22,5 @@ func _ready() -> void:
 
 #DELETES ITS SELF IF IT COLLIDES WITH OTHER TRASH
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	queue_free()
+	if area.is_in_group("trash"):
+		queue_free()

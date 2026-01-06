@@ -1,5 +1,6 @@
 extends Control
 
+@onready var amount: RichTextLabel = $Amount
 @onready var slot_bg: Sprite2D = $SlotBG
 @onready var item_sprite: Sprite2D = $Item
 @onready var anim: AnimationPlayer = $Anim
@@ -36,6 +37,7 @@ func update_slot() -> void:
 	#set item data
 	item = Globals.items[Globals.inventory[index]['id']]
 	item_sprite.texture.region = Rect2(item['coords'] * 8, Vector2(8,8))
+	amount.text = "[right]x" + str(Globals.inventory[index]['count'])
 	
 	#set last slot
 	last_slot = Globals.selected_slot

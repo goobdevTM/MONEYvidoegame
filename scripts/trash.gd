@@ -63,7 +63,8 @@ func _ready() -> void:
 
 
 func _on_area_area_entered(area: Area2D) -> void:
-	if timer.time_left > area.get_parent().timer.time_left: #only queuefrees the newest one
-		queue_free()
-	else:
-		area.get_parent().queue_free()
+	if area.get_parent().is_in_group("trash"):
+		if timer.time_left > area.get_parent().timer.time_left: #only queuefrees the newest one
+			queue_free()
+		else:
+			area.get_parent().queue_free()

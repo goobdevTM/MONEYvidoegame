@@ -2,17 +2,25 @@ class_name Player
 
 extends CharacterBody2D
 
-@onready var anim: AnimationPlayer = $Anim
+@onready var text_anim: AnimationPlayer = $HandArea/Text/Anim
+@onready var text: RichTextLabel = $HandArea/Text/Text
+
 @onready var eyes: AnimatedSprite2D = $Model/Eyes
 @onready var hands: Node2D = $Model/Hands
 @onready var right_hand: Sprite2D = $Model/Hands/RightHand
 @onready var left_hand: Sprite2D = $Model/Hands/LeftHand
+@onready var hand_area: Area2D = $HandArea
 
 #movement variables
 var speed : int = 800 #1000
 var friction : float = 0.7
 var direction : Vector2
+
+#hand variables
 var last_positions : Array[Vector2] = []
+var hand_speed : float = 30
+var hand_range : int = 32
+var items_in_hand : Array[Node2D] = []
 
 func _physics_process(delta: float) -> void:
 	
@@ -43,22 +51,45 @@ func _process(delta: float) -> void:
 	#hand follow mouse (do in process so no laggy)
 	
 	#if mouse on right, else if left
-
 	if get_local_mouse_position().x > 0:
-		if hands.position.distance_to(get_local_mouse_position()) < 32:
-			right_hand.position = lerp(right_hand.position, get_local_mouse_position(), delta * 8)
+		if hands.position.distance_to(get_local_mouse_position()) < hand_range:
+			right_hand.position = lerp(right_hand.position, get_local_mouse_position(), delta * hand_speed)
 		else:
-			right_hand.position = lerp(right_hand.position, get_local_mouse_position().normalized() * 32, delta * 8)
+			right_hand.position = lerp(right_hand.position, get_local_mouse_position().normalized() * hand_range, delta * hand_speed)
 		left_hand_go_back(delta)
 	else:
-		if hands.position.distance_to(get_local_mouse_position()) < 32:
-			left_hand.position = lerp(left_hand.position, get_local_mouse_position(), delta * 8)
+		if hands.position.distance_to(get_local_mouse_position()) < hand_range:
+			left_hand.position = lerp(left_hand.position, get_local_mouse_position(), delta * hand_speed)
 		else:
-			left_hand.position = lerp(left_hand.position, get_local_mouse_position().normalized() * 32, delta * 8)
+			left_hand.position = lerp(left_hand.position, get_local_mouse_position().normalized() * hand_range, delta * hand_speed)
 		right_hand_go_back(delta)
 		
+	if hands.position.distance_to(get_local_mouse_position()) < hand_range:
+		hand_area.position = get_local_mouse_position()
+	else:
+		hand_area.position = get_local_mouse_position().normalized() * hand_range
+		
 func right_hand_go_back(delta : float) -> void:
-	right_hand.position = lerp(right_hand.position, Vector2(12,0), delta * 8)
+	right_hand.position = lerp(right_hand.position, Vector2(12,0), delta * hand_speed)
 	
 func left_hand_go_back(delta : float) -> void:
-	left_hand.position = lerp(left_hand.position, Vector2(-12,0), delta * 8)
+	left_hand.position = lerp(left_hand.position, Vector2(-12,0), delta * hand_speed)
+
+
+func _on_hand_area_area_entered(area: Area2D) -> void:
+	items_in_hand.append(area.get_parent())
+	highlight_item()
+
+func _on_hand_area_area_exited(area: Area2D) -> void:
+	items_in_hand.erase(area.get_parent())
+	highlight_item()
+	
+func highlight_item() -> void:
+	if len(items_in_hand) > 0:
+		if items_in_hand[0].is_in_group("trash"):
+			text.text = "[center][E] - open"
+		else:
+			text.text = "[center][E] - pick up"
+		text_anim.play("appear")
+	else:
+		text_anim.play("disappear")

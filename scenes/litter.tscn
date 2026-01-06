@@ -7,10 +7,10 @@
 atlas = ExtResource("2_dqed2")
 filter_clip = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dqed2"]
-radius = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqed2"]
+size = Vector2(6, 6)
 
-[node name="Litter" type="Node2D"]
+[node name="Litter" type="Node2D" groups=["litter"]]
 script = ExtResource("1_dqed2")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -18,9 +18,9 @@ texture = SubResource("AtlasTexture_dqed2")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 16
+collision_mask = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_dqed2")
+shape = SubResource("RectangleShape2D_dqed2")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
