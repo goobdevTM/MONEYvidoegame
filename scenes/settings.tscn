@@ -31,9 +31,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Audio" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -52,11 +53,37 @@ value = 50.0
 rounded = true
 
 [node name="Video" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="StaminaOpacity" type="HSlider" parent="Control/TabContainer/Video"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 22.0
+offset_right = 144.0
+offset_bottom = 38.0
+max_value = 1.0
+step = 0.01
+
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Video/StaminaOpacity"]
+layout_mode = 0
+offset_left = 6.999998
+offset_top = 13.0
+offset_right = 285.0
+offset_bottom = 53.0
+scale = Vector2(0.66067326, 0.66067326)
+text = "stamina-bar-opacity"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_r6d6q")
 
+[node name="exit" type="Button" parent="."]
+offset_left = 11.0
+offset_top = 439.0
+offset_right = 95.0
+offset_bottom = 470.0
+text = "exit game"
+
 [connection signal="value_changed" from="Control/TabContainer/Audio/Master" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Control/TabContainer/Video/StaminaOpacity" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="exit" to="." method="_on_button_pressed"]

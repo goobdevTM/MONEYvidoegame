@@ -1,0 +1,14 @@
+WRITE WHAT YOU DID HERE BEFORE YOU PUSH!!!!!!!
+
+SMALL ADDITION: +0.01
+MEDIUM ADDITION: +0.1
+
+
+Version 0.01:
+	Glagglewares employee 2,
+	11:34 AM,
+	Added:
+		Stamina Bar,
+		A setting in video for stamina bar,
+		New Song,
+		Attempted save-data (no workie sad).

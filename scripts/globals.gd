@@ -45,7 +45,33 @@ var in_settings : bool = false
 var in_game : bool = false
 
 #SETTINGS
-var master_volume : float = 0
+var master_volume : float = 50
+var stamina_bar_opacity: float = 50
+
+func _ready() -> void:
+	load_data()
+
+#SAVING AND LOADING
+var file_path: String = "user://save_data.save"
+#SAVE
+func save_data():
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	file.store_var(master_volume)
+	file.store_var(stamina_bar_opacity)
+#LOAD
+func load_data():
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		file.get_var()
+	else:
+		#RESETS VARS
+		master_volume = 50
+		stamina_bar_opacity = 50
+		#ITS COOL AND MODULAR OK? DONT DELETE THIS AHG%^^&&$$BKDGSBKLGSDLKGELKMFS$$$$$
+		var warning: String = "NO SAVE DATA"
+		print(warning)
+		return warning
+#
 
 #get random item int based on percentages
 func get_item_with_chance() -> int:

@@ -47,9 +47,13 @@ func _ready() -> void:
 	if not randi_range(1, 3) == 3:
 		smell_particles_1.emitting = false
 		smell_particles_2.emitting = false
+		smell_particles_1.hide()
+		smell_particles_2.hide()
 	else:
 		smell_particles_1.emitting = true
 		smell_particles_2.emitting = true
+		smell_particles_1.show()
+		smell_particles_2.show()
 	
 	for i in range(Types.size()):
 		if randf_range(0.0, 1.0) <= percentages[i]:

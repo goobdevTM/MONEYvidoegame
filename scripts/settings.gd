@@ -7,9 +7,8 @@ extends CanvasLayer
 
 
 func _ready() -> void:
-	hide()
-	_on_volume_value_changed(Globals.master_volume)
 	master_slider.value = Globals.master_volume
+	hide()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("settings"):
@@ -43,3 +42,11 @@ func close() -> void:
 	
 func _on_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(0, value / 75)
+
+func _on_h_slider_value_changed(value: float) -> void:
+	Globals.stamina_bar_opacity = value
+
+
+func _on_button_pressed() -> void:
+	Globals.save_data()
+	get_tree().quit()

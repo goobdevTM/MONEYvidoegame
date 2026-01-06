@@ -10,11 +10,17 @@ extends CharacterBody2D
 @onready var right_hand: Sprite2D = $Model/Hands/RightHand
 @onready var left_hand: Sprite2D = $Model/Hands/LeftHand
 @onready var hand_area: Area2D = $HandArea
+@onready var stamina_bar: HSlider = $"../../../INVENTORY/Control/Stamina"
 
 #movement variables
 var speed : int = 0
 var friction : float = 0.7
 var direction : Vector2
+#	FOR SPRINTING
+var stamina: float = 100
+var stamina_timer: float = 0
+#		SHOULDNT BE CHANGED (FOR NOW)
+const max_stamina: float = 100
 
 #hand variables
 var last_positions : Array[Vector2] = []
@@ -22,12 +28,32 @@ var hand_speed : float = 30
 var hand_range : int = 32
 var items_in_hand : Array[Node2D] = []
 
+func _ready() -> void:
+	stamina = 100
+	stamina_bar.value = stamina
+	stamina_bar.self_modulate = Color(1.0, 1.0, 1.0, 0.05)
+
+func sprint(sprint_speed: int):
+	if stamina > 0:
+		speed = sprint_speed #1600
+		stamina -= 0.18
+		stamina_bar.value = stamina
+	else:
+		return "OUT OF ENERGY"
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("sprint"):
-		speed = 1600 #1600
+		sprint(800 + (stamina * 10))
+		
+		#ANIMATES STAMINA BAR
+		var tween: Tween = create_tween()
+		tween.tween_property(stamina_bar, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), 0.2)
+		
 	else:
 		speed = 800 #800
+		var tween: Tween = create_tween()
+		tween.tween_property(stamina_bar, "self_modulate", Color(1.0, 1.0, 1.0, Globals.stamina_bar_opacity), 0.2)
 		
 	#append to last positions
 	last_positions.append(position)
@@ -48,6 +74,20 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _process(delta: float) -> void:
+	
+	#ADDS STAMINA EVERY ONE SECOND
+	if stamina < 0:
+		stamina = 0
+	if not Input.is_action_pressed("sprint"):
+		stamina_timer += delta
+	if stamina_timer >= (1 - (stamina / 100)):
+		if stamina < 100:
+			stamina += 5
+			stamina_timer = 0
+			stamina_bar.value = stamina
+	if stamina > 100:
+		stamina = 100
+	
 	#hand follow mouse (do in process so no laggy)
 	
 	#if mouse on right, else if left

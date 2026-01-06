@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=33 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bbsa73xastegl" path="res://scripts/inventory.gd" id="11_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
 [ext_resource type="AudioStream" uid="uid://cp3yrh48rmxy6" path="res://audio/music/Dumpster.ogg" id="16_ca42v"]
+[ext_resource type="AudioStream" uid="uid://dc33wk0to0pya" path="res://audio/music/TrashBags.ogg" id="16_rysoc"]
 [ext_resource type="AudioStream" uid="uid://iacca0nebmsr" path="res://audio/music/SodaCan.ogg" id="17_rysoc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ir15t"]
@@ -67,6 +68,47 @@ normal = Vector2(1, 0)
 normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dinhu"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ir15t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ca42v"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.30980393, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir15t"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 1, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 3
+border_color = Color(1.92523e-06, 0, 0.63714826, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ssvqc")
@@ -183,6 +225,20 @@ scale = Vector2(4, 4)
 theme_override_constants/separation = 1
 alignment = 1
 
+[node name="Stamina" type="HSlider" parent="INVENTORY/Control"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 383.0
+offset_right = 403.0
+offset_bottom = 399.0
+theme_override_icons/grabber = SubResource("ImageTexture_ir15t")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_ir15t")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_ir15t")
+theme_override_icons/tick = SubResource("ImageTexture_ir15t")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ca42v")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ir15t")
+value = 100.0
+
 [node name="Viginette" type="Sprite2D" parent="INVENTORY"]
 self_modulate = Color(1, 1, 1, 0.21568628)
 z_index = 999
@@ -191,6 +247,7 @@ texture = ExtResource("3_ca42v")
 centered = false
 
 [node name="Settings" parent="." instance=ExtResource("13_264po")]
+visible = false
 
 [node name="MusicController" type="Node" parent="."]
 script = ExtResource("10_kvpfn")
@@ -212,3 +269,7 @@ bus = &"Music"
 
 [node name="Dumpster" type="AudioStreamPlayer" parent="MusicController"]
 stream = ExtResource("16_ca42v")
+
+[node name="TrashBags" type="AudioStreamPlayer" parent="MusicController"]
+stream = ExtResource("16_rysoc")
+volume_db = 1.726
