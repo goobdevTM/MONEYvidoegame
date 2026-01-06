@@ -45,13 +45,16 @@ func _process(delta: float) -> void:
 	#if mouse on right, else if left
 
 	if get_local_mouse_position().x > 0:
-		if hands.position.distance_to(get_local_mouse_position()) > 32:
+		if hands.position.distance_to(get_local_mouse_position()) < 32:
 			right_hand.position = lerp(right_hand.position, get_local_mouse_position(), delta * 8)
 		else:
 			right_hand.position = lerp(right_hand.position, get_local_mouse_position().normalized() * 32, delta * 8)
 		left_hand_go_back(delta)
 	else:
-		left_hand.global_position = lerp(left_hand.global_position, get_global_mouse_position(), delta * 8)
+		if hands.position.distance_to(get_local_mouse_position()) < 32:
+			left_hand.position = lerp(left_hand.position, get_local_mouse_position(), delta * 8)
+		else:
+			left_hand.position = lerp(left_hand.position, get_local_mouse_position().normalized() * 32, delta * 8)
 		right_hand_go_back(delta)
 		
 func right_hand_go_back(delta : float) -> void:
