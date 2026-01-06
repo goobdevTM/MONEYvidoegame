@@ -25,7 +25,7 @@ var items : Array[Dictionary] = [
 	{'name': "Glove", 'coords': Vector2i(0,3), 'chance': 0.1},
 	{'name': "Fries", 'coords': Vector2i(1,3), 'chance': 0.05},
 	{'name': "Rat", 'coords': Vector2i(2,3), 'chance': 0.05},
-	{'name': "Photo", 'coords': Vector2i(3,3), 'chance': 0.05},
+	{'name': "Photo", 'coords': Vector2i(3,3), 'chance': 0.025},
 ]
 
 var inventory : Array[Dictionary] = [

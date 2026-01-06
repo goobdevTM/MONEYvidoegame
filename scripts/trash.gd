@@ -21,6 +21,8 @@ enum Types {
 @onready var timer: Timer = $Timer
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
 @onready var static_body: StaticBody2D = $StaticBody2D
+@onready var smell_particles_1: GPUParticles2D = $SmellParticles1
+@onready var smell_particles_2: GPUParticles2D = $SmellParticles2
 
 var type : int = 0
 var old : bool = false
@@ -35,6 +37,14 @@ var percentages : Array[float] = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#
+	
+	if not randi_range(1, 3) == 3:
+		smell_particles_1.emitting = false
+		smell_particles_2.emitting = false
+	else:
+		smell_particles_1.emitting = true
+		smell_particles_2.emitting = true
+	
 	for i in range(Types.size()):
 		if randf_range(0.0, 1.0) <= percentages[i]:
 			type = i

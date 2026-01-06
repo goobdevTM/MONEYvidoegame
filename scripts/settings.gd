@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var bg: ColorRect = $BG
 @onready var control: Control = $Control
+@onready var music: AudioStreamPlayer = $Music
 
 
 func _ready() -> void:
@@ -16,6 +17,7 @@ func _process(delta: float) -> void:
 			close()
 	
 func open() -> void:
+	music.play()
 	get_tree().paused = true
 	control.position = Vector2(0,480)
 	bg.modulate.a = 0
@@ -26,6 +28,7 @@ func open() -> void:
 	tween.tween_property(control, "position", Vector2(0,0), 0.1)
 	
 func close() -> void:
+	music.stop()
 	show()
 	var tween : Tween = create_tween()
 	tween.set_parallel()

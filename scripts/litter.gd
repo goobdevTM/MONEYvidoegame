@@ -8,7 +8,7 @@ var old : bool = false
 
 func _ready() -> void:
 	
-	for i in range(len(Globals.items) - 1):
+	for i in range(len(Globals.items)):
 		if randf_range(0.0, 1.0) <= Globals.items[i]['chance']:
 			type = i
 	
