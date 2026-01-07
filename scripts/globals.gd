@@ -6,9 +6,9 @@ var money : int = 0
 var trash_amount : int = 40
 
 #INVENTORY
-var inventory_slots : int = 3
+var inventory_slots : int = 9
 var selected_slot : int = 3
-var max_per_slot : int = 9
+var max_per_slot : int = 25
 
 var items : Array[Dictionary] = [
 	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 0.4},

@@ -1,11 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://blwgbgbei4tsn"]
+[gd_scene load_steps=20 format=3 uid="uid://blwgbgbei4tsn"]
 
 [ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="1_3xixx"]
 [ext_resource type="Script" uid="uid://b0iydxyh8p3xh" path="res://scripts/trash.gd" id="1_exrr5"]
 [ext_resource type="Texture2D" uid="uid://cw2t51ercwtq2" path="res://sprites/dumpster.png" id="2_24v10"]
 [ext_resource type="Texture2D" uid="uid://c2efnbu2qfjdb" path="res://sprites/garbage_bag.png" id="3_2g7r5"]
 [ext_resource type="Texture2D" uid="uid://daupy0l1gx7ws" path="res://sprites/trash-bin.png" id="5_4sf1q"]
+[ext_resource type="Texture2D" uid="uid://c7n71u276eucq" path="res://sprites/dumpster_open.png" id="6_0q2p5"]
 [ext_resource type="Texture2D" uid="uid://c67u2ll85j6gn" path="res://sprites/smell2.png" id="6_2g7r5"]
+[ext_resource type="Texture2D" uid="uid://c31u0flrgiwh1" path="res://sprites/garbage_bag_open.png" id="6_r3mh6"]
+[ext_resource type="Texture2D" uid="uid://catt3cmhwlplm" path="res://sprites/small_garbage_bag_open.png" id="7_0q2p5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r3mh6"]
 animations = [{
@@ -42,6 +45,41 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2g7r5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0q2p5")
+}],
+"loop": true,
+"name": &"DUMPSTER",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_r3mh6")
+}],
+"loop": true,
+"name": &"TRASH_BAG",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0q2p5")
+}],
+"loop": true,
+"name": &"TRASH_BAG_SMALL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4sf1q")
+}],
+"loop": true,
+"name": &"TRASH_CAN",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24v10"]
 size = Vector2(12, 9)
 
@@ -50,9 +88,6 @@ size = Vector2(20, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sf1q"]
 size = Vector2(14, 15)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3mh6"]
-size = Vector2(46, 20)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2g7r5"]
 load_path = "res://.godot/imported/smell.png-192bcd279f602cfeba5a1d0b7edc7aeb.ctex"
@@ -81,7 +116,12 @@ script = ExtResource("1_exrr5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r3mh6")
-animation = &"TRASH_CAN"
+animation = &"DUMPSTER"
+
+[node name="SpriteOpen" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_2g7r5")
+animation = &"TRASH_BAG_SMALL"
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -101,9 +141,9 @@ shape = SubResource("RectangleShape2D_2g7r5")
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_4sf1q")
 
-[node name="DUMPSTER" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="DUMPSTER" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_r3mh6")
+polygon = PackedVector2Array(-24, 10, 15, 10, 24, 0, 24, -10, -24, -10)
 
 [node name="SmellParticles1" type="GPUParticles2D" parent="."]
 visible = false

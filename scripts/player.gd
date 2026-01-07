@@ -6,11 +6,16 @@ extends CharacterBody2D
 @onready var text: RichTextLabel = $HandArea/Text/Text
 
 @onready var eyes: AnimatedSprite2D = $Model/Eyes
+#HANDS
 @onready var hands: Node2D = $Model/Hands
 @onready var right_hand: Sprite2D = $Model/Hands/RightHand
 @onready var left_hand: Sprite2D = $Model/Hands/LeftHand
 @onready var hand_area: Area2D = $HandArea
+
 @onready var stamina_bar: HSlider = $"../../../INVENTORY/Control/Stamina"
+#SOUND
+@onready var open_container: AudioStreamPlayer = $OpenContainer
+@onready var open_litter: AudioStreamPlayer = $OpenLitter
 
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
 
@@ -49,7 +54,7 @@ func sprint(sprint_speed: int):
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("sprint"):
-		sprint(10000 + (stamina * 10)) #800 is default
+		sprint(800 + (stamina * 10)) #800 is default
 		
 		#ANIMATES STAMINA BAR
 		var tween: Tween = create_tween()
@@ -119,8 +124,17 @@ func _process(delta: float) -> void:
 		if len(items_in_hand) > 0:
 			if items_in_hand[0] is Trash: #is in trash class
 				for i in range(items_in_hand[0].amounts_of_trash[items_in_hand[0].type]):
+					#SOUND
+					open_container.play()
+					
+					#SETS TRASH TO OPEN SPRITE
+					items_in_hand[0].sprite.hide()
+					items_in_hand[0].sprite_open.show()
+					
+					#ADDS TO INVENTORY
 					add_item_to_inventory(Globals.get_item_with_chance(), false)
 			else: #is litter
+				open_litter.play()
 				add_item_to_inventory(items_in_hand[0].type)
 				
 	#drop item

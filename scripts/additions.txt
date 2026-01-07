@@ -1,24 +1,37 @@
 WRITE WHAT YOU DID HERE BEFORE YOU PUSH!!!!!!!
 
-SMALL ADDITION: +0.01
-MEDIUM ADDITION: +0.1
-BIG ADDITION: +1
+TINY TWEAK: +0.001 (for each tweak)
+SMALL ADDITION: +0.01 (for each addition)
+MEDIUM ADDITION: +0.1 (for each addition)
+MASSIVE HUGE INSANE ADDITION: +1
 
 
-Version 0.01:
+Version 0.03:
 	Glagglewares employee 2,
-	11:34 AM,
+	11:34 AM JAN6,
 	Added:
 		Stamina Bar,
 		A setting in video for stamina bar,
 		New Song,
 		Attempted save-data (no workie sad).
 
-Version 0.02
-Glagglewares employee 1,
-1 billion o clock
-Added:
-	saves working,
-	pick up items works
-	fix random stinky bugs
-	inventory tooltips with item name
+Version 0.07
+	Glagglewares employee 1,
+	1 billion o clock (11:30 PM JAN6),
+	Added:
+		saves working,
+		pick up items works
+		fix random stinky bugs
+		inventory tooltips with item name
+
+Version 0.111
+	Glagglewares employee 2,
+	check outside your window O clock (10:27 AM JAN7),
+	Added:
+		opening trash sprite,
+		sounds,
+		titlescreen,
+		titlescreen song,
+		changed max per slot to 25,
+		
+		#note: didnt add sprite for trash-bin yet

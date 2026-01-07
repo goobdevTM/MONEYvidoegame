@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="giggly rich"
-run/main_scene="uid://7xb7pi6ik7sv"
+run/main_scene="uid://jjo26rmcgd4a"
 config/auto_accept_quit=false
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
