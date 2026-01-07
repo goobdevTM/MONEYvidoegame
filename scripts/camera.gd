@@ -10,6 +10,12 @@ var max_distance_from_spawn : int = 0
 var old_distance_calc : int = 0
 var new_distance_calc : int = 0
 
+func _ready() -> void:
+	#start at player
+	new_distance_calc = floor((player.global_position.x + 128) / 256)
+	old_distance_calc = new_distance_calc
+	global_position = player.global_position
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	#move slowly towards player
@@ -27,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		max_distance_from_spawn = new_distance_calc
 		
 	#generate
-	if not new_distance_calc == old_distance_calc:
+	if not new_distance_calc == old_distance_calc and new_distance_calc >= 0:
 		if new_distance_calc < old_distance_calc:
 			level.generate_trash((new_distance_calc * 256) - (256*1))
 		else:

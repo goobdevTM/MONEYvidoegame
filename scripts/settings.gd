@@ -3,13 +3,22 @@ extends CanvasLayer
 @onready var bg: ColorRect = $BG
 @onready var control: Control = $Control
 @onready var master_slider: HSlider = $Control/TabContainer/Audio/Master
+@onready var stamina_opacity: HSlider = $Control/TabContainer/Video/StaminaOpacity
 @onready var music: AudioStreamPlayer = $Music
 
 
 func _ready() -> void:
-	master_slider.value = Globals.master_volume
+	set_sliders()
 	hide()
 
+	
+#set sliders based on global var
+func set_sliders() -> void:
+	master_slider.value = Globals.master_volume
+	_on_volume_value_changed(Globals.master_volume)
+	stamina_opacity.value = Globals.stamina_bar_opacity
+	_on_volume_value_changed(Globals.master_volume)
+	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("settings"):
 		Globals.in_settings = not Globals.in_settings
@@ -41,12 +50,13 @@ func close() -> void:
 	get_tree().paused = false
 	
 func _on_volume_value_changed(value: float) -> void:
+	Globals.master_volume = value
 	AudioServer.set_bus_volume_linear(0, value / 75)
 
-func _on_h_slider_value_changed(value: float) -> void:
+func _on_stamina_opacity_value_changed(value: float) -> void:
 	Globals.stamina_bar_opacity = value
 
 
-func _on_button_pressed() -> void:
-	Globals.save_data()
-	get_tree().quit()
+func _on_quit_button_pressed() -> void:
+	#Moduler awsome
+	Globals.save_and_quit()

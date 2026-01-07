@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://ep7xcgg7p76x"]
+[gd_scene load_steps=27 format=4 uid="uid://ep7xcgg7p76x"]
 
 [ext_resource type="Script" uid="uid://c46we8d76srr7" path="res://scripts/slot.gd" id="1_5f2j7"]
 [ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="2_sjnr7"]
@@ -998,10 +998,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tooltip:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.045, 0.045)]
+}
 
 [sub_resource type="Animation" id="Animation_5f2j7"]
 resource_name = "hover"
-length = 0.05
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1030,6 +1042,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1.25, 1.25), Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tooltip:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.045, 0.045), Vector2(1e-05, 1e-05)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n3jes"]
 _data = {
@@ -1038,13 +1062,138 @@ _data = {
 &"unhover": SubResource("Animation_n3jes")
 }
 
+[sub_resource type="Animation" id="Animation_cs5ta"]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.07),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(0.045, 0.045)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xjccs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w173o"]
+resource_name = "disappear"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.045, 0.045), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w173o"]
+_data = {
+&"RESET": SubResource("Animation_xjccs"),
+&"appear": SubResource("Animation_cs5ta"),
+&"disappear": SubResource("Animation_w173o")
+}
+
 [node name="Slot" type="Control"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 16.0
 offset_bottom = 16.0
-scale = Vector2(1.05, 1.05)
 script = ExtResource("1_5f2j7")
 
 [node name="Number" type="RichTextLabel" parent="."]
@@ -1091,4 +1240,30 @@ texture = SubResource("AtlasTexture_5f2j7")
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_n3jes")
+}
+
+[node name="Tooltip" type="Node2D" parent="."]
+visible = false
+z_index = 4096
+position = Vector2(8.000001, 0)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Name" type="RichTextLabel" parent="Tooltip"]
+z_index = 100
+clip_contents = false
+offset_left = -367.5
+offset_top = -160.0
+offset_right = 367.5
+offset_bottom = -8.0
+mouse_filter = 2
+theme = SubResource("Theme_bhx41")
+bbcode_enabled = true
+text = "[center]nametastic
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TooltipAnim" type="AnimationPlayer" parent="Tooltip"]
+libraries = {
+&"": SubResource("AnimationLibrary_w173o")
 }

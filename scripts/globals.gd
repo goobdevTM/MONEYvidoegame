@@ -7,7 +7,8 @@ var trash_amount : int = 40
 
 #INVENTORY
 var inventory_slots : int = 3
-var selected_slot : int = 0
+var selected_slot : int = 3
+var max_per_slot : int = 9
 
 var items : Array[Dictionary] = [
 	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 0.4},
@@ -21,7 +22,7 @@ var items : Array[Dictionary] = [
 	{'name': "Bone", 'coords': Vector2i(0,2), 'chance': 0.04},
 	{'name': "Broken CD", 'coords': Vector2i(1,2), 'chance': 0.05},
 	{'name': "Fish Bone", 'coords': Vector2i(2,2), 'chance': 0.1},
-	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.001},
+	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.002},
 	{'name': "Glove", 'coords': Vector2i(0,3), 'chance': 0.1},
 	{'name': "Fries", 'coords': Vector2i(1,3), 'chance': 0.05},
 	{'name': "Rat", 'coords': Vector2i(2,3), 'chance': 0.05},
@@ -29,15 +30,15 @@ var items : Array[Dictionary] = [
 ]
 
 var inventory : Array[Dictionary] = [
-	{'id': 1, 'count': 1},
-	{'id': 3, 'count': 0},
-	{'id': 5, 'count': 3},
-	{'id': 0, 'count': 1},
-	{'id': 0, 'count': 1},
-	{'id': 0, 'count': 1},
-	{'id': 0, 'count': 1},
-	{'id': 0, 'count': 1},
-	{'id': 0, 'count': 1},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
 ]
 
 #CONDITIONS
@@ -53,25 +54,37 @@ func _ready() -> void:
 
 #SAVING AND LOADING
 var file_path: String = "user://save_data.save"
+signal loaded_data
+
 #SAVE
 func save_data():
 	var file = FileAccess.open(file_path, FileAccess.WRITE)
 	file.store_var(master_volume)
 	file.store_var(stamina_bar_opacity)
+	
 #LOAD
 func load_data():
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
-		file.get_var()
+		master_volume = file.get_var()
+		stamina_bar_opacity = file.get_var()
 	else:
-		#RESETS VARS
-		master_volume = 50
-		stamina_bar_opacity = 50
 		#ITS COOL AND MODULAR OK? DONT DELETE THIS AHG%^^&&$$BKDGSBKLGSDLKGELKMFS$$$$$
 		var warning: String = "NO SAVE DATA"
 		print(warning)
 		return warning
-#
+	emit_signal("loaded_data")
+
+#molodur awsoml
+func save_and_quit() -> void:
+	Globals.save_data()
+	await get_tree().create_timer(0.03).timeout
+	get_tree().quit()
+	
+#save when window closed
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_and_quit()
 
 #get random item int based on percentages
 func get_item_with_chance() -> int:
@@ -79,6 +92,8 @@ func get_item_with_chance() -> int:
 		if randf_range(0.0, 1.0) <= Globals.items[i]['chance']:
 			return i
 	return 0 #in case big bug crash
+	
+
 
 func _input(event: InputEvent) -> void:
 	#sets selected_slot to number keys

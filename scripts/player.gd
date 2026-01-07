@@ -12,6 +12,11 @@ extends CharacterBody2D
 @onready var hand_area: Area2D = $HandArea
 @onready var stamina_bar: HSlider = $"../../../INVENTORY/Control/Stamina"
 
+@onready var litter_spawner: Node2D = $"../../LitterSpawner"
+
+#litter scene
+const LITTER = preload("uid://6nia0edfdeaj")
+
 #movement variables
 var speed : int = 0
 var friction : float = 0.7
@@ -44,7 +49,7 @@ func sprint(sprint_speed: int):
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("sprint"):
-		sprint(800 + (stamina * 10))
+		sprint(10000 + (stamina * 10)) #800 is default
 		
 		#ANIMATES STAMINA BAR
 		var tween: Tween = create_tween()
@@ -111,15 +116,74 @@ func _process(delta: float) -> void:
 		
 	#pick up item
 	if Input.is_action_just_pressed("pickup"):
-		if items_in_hand[0].is_in_group("litter"): #is litter
-			add_item_to_inventory(items_in_hand[0].type)
-		else: #is trash
-			for i in range(items_in_hand[0].amount_of_trash[items_in_hand[0].type]):
-				add_item_to_inventory(Globals.get_item_with_chance())
+		if len(items_in_hand) > 0:
+			if items_in_hand[0] is Trash: #is in trash class
+				for i in range(items_in_hand[0].amounts_of_trash[items_in_hand[0].type]):
+					add_item_to_inventory(Globals.get_item_with_chance(), false)
+			else: #is litter
+				add_item_to_inventory(items_in_hand[0].type)
 				
-func add_item_to_inventory(item : int) -> void:
-	pass
+	#drop item
+	if Input.is_action_just_pressed("drop"):
+		if Globals.inventory[Globals.selected_slot]['count'] > 0:
+			drop_item(Globals.selected_slot, 1)
+
+				
+#add item with inventory or swap
+func add_item_to_inventory(item : int, drop_items_at_hand : bool = true) -> void:
+	
+	var slot : int = -1
+	#check for open slot
+	for i in range(Globals.inventory_slots):
+		if Globals.inventory[i]['id'] == item and Globals.inventory[i]['count'] < Globals.max_per_slot:
+			slot = i
+			break
+		if Globals.inventory[i]['count'] == 0:
+			slot = i
+			break
+			
+	#if no open slot or selected is open, use selected slot
+	if slot == -1 or (Globals.inventory[Globals.selected_slot]['count'] <= 0 or (Globals.inventory[Globals.selected_slot]['id'] == item and Globals.inventory[Globals.selected_slot]['count'] < Globals.max_per_slot)):
+		slot = Globals.selected_slot
+	#clear slot if necessary
+	if not Globals.inventory[slot]['id'] == item:
+		drop_item(slot, Globals.inventory[slot]['count'], drop_items_at_hand, false)
+	#update array
+	Globals.inventory[slot]['id'] = item
+	Globals.inventory[slot]['count'] += 1
+	#limit item amount
+	if Globals.inventory[slot]['count'] > Globals.max_per_slot:
+		drop_item(slot, Globals.inventory[slot]['count'] - Globals.max_per_slot, drop_items_at_hand)
+	#delete hovered item
+	if items_in_hand[0] is Trash:
+		items_in_hand[0].amounts_of_trash[items_in_hand[0].type] = 0
+	else:
+		items_in_hand[0].queue_free()
+		items_in_hand.remove_at(0)
+	#update hover text
+	highlight_item()
+	#update slots
+	#Globals.emit_signal("slot_selected")
+	
+func drop_item(slot :  int, count : int, at_hand : bool = true, update_signal : bool = true) -> void:
+	#add litter to ground count times
+	for i in range(count):
+		var new_litter : Litter = LITTER.instantiate()
+		new_litter.type = Globals.inventory[slot]['id']
+		litter_spawner.add_child(new_litter)
+		var drop_pos : Vector2 = hand_area.global_position + Vector2(randi_range(-1, 1), randi_range(-1, 1))
+		if not at_hand:
+			drop_pos = global_position + Vector2(randi_range(-8, 8), randi_range(-8, 8))
+		new_litter.global_position = drop_pos
+		Globals.inventory[slot]['count'] -= 1
+	#clear slot if empty
+	if Globals.inventory[slot]['count'] <= 0:
+		Globals.inventory[slot] = {'id': 0, 'count': 0}
 		
+	if update_signal:
+		#update slots
+		Globals.emit_signal("slot_selected")
+	
 func right_hand_go_back(delta : float) -> void:
 	right_hand.position = lerp(right_hand.position, Vector2(12,0), delta * hand_speed)
 	
@@ -128,12 +192,26 @@ func left_hand_go_back(delta : float) -> void:
 
 
 func _on_hand_area_area_entered(area: Area2D) -> void:
-	items_in_hand.append(area.get_parent())
-	highlight_item()
+	#check if area is for hand to collide with
+	if area.is_in_group("for_hand"):
+		items_in_hand.append(area.get_parent())
+		#only highlight if first item in list
+		if len(items_in_hand) == 1:
+			highlight_item()
+
+
 
 func _on_hand_area_area_exited(area: Area2D) -> void:
-	items_in_hand.erase(area.get_parent())
-	highlight_item()
+	#check if area is for hand to collide with and items in hand has item
+	if area.is_in_group("for_hand") and len(items_in_hand) > 0:
+		#check not queue_freed
+		if items_in_hand[0]:
+			#only highlight if first item in list
+			if items_in_hand[0] == area.get_parent():
+				items_in_hand.erase(area.get_parent())
+				highlight_item()
+				return
+			items_in_hand.erase(area.get_parent())
 	
 func highlight_item() -> void:
 	if len(items_in_hand) > 0:
