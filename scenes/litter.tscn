@@ -16,7 +16,7 @@ script = ExtResource("1_dqed2")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_dqed2")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["for_hand"]]
 collision_layer = 32
 collision_mask = 80
 

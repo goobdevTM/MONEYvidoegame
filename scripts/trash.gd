@@ -26,12 +26,14 @@ enum Types {
 
 var type : int = 0
 var old : bool = false
+
 var amounts_of_trash : Array[int] = [
 	3,
 	5,
 	7,
 	10
 ]
+
 var percentages : Array[float] = [
 	1,
 	0.25,
@@ -42,19 +44,6 @@ var percentages : Array[float] = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#
-	
-	if not randi_range(1, 3) == 3:
-		smell_particles_1.emitting = false
-		smell_particles_2.emitting = false
-		smell_particles_1.hide()
-		smell_particles_2.hide()
-	else:
-		smell_particles_1.emitting = true
-		smell_particles_2.emitting = true
-		smell_particles_1.show()
-		smell_particles_2.show()
-	
 	for i in range(Types.size()):
 		if randf_range(0.0, 1.0) <= percentages[i]:
 			type = i
@@ -80,7 +69,18 @@ func _ready() -> void:
 		clone_litter.global_position = global_position + Vector2(randi_range(-40, 40), randi_range(-40, 40))
 		await get_tree().create_timer(randf_range(0,0.05)).timeout
 
-
+	#show particles and increase trash amount
+	if not randi_range(1, 3) == 3:
+		smell_particles_1.emitting = false
+		smell_particles_2.emitting = false
+		smell_particles_1.hide()
+		smell_particles_2.hide()
+	else:
+		smell_particles_1.emitting = true
+		smell_particles_2.emitting = true
+		smell_particles_1.show()
+		smell_particles_2.show()
+		amounts_of_trash[type] = int(amounts_of_trash[type] * 1.5)
 
 func _on_area_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("trash"):

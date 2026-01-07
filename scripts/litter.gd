@@ -1,3 +1,5 @@
+class_name Litter
+
 extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite
@@ -15,7 +17,9 @@ func _ready() -> void:
 	var randi_bool: bool = bool(randi_range(0, 1))
 	sprite.flip_h = randi_bool
 	sprite.rotation = deg_to_rad(randi_range(0, 4) * 90)
-	print(Globals.items[type])
+	if Globals.items[type]['name'] == "Evil Child":
+		print(Globals.items[type])
+		print(global_position)
 	sprite.texture = sprite.texture.duplicate()
 	sprite.texture.region = Rect2(Globals.items[type]['coords'] * 8, Vector2(8,8))
 
