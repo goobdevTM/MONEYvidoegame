@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=41 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bvi8vtbom447n" path="res://sprites/viginette.svg" id="3_ca42v"]
 [ext_resource type="Texture2D" uid="uid://f87h168v8mn4" path="res://sprites/brick.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://c7c1eqy34y7vb" path="res://sprites/outline.png" id="4_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://c1iqbv60ixmpb" path="res://sprites/bush_large.png" id="5_rysoc"]
+[ext_resource type="Texture2D" uid="uid://bonp7qucnfhcq" path="res://sprites/bush.png" id="5_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="5_trtic"]
+[ext_resource type="Texture2D" uid="uid://c1tr1iau1hmtj" path="res://sprites/fence.png" id="6_264po"]
 [ext_resource type="Script" uid="uid://droxdxl825kw2" path="res://scripts/music_controller.gd" id="10_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://d0mq3gt6uuvoc" path="res://audio/music/SmellySocks.ogg" id="10_vtaks"]
 [ext_resource type="AudioStream" uid="uid://dtuuh2gop4fli" path="res://audio/music/Tissues.ogg" id="11_dinhu"]
@@ -22,6 +25,30 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ca42v"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssvqc"]
+texture = ExtResource("5_rysoc")
+texture_region_size = Vector2i(48, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_264po"]
+texture = ExtResource("5_ssvqc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ca42v"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_ssvqc")
+sources/2 = SubResource("TileSetAtlasSource_264po")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1kice"]
+texture = ExtResource("6_264po")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5newe"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_1kice")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("1_lbhrr")
@@ -135,6 +162,25 @@ shape = SubResource("WorldBoundaryShape2D_ir15t")
 position = Vector2(512, 0)
 shape = SubResource("WorldBoundaryShape2D_ca42v")
 
+[node name="Bushes" type="TileMapLayer" parent="Level"]
+z_index = 4095
+position = Vector2(0, 136)
+tile_map_data = PackedByteArray("AAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAD4/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ca42v")
+rendering_quadrant_size = 32
+
+[node name="SmallBushes" type="TileMapLayer" parent="Level/Bushes"]
+z_index = 4096
+tile_map_data = PackedByteArray("AAACAAMAAgAAAAAAAAABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAD//wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD9/wMAAgAAAAAAAAADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAAFAAMAAgAAAAAAAAAGAAMAAgAAAAAAAAAHAAMAAgAAAAAAAAD8/wMAAgAAAAAAAAD7/wMAAgAAAAAAAAD6/wMAAgAAAAAAAAD5/wMAAgAAAAAAAAD4/wMAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_ca42v")
+
+[node name="Fence" type="TileMapLayer" parent="Level"]
+z_index = -1
+position = Vector2(0, 128)
+tile_map_data = PackedByteArray("AAD4//T/AQAAAAAAAAD5//T/AQAAAAAAAAD6//T/AQAAAAAAAAD7//T/AQAAAAAAAAD8//T/AQAAAAAAAAD9//T/AQAAAAAAAAD+//T/AQAAAAAAAAD///T/AQAAAAAAAAADAPT/AQAAAAAAAAAEAPT/AQAAAAAAAAAFAPT/AQAAAAAAAAAGAPT/AQAAAAAAAAAHAPT/AQAAAAAAAAACAPT/AQAAAAAAAAABAPT/AQAAAAAAAAAAAPT/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_5newe")
+rendering_quadrant_size = 32
+
 [node name="Ground" type="TileMapLayer" parent="Level"]
 z_index = -4096
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
@@ -196,7 +242,7 @@ shape = SubResource("WorldBoundaryShape2D_kvpfn")
 [node name="Borders" type="StaticBody2D" parent="Level"]
 
 [node name="Top" type="CollisionShape2D" parent="Level/Borders"]
-position = Vector2(0, -256)
+position = Vector2(0, -231)
 shape = SubResource("WorldBoundaryShape2D_vtaks")
 
 [node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]

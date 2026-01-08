@@ -9,6 +9,7 @@ var old : bool = false
 
 
 func _ready() -> void:
+	hide()
 	
 	if type == -1:
 		type = Globals.get_item_with_chance()
@@ -22,11 +23,15 @@ func _ready() -> void:
 	sprite.texture = sprite.texture.duplicate()
 	sprite.texture.region = Rect2(Globals.items[type]['coords'] * 8, Vector2(8,8))
 	#print if evil child spawns
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.05).timeout
 	if Globals.items[type]['name'] == "Evil Child":
 		print(Globals.items[type])
 		print(global_position)
+	#CHECKS IF ABOVE FENCE
+	if global_position.y < -220:
+		global_position.y = -220
 		
+	show()
 #DELETES ITS SELF IF IT COLLIDES WITH OTHER TRASH
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("trash"):
