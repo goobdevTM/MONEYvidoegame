@@ -2,6 +2,7 @@ class_name Trash
 
 extends Node2D
 
+const RAT = preload("uid://cuwxqyo26k0jd")
 const LITTER = preload("uid://6nia0edfdeaj")
 const collision_scenes : Array[PackedScene] = [
 	preload("res://scenes/collision/small_trash_bag.tscn"),
@@ -22,6 +23,7 @@ enum Types {
 @onready var sprite_empty: AnimatedSprite2D = $SpriteEmpty
 @onready var timer: Timer = $Timer
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
+@onready var rat_spawner: Node2D = $"../../RatSpawner"
 @onready var static_body: StaticBody2D = $StaticBody2D
 @onready var smell_particles_1: GPUParticles2D = $SmellParticles1
 @onready var smell_particles_2: GPUParticles2D = $SmellParticles2
@@ -110,3 +112,10 @@ func _on_area_area_entered(area: Area2D) -> void:
 #too far away from player?
 func _on_delete_check_area_entered(area: Area2D) -> void:
 	queue_free()
+	
+#spawn rat if in correct conditions
+func spawn_rat_randomly() -> void:
+	if not open and not empty:
+		var new_rat = RAT.instantiate()
+		rat_spawner.add_child(new_rat)
+		new_rat.global_position = global_position

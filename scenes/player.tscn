@@ -133,9 +133,9 @@ scale = Vector2(1e-05, 1e-05)
 [node name="Text" type="RichTextLabel" parent="HandArea/Text"]
 z_index = 4096
 clip_contents = false
-offset_left = -26.0
+offset_left = -62.0
 offset_top = -5.0
-offset_right = 26.0
+offset_right = 62.0
 offset_bottom = 5.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -143,6 +143,7 @@ theme_override_fonts/normal_font = ExtResource("6_tuyoq")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
 text = "[center][E] - pick up"
+autowrap_mode = 0
 
 [node name="Anim" type="AnimationPlayer" parent="HandArea/Text"]
 root_node = NodePath("../../..")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=43 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://d0mq3gt6uuvoc" path="res://audio/music/SmellySocks.ogg" id="10_vtaks"]
 [ext_resource type="AudioStream" uid="uid://dtuuh2gop4fli" path="res://audio/music/Tissues.ogg" id="11_dinhu"]
 [ext_resource type="Script" uid="uid://bbsa73xastegl" path="res://scripts/inventory.gd" id="11_ssvqc"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="13_1kice"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
 [ext_resource type="AudioStream" uid="uid://cp3yrh48rmxy6" path="res://audio/music/Dumpster.ogg" id="16_ca42v"]
 [ext_resource type="AudioStream" uid="uid://dc33wk0to0pya" path="res://audio/music/TrashBags.ogg" id="16_rysoc"]
@@ -71,6 +72,9 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_iywne")
 seamless = true
 seamless_blend_skirt = 0.221
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_264po"]
+radius = 6.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
 texture = ExtResource("3_gee14")
@@ -218,11 +222,16 @@ texture = SubResource("NoiseTexture2D_u5sy4")
 
 [node name="LitterSpawner" type="Node2D" parent="Level"]
 
+[node name="RatSpawner" type="Node2D" parent="Level"]
+
 [node name="TrashSpawner" type="Node2D" parent="Level"]
 y_sort_enabled = true
 
 [node name="Player" parent="Level/TrashSpawner" instance=ExtResource("5_trtic")]
 position = Vector2(-360, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
+shape = SubResource("CircleShape2D_264po")
 
 [node name="Shadow" type="TileMapLayer" parent="Level"]
 tile_map_data = PackedByteArray("AADo//7/AQAAAAAAAADo//3/AQAAAAAAAADo//z/AQAAAAAAAADo//v/AQAAAAAAAADo//r/AQAAAAAAAADo//n/AQAAAAAAAADo//j/AQAAAAAAAADo/w8AAQAAAAAAAADo/w4AAQAAAAAAAADo/w0AAQAAAAAAAADo/wwAAQAAAAAAAADo/wsAAQAAAAAAAADo/woAAQAAAAAAAADo/wkAAQAAAAAAAADo/wgAAQAAAAAAAADo/wcAAQAAAAAAAADo/wYAAQAAAAAAAADo/wUAAQAAAAAAAADo/wQAAQAAAAAAAADo/wMAAQAAAAAAAADo/wIAAQAAAAAAAADo/wEAAQAAAAAAAADo//D/AQAAAAAAAADo//H/AQAAAAAAAADo//L/AQAAAAAAAADo//P/AQAAAAAAAADo//T/AQAAAAAAAADo//X/AQAAAAAAAADo//b/AQAAAAAAAADo//f/AQAAAAAAAAA=")
@@ -240,6 +249,8 @@ position = Vector2(-384, 0)
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
 
 [node name="Borders" type="StaticBody2D" parent="Level"]
+collision_layer = 65
+collision_mask = 7
 
 [node name="Top" type="CollisionShape2D" parent="Level/Borders"]
 position = Vector2(0, -231)
@@ -289,10 +300,39 @@ editable = false
 
 [node name="Viginette" type="Sprite2D" parent="INVENTORY"]
 self_modulate = Color(0, 0, 0, 0.21568628)
-z_index = 999
 scale = Vector2(1.33, 1.33)
 texture = ExtResource("3_ca42v")
 centered = false
+
+[node name="RatsHired" type="RichTextLabel" parent="INVENTORY"]
+clip_contents = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 41.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("13_1kice")
+bbcode_enabled = true
+text = "[right]Rats Hired: 1"
+
+[node name="Money" type="RichTextLabel" parent="INVENTORY"]
+clip_contents = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 41.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("13_1kice")
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "$0"
 
 [node name="Settings" parent="." instance=ExtResource("13_264po")]
 visible = false

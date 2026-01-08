@@ -124,6 +124,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pickup"):
 		if len(items_in_hand) > 0:
 			if items_in_hand[0] is Trash: #is in trash class
+				#spawn rat if not already opened
+				items_in_hand[0].spawn_rat_randomly()
 				for i in range(items_in_hand[0].amounts_of_trash[items_in_hand[0].type]):
 					#SOUND
 					open_container.play()
@@ -140,10 +142,21 @@ func _process(delta: float) -> void:
 					
 					#ADDS TO INVENTORY
 					add_item_to_inventory(Globals.get_item_with_chance(), false)
-			else: #is litter
+					
+			elif items_in_hand[0] is Litter: #is litter
 				open_litter.play()
 				add_item_to_inventory(items_in_hand[0].type)
 				
+			elif items_in_hand[0] is Rat: #is rat
+				if items_in_hand[0].hired:
+					#send rat to work
+					items_in_hand[0].queue_free()
+					Globals.working_rats += 1
+				else:
+					#mark rat as hired
+					items_in_hand[0].hired = true
+				#show text
+				highlight_item()
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -245,10 +258,15 @@ func _on_hand_area_area_exited(area: Area2D) -> void:
 	
 func highlight_item() -> void:
 	if len(items_in_hand) > 0:
-		if items_in_hand[0].is_in_group("trash"):
+		if items_in_hand[0] is Trash:
 			text.text = "[center][E] - open"
-		else:
+		elif items_in_hand[0] is Litter:
 			text.text = "[center][E] - pick up"
+		elif items_in_hand[0] is Rat:
+			if items_in_hand[0].hired:
+				text.text = "[center][E] - send to work"
+			else:
+				text.text = "[center][E] - recruit"
 		#dont show empty trash
 		if not is_trash_empty(items_in_hand[0]):
 			text_anim.play("appear")

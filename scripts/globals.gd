@@ -2,7 +2,7 @@ extends Node
 
 signal slot_selected
 
-var money : int = 0
+
 var trash_amount : int = 40
 
 #INVENTORY
@@ -48,6 +48,11 @@ var in_game : bool = false
 #SETTINGS
 var master_volume : float = 50
 var stamina_bar_opacity: float = 1
+
+#GAME
+var working_rats : int = 0
+var money : int = 0
+var day : int = 0
 
 func _ready() -> void:
 	load_data()

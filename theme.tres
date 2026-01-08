@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=31 format=4 uid="uid://dd0s34c5ii2ui"]
+[gd_resource type="Theme" load_steps=30 format=4 uid="uid://dd0s34c5ii2ui"]
 
 [ext_resource type="FontFile" uid="uid://camgkxjqsnse2" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_cjfk0"]
-[ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="1_e1x85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_110ce"]
 content_margin_left = 4.0
@@ -1162,7 +1161,7 @@ RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
 RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
 RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 0)
 RichTextLabel/constants/line_separation = 0
-RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/outline_size = 8
 RichTextLabel/constants/paragraph_separation = 0
 RichTextLabel/constants/shadow_offset_x = 1
 RichTextLabel/constants/shadow_offset_y = 1
@@ -1177,12 +1176,12 @@ RichTextLabel/font_sizes/bold_font_size = 16
 RichTextLabel/font_sizes/bold_italics_font_size = 16
 RichTextLabel/font_sizes/italics_font_size = 16
 RichTextLabel/font_sizes/mono_font_size = 16
-RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 18
 RichTextLabel/fonts/bold_font = SubResource("FontVariation_wdt2l")
 RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_6cw85")
 RichTextLabel/fonts/italics_font = SubResource("FontVariation_504p6")
 RichTextLabel/fonts/mono_font = SubResource("FontFile_vj6dk")
-RichTextLabel/fonts/normal_font = ExtResource("1_e1x85")
+RichTextLabel/fonts/normal_font = ExtResource("1_cjfk0")
 RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_n3ikw")
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_05tig")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_mworl")
