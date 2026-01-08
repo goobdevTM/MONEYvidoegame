@@ -80,6 +80,7 @@ func _ready() -> void:
 		clone_litter.global_position = global_position + Vector2(randi_range(-40, 40), randi_range(-40, 40))
 		await get_tree().create_timer(randf_range(0,0.05)).timeout
 
+
 	#show particles and increase trash amount
 	if not randi_range(1, 3) == 3:
 		smell_particles_1.emitting = false

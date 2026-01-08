@@ -5,6 +5,8 @@ extends Camera2D
 @onready var noise_overlay: Node2D = $"../Level/NoiseOverlay"
 @onready var level: Level = $"../Level"
 @onready var delete_trash: Area2D = $"../Level/DeleteTrash"
+@onready var bushes: TileMapLayer = $"../Level/Bushes"
+@onready var fence: TileMapLayer = $"../Level/Fence"
 
 var max_distance_from_spawn : int = 0
 var old_distance_calc : int = 0
@@ -21,9 +23,11 @@ func _physics_process(delta: float) -> void:
 	#move slowly towards player
 	if player.direction:
 		position = lerp(position, player.position + (player.direction.normalized() * 16), delta * 6)
-	#infinite ground loop
+	#infinite THINGIE loop
 	noise_overlay.position.x = floor(position.x / 384) * 384
 	ground.position = floor(position / 64) * 64
+	fence.position.x = floor(position.x / 32) * 32
+	bushes.position.x = floor(position.x / 32) * 32
 	delete_trash.position.x = floor(position.x / 256) * 256
 	
 	#check if area ahead needs to be generated
