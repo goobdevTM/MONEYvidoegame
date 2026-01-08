@@ -999,7 +999,7 @@ variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 base_font = SubResource("FontFile_vj6dk")
 variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 
-[sub_resource type="Image" id="Image_howt0"]
+[sub_resource type="Image" id="Image_vj6dk"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1009,7 +1009,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_n3ikw"]
-image = SubResource("Image_howt0")
+image = SubResource("Image_vj6dk")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mworl"]
 content_margin_left = 0.0

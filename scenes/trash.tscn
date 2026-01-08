@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://blwgbgbei4tsn"]
+[gd_scene load_steps=26 format=3 uid="uid://blwgbgbei4tsn"]
 
 [ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="1_3xixx"]
 [ext_resource type="Script" uid="uid://b0iydxyh8p3xh" path="res://scripts/trash.gd" id="1_exrr5"]
@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://c31u0flrgiwh1" path="res://sprites/garbage_bag_open.png" id="6_r3mh6"]
 [ext_resource type="Texture2D" uid="uid://catt3cmhwlplm" path="res://sprites/small_garbage_bag_open.png" id="7_0q2p5"]
 [ext_resource type="Texture2D" uid="uid://cxyvgor132cux" path="res://sprites/dumpster_empty.png" id="9_0or2d"]
+[ext_resource type="Texture2D" uid="uid://dovpx120vdksm" path="res://sprites/trash-bin_open.png" id="9_ag2lv"]
 [ext_resource type="Texture2D" uid="uid://bqpi2ytbpinw4" path="res://sprites/garbage_bag_empty.png" id="10_ag2lv"]
 [ext_resource type="Texture2D" uid="uid://b8p4l1vuxdtss" path="res://sprites/small_garbage_bag_empty.png" id="11_0i67c"]
+[ext_resource type="Texture2D" uid="uid://e5mh1m6mx0ea" path="res://sprites/trash-bin_empty.png" id="13_0i67c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r3mh6"]
 animations = [{
@@ -76,7 +78,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_4sf1q")
+"texture": ExtResource("9_ag2lv")
 }],
 "loop": true,
 "name": &"TRASH_CAN",
@@ -111,7 +113,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_4sf1q")
+"texture": ExtResource("13_0i67c")
 }],
 "loop": true,
 "name": &"TRASH_CAN",
@@ -154,12 +156,12 @@ script = ExtResource("1_exrr5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r3mh6")
-animation = &"DUMPSTER"
+animation = &"TRASH_CAN"
 
 [node name="SpriteOpen" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_2g7r5")
-animation = &"TRASH_BAG_SMALL"
+animation = &"TRASH_CAN"
 
 [node name="SpriteEmpty" type="AnimatedSprite2D" parent="."]
 visible = false

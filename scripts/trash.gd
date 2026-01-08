@@ -62,6 +62,11 @@ func _ready() -> void:
 	sprite_empty.visible = false
 	sprite_empty.play(str(Types.find_key(type)))
 	
+	#fix trashcan offset
+	if type == Types.TRASH_CAN:
+		sprite_open.position.y -= 10
+		sprite_empty.position.x += 4
+	
 	#COLLISION (AREA)
 	var new_collision : Area2D = collision_scenes[type].instantiate()
 	new_collision.area_entered.connect(_on_area_area_entered)

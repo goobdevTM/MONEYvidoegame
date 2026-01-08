@@ -35,3 +35,15 @@ Version 0.111
 		changed max per slot to 25,
 		
 		#note: didnt add sprite for trash-bin yet
+		
+Version 0.152
+	Glagglewares employee 1,
+	clock
+	Added:
+		randomly open trash,
+		trash can sprite,
+		inventory swap bugfix,
+		fix more random stinky bugs,
+		change chance of evil child spawn,
+		started ui theme,
+		started rats
