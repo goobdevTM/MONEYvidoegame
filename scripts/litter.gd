@@ -17,12 +17,16 @@ func _ready() -> void:
 	var randi_bool: bool = bool(randi_range(0, 1))
 	sprite.flip_h = randi_bool
 	sprite.rotation = deg_to_rad(randi_range(0, 4) * 90)
+
+		
+	sprite.texture = sprite.texture.duplicate()
+	sprite.texture.region = Rect2(Globals.items[type]['coords'] * 8, Vector2(8,8))
+	#print if evil child spawns
+	await get_tree().create_timer(0.25).timeout
 	if Globals.items[type]['name'] == "Evil Child":
 		print(Globals.items[type])
 		print(global_position)
-	sprite.texture = sprite.texture.duplicate()
-	sprite.texture.region = Rect2(Globals.items[type]['coords'] * 8, Vector2(8,8))
-
+		
 #DELETES ITS SELF IF IT COLLIDES WITH OTHER TRASH
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("trash"):

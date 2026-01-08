@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://jjo26rmcgd4a"]
+[gd_scene load_steps=14 format=4 uid="uid://jjo26rmcgd4a"]
 
 [ext_resource type="Texture2D" uid="uid://6xicn7mn56r0" path="res://sprites/STTRP_logo.png" id="1_6d6rd"]
 [ext_resource type="Script" uid="uid://cxkuuv3vfsnnu" path="res://scripts/titlescreen.gd" id="1_84han"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="1_v7hj3"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="2_3jj3l"]
 [ext_resource type="Texture2D" uid="uid://daupy0l1gx7ws" path="res://sprites/trash-bin.png" id="3_rpvs4"]
 [ext_resource type="Texture2D" uid="uid://c2efnbu2qfjdb" path="res://sprites/garbage_bag.png" id="3_tt55a"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://catt3cmhwlplm" path="res://sprites/small_garbage_bag_open.png" id="4_vhbaf"]
 [ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="6_v6ms7"]
 [ext_resource type="AudioStream" uid="uid://bj7fdkcy182aj" path="res://audio/music/SellTrashToRichPeople.ogg" id="9_6ejck"]
+[ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="9_w77yj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tt55a"]
 texture = ExtResource("2_3jj3l")
@@ -19,13 +21,14 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_tt55a")
 
-[node name="Control" type="Control"]
+[node name="Titlescreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_v7hj3")
 script = ExtResource("1_84han")
 
 [node name="Logo" type="Sprite2D" parent="."]
@@ -40,50 +43,70 @@ scale = Vector2(2.4493442, 2.4493442)
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_t7v6v")
 
-[node name="TrashBin" type="Sprite2D" parent="."]
-position = Vector2(474.99997, 405)
-scale = Vector2(4.8129606, 4.8129606)
+[node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="TrashBin" type="Sprite2D" parent="Sprites"]
+position = Vector2(122, 103.75)
 texture = ExtResource("3_rpvs4")
 
-[node name="GarbageBag" type="Sprite2D" parent="."]
-position = Vector2(573.00006, 403.00003)
-scale = Vector2(4.8129606, 4.8129606)
+[node name="GarbageBag" type="Sprite2D" parent="Sprites"]
+position = Vector2(146, 104)
 texture = ExtResource("3_tt55a")
 
-[node name="SmallGarbageBagOpen" type="Sprite2D" parent="."]
-position = Vector2(519, 431.00003)
-scale = Vector2(4.8129606, 4.8129606)
+[node name="SmallGarbageBagOpen" type="Sprite2D" parent="Sprites"]
+position = Vector2(133, 110)
 texture = ExtResource("4_vhbaf")
 flip_h = true
 
-[node name="Dumpster" type="Sprite2D" parent="."]
-position = Vector2(118, 403)
-scale = Vector2(4.8129606, 4.8129606)
+[node name="Dumpster" type="Sprite2D" parent="Sprites"]
+position = Vector2(24, 104)
 texture = ExtResource("4_t7v6v")
 flip_h = true
 
-[node name="SmallGarbageBag" type="Sprite2D" parent="."]
-position = Vector2(35.00003, 433.00006)
-scale = Vector2(4.8129606, 4.8129606)
+[node name="SmallGarbageBag" type="Sprite2D" parent="Sprites"]
+position = Vector2(8, 110)
 texture = ExtResource("6_v6ms7")
 
-[node name="SmallGarbageBagOpen2" type="Sprite2D" parent="."]
-position = Vector2(121.00001, 432)
-scale = Vector2(4.8129606, 4.8129606)
+[node name="SmallGarbageBagOpen2" type="Sprite2D" parent="Sprites"]
+position = Vector2(46, 110)
 texture = ExtResource("4_vhbaf")
 
-[node name="Play" type="Button" parent="."]
-layout_mode = 0
-offset_left = 249.0
-offset_top = 252.0
-offset_right = 332.7514
-offset_bottom = 283.0
-scale = Vector2(1.9045235, 1.9045235)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = 240.0
+offset_right = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
 text = "PLAY"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "QUIT"
+
+[node name="Settings" parent="." instance=ExtResource("9_w77yj")]
+visible = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_6ejck")
 volume_db = -3.021
 autoplay = true
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="Settings" method="open"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_play_pressed"]

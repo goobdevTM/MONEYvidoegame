@@ -19,6 +19,7 @@ enum Types {
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var sprite_open: AnimatedSprite2D = $SpriteOpen
+@onready var sprite_empty: AnimatedSprite2D = $SpriteEmpty
 @onready var timer: Timer = $Timer
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
 @onready var static_body: StaticBody2D = $StaticBody2D
@@ -42,18 +43,24 @@ var percentages : Array[float] = [
 	0.05
 ]
 
+var open : bool = false
+var empty : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for i in range(Types.size()):
 		if randf_range(0.0, 1.0) <= percentages[i]:
 			type = i
+			
+	open = (randi_range(0,10) == 0)
 	
 	#ANIMATION
-	sprite.show()
+	sprite.visible = not open
 	sprite.play(str(Types.find_key(type)))
-	sprite_open.hide()
+	sprite_open.visible = open
 	sprite_open.play(str(Types.find_key(type)))
+	sprite_empty.visible = false
+	sprite_empty.play(str(Types.find_key(type)))
 	
 	#COLLISION (AREA)
 	var new_collision : Area2D = collision_scenes[type].instantiate()

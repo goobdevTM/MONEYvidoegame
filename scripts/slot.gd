@@ -33,10 +33,12 @@ func update_slot() -> void:
 	if not Globals.selected_slot == last_slot:
 		selected = Globals.selected_slot == index
 		if selected:
+			anim.stop()
 			anim.play("hover")
 			slot_bg.self_modulate = Color(0.49, 0.49, 0.49, 1.0)
 		else:
 			if last_slot == index:
+				anim.stop()
 				anim.play("unhover")
 			slot_bg.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 

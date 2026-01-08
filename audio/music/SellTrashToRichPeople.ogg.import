@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/SellTrashToRichPeople.ogg-c91c2c7605d42c5dd95
 [params]
 
 loop=true
-loop_offset=0
-bpm=0
-beat_count=0
+loop_offset=0.0
+bpm=112.0
+beat_count=339
 bar_beats=4

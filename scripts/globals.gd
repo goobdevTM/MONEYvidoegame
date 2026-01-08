@@ -22,7 +22,7 @@ var items : Array[Dictionary] = [
 	{'name': "Bone", 'coords': Vector2i(0,2), 'chance': 0.04},
 	{'name': "Broken CD", 'coords': Vector2i(1,2), 'chance': 0.05},
 	{'name': "Fish Bone", 'coords': Vector2i(2,2), 'chance': 0.1},
-	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.002},
+	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.003},
 	{'name': "Glove", 'coords': Vector2i(0,3), 'chance': 0.1},
 	{'name': "Fries", 'coords': Vector2i(1,3), 'chance': 0.05},
 	{'name': "Rat", 'coords': Vector2i(2,3), 'chance': 0.05},
@@ -118,9 +118,9 @@ func _input(event: InputEvent) -> void:
 		
 	#sets selected_slot to scroll wheel
 	if Input.is_action_just_released("scroll_up"):
-		selected_slot += 1
-	if Input.is_action_just_released("scroll_down"):
 		selected_slot -= 1
+	if Input.is_action_just_released("scroll_down"):
+		selected_slot += 1
 		
 	#loop selected_slot if > or < inventory_slots
 	selected_slot = posmod(selected_slot, inventory_slots)
