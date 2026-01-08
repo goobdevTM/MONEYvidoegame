@@ -18,6 +18,7 @@ extends CharacterBody2D
 @onready var open_litter: AudioStreamPlayer = $OpenLitter
 
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
+@onready var music_controller: Node = $"../../../MusicController"
 
 #litter scene
 const LITTER = preload("uid://6nia0edfdeaj")
@@ -31,6 +32,8 @@ var stamina: float = 100
 var stamina_timer: float = 0
 #		SHOULDNT BE CHANGED (FOR NOW)
 const max_stamina: float = 100
+
+signal stop_rat_theme
 
 #hand variables
 var last_positions : Array[Vector2] = []
@@ -155,6 +158,9 @@ func _process(delta: float) -> void:
 				else:
 					#mark rat as hired
 					items_in_hand[0].hired = true
+					stop_rat_theme.connect(music_controller.stop_rat_theme)
+					emit_signal("stop_rat_theme")
+					stop_rat_theme.disconnect(music_controller.stop_rat_theme)
 				#show text
 				highlight_item()
 	#drop item

@@ -38,7 +38,7 @@ Version 0.111
 		
 Version 0.253
 	Glagglewares employee 1,
-	clock time
+	clock time (11:30 PM? JAN7)
 	Added:
 		randomly open trash,
 		trash can sprites,
@@ -49,3 +49,16 @@ Version 0.253
 		added rats,
 		added banana peel,
 		added text for money and rats hired
+
+Version 0.286
+	Glagglewares employee 2,
+	die fire (11:33 AM JAN8)
+	Added:
+		rat music,
+		rat random chance,
+		rat music transition,
+		made rats faster,
+		
+		V not actually in game yet V
+			added rich person song,
+			added rich person plaza-floor sprite,

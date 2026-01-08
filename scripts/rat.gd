@@ -4,15 +4,22 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: Player = $"../../TrashSpawner/Player"
+@onready var music_controller: Node = $"../../../MusicController"
 
-
-var speed : int = 200
+#RATS ARE FAST SO YOU HAVE TO SPRINT TO CATCH THEM
+var speed : int = 1200
 var friction : float = 0.7
 var direction : Vector2
 var hired : bool = false
 
+signal play_theme
+
 func _ready() -> void:
 	direction = Vector2(randi_range(-1,1), randi_range(-1,1))
+
+	#CONNECTS
+	play_theme.connect(music_controller.play_rat_theme)
+	emit_signal("play_theme")
 
 func _physics_process(delta: float) -> void:
 

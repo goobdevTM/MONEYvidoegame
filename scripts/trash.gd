@@ -116,6 +116,7 @@ func _on_delete_check_area_entered(area: Area2D) -> void:
 #spawn rat if in correct conditions
 func spawn_rat_randomly() -> void:
 	if not open and not empty:
-		var new_rat = RAT.instantiate()
-		rat_spawner.add_child(new_rat)
-		new_rat.global_position = global_position
+		if randi_range(1, Globals.rat_rarity) == Globals.rat_rarity:
+			var new_rat = RAT.instantiate()
+			rat_spawner.add_child(new_rat)
+			new_rat.global_position = global_position

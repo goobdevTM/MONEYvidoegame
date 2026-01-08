@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=44 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bbsa73xastegl" path="res://scripts/inventory.gd" id="11_ssvqc"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="13_1kice"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
+[ext_resource type="AudioStream" uid="uid://bbukbgfxf6nso" path="res://audio/music/RatTheme.ogg" id="16_5newe"]
 [ext_resource type="AudioStream" uid="uid://cp3yrh48rmxy6" path="res://audio/music/Dumpster.ogg" id="16_ca42v"]
 [ext_resource type="AudioStream" uid="uid://dc33wk0to0pya" path="res://audio/music/TrashBags.ogg" id="16_rysoc"]
 [ext_resource type="AudioStream" uid="uid://iacca0nebmsr" path="res://audio/music/SodaCan.ogg" id="17_rysoc"]
@@ -340,24 +341,27 @@ visible = false
 [node name="MusicController" type="Node" parent="."]
 script = ExtResource("10_kvpfn")
 
-[node name="Tissues" type="AudioStreamPlayer" parent="MusicController"]
+[node name="RatTheme" type="AudioStreamPlayer" parent="MusicController"]
+stream = ExtResource("16_5newe")
+
+[node name="Tissues" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
 stream = ExtResource("11_dinhu")
 volume_db = -1.726
 bus = &"Music"
 
-[node name="SmellySocks" type="AudioStreamPlayer" parent="MusicController"]
+[node name="SmellySocks" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
 stream = ExtResource("10_vtaks")
 volume_db = -3.884
 bus = &"Music"
 
-[node name="SodaCan" type="AudioStreamPlayer" parent="MusicController"]
+[node name="SodaCan" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
 stream = ExtResource("17_rysoc")
 volume_db = -1.295
 bus = &"Music"
 
-[node name="Dumpster" type="AudioStreamPlayer" parent="MusicController"]
+[node name="Dumpster" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
 stream = ExtResource("16_ca42v")
 
-[node name="TrashBags" type="AudioStreamPlayer" parent="MusicController"]
+[node name="TrashBags" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
 stream = ExtResource("16_rysoc")
 volume_db = 1.726

@@ -2,8 +2,10 @@ extends Node
 
 signal slot_selected
 
-
+#TRASH STUFF
 var trash_amount : int = 40
+#	WILL BE MAX IN A RANDI RANGE
+var rat_rarity : int = 10
 
 #INVENTORY
 var inventory_slots : int = 9

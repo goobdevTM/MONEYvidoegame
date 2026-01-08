@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
 litter=""
 trash=""
 for_hand=""
+main_songs=""
 
 [input]
 
