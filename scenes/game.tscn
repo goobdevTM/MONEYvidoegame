@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=35 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_ca42v"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
 [ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="13_ir15t"]
+[ext_resource type="Texture2D" uid="uid://dg8ugiys8tlq2" path="res://sprites/sign.png" id="13_ssvqc"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="14_trtic"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="16_ca42v"]
 
@@ -178,6 +180,24 @@ shape = SubResource("WorldBoundaryShape2D_gxtfn")
 [node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
 position = Vector2(0, 256)
 shape = SubResource("WorldBoundaryShape2D_twgab")
+
+[node name="HomeSign" type="Sprite2D" parent="Level"]
+z_index = 10
+position = Vector2(-360, -25)
+texture = ExtResource("13_ssvqc")
+
+[node name="TrashSign2" type="Sprite2D" parent="Level/HomeSign"]
+position = Vector2(0, 3)
+texture = ExtResource("13_ssvqc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/HomeSign"]
+offset_left = -16.0
+offset_right = 148.0
+offset_bottom = 40.0
+scale = Vector2(0.20148136, 0.20148136)
+theme = ExtResource("14_264po")
+text = "home"
+horizontal_alignment = 1
 
 [node name="INVENTORY" parent="." instance=ExtResource("13_ir15t")]
 

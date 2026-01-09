@@ -1,12 +1,15 @@
-[gd_scene load_steps=57 format=4 uid="uid://bug8okbqgftl2"]
+[gd_scene load_steps=68 format=4 uid="uid://bug8okbqgftl2"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gi00y"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_ip4d6"]
 [ext_resource type="Texture2D" uid="uid://c1iqbv60ixmpb" path="res://sprites/bush_large.png" id="2_gi00y"]
+[ext_resource type="Texture2D" uid="uid://o7wlo442yfo5" path="res://sprites/money.png" id="3_6k6s7"]
 [ext_resource type="Texture2D" uid="uid://bonp7qucnfhcq" path="res://sprites/bush.png" id="3_rpgsi"]
 [ext_resource type="Texture2D" uid="uid://c1tr1iau1hmtj" path="res://sprites/fence.png" id="4_ju5sp"]
+[ext_resource type="Texture2D" uid="uid://bsa68mp2vvgv6" path="res://sprites/hand.png" id="4_rqor2"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="5_o7pnx"]
 [ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="6_aish6"]
+[ext_resource type="Texture2D" uid="uid://dg8ugiys8tlq2" path="res://sprites/sign.png" id="6_qmde4"]
 [ext_resource type="PackedScene" uid="uid://b6bbthyyqtxrt" path="res://scenes/noise_overlay.tscn" id="7_e42qu"]
 [ext_resource type="Texture2D" uid="uid://f87h168v8mn4" path="res://sprites/brick.png" id="7_snnha"]
 [ext_resource type="Texture2D" uid="uid://c7c1eqy34y7vb" path="res://sprites/outline.png" id="8_e42qu"]
@@ -22,6 +25,48 @@
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="18_aish6"]
 [ext_resource type="Texture2D" uid="uid://cro8d4w40plyr" path="res://sprites/trash_atlas_1.png" id="18_kc6b6"]
 [ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="19_jdxxw"]
+[ext_resource type="AudioStream" uid="uid://cikb4bhtb4yq7" path="res://audio/music/Storage Music Trash.ogg" id="20_jdxxw"]
+[ext_resource type="Texture2D" uid="uid://cwcgct6xuspwh" path="res://sprites/bed.png" id="20_wa7t7"]
+[ext_resource type="Script" uid="uid://dv5ia44hgt5gt" path="res://scripts/bed.gd" id="21_vysw7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa7t7"]
+atlas = ExtResource("18_kc6b6")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmde4"]
+atlas = ExtResource("18_kc6b6")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqor2"]
+atlas = ExtResource("18_kc6b6")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmde4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa7t7")
+}],
+"loop": true,
+"name": &"bottle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmde4")
+}],
+"loop": true,
+"name": &"cup",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqor2")
+}],
+"loop": true,
+"name": &"tissue",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aish6"]
 texture = ExtResource("2_gi00y")
@@ -85,6 +130,9 @@ normal = Vector2(1, 0)
 normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dchyv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wa7t7"]
+size = Vector2(30, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6k6s7"]
 atlas = ExtResource("18_kc6b6")
@@ -1879,7 +1927,7 @@ cache/0/64/0/glyphs/19/size = Vector2(34, 49)
 cache/0/64/0/glyphs/19/uv_rect = Rect2(1, 1, 34, 49)
 cache/0/64/0/glyphs/19/texture_idx = 0
 
-[sub_resource type="Image" id="Image_mg211"]
+[sub_resource type="Image" id="Image_kc6b6"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1889,7 +1937,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_bt5mj"]
-image = SubResource("Image_mg211")
+image = SubResource("Image_kc6b6")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
 content_margin_left = 4.0
@@ -1967,6 +2015,116 @@ player = NodePath("../Level/TrashSpawner/Player")
 
 [node name="Level" type="Node2D" parent="."]
 
+[node name="MoneyOnGround" type="Node2D" parent="Level"]
+
+[node name="cash1" type="Sprite2D" parent="Level/MoneyOnGround"]
+position = Vector2(-131, -9)
+texture = ExtResource("3_6k6s7")
+
+[node name="cash2" type="Sprite2D" parent="Level/MoneyOnGround"]
+position = Vector2(-141, 5)
+rotation = -1.5707964
+texture = ExtResource("3_6k6s7")
+
+[node name="cash3" type="Sprite2D" parent="Level/MoneyOnGround"]
+position = Vector2(-150, -1)
+rotation = 1.5707964
+texture = ExtResource("3_6k6s7")
+
+[node name="coin1" type="Sprite2D" parent="Level/MoneyOnGround"]
+position = Vector2(-134, 4)
+texture = ExtResource("4_rqor2")
+
+[node name="coin2" type="Sprite2D" parent="Level/MoneyOnGround"]
+position = Vector2(-153, -10)
+rotation = -6.2831855
+texture = ExtResource("4_rqor2")
+
+[node name="TrashOnGround" type="Node2D" parent="Level"]
+
+[node name="tissue1" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+position = Vector2(130, -10)
+sprite_frames = SubResource("SpriteFrames_qmde4")
+animation = &"tissue"
+
+[node name="tissue2" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+position = Vector2(137, 9)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_qmde4")
+animation = &"tissue"
+
+[node name="cup1" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+position = Vector2(124, 4)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_qmde4")
+animation = &"cup"
+
+[node name="bottle1" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+position = Vector2(146, -4)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_qmde4")
+animation = &"bottle"
+
+[node name="bottle2" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+position = Vector2(151, 5.000003)
+rotation = -3.1415925
+sprite_frames = SubResource("SpriteFrames_qmde4")
+animation = &"bottle"
+
+[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround"]
+z_index = 10
+position = Vector2(136, -27)
+texture = ExtResource("6_qmde4")
+
+[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
+position = Vector2(-14, 0)
+texture = ExtResource("6_qmde4")
+
+[node name="TrashSign2" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
+position = Vector2(-14, 3)
+texture = ExtResource("6_qmde4")
+
+[node name="TrashSign3" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
+position = Vector2(0, 3)
+texture = ExtResource("6_qmde4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/TrashOnGround/TrashSign"]
+offset_left = -23.0
+offset_right = 141.0
+offset_bottom = 40.0
+scale = Vector2(0.20148136, 0.20148136)
+theme = ExtResource("11_jdxxw")
+text = "courtyard"
+horizontal_alignment = 1
+
+[node name="RichSign" type="Sprite2D" parent="Level/TrashOnGround"]
+z_index = 10
+position = Vector2(-122, -27)
+texture = ExtResource("6_qmde4")
+
+[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
+position = Vector2(-14, 0)
+texture = ExtResource("6_qmde4")
+
+[node name="TrashSign2" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
+position = Vector2(-14, 3)
+texture = ExtResource("6_qmde4")
+
+[node name="TrashSign3" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
+position = Vector2(0, 3)
+texture = ExtResource("6_qmde4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/TrashOnGround/RichSign"]
+offset_left = -20.0
+offset_top = -1.0000001
+offset_right = 144.0
+offset_bottom = 39.0
+scale = Vector2(0.16063894, 0.16063894)
+theme = ExtResource("11_jdxxw")
+text = "rich person
+plaza"
+horizontal_alignment = 1
+
 [node name="Bushes" type="TileMapLayer" parent="Level"]
 z_index = 4095
 position = Vector2(0, 136)
@@ -2001,6 +2159,7 @@ tile_set = SubResource("TileSet_k665q")
 shape = SubResource("CircleShape2D_ri7o4")
 
 [node name="StorageDumpster" parent="Level" instance=ExtResource("8_o7pnx")]
+position = Vector2(117, 93)
 
 [node name="LitterSpawner" type="Node2D" parent="Level"]
 
@@ -2048,11 +2207,24 @@ shape = SubResource("WorldBoundaryShape2D_kvj23")
 position = Vector2(0, 120)
 shape = SubResource("WorldBoundaryShape2D_dchyv")
 
+[node name="Bed" type="Sprite2D" parent="Level" groups=["bed"]]
+z_index = -1
+position = Vector2(-22, 16)
+texture = ExtResource("20_wa7t7")
+script = ExtResource("21_vysw7")
+
+[node name="HandArea" type="Area2D" parent="Level/Bed" groups=["bed", "for_hand"]]
+collision_layer = 84
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Bed/HandArea"]
+shape = SubResource("RectangleShape2D_wa7t7")
+
 [node name="INVENTORY" parent="." instance=ExtResource("13_o7pnx")]
 
 [node name="StorageGUI" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 2
+visible = false
 script = ExtResource("14_o7pnx")
 
 [node name="BG" type="ColorRect" parent="StorageGUI"]
@@ -2137,6 +2309,10 @@ text = "[right]x10
 "
 scroll_active = false
 
+[node name="Music" type="AudioStreamPlayer" parent="StorageGUI"]
+stream = ExtResource("20_jdxxw")
+volume_db = -6.041
+
 [node name="Settings" parent="." instance=ExtResource("12_6k6s7")]
 layer = 3
 visible = false
@@ -2147,3 +2323,5 @@ visible = false
 
 [connection signal="body_entered" from="Level/EnterGame" to="Level/EnterGame" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/EnterRich" to="Level/EnterRich" method="_on_body_entered"]
+[connection signal="area_entered" from="Level/Bed/HandArea" to="Level/Bed" method="_on_hand_area_area_entered"]
+[connection signal="area_exited" from="Level/Bed/HandArea" to="Level/Bed" method="_on_hand_area_area_exited"]

@@ -7,12 +7,49 @@ var trash_amount : int = 40
 #	WILL BE MAX IN A RANDI RANGE
 var rat_rarity : int = 10
 
+var rich_person_max : int = 48
+
 #INVENTORY
 var inventory_slots : int = 9
 var selected_slot : int = -1
 var max_per_slot : int = 25
 var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
 var last_given_slot : bool = false
+
+var roman_numerals : Array[String] = [
+	"I",
+	"II",
+	"III",
+	"IV",
+	"V",
+	"VI",
+	"VII",
+	"VIII",
+	"IX",
+	"X"
+]
+
+var rich_people_names : Array[String] = [
+	"StringsWorth",
+	"ToppenHagger",
+	"BingleBottoms",
+	"Bartholomeus",
+	"Mozart",
+	"Beethoven",
+	"Gilly",
+	"Wiggens",
+	"Thomas",
+	"ToppleGoinginger",
+	"Glagglewares",
+	"PigFart",
+	"PigeonHead",
+	"Gurteth",
+	"LarryTipper",
+	"Flange",
+	"FlangesWorth",
+	"Charles",
+	"Charlemagne"
+]
 
 var items : Array[Dictionary] = [
 	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 0.4},

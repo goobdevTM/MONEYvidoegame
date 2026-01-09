@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var text_anim: AnimationPlayer = $HandArea/Text/Anim
 @onready var text: RichTextLabel = $HandArea/Text/Text
+@onready var camera: Camera2D = $"../../../Camera"
 
 @onready var eyes: AnimatedSprite2D = $Model/Eyes
 #HANDS
@@ -37,6 +38,7 @@ var stamina_timer: float = 0
 const max_stamina: float = 100
 
 signal stop_rat_theme
+signal talk_to_rich_person
 
 #hand variables
 var last_positions : Array[Vector2] = []
@@ -171,6 +173,11 @@ func _process(delta: float) -> void:
 				highlight_item()
 			elif items_in_hand[0].is_in_group("storage_dumpster"):
 				storage_gui.open()
+			elif items_in_hand[0].is_in_group("bed"):
+				var tween: Tween = create_tween()
+				tween.tween_property(self, "global_position", items_in_hand[0].global_position, 0.1)
+				tween.tween_property(camera, "global_position", items_in_hand[0].global_position, 0.15)
+				
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -283,6 +290,16 @@ func highlight_item() -> void:
 				text.text = "[center][E] - recruit"
 		elif items_in_hand[0].is_in_group("storage_dumpster"):
 			text.text = "[center][E] - open storage"
+		elif items_in_hand[0].is_in_group("bed"):
+			text.text = "[center][E] - sleep?"
+		#Get it? Higher CLASS? HGAWHIWFAIHAIFOHAHAEHEEHEHEHOIHIOOIHJESBGRRP{PRRBSGOPEAS
+		elif items_in_hand[0] is HigherClass:
+			text.text = "[center][E] - talk to?"
+			#SIGNALS
+			talk_to_rich_person.connect(items_in_hand[0].spoken_to)
+			emit_signal("talk_to_rich_person")
+			talk_to_rich_person.disconnect(items_in_hand[0].spoken_to)
+		
 		#dont show empty trash
 		if not is_trash_empty(items_in_hand[0]):
 			text_anim.play("appear")

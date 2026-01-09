@@ -1,9 +1,10 @@
-[gd_scene load_steps=37 format=4 uid="uid://ep7xcgg7p76x"]
+[gd_scene load_steps=39 format=4 uid="uid://ep7xcgg7p76x"]
 
 [ext_resource type="Script" uid="uid://c46we8d76srr7" path="res://scripts/slot.gd" id="1_5f2j7"]
 [ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="2_sjnr7"]
 [ext_resource type="Texture2D" uid="uid://bb6xgxabnpt4p" path="res://sprites/slot.png" id="3_n3jes"]
 [ext_resource type="Texture2D" uid="uid://cro8d4w40plyr" path="res://sprites/trash_atlas_1.png" id="4_cs5ta"]
+[ext_resource type="Texture2D" uid="uid://dlsmogylw0g4b" path="res://sprites/dumpster_slot.png" id="5_sjnr7"]
 
 [sub_resource type="Image" id="Image_qmde4"]
 data = {
@@ -1794,7 +1795,7 @@ cache/0/64/0/glyphs/19/size = Vector2(34, 49)
 cache/0/64/0/glyphs/19/uv_rect = Rect2(1, 1, 34, 49)
 cache/0/64/0/glyphs/19/texture_idx = 0
 
-[sub_resource type="Image" id="Image_cs5ta"]
+[sub_resource type="Image" id="Image_5f2j7"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1804,7 +1805,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_xjccs"]
-image = SubResource("Image_cs5ta")
+image = SubResource("Image_5f2j7")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w173o"]
 content_margin_left = 4.0
@@ -2086,6 +2087,25 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5f2j7"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjnr7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_sjnr7")
+}],
+"loop": true,
+"name": &"dumpster",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n3jes")
+}],
+"loop": true,
+"name": &"inventory",
+"speed": 5.0
+}]
+
 [node name="Slot" type="Control"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 3
@@ -2124,11 +2144,8 @@ text = "[right]x10
 "
 scroll_active = false
 
-[node name="SlotBG" type="Sprite2D" parent="."]
-texture = ExtResource("3_n3jes")
-centered = false
-
 [node name="Item" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(8, 8)
 texture = SubResource("AtlasTexture_5f2j7")
 
@@ -2176,6 +2193,12 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_cs5ta")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_xjccs")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5f2j7")
 flat = true
+
+[node name="SlotBG" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_sjnr7")
+animation = &"inventory"
+autoplay = "inventory"
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

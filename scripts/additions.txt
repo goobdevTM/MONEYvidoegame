@@ -64,11 +64,23 @@ Version 0.286
 			added rich person plaza-floor sprite,
 			
 Version 0.696
-Glagglewares employee 1,
-gnvnlv (8:00 PM JAN8)
-Added:
-	home,
-	rich plaza,
-	storage container,
-	ui theme and animations,
-	settings exit only exits to menu
+	Glagglewares employee 1,
+	gnvnlv (8:00 PM JAN8)
+	Added:
+		home,
+		rich plaza,
+		storage container,
+		ui theme and animations,
+		settings exit only exits to menu
+
+Version 0.767
+	Glagglewares employee 2,
+	Ka ching (12:35 PM, JAN9)
+	Added:
+		rich people (no talking yet),
+		rich people names,
+		made better sprite for storage container slot,
+		added storage song,
+		added bed (no sleep yet),
+		trash door area decorations,
+		rich door area decorations,

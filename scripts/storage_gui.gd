@@ -9,6 +9,7 @@ const SLOT = preload("uid://ep7xcgg7p76x")
 @onready var h_box_container: HBoxContainer = $Control/Inventory/HBoxContainer
 @onready var inventory: CanvasLayer = $"../INVENTORY"
 @onready var hover_item: Sprite2D = $Control/HoverItem
+@onready var music: AudioStreamPlayer = $Music
 
 
 var opening_storage : bool = false
@@ -23,6 +24,7 @@ func _ready() -> void:
 		clone_slot.storage = true
 		clone_slot.from_storage_menu = true
 		grid_container.add_child(clone_slot)
+		clone_slot.slot_bg.play("dumpster")
 		clone_slot.show()
 		clone_slot.index = i
 		clone_slot.get_child(0).text = str(clone_slot.index + 1)
@@ -47,6 +49,7 @@ func _process(delta: float) -> void:
 		hover_item.hide()
 	
 func open() -> void:
+	music.play()
 	opening_storage = true
 	if Globals.in_settings:
 		Globals.in_settings = false
@@ -69,6 +72,7 @@ func open() -> void:
 	Globals.emit_signal("slot_selected")
 	
 func close() -> void:
+	music.stop()
 	if Globals.selected_slot >= Globals.inventory_slots:
 		Globals.selected_slot = 0
 	show()

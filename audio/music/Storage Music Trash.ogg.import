@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cikb4bhtb4yq7"
+path="res://.godot/imported/Storage Music Trash.ogg-ae7754b89a22f5dfbbdd6630188e0f73.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Storage Music Trash.ogg"
+dest_files=["res://.godot/imported/Storage Music Trash.ogg-ae7754b89a22f5dfbbdd6630188e0f73.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

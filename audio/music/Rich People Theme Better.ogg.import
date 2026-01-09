@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5mir0dcrdhsr"
+path="res://.godot/imported/Rich People Theme Better.ogg-2749572ce2c70b5ac2b6542cbf8e2bcd.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Rich People Theme Better.ogg"
+dest_files=["res://.godot/imported/Rich People Theme Better.ogg-2749572ce2c70b5ac2b6542cbf8e2bcd.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

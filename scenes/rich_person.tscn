@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://8fkuapxu0pm6"]
+[gd_scene load_steps=10 format=3 uid="uid://8fkuapxu0pm6"]
 
+[ext_resource type="Script" uid="uid://b44cbc58uf4c2" path="res://scripts/rich_person.gd" id="1_4hxcs"]
 [ext_resource type="Texture2D" uid="uid://q05x7hlewo1o" path="res://sprites/rich_man.png" id="1_akup7"]
+[ext_resource type="AudioStream" uid="uid://cyli55p1plii2" path="res://audio/music/PianoSlam.ogg" id="3_d1oat"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="4_tubap"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4hxcs"]
 animations = [{
@@ -14,11 +17,60 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d1oat"]
+radius = 7.0
 
-[node name="RichPerson" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akup7"]
+size = Vector2(6, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hxcs"]
+size = Vector2(16, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hxcs"]
+radius = 8.0
+
+[node name="RichPerson" type="CharacterBody2D" groups=["rich_people"]]
+script = ExtResource("1_4hxcs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4hxcs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_d1oat")
+
+[node name="Hat" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_akup7")
+
+[node name="RichPersonDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RichPersonDetector"]
+shape = SubResource("RectangleShape2D_4hxcs")
+
+[node name="HandArea" type="Area2D" parent="." groups=["for_hand"]]
+collision_layer = 84
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_4hxcs")
+
+[node name="PianoSlam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d1oat")
+
+[node name="Name" type="RichTextLabel" parent="."]
+z_index = 10
+clip_contents = false
+offset_left = -31.0
+offset_top = -11.0
+offset_right = 240.35822
+offset_bottom = 29.0
+scale = Vector2(0.23169994, 0.23169994)
+mouse_filter = 2
+theme = ExtResource("4_tubap")
+text = "bob"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="RichPersonDetector" to="." method="_on_rich_person_detector_area_entered"]
+[connection signal="area_entered" from="HandArea" to="." method="_on_hand_area_area_entered"]
+[connection signal="area_exited" from="HandArea" to="." method="_on_hand_area_area_exited"]

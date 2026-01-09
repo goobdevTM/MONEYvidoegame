@@ -4,7 +4,6 @@ extends Control
 @export var from_storage_menu : bool = false
 
 @onready var amount: RichTextLabel = $Amount
-@onready var slot_bg: Sprite2D = $SlotBG
 @onready var item_sprite: Sprite2D = $Item
 @onready var anim: AnimationPlayer = $Anim
 @onready var tooltip_anim: AnimationPlayer = $Tooltip/TooltipAnim
@@ -12,6 +11,7 @@ extends Control
 @onready var name_text: RichTextLabel = $Tooltip/Name
 @onready var number: RichTextLabel = $Number
 @onready var hover_item: Sprite2D = $"../../../HoverItem"
+@onready var slot_bg: AnimatedSprite2D = $SlotBG
 
 var selected: bool = false
 var index: int
