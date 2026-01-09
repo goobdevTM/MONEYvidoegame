@@ -13,12 +13,13 @@ func _ready() -> void:
 	hide()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("settings"):
-		Globals.in_settings = not Globals.in_settings
-		if Globals.in_settings:
-			open()
-		else:
-			close()
+	if not Globals.in_storage:
+		if Input.is_action_just_pressed("settings"):
+			Globals.in_settings = not Globals.in_settings
+			if Globals.in_settings:
+				open()
+			else:
+				close()
 	
 func open() -> void:
 	music.play()
@@ -43,6 +44,7 @@ func close() -> void:
 	get_tree().paused = false
 	
 func _on_volume_value_changed(value: float) -> void:
+	Globals.master_volume = value
 	AudioServer.set_bus_volume_linear(0, value / 75)
 
 func _on_stamina_opacity_value_changed(value: float) -> void:

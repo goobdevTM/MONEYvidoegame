@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://owe37mt1cy0v"]
+
+[ext_resource type="Script" uid="uid://droxdxl825kw2" path="res://scripts/music_controller.gd" id="1_ftu3d"]
+[ext_resource type="AudioStream" uid="uid://bbukbgfxf6nso" path="res://audio/music/RatTheme.ogg" id="2_nudl1"]
+[ext_resource type="AudioStream" uid="uid://dtuuh2gop4fli" path="res://audio/music/Tissues.ogg" id="3_hyjgr"]
+[ext_resource type="AudioStream" uid="uid://d0mq3gt6uuvoc" path="res://audio/music/SmellySocks.ogg" id="4_1qrr5"]
+[ext_resource type="AudioStream" uid="uid://iacca0nebmsr" path="res://audio/music/SodaCan.ogg" id="5_lttr1"]
+[ext_resource type="AudioStream" uid="uid://cp3yrh48rmxy6" path="res://audio/music/Dumpster.ogg" id="6_obdaw"]
+[ext_resource type="AudioStream" uid="uid://dc33wk0to0pya" path="res://audio/music/TrashBags.ogg" id="7_r63yf"]
+
+[node name="MusicController" type="Node"]
+script = ExtResource("1_ftu3d")
+
+[node name="RatTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nudl1")
+
+[node name="Tissues" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+stream = ExtResource("3_hyjgr")
+volume_db = -1.726
+bus = &"Music"
+
+[node name="SmellySocks" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+stream = ExtResource("4_1qrr5")
+volume_db = -3.884
+bus = &"Music"
+
+[node name="SodaCan" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+stream = ExtResource("5_lttr1")
+volume_db = -1.295
+bus = &"Music"
+
+[node name="Dumpster" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+stream = ExtResource("6_obdaw")
+
+[node name="TrashBags" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+stream = ExtResource("7_r63yf")
+volume_db = 1.726

@@ -1,156 +1,111 @@
-[gd_scene load_steps=44 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=35 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_ssvqc"]
 [ext_resource type="Script" uid="uid://v70g10w75esu" path="res://scripts/level.gd" id="2_ca42v"]
-[ext_resource type="Texture2D" uid="uid://bvi8vtbom447n" path="res://sprites/viginette.svg" id="3_ca42v"]
 [ext_resource type="Texture2D" uid="uid://f87h168v8mn4" path="res://sprites/brick.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://c7c1eqy34y7vb" path="res://sprites/outline.png" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://c1iqbv60ixmpb" path="res://sprites/bush_large.png" id="5_rysoc"]
 [ext_resource type="Texture2D" uid="uid://bonp7qucnfhcq" path="res://sprites/bush.png" id="5_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="5_trtic"]
 [ext_resource type="Texture2D" uid="uid://c1tr1iau1hmtj" path="res://sprites/fence.png" id="6_264po"]
-[ext_resource type="Script" uid="uid://droxdxl825kw2" path="res://scripts/music_controller.gd" id="10_kvpfn"]
-[ext_resource type="AudioStream" uid="uid://d0mq3gt6uuvoc" path="res://audio/music/SmellySocks.ogg" id="10_vtaks"]
-[ext_resource type="AudioStream" uid="uid://dtuuh2gop4fli" path="res://audio/music/Tissues.ogg" id="11_dinhu"]
-[ext_resource type="Script" uid="uid://bbsa73xastegl" path="res://scripts/inventory.gd" id="11_ssvqc"]
-[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="13_1kice"]
+[ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_ca42v"]
+[ext_resource type="PackedScene" uid="uid://bug8okbqgftl2" path="res://scenes/home.tscn" id="12_rysoc"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
-[ext_resource type="AudioStream" uid="uid://bbukbgfxf6nso" path="res://audio/music/RatTheme.ogg" id="16_5newe"]
-[ext_resource type="AudioStream" uid="uid://cp3yrh48rmxy6" path="res://audio/music/Dumpster.ogg" id="16_ca42v"]
-[ext_resource type="AudioStream" uid="uid://dc33wk0to0pya" path="res://audio/music/TrashBags.ogg" id="16_rysoc"]
-[ext_resource type="AudioStream" uid="uid://iacca0nebmsr" path="res://audio/music/SodaCan.ogg" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="13_ir15t"]
+[ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="14_trtic"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ir15t"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kice"]
 normal = Vector2(1, 0)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ca42v"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5newe"]
 normal = Vector2(-1, 0)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssvqc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ir15t"]
 texture = ExtResource("5_rysoc")
 texture_region_size = Vector2i(48, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_264po"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca42v"]
 texture = ExtResource("5_ssvqc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_ca42v"]
+[sub_resource type="TileSet" id="TileSet_e1j6l"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_ssvqc")
-sources/2 = SubResource("TileSetAtlasSource_264po")
+sources/0 = SubResource("TileSetAtlasSource_ir15t")
+sources/2 = SubResource("TileSetAtlasSource_ca42v")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1kice"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rysoc"]
 texture = ExtResource("6_264po")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_5newe"]
+[sub_resource type="TileSet" id="TileSet_bhx41"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_1kice")
+sources/1 = SubResource("TileSetAtlasSource_rysoc")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssvqc"]
 texture = ExtResource("1_lbhrr")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_0tnpc"]
+[sub_resource type="TileSet" id="TileSet_sww3w"]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_gee14")
+sources/0 = SubResource("TileSetAtlasSource_ssvqc")
 
-[sub_resource type="Gradient" id="Gradient_iywne"]
+[sub_resource type="Gradient" id="Gradient_264po"]
 offsets = PackedFloat32Array(0, 0.36, 0.78)
 colors = PackedColorArray(0.35041875, 0.24899107, 0.17881739, 1, 0.21948591, 0.2743099, 0.19046855, 1, 0.43223354, 0.47029358, 0.3392457, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_p57ef"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1kice"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u5sy4"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_suyxu"]
 width = 384
-noise = SubResource("FastNoiseLite_p57ef")
-color_ramp = SubResource("Gradient_iywne")
+noise = SubResource("FastNoiseLite_1kice")
+color_ramp = SubResource("Gradient_264po")
 seamless = true
 seamless_blend_skirt = 0.221
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_264po"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgl2t"]
 radius = 6.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tnpc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5newe"]
 texture = ExtResource("3_gee14")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vtaks"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37s47"]
 texture = ExtResource("4_0tnpc")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_vtaks"]
+[sub_resource type="TileSet" id="TileSet_v2yb1"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_0tnpc")
-sources/1 = SubResource("TileSetAtlasSource_vtaks")
+sources/0 = SubResource("TileSetAtlasSource_5newe")
+sources/1 = SubResource("TileSetAtlasSource_37s47")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_js0lu"]
 normal = Vector2(1, 0)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtaks"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gxtfn"]
 normal = Vector2(0, 1)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dinhu"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_ir15t"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ca42v"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.101960786, 0.101960786, 0.30980393, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 6
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir15t"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 1, 1)
-border_width_left = 4
-border_width_top = 3
-border_width_right = 4
-border_width_bottom = 3
-border_color = Color(1.92523e-06, 0, 0.63714826, 1)
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 6
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_twgab"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ssvqc")
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 zoom = Vector2(4, 4)
 limit_left = -384
 limit_top = -256
 limit_bottom = 256
 script = ExtResource("1_iywne")
+generate_trash = true
+player = NodePath("../Level/TrashSpawner/Player")
 
 [node name="Level" type="Node2D" parent="."]
 script = ExtResource("2_ca42v")
@@ -161,65 +116,65 @@ collision_mask = 48
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/DeleteTrash"]
 position = Vector2(-256, 0)
-shape = SubResource("WorldBoundaryShape2D_ir15t")
+shape = SubResource("WorldBoundaryShape2D_1kice")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/DeleteTrash"]
 position = Vector2(512, 0)
-shape = SubResource("WorldBoundaryShape2D_ca42v")
+shape = SubResource("WorldBoundaryShape2D_5newe")
 
 [node name="Bushes" type="TileMapLayer" parent="Level"]
 z_index = 4095
 position = Vector2(0, 136)
 tile_map_data = PackedByteArray("AAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAD4/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_ca42v")
+tile_set = SubResource("TileSet_e1j6l")
 rendering_quadrant_size = 32
 
 [node name="SmallBushes" type="TileMapLayer" parent="Level/Bushes"]
 z_index = 4096
 tile_map_data = PackedByteArray("AAACAAMAAgAAAAAAAAABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAD//wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD9/wMAAgAAAAAAAAADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAAFAAMAAgAAAAAAAAAGAAMAAgAAAAAAAAAHAAMAAgAAAAAAAAD8/wMAAgAAAAAAAAD7/wMAAgAAAAAAAAD6/wMAAgAAAAAAAAD5/wMAAgAAAAAAAAD4/wMAAgAAAAAAAAA=")
-tile_set = SubResource("TileSet_ca42v")
+tile_set = SubResource("TileSet_e1j6l")
 
 [node name="Fence" type="TileMapLayer" parent="Level"]
 z_index = -1
 position = Vector2(0, 128)
 tile_map_data = PackedByteArray("AAD4//T/AQAAAAAAAAD5//T/AQAAAAAAAAD6//T/AQAAAAAAAAD7//T/AQAAAAAAAAD8//T/AQAAAAAAAAD9//T/AQAAAAAAAAD+//T/AQAAAAAAAAD///T/AQAAAAAAAAADAPT/AQAAAAAAAAAEAPT/AQAAAAAAAAAFAPT/AQAAAAAAAAAGAPT/AQAAAAAAAAAHAPT/AQAAAAAAAAACAPT/AQAAAAAAAAABAPT/AQAAAAAAAAAAAPT/AQAAAAAAAAA=")
-tile_set = SubResource("TileSet_5newe")
+tile_set = SubResource("TileSet_bhx41")
 rendering_quadrant_size = 32
 
 [node name="Ground" type="TileMapLayer" parent="Level"]
 z_index = -4096
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_0tnpc")
+tile_set = SubResource("TileSet_sww3w")
 
 [node name="NoiseOverlay" type="Node2D" parent="Level"]
 
 [node name="1" type="Sprite2D" parent="Level/NoiseOverlay"]
 modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
 position = Vector2(-384, 0)
-texture = SubResource("NoiseTexture2D_u5sy4")
+texture = SubResource("NoiseTexture2D_suyxu")
 
 [node name="2" type="Sprite2D" parent="Level/NoiseOverlay"]
 modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
-texture = SubResource("NoiseTexture2D_u5sy4")
+texture = SubResource("NoiseTexture2D_suyxu")
 
 [node name="3" type="Sprite2D" parent="Level/NoiseOverlay"]
 modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
 position = Vector2(384, 0)
-texture = SubResource("NoiseTexture2D_u5sy4")
+texture = SubResource("NoiseTexture2D_suyxu")
 
 [node name="4" type="Sprite2D" parent="Level/NoiseOverlay"]
 modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
 position = Vector2(-384, 0)
-texture = SubResource("NoiseTexture2D_u5sy4")
+texture = SubResource("NoiseTexture2D_suyxu")
 
 [node name="5" type="Sprite2D" parent="Level/NoiseOverlay"]
 modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
-texture = SubResource("NoiseTexture2D_u5sy4")
+texture = SubResource("NoiseTexture2D_suyxu")
 
 [node name="6" type="Sprite2D" parent="Level/NoiseOverlay"]
 modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
 position = Vector2(384, 0)
-texture = SubResource("NoiseTexture2D_u5sy4")
+texture = SubResource("NoiseTexture2D_suyxu")
 
 [node name="LitterSpawner" type="Node2D" parent="Level"]
 
@@ -232,22 +187,24 @@ y_sort_enabled = true
 position = Vector2(-360, 0)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
-shape = SubResource("CircleShape2D_264po")
+shape = SubResource("CircleShape2D_sgl2t")
 
 [node name="Shadow" type="TileMapLayer" parent="Level"]
 tile_map_data = PackedByteArray("AADo//7/AQAAAAAAAADo//3/AQAAAAAAAADo//z/AQAAAAAAAADo//v/AQAAAAAAAADo//r/AQAAAAAAAADo//n/AQAAAAAAAADo//j/AQAAAAAAAADo/w8AAQAAAAAAAADo/w4AAQAAAAAAAADo/w0AAQAAAAAAAADo/wwAAQAAAAAAAADo/wsAAQAAAAAAAADo/woAAQAAAAAAAADo/wkAAQAAAAAAAADo/wgAAQAAAAAAAADo/wcAAQAAAAAAAADo/wYAAQAAAAAAAADo/wUAAQAAAAAAAADo/wQAAQAAAAAAAADo/wMAAQAAAAAAAADo/wIAAQAAAAAAAADo/wEAAQAAAAAAAADo//D/AQAAAAAAAADo//H/AQAAAAAAAADo//L/AQAAAAAAAADo//P/AQAAAAAAAADo//T/AQAAAAAAAADo//X/AQAAAAAAAADo//b/AQAAAAAAAADo//f/AQAAAAAAAAA=")
-tile_set = SubResource("TileSet_vtaks")
+tile_set = SubResource("TileSet_v2yb1")
 
 [node name="Bricks" type="TileMapLayer" parent="Level"]
 tile_map_data = PackedByteArray("AADo//D/AAAAAAAAAADo//H/AAAAAAAAAADo//L/AAAAAAAAAADo//P/AAAAAAAAAADo//T/AAAAAAAAAADo//X/AAAAAAAAAADo//b/AAAAAAAAAADo//f/AAAAAAAAAADo//j/AAAAAAAAAADo//n/AAAAAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAAAAADo//z/AAAAAAAAAADo//3/AAAAAAAAAADo//7/AAAAAAAAAADo/wEAAAAAAAAAAADo/wIAAAAAAAAAAADo/wMAAAAAAAAAAADo/wQAAAAAAAAAAADo/wUAAAAAAAAAAADo/wYAAAAAAAAAAADo/wcAAAAAAAAAAADo/wgAAAAAAAAAAADo/wkAAAAAAAAAAADo/woAAAAAAAAAAADo/wsAAAAAAAAAAADo/wwAAAAAAAAAAADo/w0AAAAAAAAAAADo/w4AAAAAAAAAAADo/w8AAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_vtaks")
+tile_set = SubResource("TileSet_v2yb1")
 
-[node name="House" type="Area2D" parent="Level"]
+[node name="EnterHome" type="Area2D" parent="Level"]
 collision_layer = 128
+script = ExtResource("11_ca42v")
+change_to_scene = ExtResource("12_rysoc")
 
-[node name="Collision" type="CollisionShape2D" parent="Level/House"]
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
 position = Vector2(-384, 0)
-shape = SubResource("WorldBoundaryShape2D_kvpfn")
+shape = SubResource("WorldBoundaryShape2D_js0lu")
 
 [node name="Borders" type="StaticBody2D" parent="Level"]
 collision_layer = 65
@@ -255,113 +212,17 @@ collision_mask = 7
 
 [node name="Top" type="CollisionShape2D" parent="Level/Borders"]
 position = Vector2(0, -231)
-shape = SubResource("WorldBoundaryShape2D_vtaks")
+shape = SubResource("WorldBoundaryShape2D_gxtfn")
 
 [node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
 position = Vector2(0, 256)
-shape = SubResource("WorldBoundaryShape2D_dinhu")
+shape = SubResource("WorldBoundaryShape2D_twgab")
 
-[node name="INVENTORY" type="CanvasLayer" parent="."]
-script = ExtResource("11_ssvqc")
-
-[node name="Control" type="Control" parent="INVENTORY"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="INVENTORY/Control"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 404.0
-offset_right = -480.0
-offset_bottom = 420.0
-grow_horizontal = 2
-scale = Vector2(4, 4)
-theme_override_constants/separation = 1
-alignment = 1
-
-[node name="Stamina" type="HSlider" parent="INVENTORY/Control"]
-layout_mode = 0
-offset_left = 234.0
-offset_top = 383.0
-offset_right = 403.0
-offset_bottom = 399.0
-theme_override_icons/grabber = SubResource("ImageTexture_ir15t")
-theme_override_icons/grabber_highlight = SubResource("ImageTexture_ir15t")
-theme_override_icons/grabber_disabled = SubResource("ImageTexture_ir15t")
-theme_override_icons/tick = SubResource("ImageTexture_ir15t")
-theme_override_styles/slider = SubResource("StyleBoxFlat_ca42v")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ir15t")
-value = 100.0
-editable = false
-
-[node name="Viginette" type="Sprite2D" parent="INVENTORY"]
-self_modulate = Color(0, 0, 0, 0.21568628)
-scale = Vector2(1.33, 1.33)
-texture = ExtResource("3_ca42v")
-centered = false
-
-[node name="RatsHired" type="RichTextLabel" parent="INVENTORY"]
-clip_contents = false
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 41.0
-grow_horizontal = 2
-mouse_filter = 2
-theme = ExtResource("13_1kice")
-bbcode_enabled = true
-text = "[right]Rats Hired: 1"
-
-[node name="Money" type="RichTextLabel" parent="INVENTORY"]
-clip_contents = false
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 41.0
-grow_horizontal = 2
-mouse_filter = 2
-theme = ExtResource("13_1kice")
-theme_override_colors/default_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "$0"
+[node name="INVENTORY" parent="." instance=ExtResource("13_ir15t")]
 
 [node name="Settings" parent="." instance=ExtResource("13_264po")]
 visible = false
 
-[node name="MusicController" type="Node" parent="."]
-script = ExtResource("10_kvpfn")
+[node name="MusicController" parent="." instance=ExtResource("14_trtic")]
 
-[node name="RatTheme" type="AudioStreamPlayer" parent="MusicController"]
-stream = ExtResource("16_5newe")
-
-[node name="Tissues" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
-stream = ExtResource("11_dinhu")
-volume_db = -1.726
-bus = &"Music"
-
-[node name="SmellySocks" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
-stream = ExtResource("10_vtaks")
-volume_db = -3.884
-bus = &"Music"
-
-[node name="SodaCan" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
-stream = ExtResource("17_rysoc")
-volume_db = -1.295
-bus = &"Music"
-
-[node name="Dumpster" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
-stream = ExtResource("16_ca42v")
-
-[node name="TrashBags" type="AudioStreamPlayer" parent="MusicController" groups=["main_songs"]]
-stream = ExtResource("16_rysoc")
-volume_db = 1.726
+[connection signal="body_entered" from="Level/EnterHome" to="Level/EnterHome" method="_on_body_entered"]

@@ -46,6 +46,7 @@ var inventory : Array[Dictionary] = [
 #CONDITIONS
 var in_settings : bool = false
 var in_game : bool = false
+var in_storage : bool = false
 
 #SETTINGS
 var master_volume : float = 50
@@ -55,6 +56,7 @@ var stamina_bar_opacity: float = 1
 var working_rats : int = 0
 var money : int = 0
 var day : int = 0
+var start_pos : Vector2 = Vector2(0, 0) #where player spawns
 
 func _ready() -> void:
 	load_data()

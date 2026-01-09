@@ -2,6 +2,7 @@ class_name Player
 
 extends CharacterBody2D
 
+
 @onready var text_anim: AnimationPlayer = $HandArea/Text/Anim
 @onready var text: RichTextLabel = $HandArea/Text/Text
 
@@ -11,8 +12,10 @@ extends CharacterBody2D
 @onready var right_hand: Sprite2D = $Model/Hands/RightHand
 @onready var left_hand: Sprite2D = $Model/Hands/LeftHand
 @onready var hand_area: Area2D = $HandArea
-
+#UI
 @onready var stamina_bar: HSlider = $"../../../INVENTORY/Control/Stamina"
+@onready var storage_gui: CanvasLayer = $"../../../StorageGUI"
+
 #SOUND
 @onready var open_container: AudioStreamPlayer = $OpenContainer
 @onready var open_litter: AudioStreamPlayer = $OpenLitter
@@ -45,6 +48,9 @@ func _ready() -> void:
 	stamina = 100
 	stamina_bar.value = stamina
 	stamina_bar.self_modulate = Color(1.0, 1.0, 1.0, 0.05)
+	
+	#set position according to where coming from
+	global_position = Globals.start_pos
 
 func sprint(sprint_speed: int) -> void:
 	if stamina > 0:
@@ -163,6 +169,8 @@ func _process(delta: float) -> void:
 					stop_rat_theme.disconnect(music_controller.stop_rat_theme)
 				#show text
 				highlight_item()
+			elif items_in_hand[0].is_in_group("storage_dumpster"):
+				storage_gui.open()
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -273,6 +281,8 @@ func highlight_item() -> void:
 				text.text = "[center][E] - send to work"
 			else:
 				text.text = "[center][E] - recruit"
+		elif items_in_hand[0].is_in_group("storage_dumpster"):
+			text.text = "[center][E] - open storage"
 		#dont show empty trash
 		if not is_trash_empty(items_in_hand[0]):
 			text_anim.play("appear")

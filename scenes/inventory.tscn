@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://qw7cd0hudi47"]
+
+[ext_resource type="Script" uid="uid://bbsa73xastegl" path="res://scripts/inventory.gd" id="1_ty45s"]
+[ext_resource type="Texture2D" uid="uid://bvi8vtbom447n" path="res://sprites/viginette.svg" id="2_53g1v"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="3_yyk2a"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_e11fr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5uoah"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.101960786, 0.30980393, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvj3h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 1, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 3
+border_color = Color(1.92523e-06, 0, 0.63714826, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[node name="INVENTORY" type="CanvasLayer"]
+script = ExtResource("1_ty45s")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 404.0
+offset_right = -480.0
+offset_bottom = 420.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Stamina" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 383.0
+offset_right = 403.0
+offset_bottom = 399.0
+theme_override_icons/grabber = SubResource("ImageTexture_e11fr")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_e11fr")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_e11fr")
+theme_override_icons/tick = SubResource("ImageTexture_e11fr")
+theme_override_styles/slider = SubResource("StyleBoxFlat_5uoah")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_uvj3h")
+value = 100.0
+editable = false
+
+[node name="Viginette" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.21568628)
+scale = Vector2(1.33, 1.33)
+texture = ExtResource("2_53g1v")
+centered = false
+
+[node name="RatsHired" type="RichTextLabel" parent="."]
+clip_contents = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 41.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("3_yyk2a")
+bbcode_enabled = true
+text = "[right]Rats Hired: 1"
+
+[node name="Money" type="RichTextLabel" parent="."]
+clip_contents = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 41.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("3_yyk2a")
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "$0"

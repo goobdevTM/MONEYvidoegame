@@ -13,7 +13,7 @@ config_version=5
 config/name="giggly rich"
 run/main_scene="uid://jjo26rmcgd4a"
 config/auto_accept_quit=false
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -37,6 +37,7 @@ litter=""
 trash=""
 for_hand=""
 main_songs=""
+storage_dumpster=""
 
 [input]
 

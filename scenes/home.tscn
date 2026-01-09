@@ -1,0 +1,256 @@
+[gd_scene load_steps=36 format=4 uid="uid://bug8okbqgftl2"]
+
+[ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gi00y"]
+[ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_ip4d6"]
+[ext_resource type="Texture2D" uid="uid://c1iqbv60ixmpb" path="res://sprites/bush_large.png" id="2_gi00y"]
+[ext_resource type="Texture2D" uid="uid://bonp7qucnfhcq" path="res://sprites/bush.png" id="3_rpgsi"]
+[ext_resource type="Texture2D" uid="uid://c1tr1iau1hmtj" path="res://sprites/fence.png" id="4_ju5sp"]
+[ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="5_o7pnx"]
+[ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="6_aish6"]
+[ext_resource type="Texture2D" uid="uid://f87h168v8mn4" path="res://sprites/brick.png" id="7_snnha"]
+[ext_resource type="Texture2D" uid="uid://c7c1eqy34y7vb" path="res://sprites/outline.png" id="8_e42qu"]
+[ext_resource type="PackedScene" uid="uid://dxyfiauc044l2" path="res://scenes/storage_dumpster.tscn" id="8_o7pnx"]
+[ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="9_rpgsi"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="11_jdxxw"]
+[ext_resource type="PackedScene" uid="uid://cwq0qr0p3gujk" path="res://scenes/rich_plaza.tscn" id="11_ju5sp"]
+[ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="12_6k6s7"]
+[ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="13_o7pnx"]
+[ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="13_rqor2"]
+[ext_resource type="Script" uid="uid://dck8ygq420e5n" path="res://scripts/storage_gui.gd" id="14_o7pnx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vysw7"]
+texture = ExtResource("2_gi00y")
+texture_region_size = Vector2i(48, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_miq5y"]
+texture = ExtResource("3_rpgsi")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mg211"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_vysw7")
+sources/2 = SubResource("TileSetAtlasSource_miq5y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sh163"]
+texture = ExtResource("4_ju5sp")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_okf6m"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_sh163")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6k8sm"]
+texture = ExtResource("5_o7pnx")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k665q"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_6k8sm")
+
+[sub_resource type="Gradient" id="Gradient_iywne"]
+offsets = PackedFloat32Array(0, 0.36, 0.78)
+colors = PackedColorArray(0.35041875, 0.24899107, 0.17881739, 1, 0.21948591, 0.2743099, 0.19046855, 1, 0.43223354, 0.47029358, 0.3392457, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p57ef"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oku8d"]
+width = 384
+noise = SubResource("FastNoiseLite_p57ef")
+color_ramp = SubResource("Gradient_iywne")
+seamless = true
+seamless_blend_skirt = 0.221
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ri7o4"]
+radius = 6.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ucx8p"]
+texture = ExtResource("7_snnha")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_34np2"]
+texture = ExtResource("8_e42qu")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0ltf8"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_ucx8p")
+sources/1 = SubResource("TileSetAtlasSource_34np2")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g8n7j"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ju5sp"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvj23"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dchyv"]
+
+[node name="Home" type="Node2D"]
+script = ExtResource("1_gi00y")
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+zoom = Vector2(4, 4)
+limit_left = -160
+limit_top = -120
+limit_right = 160
+limit_bottom = 120
+script = ExtResource("1_ip4d6")
+player = NodePath("../Level/TrashSpawner/Player")
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Bushes" type="TileMapLayer" parent="Level"]
+z_index = 4095
+position = Vector2(0, 136)
+tile_map_data = PackedByteArray("AAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAD4/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_mg211")
+rendering_quadrant_size = 32
+
+[node name="SmallBushes" type="TileMapLayer" parent="Level/Bushes"]
+z_index = 4096
+tile_map_data = PackedByteArray("AAACAAMAAgAAAAAAAAABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAD//wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD9/wMAAgAAAAAAAAADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAAFAAMAAgAAAAAAAAAGAAMAAgAAAAAAAAAHAAMAAgAAAAAAAAD8/wMAAgAAAAAAAAD7/wMAAgAAAAAAAAD6/wMAAgAAAAAAAAD5/wMAAgAAAAAAAAD4/wMAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_mg211")
+
+[node name="Fence" type="TileMapLayer" parent="Level"]
+z_index = -1
+position = Vector2(0, 128)
+tile_map_data = PackedByteArray("AAD4//T/AQAAAAAAAAD5//T/AQAAAAAAAAD6//T/AQAAAAAAAAD7//T/AQAAAAAAAAD8//T/AQAAAAAAAAD9//T/AQAAAAAAAAD+//T/AQAAAAAAAAD///T/AQAAAAAAAAADAPT/AQAAAAAAAAAEAPT/AQAAAAAAAAAFAPT/AQAAAAAAAAAGAPT/AQAAAAAAAAAHAPT/AQAAAAAAAAACAPT/AQAAAAAAAAABAPT/AQAAAAAAAAAAAPT/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_okf6m")
+rendering_quadrant_size = 32
+
+[node name="Ground" type="TileMapLayer" parent="Level"]
+z_index = -4096
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_k665q")
+
+[node name="NoiseOverlay" type="Node2D" parent="Level"]
+
+[node name="1" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
+position = Vector2(-384, 0)
+texture = SubResource("NoiseTexture2D_oku8d")
+
+[node name="2" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
+texture = SubResource("NoiseTexture2D_oku8d")
+
+[node name="3" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
+position = Vector2(384, 0)
+texture = SubResource("NoiseTexture2D_oku8d")
+
+[node name="4" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
+position = Vector2(-384, 0)
+texture = SubResource("NoiseTexture2D_oku8d")
+
+[node name="5" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
+texture = SubResource("NoiseTexture2D_oku8d")
+
+[node name="6" type="Sprite2D" parent="Level/NoiseOverlay"]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
+position = Vector2(384, 0)
+texture = SubResource("NoiseTexture2D_oku8d")
+
+[node name="TrashSpawner" type="Node2D" parent="Level"]
+
+[node name="Player" parent="Level/TrashSpawner" instance=ExtResource("6_aish6")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
+shape = SubResource("CircleShape2D_ri7o4")
+
+[node name="StorageDumpster" parent="Level" instance=ExtResource("8_o7pnx")]
+
+[node name="LitterSpawner" type="Node2D" parent="Level"]
+
+[node name="RatSpawner" type="Node2D" parent="Level"]
+
+[node name="Shadow" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAD2//7/AQAAAAAAAAD2//3/AQAAAAAAAAD2//z/AQAAAAAAAAD2//v/AQAAAAAAAAD2//r/AQAAAAAAAAD2//n/AQAAAAAAAAD2//j/AQAAAAAAAAD3//j/AQAAAAAAAAD4//j/AQAAAAAAAAD5//j/AQAAAAAAAAD6//j/AQAAAAAAAAD7//j/AQAAAAAAAAD8//j/AQAAAAAAAAD9//j/AQAAAAAAAAD+//j/AQAAAAAAAAD///j/AQAAAAAAAAAAAPj/AQAAAAAAAAABAPj/AQAAAAAAAAACAPj/AQAAAAAAAAADAPj/AQAAAAAAAAAEAPj/AQAAAAAAAAAFAPj/AQAAAAAAAAAGAPj/AQAAAAAAAAAHAPj/AQAAAAAAAAAIAPj/AQAAAAAAAAAJAPj/AQAAAAAAAAAJAPn/AQAAAAAAAAAJAPr/AQAAAAAAAAAJAPv/AQAAAAAAAAAJAPz/AQAAAAAAAAAJAP3/AQAAAAAAAAAJAP7/AQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAHAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAADAAcAAQAAAAAAAAACAAcAAQAAAAAAAAABAAcAAQAAAAAAAAAAAAcAAQAAAAAAAAD//wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD7/wcAAQAAAAAAAAD6/wcAAQAAAAAAAAD5/wcAAQAAAAAAAAD4/wcAAQAAAAAAAAD3/wcAAQAAAAAAAAD2/wcAAQAAAAAAAAD2/wYAAQAAAAAAAAD2/wUAAQAAAAAAAAD2/wQAAQAAAAAAAAD2/wMAAQAAAAAAAAD2/wIAAQAAAAAAAAD2/wEAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_0ltf8")
+
+[node name="Bricks" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAD2/wIAAAAAAAAAAAD2/wMAAAAAAAAAAAD2/wQAAAAAAAAAAAD2/wUAAAAAAAAAAAD2/wYAAAAAAAAAAAD2/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD4/wcAAAAAAAAAAAD5/wcAAAAAAAAAAAD6/wcAAAAAAAAAAAD7/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD9/wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAEAAAAAAAAAAAD2/wEAAAAAAAAAAAD2//7/AAAAAAAAAAD2//3/AAAAAAAAAAD2//z/AAAAAAAAAAD2//v/AAAAAAAAAAD2//r/AAAAAAAAAAD2//n/AAAAAAAAAAD2//j/AAAAAAAAAAD3//j/AAAAAAAAAAD4//j/AAAAAAAAAAD5//j/AAAAAAAAAAD6//j/AAAAAAAAAAD7//j/AAAAAAAAAAD8//j/AAAAAAAAAAD9//j/AAAAAAAAAAD+//j/AAAAAAAAAAD///j/AAAAAAAAAAAAAPj/AAAAAAAAAAABAPj/AAAAAAAAAAACAPj/AAAAAAAAAAADAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAHAPj/AAAAAAAAAAAIAPj/AAAAAAAAAAAJAPj/AAAAAAAAAAAJAPn/AAAAAAAAAAAJAPr/AAAAAAAAAAAJAPv/AAAAAAAAAAAJAPz/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAP7/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_0ltf8")
+
+[node name="EnterGame" type="Area2D" parent="Level"]
+collision_layer = 128
+script = ExtResource("9_rpgsi")
+start_pos = Vector2(-360, 0)
+
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterGame"]
+position = Vector2(160, 0)
+shape = SubResource("WorldBoundaryShape2D_g8n7j")
+
+[node name="EnterRich" type="Area2D" parent="Level"]
+collision_layer = 128
+script = ExtResource("9_rpgsi")
+start_pos = Vector2(-360, 0)
+change_to_scene = ExtResource("11_ju5sp")
+
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterRich"]
+position = Vector2(-160, 0)
+shape = SubResource("WorldBoundaryShape2D_ju5sp")
+
+[node name="Borders" type="StaticBody2D" parent="Level"]
+collision_layer = 65
+collision_mask = 7
+
+[node name="Top" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(0, -120)
+shape = SubResource("WorldBoundaryShape2D_kvj23")
+
+[node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(0, 120)
+shape = SubResource("WorldBoundaryShape2D_dchyv")
+
+[node name="INVENTORY" parent="." instance=ExtResource("13_o7pnx")]
+
+[node name="StorageGUI" type="CanvasLayer" parent="."]
+process_mode = 2
+script = ExtResource("14_o7pnx")
+
+[node name="BG" type="ColorRect" parent="StorageGUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="StorageGUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_jdxxw")
+
+[node name="GridContainer" type="GridContainer" parent="StorageGUI/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="StorageGUI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" parent="." instance=ExtResource("12_6k6s7")]
+visible = false
+
+[node name="MusicController" parent="." instance=ExtResource("13_rqor2")]

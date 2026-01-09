@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxyfiauc044l2"]
+
+[ext_resource type="Texture2D" uid="uid://cw2t51ercwtq2" path="res://sprites/dumpster.png" id="1_p3jvc"]
+[ext_resource type="Texture2D" uid="uid://c7n71u276eucq" path="res://sprites/dumpster_open.png" id="3_kwncw"]
+[ext_resource type="Texture2D" uid="uid://cxyvgor132cux" path="res://sprites/dumpster_empty.png" id="4_61pg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0s8"]
+size = Vector2(12, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksnrx"]
+size = Vector2(20, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rsu7"]
+size = Vector2(14, 15)
+
+[node name="StorageDumpster" type="Node2D" groups=["storage_dumpster"]]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_p3jvc")
+
+[node name="SpriteOpen" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_kwncw")
+
+[node name="SpriteEmpty" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_61pg7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="TRASH_BAG_SMALL" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_qm0s8")
+
+[node name="TRASH_BAG" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_ksnrx")
+
+[node name="TRASH_CAN" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_4rsu7")
+
+[node name="DUMPSTER" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, 6)
+polygon = PackedVector2Array(-24, 10, 15, 10, 24, 0, 24, -10, -24, -10)
+
+[node name="Area2D" type="Area2D" parent="." groups=["for_hand"]]
+collision_layer = 16
+collision_mask = 80
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0, 6)
+polygon = PackedVector2Array(-24, 10, 15, 10, 24, 0, 24, -22, -14, -22, -24, -12)

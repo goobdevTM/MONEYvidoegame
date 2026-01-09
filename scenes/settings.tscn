@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://0m87sdsyy8cg"]
+[gd_scene load_steps=4 format=3 uid="uid://0m87sdsyy8cg"]
 
 [ext_resource type="Script" uid="uid://d1c78rfpi3vgn" path="res://scripts/settings.gd" id="1_5p8wc"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_6wm04"]
 [ext_resource type="AudioStream" uid="uid://dcatsatn7becm" path="res://audio/music/Settings.ogg" id="2_r6d6q"]
 
 [node name="Settings" type="CanvasLayer"]
@@ -23,6 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(320, 240)
+theme = ExtResource("2_6wm04")
 
 [node name="TabContainer" type="TabContainer" parent="Control"]
 layout_mode = 1
@@ -74,16 +76,22 @@ offset_bottom = 53.0
 scale = Vector2(0.66067326, 0.66067326)
 text = "stamina-bar-opacity"
 
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -46.0
+offset_right = 148.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+text = "exit game"
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_r6d6q")
 
-[node name="Quit" type="Button" parent="."]
-offset_left = 11.0
-offset_top = 439.0
-offset_right = 95.0
-offset_bottom = 470.0
-text = "exit game"
-
 [connection signal="value_changed" from="Control/TabContainer/Audio/Master" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="Control/TabContainer/Video/StaminaOpacity" to="." method="_on_stamina_opacity_value_changed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_button_pressed"]

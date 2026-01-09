@@ -38,7 +38,7 @@ Version 0.111
 		
 Version 0.253
 	Glagglewares employee 1,
-	clock time (11:30 PM? JAN7)
+	clock time (7:40 AM JAN7)
 	Added:
 		randomly open trash,
 		trash can sprites,
