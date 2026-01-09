@@ -62,3 +62,13 @@ Version 0.286
 		V not actually in game yet V
 			added rich person song,
 			added rich person plaza-floor sprite,
+			
+Version 0.696
+Glagglewares employee 1,
+gnvnlv (8:00 PM JAN8)
+Added:
+	home,
+	rich plaza,
+	storage container,
+	ui theme and animations,
+	settings exit only exits to menu

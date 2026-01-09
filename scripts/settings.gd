@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 				close()
 	
 func open() -> void:
+	Globals.in_settings = true
 	music.play()
 	get_tree().paused = true
 	control.position = Vector2(0,480)
@@ -33,6 +34,7 @@ func open() -> void:
 	tween.tween_property(control, "position", Vector2(0,0), 0.1)
 	
 func close() -> void:
+	Globals.in_settings = false
 	music.stop()
 	show()
 	var tween : Tween = create_tween()
@@ -52,5 +54,9 @@ func _on_stamina_opacity_value_changed(value: float) -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	Globals.save_data()
-	get_tree().quit()
+	if Globals.in_game:
+		get_tree().paused = false
+		close()
+		get_tree().change_scene_to_packed(preload("uid://jjo26rmcgd4a"))
+	else:
+		Globals.save_and_quit()

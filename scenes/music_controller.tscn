@@ -13,6 +13,7 @@ script = ExtResource("1_ftu3d")
 
 [node name="RatTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nudl1")
+bus = &"Music"
 
 [node name="Tissues" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
 stream = ExtResource("3_hyjgr")
@@ -31,7 +32,9 @@ bus = &"Music"
 
 [node name="Dumpster" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
 stream = ExtResource("6_obdaw")
+bus = &"Music"
 
 [node name="TrashBags" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
 stream = ExtResource("7_r63yf")
 volume_db = 1.726
+bus = &"Music"

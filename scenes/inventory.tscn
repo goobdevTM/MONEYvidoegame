@@ -48,6 +48,12 @@ corner_detail = 6
 [node name="INVENTORY" type="CanvasLayer"]
 script = ExtResource("1_ty45s")
 
+[node name="Viginette" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.21568628)
+scale = Vector2(1.33, 1.33)
+texture = ExtResource("2_53g1v")
+centered = false
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -82,12 +88,6 @@ theme_override_styles/slider = SubResource("StyleBoxFlat_5uoah")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_uvj3h")
 value = 100.0
 editable = false
-
-[node name="Viginette" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 0.21568628)
-scale = Vector2(1.33, 1.33)
-texture = ExtResource("2_53g1v")
-centered = false
 
 [node name="RatsHired" type="RichTextLabel" parent="."]
 clip_contents = false

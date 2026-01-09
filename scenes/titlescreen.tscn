@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://jjo26rmcgd4a"]
+[gd_scene load_steps=16 format=4 uid="uid://jjo26rmcgd4a"]
 
 [ext_resource type="Texture2D" uid="uid://6xicn7mn56r0" path="res://sprites/STTRP_logo.png" id="1_6d6rd"]
 [ext_resource type="Script" uid="uid://cxkuuv3vfsnnu" path="res://scripts/titlescreen.gd" id="1_84han"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="6_v6ms7"]
 [ext_resource type="AudioStream" uid="uid://bj7fdkcy182aj" path="res://audio/music/SellTrashToRichPeople.ogg" id="9_6ejck"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="9_w77yj"]
+[ext_resource type="Script" uid="uid://bj1lmperb6mvp" path="res://scripts/button_animations.gd" id="10_8or72"]
+[ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="13_hcbn3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tt55a"]
 texture = ExtResource("2_3jj3l")
@@ -83,6 +85,7 @@ offset_top = 240.0
 offset_right = 160.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("10_8or72")
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
@@ -106,6 +109,9 @@ visible = false
 stream = ExtResource("9_6ejck")
 volume_db = -3.021
 autoplay = true
+bus = &"Music"
+
+[node name="ClickAndHover" parent="." instance=ExtResource("13_hcbn3")]
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="Settings" method="open"]

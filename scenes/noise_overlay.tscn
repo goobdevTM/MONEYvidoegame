@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6bbthyyqtxrt"]
+
+[sub_resource type="Gradient" id="Gradient_264po"]
+offsets = PackedFloat32Array(0, 0.36, 0.78)
+colors = PackedColorArray(0.35041875, 0.24899107, 0.17881739, 1, 0.21948591, 0.2743099, 0.19046855, 1, 0.43223354, 0.47029358, 0.3392457, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1kice"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_suyxu"]
+width = 384
+noise = SubResource("FastNoiseLite_1kice")
+color_ramp = SubResource("Gradient_264po")
+seamless = true
+seamless_blend_skirt = 0.221
+
+[node name="NoiseOverlay" type="Node2D"]
+
+[node name="1" type="Sprite2D" parent="."]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.33333334)
+position = Vector2(-384, 0)
+texture = SubResource("NoiseTexture2D_suyxu")
+
+[node name="2" type="Sprite2D" parent="."]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.33333334)
+texture = SubResource("NoiseTexture2D_suyxu")
+
+[node name="3" type="Sprite2D" parent="."]
+modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.33333334)
+position = Vector2(384, 0)
+texture = SubResource("NoiseTexture2D_suyxu")

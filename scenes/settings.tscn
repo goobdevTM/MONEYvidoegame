@@ -91,6 +91,7 @@ text = "exit game"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_r6d6q")
+bus = &"Music"
 
 [connection signal="value_changed" from="Control/TabContainer/Audio/Master" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="Control/TabContainer/Video/StaminaOpacity" to="." method="_on_stamina_opacity_value_changed"]

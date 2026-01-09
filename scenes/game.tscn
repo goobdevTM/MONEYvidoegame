@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=33 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -10,11 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://bonp7qucnfhcq" path="res://sprites/bush.png" id="5_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="5_trtic"]
 [ext_resource type="Texture2D" uid="uid://c1tr1iau1hmtj" path="res://sprites/fence.png" id="6_264po"]
+[ext_resource type="PackedScene" uid="uid://b6bbthyyqtxrt" path="res://scenes/noise_overlay.tscn" id="8_rysoc"]
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_ca42v"]
-[ext_resource type="PackedScene" uid="uid://bug8okbqgftl2" path="res://scenes/home.tscn" id="12_rysoc"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
 [ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="13_ir15t"]
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="14_trtic"]
+[ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="16_ca42v"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kice"]
 normal = Vector2(1, 0)
@@ -54,19 +55,6 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_sww3w"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_ssvqc")
-
-[sub_resource type="Gradient" id="Gradient_264po"]
-offsets = PackedFloat32Array(0, 0.36, 0.78)
-colors = PackedColorArray(0.35041875, 0.24899107, 0.17881739, 1, 0.21948591, 0.2743099, 0.19046855, 1, 0.43223354, 0.47029358, 0.3392457, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1kice"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_suyxu"]
-width = 384
-noise = SubResource("FastNoiseLite_1kice")
-color_ramp = SubResource("Gradient_264po")
-seamless = true
-seamless_blend_skirt = 0.221
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sgl2t"]
 radius = 6.0
@@ -146,35 +134,7 @@ z_index = -4096
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_sww3w")
 
-[node name="NoiseOverlay" type="Node2D" parent="Level"]
-
-[node name="1" type="Sprite2D" parent="Level/NoiseOverlay"]
-modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
-position = Vector2(-384, 0)
-texture = SubResource("NoiseTexture2D_suyxu")
-
-[node name="2" type="Sprite2D" parent="Level/NoiseOverlay"]
-modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
-texture = SubResource("NoiseTexture2D_suyxu")
-
-[node name="3" type="Sprite2D" parent="Level/NoiseOverlay"]
-modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.25882354)
-position = Vector2(384, 0)
-texture = SubResource("NoiseTexture2D_suyxu")
-
-[node name="4" type="Sprite2D" parent="Level/NoiseOverlay"]
-modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
-position = Vector2(-384, 0)
-texture = SubResource("NoiseTexture2D_suyxu")
-
-[node name="5" type="Sprite2D" parent="Level/NoiseOverlay"]
-modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
-texture = SubResource("NoiseTexture2D_suyxu")
-
-[node name="6" type="Sprite2D" parent="Level/NoiseOverlay"]
-modulate = Color(0.98039216, 0.98039216, 0.98039216, 0.13725491)
-position = Vector2(384, 0)
-texture = SubResource("NoiseTexture2D_suyxu")
+[node name="NoiseOverlay" parent="Level" instance=ExtResource("8_rysoc")]
 
 [node name="LitterSpawner" type="Node2D" parent="Level"]
 
@@ -199,8 +159,9 @@ tile_set = SubResource("TileSet_v2yb1")
 
 [node name="EnterHome" type="Area2D" parent="Level"]
 collision_layer = 128
+collision_mask = 2
 script = ExtResource("11_ca42v")
-change_to_scene = ExtResource("12_rysoc")
+start_pos = Vector2(144, 0)
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
 position = Vector2(-384, 0)
@@ -224,5 +185,7 @@ shape = SubResource("WorldBoundaryShape2D_twgab")
 visible = false
 
 [node name="MusicController" parent="." instance=ExtResource("14_trtic")]
+
+[node name="ClickAndHover" parent="." instance=ExtResource("16_ca42v")]
 
 [connection signal="body_entered" from="Level/EnterHome" to="Level/EnterHome" method="_on_body_entered"]

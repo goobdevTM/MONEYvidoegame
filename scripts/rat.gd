@@ -26,6 +26,8 @@ func _physics_process(delta: float) -> void:
 	#basic movement
 	if hired:
 		direction = player.global_position - global_position
+		if global_position.distance_to(player.global_position) < 20:
+			direction = global_position - player.global_position
 	else:
 		if randi_range(0,50) == 0:
 			direction.y = randi_range(-1,1)

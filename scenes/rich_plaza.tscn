@@ -1,3 +1,137 @@
-[gd_scene format=3 uid="uid://cwq0qr0p3gujk"]
+[gd_scene load_steps=24 format=4 uid="uid://cwq0qr0p3gujk"]
+
+[ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_hos2y"]
+[ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="2_4w4jk"]
+[ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="2_5g0d7"]
+[ext_resource type="Texture2D" uid="uid://b4rfd40t1fdqh" path="res://sprites/plaza_floor.png" id="3_salir"]
+[ext_resource type="Texture2D" uid="uid://viaxqrg20cfe" path="res://sprites/rich_brick.png" id="5_30ww6"]
+[ext_resource type="Texture2D" uid="uid://rgc1a0o25mh1" path="res://sprites/rich_outline.png" id="6_salir"]
+[ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="7_42p0x"]
+[ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="8_cfjbj"]
+[ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="9_62evx"]
+[ext_resource type="AudioStream" uid="uid://cfdckwl82p4cp" path="res://audio/music/Rich Person Theme.ogg" id="10_5g0d7"]
+[ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_5pgt4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axcjw"]
+texture = ExtResource("3_salir")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kgh3f"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_axcjw")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsnp2"]
+radius = 6.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30ww6"]
+texture = ExtResource("6_salir")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kgh3f"]
+texture = ExtResource("5_30ww6")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cfjbj"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/2 = SubResource("TileSetAtlasSource_kgh3f")
+sources/0 = SubResource("TileSetAtlasSource_30ww6")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_62evx"]
+texture = ExtResource("5_30ww6")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0w0s1"]
+texture = ExtResource("6_salir")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_42p0x"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/2 = SubResource("TileSetAtlasSource_62evx")
+sources/3 = SubResource("TileSetAtlasSource_0w0s1")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_quxuj"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l2qw1"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aps22"]
 
 [node name="RichPlaza" type="Node2D"]
+script = ExtResource("1_hos2y")
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+zoom = Vector2(4, 4)
+limit_left = -256
+limit_top = -192
+limit_right = 256
+limit_bottom = 192
+script = ExtResource("2_5g0d7")
+player = NodePath("../Level/TrashSpawner/Player")
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="Level"]
+z_index = -4096
+tile_map_data = PackedByteArray("AAD+/wAAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAAAAP//AQAAAAAAAAD/////AQAAAAAAAAD+////AQAAAAAAAAD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAACAP7/AQAAAAAAAAACAP//AQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAD//wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wAAAQAAAAAAAAD9////AQAAAAAAAAD9//7/AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_kgh3f")
+
+[node name="TrashSpawner" type="Node2D" parent="Level"]
+
+[node name="Player" parent="Level/TrashSpawner" instance=ExtResource("7_42p0x")]
+position = Vector2(140, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
+shape = SubResource("CircleShape2D_dsnp2")
+
+[node name="LitterSpawner" type="Node2D" parent="Level"]
+
+[node name="RatSpawner" type="Node2D" parent="Level"]
+
+[node name="Shadow" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAADAAwAAAAAAAAAAAACAAwAAAAAAAAAAAABAAwAAAAAAAAAAAAAAAwAAAAAAAAAAAD//wwAAAAAAAAAAAD+/wwAAAAAAAAAAAD9/wwAAAAAAAAAAAD8/wwAAAAAAAAAAAD7/wwAAAAAAAAAAAD6/wwAAAAAAAAAAAD5/wwAAAAAAAAAAAD4/wwAAAAAAAAAAAD3/wwAAAAAAAAAAAD2/wwAAAAAAAAAAAD1/wwAAAAAAAAAAAD0/wwAAAAAAAAAAADz/wwAAAAAAAAAAADy/wwAAAAAAAAAAADx/wwAAAAAAAAAAADw/wwAAAAAAAAAAADw/wsAAAAAAAAAAADw/woAAAAAAAAAAADw/wkAAAAAAAAAAADw/wgAAAAAAAAAAADw/wcAAAAAAAAAAADw/wYAAAAAAAAAAADw/wUAAAAAAAAAAADw/wQAAAAAAAAAAADw/wMAAAAAAAAAAADw/wIAAAAAAAAAAADw/wEAAAAAAAAAAADw/wAAAAAAAAAAAADw////AAAAAAAAAADw//7/AAAAAAAAAADw//3/AAAAAAAAAADw//z/AAAAAAAAAADw//v/AAAAAAAAAADw//r/AAAAAAAAAADw//n/AAAAAAAAAADw//j/AAAAAAAAAADw//f/AAAAAAAAAADw//b/AAAAAAAAAADw//X/AAAAAAAAAADw//T/AAAAAAAAAADx//T/AAAAAAAAAADy//T/AAAAAAAAAADz//T/AAAAAAAAAAD0//T/AAAAAAAAAAD1//T/AAAAAAAAAAD2//T/AAAAAAAAAAD3//T/AAAAAAAAAAD4//T/AAAAAAAAAAD5//T/AAAAAAAAAAD6//T/AAAAAAAAAAD7//T/AAAAAAAAAAD8//T/AAAAAAAAAAD9//T/AAAAAAAAAAD+//T/AAAAAAAAAAD///T/AAAAAAAAAAAAAPT/AAAAAAAAAAABAPT/AAAAAAAAAAACAPT/AAAAAAAAAAADAPT/AAAAAAAAAAAEAPT/AAAAAAAAAAAFAPT/AAAAAAAAAAAGAPT/AAAAAAAAAAAHAPT/AAAAAAAAAAAIAPT/AAAAAAAAAAAJAPT/AAAAAAAAAAAKAPT/AAAAAAAAAAALAPT/AAAAAAAAAAAMAPT/AAAAAAAAAAANAPT/AAAAAAAAAAAOAPT/AAAAAAAAAAAPAPT/AAAAAAAAAAAPAPX/AAAAAAAAAAAPAPb/AAAAAAAAAAAPAPf/AAAAAAAAAAAPAPj/AAAAAAAAAAAPAPn/AAAAAAAAAAAPAPr/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAPAP7/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_cfjbj")
+
+[node name="Bricks" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAAPAAEAAgAAAAAAAAAPAAIAAgAAAAAAAAAPAAMAAgAAAAAAAAAPAAQAAgAAAAAAAAAPAAUAAgAAAAAAAAAPAAYAAgAAAAAAAAAPAAcAAgAAAAAAAAAPAP7/AgAAAAAAAAAPAP3/AgAAAAAAAAAPAPz/AgAAAAAAAAAPAPv/AgAAAAAAAAAPAPr/AgAAAAAAAAAPAPn/AgAAAAAAAAAPAPj/AgAAAAAAAAAPAPT/AgAAAAAAAAAPAPX/AgAAAAAAAAAPAPb/AgAAAAAAAAAPAPf/AgAAAAAAAAAPAAsAAgAAAAAAAAAPAAoAAgAAAAAAAAAPAAkAAgAAAAAAAAAPAAgAAgAAAAAAAAAPAAwAAgAAAAAAAAAOAAwAAgAAAAAAAAANAAwAAgAAAAAAAAAMAAwAAgAAAAAAAAALAAwAAgAAAAAAAAAKAAwAAgAAAAAAAAAJAAwAAgAAAAAAAAAIAAwAAgAAAAAAAAAHAAwAAgAAAAAAAAAGAAwAAgAAAAAAAAAFAAwAAgAAAAAAAAAEAAwAAgAAAAAAAAADAAwAAgAAAAAAAAACAAwAAgAAAAAAAAABAAwAAgAAAAAAAAAAAAwAAgAAAAAAAAD//wwAAgAAAAAAAAD+/wwAAgAAAAAAAAD9/wwAAgAAAAAAAAD8/wwAAgAAAAAAAAD7/wwAAgAAAAAAAAD6/wwAAgAAAAAAAAD5/wwAAgAAAAAAAAD4/wwAAgAAAAAAAAD3/wwAAgAAAAAAAAD2/wwAAgAAAAAAAAD1/wwAAgAAAAAAAAD0/wwAAgAAAAAAAADz/wwAAgAAAAAAAADy/wwAAgAAAAAAAADx/wwAAgAAAAAAAADw/wwAAgAAAAAAAADw/wsAAgAAAAAAAADw/woAAgAAAAAAAADw/wkAAgAAAAAAAADw/wgAAgAAAAAAAADw/wcAAgAAAAAAAADw/wYAAgAAAAAAAADw/wUAAgAAAAAAAADw/wQAAgAAAAAAAADw/wMAAgAAAAAAAADw/wIAAgAAAAAAAADw/wEAAgAAAAAAAADw/wAAAgAAAAAAAADw////AgAAAAAAAADw//7/AgAAAAAAAADw//3/AgAAAAAAAADw//z/AgAAAAAAAADw//v/AgAAAAAAAADw//r/AgAAAAAAAAAOAPT/AgAAAAAAAAANAPT/AgAAAAAAAAAMAPT/AgAAAAAAAAALAPT/AgAAAAAAAAAKAPT/AgAAAAAAAAAJAPT/AgAAAAAAAAAIAPT/AgAAAAAAAAAHAPT/AgAAAAAAAAAGAPT/AgAAAAAAAAAFAPT/AgAAAAAAAAAEAPT/AgAAAAAAAAADAPT/AgAAAAAAAAACAPT/AgAAAAAAAAABAPT/AgAAAAAAAAAAAPT/AgAAAAAAAAD///T/AgAAAAAAAAD+//T/AgAAAAAAAAD9//T/AgAAAAAAAAD8//T/AgAAAAAAAAD7//T/AgAAAAAAAAD6//T/AgAAAAAAAAD5//T/AgAAAAAAAAD4//T/AgAAAAAAAAD3//T/AgAAAAAAAAD2//T/AgAAAAAAAAD1//T/AgAAAAAAAAD0//T/AgAAAAAAAADz//T/AgAAAAAAAADy//T/AgAAAAAAAADx//T/AgAAAAAAAADw//T/AgAAAAAAAADw//X/AgAAAAAAAADw//b/AgAAAAAAAADw//f/AgAAAAAAAADw//j/AgAAAAAAAADw//n/AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_42p0x")
+
+[node name="EnterHome" type="Area2D" parent="Level"]
+position = Vector2(96, 0)
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("11_5pgt4")
+
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
+position = Vector2(160, 0)
+shape = SubResource("WorldBoundaryShape2D_quxuj")
+
+[node name="Borders" type="StaticBody2D" parent="Level"]
+collision_layer = 65
+collision_mask = 7
+
+[node name="Top" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(0, -192)
+shape = SubResource("WorldBoundaryShape2D_l2qw1")
+
+[node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(0, 192)
+shape = SubResource("WorldBoundaryShape2D_aps22")
+
+[node name="INVENTORY" parent="." instance=ExtResource("8_cfjbj")]
+
+[node name="Settings" parent="." instance=ExtResource("9_62evx")]
+visible = false
+
+[node name="RichMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5g0d7")
+autoplay = true
+bus = &"Music"
+
+[node name="ClickAndHover" parent="." instance=ExtResource("2_4w4jk")]
+
+[connection signal="body_entered" from="Level/EnterHome" to="Level/EnterHome" method="_on_body_entered"]

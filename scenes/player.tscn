@@ -92,6 +92,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 129
 script = ExtResource("1_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -159,11 +160,13 @@ offset_bottom = 40.0
 stream = ExtResource("7_fjrip")
 volume_db = -1.726
 pitch_scale = 0.78
+bus = &"Sounds"
 
 [node name="OpenLitter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fjrip")
 volume_db = -8.199
 pitch_scale = 1.01
+bus = &"Sounds"
 
 [connection signal="area_entered" from="HandArea" to="." method="_on_hand_area_area_entered"]
 [connection signal="area_exited" from="HandArea" to="." method="_on_hand_area_area_exited"]

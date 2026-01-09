@@ -9,8 +9,10 @@ var rat_rarity : int = 10
 
 #INVENTORY
 var inventory_slots : int = 9
-var selected_slot : int = 3
+var selected_slot : int = -1
 var max_per_slot : int = 25
+var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
+var last_given_slot : bool = false
 
 var items : Array[Dictionary] = [
 	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 0.4},
@@ -27,11 +29,32 @@ var items : Array[Dictionary] = [
 	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.003},
 	{'name': "Glove", 'coords': Vector2i(0,3), 'chance': 0.1},
 	{'name': "Fries", 'coords': Vector2i(1,3), 'chance': 0.05},
-	{'name': "Rat", 'coords': Vector2i(2,3), 'chance': 0.05},
+	{'name': "Banana Peel", 'coords': Vector2i(2,3), 'chance': 0.05},
 	{'name': "Photo", 'coords': Vector2i(3,3), 'chance': 0.025},
 ]
 
 var inventory : Array[Dictionary] = [
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+]
+
+var storage : Array[Dictionary] = [
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
+	{'id': 0, 'count': 0},
 	{'id': 0, 'count': 0},
 	{'id': 0, 'count': 0},
 	{'id': 0, 'count': 0},
@@ -52,6 +75,10 @@ var in_storage : bool = false
 var master_volume : float = 50
 var stamina_bar_opacity: float = 1
 
+#UI
+var click_sound : AudioStreamPlayer = AudioStreamPlayer.new()
+var hover_sound : AudioStreamPlayer = AudioStreamPlayer.new()
+
 #GAME
 var working_rats : int = 0
 var money : int = 0
@@ -60,10 +87,16 @@ var start_pos : Vector2 = Vector2(0, 0) #where player spawns
 
 func _ready() -> void:
 	load_data()
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 #SAVING AND LOADING
 var file_path: String = "user://save_data.save"
 signal loaded_data
+
+#SET CLICK AND HOVER SOUND FOR GUI
+func set_ui_sounds(parent_node : Node) -> void:
+	click_sound = parent_node.get_child(0)
+	hover_sound = parent_node.get_child(1)
 
 #SAVE
 func save_data():
@@ -105,34 +138,40 @@ func get_item_with_chance() -> int:
 
 
 func _input(event: InputEvent) -> void:
-	#sets selected_slot to number keys
-	if Input.is_action_just_pressed("1"):
-		selected_slot = 0
-	if Input.is_action_just_pressed("2"):
-		selected_slot = 1
-	if Input.is_action_just_pressed("3"):
-		selected_slot = 2
-	if Input.is_action_just_pressed("4"):
-		selected_slot = 3
-	if Input.is_action_just_pressed("5"):
-		selected_slot = 4
-	if Input.is_action_just_pressed("6"):
-		selected_slot = 5
-	if Input.is_action_just_pressed("7"):
-		selected_slot = 6
-	if Input.is_action_just_pressed("8"):
-		selected_slot = 7
-	if Input.is_action_just_pressed("9"):
-		selected_slot = 8
+	if in_game:
+		#sets selected_slot to number keys
+		if Input.is_action_just_pressed("1"):
+			selected_slot = 0
+		if Input.is_action_just_pressed("2"):
+			selected_slot = 1
+		if Input.is_action_just_pressed("3"):
+			selected_slot = 2
+		if Input.is_action_just_pressed("4"):
+			selected_slot = 3
+		if Input.is_action_just_pressed("5"):
+			selected_slot = 4
+		if Input.is_action_just_pressed("6"):
+			selected_slot = 5
+		if Input.is_action_just_pressed("7"):
+			selected_slot = 6
+		if Input.is_action_just_pressed("8"):
+			selected_slot = 7
+		if Input.is_action_just_pressed("9"):
+			selected_slot = 8
+			
+		#dont do scrolling if in storage
+		if not selected_slot >= 9:
+			#sets selected_slot to scroll wheel
+			if Input.is_action_just_released("scroll_up"):
+				selected_slot -= 1
+				#loop selected_slot if > or < inventory_slots
+				selected_slot = posmod(selected_slot, inventory_slots)
+				
+			if Input.is_action_just_released("scroll_down"):
+				selected_slot += 1
+				#loop selected_slot if > or < inventory_slots
+				selected_slot = posmod(selected_slot, inventory_slots)
 		
-	#sets selected_slot to scroll wheel
-	if Input.is_action_just_released("scroll_up"):
-		selected_slot -= 1
-	if Input.is_action_just_released("scroll_down"):
-		selected_slot += 1
 		
-	#loop selected_slot if > or < inventory_slots
-	selected_slot = posmod(selected_slot, inventory_slots)
-	
-	#updates the slots
-	emit_signal("slot_selected")
+		#updates the slots
+		emit_signal("slot_selected")
