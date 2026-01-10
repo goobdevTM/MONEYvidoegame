@@ -17,3 +17,8 @@ func save_pressed(index : int) -> void:
 			i.button_pressed = false
 	saves.get_child(index).button_pressed = true
 	Globals.load_saves(index)
+
+
+func _on_website_pressed() -> void:
+	OS.shell_open("https://glagglewares.neocities.org/")
+	

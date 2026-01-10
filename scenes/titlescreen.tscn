@@ -192,6 +192,7 @@ bus = &"Music"
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="Settings" method="open"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="BottomButtons/Website" to="." method="_on_website_pressed"]
 [connection signal="pressed" from="BottomButtons/Saves/1" to="." method="save_pressed" binds= [0]]
 [connection signal="pressed" from="BottomButtons/Saves/2" to="." method="save_pressed" binds= [1]]
 [connection signal="pressed" from="BottomButtons/Saves/3" to="." method="save_pressed" binds= [2]]
