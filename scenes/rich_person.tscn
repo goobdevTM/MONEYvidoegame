@@ -33,6 +33,7 @@ radius = 8.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_prf6t"]
 
 [node name="RichPerson" type="CharacterBody2D" groups=["rich_people"]]
+collision_mask = 387
 script = ExtResource("1_4hxcs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
