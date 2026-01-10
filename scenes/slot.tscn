@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=4 uid="uid://ep7xcgg7p76x"]
+[gd_scene load_steps=36 format=4 uid="uid://ep7xcgg7p76x"]
 
 [ext_resource type="Script" uid="uid://c46we8d76srr7" path="res://scripts/slot.gd" id="1_5f2j7"]
 [ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="2_sjnr7"]
 [ext_resource type="Texture2D" uid="uid://bb6xgxabnpt4p" path="res://sprites/slot.png" id="3_n3jes"]
 [ext_resource type="Texture2D" uid="uid://cro8d4w40plyr" path="res://sprites/trash_atlas_1.png" id="4_cs5ta"]
 [ext_resource type="Texture2D" uid="uid://dlsmogylw0g4b" path="res://sprites/dumpster_slot.png" id="5_sjnr7"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="6_n3jes"]
 
 [sub_resource type="Image" id="Image_qmde4"]
 data = {
@@ -1887,18 +1888,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tooltip:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.045, 0.045)]
-}
 
 [sub_resource type="Animation" id="Animation_5f2j7"]
 resource_name = "hover"
@@ -1931,150 +1920,12 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1.25, 1.25), Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tooltip:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.045, 0.045), Vector2(1e-05, 1e-05)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n3jes"]
 _data = {
 &"RESET": SubResource("Animation_sjnr7"),
 &"hover": SubResource("Animation_5f2j7"),
 &"unhover": SubResource("Animation_n3jes")
-}
-
-[sub_resource type="Animation" id="Animation_xjccs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_cs5ta"]
-resource_name = "appear"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.07),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(0.045, 0.045)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_w173o"]
-resource_name = "disappear"
-length = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.045, 0.045), Vector2(1e-05, 1e-05)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w173o"]
-_data = {
-&"RESET": SubResource("Animation_xjccs"),
-&"appear": SubResource("Animation_cs5ta"),
-&"disappear": SubResource("Animation_w173o")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjnr7"]
@@ -2154,32 +2005,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_n3jes")
 }
 
-[node name="Tooltip" type="Node2D" parent="."]
-visible = false
-z_index = 4096
-position = Vector2(8.000001, 0)
-scale = Vector2(1e-05, 1e-05)
-
-[node name="Name" type="RichTextLabel" parent="Tooltip"]
-z_index = 100
-clip_contents = false
-offset_left = -367.5
-offset_top = -160.0
-offset_right = 367.5
-offset_bottom = -8.0
-mouse_filter = 2
-theme = SubResource("Theme_bhx41")
-bbcode_enabled = true
-text = "[center]nametastic
-"
-fit_content = true
-autowrap_mode = 0
-
-[node name="TooltipAnim" type="AnimationPlayer" parent="Tooltip"]
-libraries = {
-&"": SubResource("AnimationLibrary_w173o")
-}
-
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -2199,6 +2024,23 @@ position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_sjnr7")
 animation = &"inventory"
 autoplay = "inventory"
+
+[node name="ToolTip" type="Node2D" parent="."]
+z_index = 4096
+
+[node name="Name" type="RichTextLabel" parent="ToolTip"]
+clip_contents = false
+offset_left = -31.0
+offset_top = -13.0
+offset_right = 309.64868
+offset_bottom = 40.088108
+scale = Vector2(0.22603935, 0.22603935)
+mouse_filter = 2
+theme = ExtResource("6_n3jes")
+bbcode_enabled = true
+text = "fsasfafas"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

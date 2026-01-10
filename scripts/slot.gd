@@ -6,12 +6,11 @@ extends Control
 @onready var amount: RichTextLabel = $Amount
 @onready var item_sprite: Sprite2D = $Item
 @onready var anim: AnimationPlayer = $Anim
-@onready var tooltip_anim: AnimationPlayer = $Tooltip/TooltipAnim
-@onready var tooltip: Node2D = $Tooltip
-@onready var name_text: RichTextLabel = $Tooltip/Name
+@onready var name_text: RichTextLabel = $ToolTip/Name
 @onready var number: RichTextLabel = $Number
 @onready var hover_item: Sprite2D = $"../../../HoverItem"
 @onready var slot_bg: AnimatedSprite2D = $SlotBG
+@onready var tool_tip: Node2D = $ToolTip
 
 var selected: bool = false
 var index: int
@@ -25,6 +24,7 @@ var local_slot : int = 0
 var mouse_over : bool = false
 
 func _ready() -> void:
+	
 	#make unique
 	item_sprite.texture = item_sprite.texture.duplicate()
 	
@@ -36,7 +36,6 @@ func _ready() -> void:
 	Globals.slot_selected.connect(update_slot)
 	update_slot()
 	await get_tree().create_timer(0).timeout
-	tooltip_anim.stop()	
 
 
 func update_slot() -> void:
@@ -63,37 +62,23 @@ func update_slot() -> void:
 	item = Globals.items[local_inventory[index]['id']]
 	item_sprite.texture.region = Rect2(item['coords'] * 8, Vector2(8,8))
 	amount.text = "[right]x" + str(local_inventory[index]['count'])
-	if local_inventory[index]['count'] > 0:
-		name_text.text = ""
-		name_text.size.x = 1
-		name_text.text = item['name']
-		
-	#tooltip shengangingans DONTOT TOUCH
-	if local_slot == index:
-		for i : Control in get_parent().get_children():
-			if not i == self:
-				if local_inventory[i.index]['count'] > 0 and i.appeared:
-					i.tooltip_anim.play("disappear")
-					i.appeared = false
-					
-	if local_inventory[index]['count'] > 0 and local_slot == index:
-		if (not local_slot == last_slot) or (not local_inventory[index]['id'] == last_item or (last_count <= 0 and local_inventory[index]['count'] > 0)):
-			appeared = true
-			tooltip_anim.stop()
-			tooltip_anim.play("appear")
-			name_text.text = item['name']
-			await get_tree().create_timer(0.02).timeout
-			name_text.position.x = -name_text.size.x / 2
-		
-	if (local_inventory[index]['count'] < last_count and local_inventory[index]['count'] <= 0) and last_count > 0 and appeared:
-		appeared = false
-		tooltip_anim.stop()
-		last_count = 0
-		local_inventory[index]['count'] = 0
-		tooltip_anim.play("disappear")
-
-
 	
+	if local_inventory[index]['count'] > 0:
+		name_text.text = "[center]" + item['name']
+		
+		if not local_slot == last_slot:
+			var tween: Tween = create_tween()
+			tool_tip.show()
+			tween.set_parallel()
+			tween.tween_property(tool_tip, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
+			tween.tween_property(tool_tip, "scale", Vector2(1, 1), 0.1)
+	
+	if local_inventory[index]['count'] <= 0 or not local_slot == index:
+		var tween: Tween = create_tween()
+		tween.set_parallel()
+		tween.tween_property(tool_tip, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.1)
+		tween.tween_property(tool_tip, "scale", Vector2(0, 0), 0.1)
+		
 	if local_inventory[index]['count'] <= 0:
 		item_sprite.hide()
 		amount.hide()
