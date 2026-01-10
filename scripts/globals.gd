@@ -141,7 +141,7 @@ var money : int = 0
 var time : float = 0
 var day : int = 0
 var start_pos : Vector2 = Vector2(0, 0) #where player spawns
-var day_length : float = 120 #seconds
+var day_length : float = 60.0 #seconds
 
 #SAVE
 var saves : Array[Dictionary] = [{},{},{}]
