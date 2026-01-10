@@ -2315,6 +2315,7 @@ scroll_active = false
 [node name="Music" type="AudioStreamPlayer" parent="StorageGUI"]
 stream = ExtResource("20_jdxxw")
 volume_db = -6.041
+bus = &"Music"
 
 [node name="Settings" parent="." instance=ExtResource("12_6k6s7")]
 layer = 3

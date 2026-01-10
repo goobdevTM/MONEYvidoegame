@@ -13,8 +13,15 @@ extends CanvasLayer
 
 func _ready() -> void:
 	stamina_opacity.value = Globals.stamina_bar_opacity
+	
+	
+	sound_slider.value = Globals.sound_volume
+	music_slider.value = Globals.music_volume
 	master_slider.value = Globals.master_volume
-	master_slider.value = Globals.master_volume
+	_on_master_value_changed(Globals.master_volume)
+	_on_music_value_changed(Globals.music_volume)
+	_on_sound_value_changed(Globals.sound_volume)
+	
 	hide()
 
 func _process(delta: float) -> void:
@@ -50,9 +57,7 @@ func close() -> void:
 	hide()
 	get_tree().paused = false
 	
-func _on_volume_value_changed(value: float) -> void:
-	Globals.master_volume = value
-	AudioServer.set_bus_volume_linear(0, value / 75)
+
 
 func _on_stamina_opacity_value_changed(value: float) -> void:
 	Globals.stamina_bar_opacity = value
@@ -67,3 +72,16 @@ func _on_quit_button_pressed() -> void:
 		get_tree().change_scene_to_file("res://scenes/titlescreen.tscn")
 	else:
 		Globals.save_and_quit()
+
+
+func _on_master_value_changed(value: float) -> void:
+	Globals.master_volume = value
+	AudioServer.set_bus_volume_linear(0, value / 75)
+
+func _on_sound_value_changed(value: float) -> void:
+	Globals.sound_volume = value
+	AudioServer.set_bus_volume_linear(0, value / 75)
+
+func _on_music_value_changed(value: float) -> void:
+	Globals.music_volume = value
+	AudioServer.set_bus_volume_linear(0, value / 75)
