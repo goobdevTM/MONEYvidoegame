@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=25 format=3 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
 [ext_resource type="Texture2D" uid="uid://36aawsxe7l0x" path="res://sprites/graph_bg.png" id="3_fgf4e"]
 [ext_resource type="AudioStream" uid="uid://dgqjd6bxlh6ih" path="res://audio/music/Rich People Theme Sale.ogg" id="4_hapmi"]
+[ext_resource type="FontFile" uid="uid://camgkxjqsnse2" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="4_wq1ny"]
+[ext_resource type="FontFile" uid="uid://uljll8355fgf" path="res://fonts/PixeloidSans-mLxMm.ttf" id="5_hvqj5"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
 length = 0.001
@@ -98,6 +100,24 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikxhh"]
+bg_color = Color(0.21950102, 0.21950102, 0.21950093, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.08078333, 0.08078336, 0.080783255, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi0dq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.5211406, 0.5211406, 0.5211405, 1)
+anti_aliasing = false
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_hapmi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvqj5"]
@@ -148,10 +168,10 @@ tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -180,14 +200,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:mouse_filter")
+tracks/3/path = NodePath("../Buttons/Left:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.65),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 2]
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Buttons/Right:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_0lf00"]
@@ -231,14 +263,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:mouse_filter")
+tracks/3/path = NodePath("../Buttons/Left:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Buttons/Right:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hvqj5"]
@@ -256,10 +300,10 @@ tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -288,14 +332,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:mouse_filter")
+tracks/3/path = NodePath("../Buttons/Right:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 2]
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Buttons/Left:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_s8cbi"]
@@ -339,14 +395,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:mouse_filter")
+tracks/3/path = NodePath("../Buttons/Right:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Buttons/Left:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dof8y"]
@@ -451,12 +519,14 @@ anchors_preset = -1
 anchor_top = 0.033333335
 anchor_right = 1.0
 anchor_bottom = 0.23333333
+offset_top = -6.0
+offset_bottom = -6.0
 grow_horizontal = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 36
+theme_override_fonts/normal_font = ExtResource("4_wq1ny")
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[center]Deal with John Rich III"
-metadata/_edit_use_anchors_ = true
 
 [node name="Question" type="RichTextLabel" parent="Control"]
 clip_contents = false
@@ -473,13 +543,13 @@ offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center]What"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Question"]
 modulate = Color(1, 1, 1, 0.5019608)
@@ -488,11 +558,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -5.0
+offset_top = -13.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hapmi")
+
+[node name="Number" type="RichTextLabel" parent="Control"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0125
+anchor_top = 0.13333334
+anchor_right = 1.0125
+anchor_bottom = 0.33333334
+offset_top = 15.0
+offset_bottom = -55.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]1/10 Questions Answered"
 
 [node name="TimeLeft" type="ProgressBar" parent="Control"]
 layout_mode = 1
@@ -501,13 +588,16 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 138.0
-offset_top = 20.0
+offset_top = 16.0
 offset_right = -142.0
-offset_bottom = 44.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ikxhh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vi0dq")
+max_value = 20.0
+value = 10.0
 show_percentage = false
 
 [node name="option_text" type="RichTextLabel" parent="Control/TimeLeft"]
@@ -521,6 +611,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/line_separation = 3
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 text = "time left"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -549,8 +640,9 @@ offset_top = 4.0
 offset_right = 279.0
 offset_bottom = 112.0
 mouse_filter = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.10980392, 0.22745098, 0, 1)
 theme_override_constants/line_separation = 3
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 text = "fdssfdfssfddfdsdfsdsffsdsfdfsdfsdfsdsfd"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -568,8 +660,9 @@ offset_top = 4.0
 offset_right = 279.0
 offset_bottom = 112.0
 mouse_filter = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.10980392, 0.22745098, 0, 1)
 theme_override_constants/line_separation = 3
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 text = "fdssfdfssfddfdsdfsdsffsdsfdfsdfsdfsdsfd"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -600,6 +693,7 @@ offset_right = 486.0
 offset_bottom = 19.0
 mouse_filter = 2
 theme = ExtResource("2_jupnj")
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 text = "Customer Satisfaction:"
 horizontal_alignment = 1
 
@@ -611,6 +705,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="BG" type="ColorRect" parent="Control/Wrong"]
 layout_mode = 1
@@ -629,12 +724,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 206.0
-offset_right = 640.0
-offset_bottom = 274.0
+offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "[center]WRONG!!!"
@@ -670,11 +765,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 206.0
-offset_bottom = -206.0
+offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0.5019608, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "[center]TIME UP..."
@@ -698,6 +794,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -710,11 +808,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 206.0
-offset_bottom = -206.00012
+offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "[center]Correct!"
@@ -750,11 +849,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 480.0
-offset_bottom = 138.47974
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "[center]ANSWER QUICKLY!!!"
@@ -772,7 +872,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.25
+wait_time = 1.5
 
 [connection signal="pressed" from="Control/Buttons/Left" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/Buttons/Right" to="." method="_on_button_pressed" binds= [1]]

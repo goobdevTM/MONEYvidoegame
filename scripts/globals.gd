@@ -148,6 +148,7 @@ var sleeping : bool = false
 var start_pos : Vector2 = Vector2(0, 0) #where player spawns
 var day_length : float = 1440.0 #seconds
 var rich_person_name : String = ""
+var question_speed_mult : float = 0.5
 
 #SAVE
 var saves : Array[Dictionary] = [{},{},{}]

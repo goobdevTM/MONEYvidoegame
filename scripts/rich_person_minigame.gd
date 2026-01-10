@@ -12,6 +12,7 @@ extends Node2D
 @onready var time_up_anim: AnimationPlayer = $Control/TimeUp/TimeUpAnim
 @onready var correct_anim: AnimationPlayer = $Control/Correct/CorrectAnim
 @onready var start_anim: AnimationPlayer = $Control/Start/StartAnim
+@onready var number: RichTextLabel = $Control/Number
 
 var bad_questions : Array[Dictionary] = [
 	{'q': "Are you a fool?", 'good': "Of course not sir!", 'bad': "Maybe..."},
@@ -41,15 +42,19 @@ var good_questions : Array[Dictionary] = [
 var good : int = randi_range(0,1)
 var camera_line_index : int = 0
 var target_line_x : float = 0
-var satisfaction : int = 10
+var satisfaction : float = 10
+var questions_answered : int = 0
+var max_questions : int = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	timer.wait_time /= Globals.question_speed_mult
 	satisfaction = 10
 	customer_satisfaction.value = satisfaction
 	name_text.text = "[center]Deal with " + Globals.rich_person_name
 	add_to_graph(0.0)
 	ask_question()
+	time_left.max_value = timer.wait_time
 	
 	
 
@@ -65,15 +70,16 @@ func _process(delta: float) -> void:
 		camera_line_index += 1
 	graph_camera.position.y = lerp(graph_camera.position.y, success_graph.get_point_position(camera_line_index).y, delta * 2)
 
+	time_left.value = timer.time_left
+	time_left.self_modulate = lerp(Color.RED, Color.GREEN, timer.time_left / timer.wait_time)
+
 func ask_question() -> void:
-	if start_anim.is_playing():
-		await start_anim.animation_finished
-	timer.start()
-	var question_int : int =  0
-	var question_dict : Dictionary = {}
-	if satisfaction > 0:
-		question_int = randi_range(0,len(bad_questions) - 1)
-		question_dict = bad_questions[question_int]
+	questions_answered += 1
+	number.text = "[center]" + str(questions_answered) + "/" + str(max_questions) + " Questions Answered"
+	number.modulate = lerp(Color.YELLOW, Color.GREEN, float(questions_answered) / float(max_questions))
+	
+	var question_int : int = randi_range(0,len(bad_questions) - 1)
+	var question_dict : Dictionary = bad_questions[question_int]
 		
 	if satisfaction > customer_satisfaction.max_value / 3:
 		question_int = randi_range(0,len(neutral_questions) - 1)
@@ -87,6 +93,10 @@ func ask_question() -> void:
 	good = randi_range(0,1)
 	buttons.get_child(good).get_child(0).text = question_dict['good']
 	buttons.get_child(posmod(good + 1, 2)).get_child(0).text = question_dict['bad']
+	
+	if start_anim.is_playing():
+		await start_anim.animation_finished
+	timer.start()
 	
 func add_to_graph(point : float) -> void:
 	var new_points : Array = success_graph.points
@@ -106,16 +116,16 @@ func _on_button_pressed(index : int) -> void:
 	timer.stop()
 	if good == index:
 		correct_anim.play("show")
-		satisfaction += 1
+		satisfaction += (time_left.value / time_left.max_value)/2 + 0.5 
 		customer_satisfaction.value = satisfaction
-		add_to_graph((success_graph.points[len(success_graph.points) - 1].y - time_left.value))
+		add_to_graph((success_graph.points[len(success_graph.points) - 1].y - ((time_left.value / time_left.max_value) * 64) - 48))
 		success_graph.default_color = Color.GREEN
 		await correct_anim.animation_finished
 	else:
 		wrong_anim.play("show")
 		satisfaction -= 2
 		customer_satisfaction.value = satisfaction
-		add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (150 -  time_left.value)))
+		add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (1 -  (time_left.value / time_left.max_value)) * 64) + 48)
 		success_graph.default_color = Color.RED
 		await wrong_anim.animation_finished
 	ask_question()
@@ -126,7 +136,7 @@ func _on_timer_timeout() -> void:
 	time_up_anim.play("show")
 	satisfaction -= 2
 	customer_satisfaction.value = satisfaction
-	add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (150 -  time_left.value)))
+	add_to_graph((success_graph.points[len(success_graph.points) - 1].y + ((1 - (time_left.value / time_left.max_value)) * 64) + 48))
 	success_graph.default_color = Color.RED
 	await time_up_anim.animation_finished
 	ask_question()
