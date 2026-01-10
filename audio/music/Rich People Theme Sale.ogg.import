@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgqjd6bxlh6ih"
+path="res://.godot/imported/Rich People Theme Sale.ogg-0a2bb0e31cca42ff7c3e854f33bf38e8.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Rich People Theme Sale.ogg"
+dest_files=["res://.godot/imported/Rich People Theme Sale.ogg-0a2bb0e31cca42ff7c3e854f33bf38e8.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

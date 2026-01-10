@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="8_cfjbj"]
 [ext_resource type="Texture2D" uid="uid://dg8ugiys8tlq2" path="res://sprites/sign.png" id="9_0w0s1"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="9_62evx"]
-[ext_resource type="AudioStream" uid="uid://5mir0dcrdhsr" path="res://audio/music/Rich People Theme Better.ogg" id="10_5g0d7"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="10_42p0x"]
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_5pgt4"]
+[ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="13_0w0s1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axcjw"]
 texture = ExtResource("3_salir")
@@ -174,7 +174,7 @@ horizontal_alignment = 1
 visible = false
 
 [node name="RichMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_5g0d7")
+stream = ExtResource("13_0w0s1")
 volume_db = -9.062
 autoplay = true
 bus = &"Music"

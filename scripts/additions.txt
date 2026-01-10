@@ -97,5 +97,5 @@ Version 1.110
 		website button,
 		tooltip fix,
 		icon,
-		splash screen
-		start of rich minigame
+		splash screen,
+		start of rich minigame,
