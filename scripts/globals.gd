@@ -128,8 +128,12 @@ var in_game : bool = false
 var in_storage : bool = false
 
 #SETTINGS
-var master_volume : float = 50
 var stamina_bar_opacity: float = 1
+#	AUDIO
+var master_volume : float = 50
+var sound_volume : float = 50
+var music_volume : float = 50
+
 
 #UI
 var click_sound : AudioStreamPlayer = AudioStreamPlayer.new()
@@ -168,6 +172,8 @@ func save_data():
 	
 	file.store_var(saves)
 	
+	file.store_var(sound_volume)
+	file.store_var(music_volume)
 	file.store_var(master_volume)
 	file.store_var(stamina_bar_opacity)
 	

@@ -45,9 +45,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 78.0
-offset_top = -191.0
+offset_top = -4.0
 offset_right = -88.0
-offset_bottom = -215.0
+offset_bottom = -402.0
 grow_horizontal = 2
 grow_vertical = 2
 value = 50.0
@@ -57,9 +57,9 @@ rounded = true
 clip_contents = false
 layout_mode = 0
 offset_left = 26.0
-offset_top = 225.0
+offset_top = 42.0
 offset_right = 452.0
-offset_bottom = 265.0
+offset_bottom = 82.0
 mouse_filter = 2
 theme = ExtResource("2_6wm04")
 text = "master volume"
@@ -71,9 +71,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 80.0
-offset_top = -154.0
+offset_top = 35.0
 offset_right = -86.0
-offset_bottom = -178.0
+offset_bottom = -366.0
 grow_horizontal = 2
 grow_vertical = 2
 value = 50.0
@@ -83,9 +83,9 @@ rounded = true
 clip_contents = false
 layout_mode = 0
 offset_left = 26.0
-offset_top = 225.0
+offset_top = 37.0
 offset_right = 452.0
-offset_bottom = 265.0
+offset_bottom = 77.0
 mouse_filter = 2
 theme = ExtResource("2_6wm04")
 text = "sound volume"
@@ -97,9 +97,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 80.0
-offset_top = -115.0
+offset_top = 88.0
 offset_right = -86.0
-offset_bottom = -139.0
+offset_bottom = -344.0
 grow_horizontal = 2
 grow_vertical = 2
 value = 50.0
@@ -109,9 +109,9 @@ rounded = true
 clip_contents = false
 layout_mode = 0
 offset_left = 26.0
-offset_top = 225.0
+offset_top = 25.0
 offset_right = 452.0
-offset_bottom = 265.0
+offset_bottom = 65.0
 mouse_filter = 2
 theme = ExtResource("2_6wm04")
 text = "music volume"
@@ -157,8 +157,8 @@ text = "exit game"
 stream = ExtResource("2_r6d6q")
 bus = &"Music"
 
-[connection signal="value_changed" from="Control/TabContainer/Audio/Master" to="." method="_on_volume_value_changed"]
-[connection signal="value_changed" from="Control/TabContainer/Audio/Sound" to="." method="_on_volume_value_changed"]
-[connection signal="value_changed" from="Control/TabContainer/Audio/Music" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Control/TabContainer/Audio/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="Control/TabContainer/Audio/Sound" to="." method="_on_sound_value_changed"]
+[connection signal="value_changed" from="Control/TabContainer/Audio/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="Control/TabContainer/Video/StaminaOpacity" to="." method="_on_stamina_opacity_value_changed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_button_pressed"]
