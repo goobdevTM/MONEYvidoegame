@@ -175,9 +175,9 @@ func _process(delta: float) -> void:
 				storage_gui.open()
 			elif items_in_hand[0].is_in_group("bed"):
 				var tween: Tween = create_tween()
-				tween.tween_property(self, "global_position", items_in_hand[0].global_position, 0.1)
-				tween.tween_property(camera, "global_position", items_in_hand[0].global_position, 0.15)
-				
+				tween.tween_property(self, "global_position", items_in_hand[0].global_position, 0.1).set_trans(Tween.TRANS_SINE)
+				tween.tween_property(camera, "global_position", items_in_hand[0].global_position, 0.15).set_trans(Tween.TRANS_SINE)
+				Globals.sleeping = true
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
