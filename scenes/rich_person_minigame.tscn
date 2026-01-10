@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=18 format=3 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
@@ -138,6 +138,91 @@ corner_detail = 6
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="Animation" id="Animation_wq1ny"]
+resource_name = "show"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.1, 0.4, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.65),
+"transitions": PackedFloat32Array(2, 0.5, 2, 2, -2),
+"update": 0,
+"values": [Vector2(0, 480), Vector2(0, 206), Vector2(0, 180), Vector2(0, 180), Vector2(0, 480)]
+}
+
+[sub_resource type="Animation" id="Animation_0lf00"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 206)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvqj5"]
+_data = {
+&"RESET": SubResource("Animation_0lf00"),
+&"show": SubResource("Animation_wq1ny")
+}
+
 [node name="RichPersonMinigame" type="Node2D"]
 script = ExtResource("1_jwd4e")
 
@@ -152,7 +237,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Graph" type="SubViewportContainer" parent="."]
-modulate = Color(1, 1, 1, 0.57254905)
+modulate = Color(1, 1, 1, 0.5019608)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -242,7 +327,6 @@ text = "[center]Deal with John Rich III"
 metadata/_edit_use_anchors_ = true
 
 [node name="Question" type="RichTextLabel" parent="Control"]
-z_index = 10
 clip_contents = false
 layout_mode = 1
 anchors_preset = -1
@@ -267,7 +351,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Question"]
 modulate = Color(1, 1, 1, 0.5019608)
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -358,13 +442,8 @@ text = "fdssfdfssfddfdsdfsdsffsdsfdfsdfsdfsdsfd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_hapmi")
-volume_db = -9.062
-autoplay = true
-bus = &"Music"
-
-[node name="CustomerSatisfaction" type="HSlider" parent="."]
+[node name="CustomerSatisfaction" type="HSlider" parent="Control"]
+layout_mode = 0
 offset_left = 161.0
 offset_top = 452.0
 offset_right = 481.0
@@ -380,7 +459,7 @@ max_value = 20.0
 value = 10.0
 editable = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CustomerSatisfaction"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/CustomerSatisfaction"]
 clip_contents = false
 layout_mode = 0
 offset_left = -152.0
@@ -392,7 +471,125 @@ theme = ExtResource("2_jupnj")
 text = "Customer Satisfaction:"
 horizontal_alignment = 1
 
+[node name="Wrong" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="Control/Wrong"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1882353, 0, 0, 0.2509804)
+
+[node name="Text" type="RichTextLabel" parent="Control/Wrong"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 206.0
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]WRONG!!!"
+
+[node name="WrongAnim" type="AnimationPlayer" parent="Control/Wrong"]
+libraries = {
+&"": SubResource("AnimationLibrary_hvqj5")
+}
+
+[node name="TimeUp" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="Control/TimeUp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1882353, 0.1882353, 0, 0.2509804)
+
+[node name="Text" type="RichTextLabel" parent="Control/TimeUp"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 206.0
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0.5019608, 0, 1)
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]TIME UP..."
+
+[node name="TimeUpAnim" type="AnimationPlayer" parent="Control/TimeUp"]
+libraries = {
+&"": SubResource("AnimationLibrary_hvqj5")
+}
+
+[node name="Correct" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="Control/Correct"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.1882353, 0, 0.2509804)
+
+[node name="Text" type="RichTextLabel" parent="Control/Correct"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 206.0
+offset_bottom = -206.00012
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]Correct!"
+
+[node name="CorrectAnim" type="AnimationPlayer" parent="Control/Correct"]
+libraries = {
+&"": SubResource("AnimationLibrary_hvqj5")
+}
+
+[node name="RichMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hapmi")
+volume_db = -9.062
+autoplay = true
+bus = &"Music"
+
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="Control/Buttons/Left" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/Buttons/Right" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

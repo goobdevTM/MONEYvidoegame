@@ -8,6 +8,9 @@ extends Node2D
 @onready var customer_satisfaction: HSlider = $CustomerSatisfaction
 @onready var question: RichTextLabel = $Control/Question
 @onready var timer: Timer = $Timer
+@onready var wrong_anim: AnimationPlayer = $Control/Wrong/WrongAnim
+@onready var time_up_anim: AnimationPlayer = $Control/TimeUp/TimeUpAnim
+@onready var correct_anim: AnimationPlayer = $Control/Correct/CorrectAnim
 
 var bad_questions : Array[Dictionary] = [
 	{'q': "Are you a fool?", 'good': "Of course not sir!", 'bad': "Maybe..."},
@@ -29,9 +32,9 @@ var neutral_questions : Array[Dictionary] = [
 var good_questions : Array[Dictionary] = [
 	{'q': "This is very interesting...", 'good': "I knew you would like it!", 'bad': "I wouldn't quite say that."},
 	{'q': "What is the significance of this art piece?", 'good': "It's made by a very famous and rich artist", 'bad': "I think it looks really cool."},
-	{'q': "Where do you reside?", 'good': "In a giant mansion of course!", 'bad': "Over there in the alleyway"},
-	{'q': "Where did you find this art piece?", 'good': "I got it from the original artist at an auction.", 'bad': "In a smelly dumpster. (A really cool dumpster though)"},
-	{'q': "I'm pretty convinced on purchasing this.", 'good': "That's great to hear!", 'bad': "Uhh... Totally radical!"},
+	{'q': "Where do you reside?", 'good': "In a giant mansion of course!", 'bad': "Over there in the alleyway."},
+	{'q': "Where did you find this art piece?", 'good': "I got it from the original artist at an auction.", 'bad': "In a smelly dumpster. (A really cool dumpster though)."},
+	{'q': "I'm pretty convinced on purchasing this.", 'good': "That's great to hear!", 'bad': "Uhh... Totally radical?"},
 ]
 
 var good : int = randi_range(0,1)
@@ -59,6 +62,7 @@ func _process(delta: float) -> void:
 		camera_line_index += 1
 	graph_camera.position.y = lerp(graph_camera.position.y, success_graph.get_point_position(camera_line_index).y, delta * 2)
 func ask_question() -> void:
+	timer.start()
 	var question_int : int =  0
 	var question_dict : Dictionary = {}
 	if satisfaction > 0:
@@ -98,9 +102,18 @@ func _on_button_pressed(index : int) -> void:
 		customer_satisfaction.value = satisfaction
 		add_to_graph((success_graph.points[len(success_graph.points) - 1].y - time_left.value))
 		success_graph.default_color = Color.GREEN
+		
 	else:
 		satisfaction -= 2
 		customer_satisfaction.value = satisfaction
 		add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (150 -  time_left.value)))
 		success_graph.default_color = Color.RED
+	ask_question()
+
+
+func _on_timer_timeout() -> void:
+	satisfaction -= 2
+	customer_satisfaction.value = satisfaction
+	add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (150 -  time_left.value)))
+	success_graph.default_color = Color.RED
 	ask_question()
