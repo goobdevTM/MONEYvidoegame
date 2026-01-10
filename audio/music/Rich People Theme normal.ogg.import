@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8qrd0q17e4ln"
+path="res://.godot/imported/Rich People Theme normal.ogg-d6a8bb00757d574f2485b99b2001243a.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/Rich People Theme normal.ogg"
+dest_files=["res://.godot/imported/Rich People Theme normal.ogg-d6a8bb00757d574f2485b99b2001243a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
