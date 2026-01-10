@@ -138,11 +138,11 @@ var hover_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 #GAME
 var working_rats : int = 0
 var money : int = 0
-var time : float = 0
+var time : float = 720.0 #day length / 2
 var day : int = 0
 var sleeping : bool = false
 var start_pos : Vector2 = Vector2(0, 0) #where player spawns
-var day_length : float = 30.0 #seconds
+var day_length : float = 1440.0 #seconds
 
 #SAVE
 var saves : Array[Dictionary] = [{},{},{}]

@@ -3,6 +3,9 @@ extends CanvasLayer
 @onready var h_box_container: HBoxContainer = $Control/HBoxContainer
 @onready var money: RichTextLabel = $Money
 @onready var rats_hired: RichTextLabel = $RatsHired
+@onready var time: RichTextLabel = $Time
+@onready var day: RichTextLabel = $Day
+
 const SLOT = preload("uid://ep7xcgg7p76x")
 
 
@@ -19,8 +22,20 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Globals.working_rats > 0:
-		rats_hired.text = "[right][right]Rats Hired: " + str(Globals.working_rats)
+		rats_hired.text = "Rats Hired: " + str(Globals.working_rats)
 	else:
 		#hide if no working rats
 		rats_hired.text = ""
+	day.text = "[right]Day " + str(Globals.day)
+	var hour : int = int(Globals.time / (Globals.day_length / 24)) % 12 + 1
+	var minute : int = int(Globals.time / (Globals.day_length / 1440)) % 60
+	minute = floor(minute / 5) * 5
+	time.text = "[right]" + str(hour) + ":" 
+	if minute < 10:
+		time.text += "0"
+	time.text += str(minute)
+	if Globals.time > (Globals.day_length / 2):
+		time.text += " PM"
+	else:
+		time.text += " AM"
 	money.text = "$" + str(Globals.money)

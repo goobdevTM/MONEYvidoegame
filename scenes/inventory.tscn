@@ -94,14 +94,14 @@ clip_contents = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
-offset_top = 8.0
+offset_top = 48.0
 offset_right = -8.0
-offset_bottom = 41.0
+offset_bottom = 81.0
 grow_horizontal = 2
 mouse_filter = 2
 theme = ExtResource("3_yyk2a")
 bbcode_enabled = true
-text = "[right]Rats Hired: 1"
+text = "Rats Hired: 1"
 
 [node name="Money" type="RichTextLabel" parent="."]
 clip_contents = false
@@ -118,3 +118,33 @@ theme_override_colors/default_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "$0"
+
+[node name="Day" type="RichTextLabel" parent="."]
+clip_contents = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 41.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("3_yyk2a")
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[right]Day 0"
+
+[node name="Time" type="RichTextLabel" parent="."]
+clip_contents = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = -8.0
+offset_bottom = 81.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("3_yyk2a")
+bbcode_enabled = true
+text = "[right]12:00 AM"
