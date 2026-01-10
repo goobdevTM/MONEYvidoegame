@@ -7,31 +7,32 @@ var friction : float = 0.7
 var direction : Vector2
 var hired : bool = false
 var hovering : bool = false
+var my_name: String = ""
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var piano_slam: AudioStreamPlayer = $PianoSlam
 @onready var name_text: RichTextLabel = $Name
 
-func generate_name() -> String:
+func generate_my_name() -> String:
 	#FINDS LEN OF RICH PEOPLE NAMES
-	var name: String = ""
-	var name_index: int = 0
-	name_index = len(Globals.rich_people_names) - 1
 	
-	name = Globals.rich_people_names[randi_range(0, name_index)] + " "
-	name = name + Globals.rich_people_names[randi_range(0, name_index)] + " "
+	var my_name_index: int = 0
+	my_name_index = len(Globals.rich_people_names) - 1
 	
-	name_index = len(Globals.roman_numerals) - 1
-	name = name + Globals.roman_numerals[randi_range(0, name_index)]
+	my_name = Globals.rich_people_names[randi_range(0, my_name_index)] + " "
+	my_name = my_name + Globals.rich_people_names[randi_range(0, my_name_index)] + " "
 	
-	return name
+	my_name_index = len(Globals.roman_numerals) - 1
+	my_name = my_name + Globals.roman_numerals[randi_range(0, my_name_index)]
+	
+	return my_name
 
 func _ready() -> void:
 	
 	hovering = false
 	
 	#NAME
-	name_text.text = generate_name()
+	name_text.text = generate_my_name()
 	
 	#MOVEMENT
 	speed = randi_range(200, 300)
@@ -64,5 +65,6 @@ func _on_rich_person_detector_area_entered(area: Area2D) -> void:
 		position = Vector2(randi_range(-(get_parent().x_limit), get_parent().x_limit), randi_range(-(get_parent().y_limit), get_parent().y_limit))
 
 func spoken_to():
-	pass
+	Globals.rich_person_name = my_name
+	get_tree().change_scene_to_packed(preload("uid://dpgtm36htk3qw"))
 	

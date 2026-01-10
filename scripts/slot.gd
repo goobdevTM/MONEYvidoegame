@@ -63,10 +63,13 @@ func update_slot() -> void:
 	item_sprite.texture.region = Rect2(item['coords'] * 8, Vector2(8,8))
 	amount.text = "[right]x" + str(local_inventory[index]['count'])
 	
+
+
 	if local_inventory[index]['count'] > 0:
+		#no offscreen
+		tool_tip.global_position.x = clamp(tool_tip.global_position.x, (len(item['name']) * 1), 640 - (len(item['name']) * 1))
 		name_text.text = "[center]" + item['name']
-		
-		if not local_slot == last_slot:
+		if ((not local_slot == last_slot) or (local_inventory[index]['count'] > last_count)) and local_slot == index:
 			var tween: Tween = create_tween()
 			tool_tip.show()
 			tween.set_parallel()

@@ -3,6 +3,7 @@ extends Node2D
 @onready var click_and_hover: Node = $ClickAndHover
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 
+var speed_up : float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,11 +23,15 @@ func _ready() -> void:
 		Globals.save_data()
 		
 func _process(delta: float) -> void:
-	canvas_modulate.color = lerp(Color.WHITE, Color(0.245, 0.362, 0.514, 1.0), clampf(abs(Globals.time - (Globals.day_length / 2)) / (Globals.day_length / 4) - 0.5, 0, 1))
+	canvas_modulate.color = lerp(Color.WHITE, Color(0.245, 0.362, 0.514, 1.0), clampf(abs(Globals.time - (Globals.day_length / 1.85)) / (Globals.day_length / 8) - 1.65, 0, 1))
 	if Globals.sleeping:
-		Globals.time += delta #speed time
+		Globals.time += delta * speed_up #speed time
+		if speed_up < 2:
+			speed_up = 2
+		speed_up = lerp(speed_up, 48.0, delta * 4)
 	else:
-		Globals.time += delta * 4
+		speed_up = 1
+		Globals.time += delta
 	if Globals.time > Globals.day_length:
 		Globals.emit_signal("next_day")
 		Globals.day += 1

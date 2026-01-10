@@ -84,3 +84,18 @@ Version 0.767
 		added bed (no sleep yet),
 		trash door area decorations,
 		rich door area decorations,
+		
+Version 1.110
+	Glagglewares employee 1 and 2,
+	fgeauveau (12:19 PM)
+	Added:
+		day/night cycle,
+		clock,
+		sleeping,
+		rat get litter,
+		saves,
+		website button,
+		tooltip fix,
+		icon,
+		splash screen
+		start of rich minigame

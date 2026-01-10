@@ -93,6 +93,9 @@ func _physics_process(delta: float) -> void:
 	eyes.position = lerp(eyes.position, direction.normalized() * 1.5, delta * 10)
 	hands.global_position = lerp(hands.global_position, last_positions[0], delta * 16)
 
+	if direction:
+		Globals.sleeping = false #wake up if moving
+
 	move_and_slide()
 	
 func _process(delta: float) -> void:
@@ -178,6 +181,10 @@ func _process(delta: float) -> void:
 				tween.tween_property(self, "global_position", items_in_hand[0].global_position, 0.1).set_trans(Tween.TRANS_SINE)
 				tween.tween_property(camera, "global_position", items_in_hand[0].global_position, 0.15).set_trans(Tween.TRANS_SINE)
 				Globals.sleeping = true
+			elif items_in_hand[0] is HigherClass:
+				emit_signal("talk_to_rich_person")
+				if len(items_in_hand) > 0: #stop crash
+					talk_to_rich_person.disconnect(items_in_hand[0].spoken_to)
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -271,10 +278,14 @@ func _on_hand_area_area_exited(area: Area2D) -> void:
 		#check not queue_freed
 		if items_in_hand[0]:
 			#only highlight if first item in list
+			if items_in_hand[0] is HigherClass: #disconnect if left area
+				if len(items_in_hand) > 0: #stop crash
+					talk_to_rich_person.disconnect(items_in_hand[0].spoken_to)
 			if items_in_hand[0] == area.get_parent():
 				items_in_hand.erase(area.get_parent())
 				highlight_item()
 				return
+			
 			items_in_hand.erase(area.get_parent())
 	
 func highlight_item() -> void:
@@ -297,12 +308,12 @@ func highlight_item() -> void:
 			text.text = "[center][E] - talk to?"
 			#SIGNALS
 			talk_to_rich_person.connect(items_in_hand[0].spoken_to)
-			emit_signal("talk_to_rich_person")
-			talk_to_rich_person.disconnect(items_in_hand[0].spoken_to)
+
 		
 		#dont show empty trash
-		if not is_trash_empty(items_in_hand[0]):
-			text_anim.play("appear")
+		if len(items_in_hand) > 0: #stop crash
+			if not is_trash_empty(items_in_hand[0]):
+				text_anim.play("appear")
 	else:
 		text_anim.play("disappear")
 

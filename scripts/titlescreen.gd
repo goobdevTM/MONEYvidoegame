@@ -5,6 +5,7 @@ extends Control
 
 func _ready() -> void:
 	Globals.selected_slot = 0
+	Globals.start_pos = Vector2(0, 0)
 	Globals.set_ui_sounds(click_and_hover)
 	for i : Button in saves.get_children():
 		i.get_child(1).text = str(i.get_index() + 1)
