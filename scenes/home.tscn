@@ -2226,7 +2226,6 @@ shape = SubResource("RectangleShape2D_wa7t7")
 [node name="StorageGUI" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 2
-visible = false
 script = ExtResource("14_o7pnx")
 
 [node name="BG" type="ColorRect" parent="StorageGUI"]
@@ -2251,7 +2250,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 80.0
+offset_left = 66.0
 offset_top = 60.0
 offset_right = -80.0
 offset_bottom = -160.0
@@ -2263,8 +2262,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -360.0
-offset_bottom = -195.0
+offset_left = 15.0
+offset_top = 13.0
+offset_right = -358.75
+offset_bottom = -190.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)

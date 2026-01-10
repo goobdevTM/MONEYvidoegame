@@ -2,13 +2,18 @@ extends CanvasLayer
 
 @onready var bg: ColorRect = $BG
 @onready var control: Control = $Control
-@onready var master_slider: HSlider = $Control/TabContainer/Audio/Master
-@onready var music: AudioStreamPlayer = $Music
 @onready var stamina_opacity: HSlider = $Control/TabContainer/Video/StaminaOpacity
+
+#AUDIO STUFF yhuj
+@onready var music: AudioStreamPlayer = $Music
+@onready var sound_slider: HSlider = $Control/TabContainer/Audio/Sound
+@onready var music_slider: HSlider = $Control/TabContainer/Audio/Music
+@onready var master_slider: HSlider = $Control/TabContainer/Audio/Master
 
 
 func _ready() -> void:
 	stamina_opacity.value = Globals.stamina_bar_opacity
+	master_slider.value = Globals.master_volume
 	master_slider.value = Globals.master_volume
 	hide()
 

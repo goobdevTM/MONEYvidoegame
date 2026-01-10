@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://my0n35c0lp3w"]
 
-[ext_resource type="AudioStream" uid="uid://dxwyvcrb360pc" path="res://audio/sfx/loud-bone-crack.ogg" id="1_jjm6c"]
+[ext_resource type="AudioStream" uid="uid://bwn7grqvfsywe" path="res://audio/music/mouse-click-sound.ogg" id="1_jjm6c"]
 
 [node name="ClickAndHover" type="Node"]
 process_mode = 3
@@ -11,4 +11,6 @@ bus = &"Sounds"
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_jjm6c")
+volume_db = -7.61
+pitch_scale = 1.88
 bus = &"Sounds"

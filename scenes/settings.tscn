@@ -33,10 +33,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Audio" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -45,16 +44,81 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 83.0
-offset_top = 31.0
-offset_right = -83.0
-offset_bottom = 7.0
+offset_left = 78.0
+offset_top = -191.0
+offset_right = -88.0
+offset_bottom = -215.0
 grow_horizontal = 2
 grow_vertical = 2
 value = 50.0
 rounded = true
 
+[node name="Master Volume" type="RichTextLabel" parent="Control/TabContainer/Audio/Master"]
+clip_contents = false
+layout_mode = 0
+offset_left = 26.0
+offset_top = 225.0
+offset_right = 452.0
+offset_bottom = 265.0
+mouse_filter = 2
+theme = ExtResource("2_6wm04")
+text = "master volume"
+horizontal_alignment = 1
+
+[node name="Sound" type="HSlider" parent="Control/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -154.0
+offset_right = -86.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+rounded = true
+
+[node name="Master Volume" type="RichTextLabel" parent="Control/TabContainer/Audio/Sound"]
+clip_contents = false
+layout_mode = 0
+offset_left = 26.0
+offset_top = 225.0
+offset_right = 452.0
+offset_bottom = 265.0
+mouse_filter = 2
+theme = ExtResource("2_6wm04")
+text = "sound volume"
+horizontal_alignment = 1
+
+[node name="Music" type="HSlider" parent="Control/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -115.0
+offset_right = -86.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+rounded = true
+
+[node name="Master Volume" type="RichTextLabel" parent="Control/TabContainer/Audio/Music"]
+clip_contents = false
+layout_mode = 0
+offset_left = 26.0
+offset_top = 225.0
+offset_right = 452.0
+offset_bottom = 265.0
+mouse_filter = 2
+theme = ExtResource("2_6wm04")
+text = "music volume"
+horizontal_alignment = 1
+
 [node name="Video" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -94,5 +158,7 @@ stream = ExtResource("2_r6d6q")
 bus = &"Music"
 
 [connection signal="value_changed" from="Control/TabContainer/Audio/Master" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Control/TabContainer/Audio/Sound" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Control/TabContainer/Audio/Music" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="Control/TabContainer/Video/StaminaOpacity" to="." method="_on_stamina_opacity_value_changed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_button_pressed"]
