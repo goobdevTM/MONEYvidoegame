@@ -22,7 +22,7 @@ func _ready() -> void:
 		Globals.save_data()
 		
 func _process(delta: float) -> void:
-	canvas_modulate.color = lerp(Color.WHITE, Color(0.305, 0.404, 0.535, 1.0), clampf(abs(Globals.time - (Globals.day_length / 2)) / (Globals.day_length / 4) - 0.5, 0, 1))
+	canvas_modulate.color = lerp(Color.WHITE, Color(0.245, 0.362, 0.514, 1.0), clampf(abs(Globals.time - (Globals.day_length / 2)) / (Globals.day_length / 4) - 0.5, 0, 1))
 	Globals.time += delta
 	if Globals.time > Globals.day_length:
 		Globals.emit_signal("next_day")
