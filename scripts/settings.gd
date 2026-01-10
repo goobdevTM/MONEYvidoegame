@@ -58,6 +58,7 @@ func _on_quit_button_pressed() -> void:
 		get_tree().paused = false
 		close()
 		Globals.set_saves(Globals.current_save)
+		await get_tree().create_timer(0.05).timeout
 		get_tree().change_scene_to_file("res://scenes/titlescreen.tscn")
 	else:
 		Globals.save_and_quit()

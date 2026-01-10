@@ -199,6 +199,8 @@ theme = ExtResource("14_264po")
 text = "home"
 horizontal_alignment = 1
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
 [node name="INVENTORY" parent="." instance=ExtResource("13_ir15t")]
 
 [node name="Settings" parent="." instance=ExtResource("13_264po")]

@@ -2219,6 +2219,8 @@ collision_layer = 84
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Bed/HandArea"]
 shape = SubResource("RectangleShape2D_wa7t7")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
 [node name="INVENTORY" parent="." instance=ExtResource("13_o7pnx")]
 
 [node name="StorageGUI" type="CanvasLayer" parent="."]

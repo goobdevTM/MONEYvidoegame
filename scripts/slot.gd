@@ -81,10 +81,11 @@ func update_slot() -> void:
 			appeared = true
 			tooltip_anim.stop()
 			tooltip_anim.play("appear")
-			await get_tree().create_timer(0).timeout
+			name_text.text = item['name']
+			await get_tree().create_timer(0.02).timeout
 			name_text.position.x = -name_text.size.x / 2
 		
-	if (local_inventory[index]['count'] < last_count and local_inventory[index]['count'] <= 0) and last_count > 0:
+	if (local_inventory[index]['count'] < last_count and local_inventory[index]['count'] <= 0) and last_count > 0 and appeared:
 		appeared = false
 		tooltip_anim.stop()
 		last_count = 0
@@ -104,8 +105,7 @@ func update_slot() -> void:
 	last_slot = local_slot
 	last_count = local_inventory[index]['count']
 	last_item = local_inventory[index]['id']
-	await get_tree().create_timer(0).timeout
-	name_text.position.x = -name_text.size.x / 2
+
 
 func _on_button_pressed() -> void:
 	var can_add : bool = false

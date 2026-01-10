@@ -1,11 +1,12 @@
 extends Node
 
 signal slot_selected
+signal next_day
 
 #TRASH STUFF
 var trash_amount : int = 40
 #	WILL BE MAX IN A RANDI RANGE
-var rat_rarity : int = 10
+var rat_rarity : int = 12
 
 var rich_person_max : int = 48
 
@@ -140,6 +141,7 @@ var money : int = 0
 var time : float = 0
 var day : int = 0
 var start_pos : Vector2 = Vector2(0, 0) #where player spawns
+var day_length : float = 120 #seconds
 
 #SAVE
 var saves : Array[Dictionary] = [{},{},{}]
@@ -161,6 +163,9 @@ func set_ui_sounds(parent_node : Node) -> void:
 #SAVE
 func save_data():
 	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	
+	file.store_var(saves)
+	
 	file.store_var(master_volume)
 	file.store_var(stamina_bar_opacity)
 	
@@ -168,6 +173,9 @@ func save_data():
 func load_data():
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
+		
+		saves = file.get_var()
+		
 		master_volume = file.get_var()
 		stamina_bar_opacity = file.get_var()
 	else:

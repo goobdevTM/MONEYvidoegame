@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://ntfh4303tst3"]
+
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="1_72h3h"]
+[ext_resource type="Texture2D" uid="uid://bm8e8bcibkjrb" path="res://sprites/save_empty.png" id="2_53dfd"]
+[ext_resource type="Texture2D" uid="uid://cst62rwkny7x3" path="res://sprites/save_full.png" id="3_56r8p"]
+
+[node name="1" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+theme = ExtResource("1_72h3h")
+toggle_mode = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Full" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_56r8p")
+
+[node name="Empty" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_53dfd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 34.0
+offset_bottom = 26.0
+scale = Vector2(1.5, 1.5)
+mouse_filter = 2
+text = "1"
