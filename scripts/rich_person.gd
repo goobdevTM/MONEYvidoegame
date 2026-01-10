@@ -12,6 +12,9 @@ var my_name: String = ""
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var piano_slam: AudioStreamPlayer = $PianoSlam
 @onready var name_text: RichTextLabel = $Name
+@onready var rich_person_collision: AudioStreamPlayer = $RichPersonCollision
+@onready var player_collision: AudioStreamPlayer = $PlayerCollision
+
 
 func generate_my_name() -> String:
 	#FINDS LEN OF RICH PEOPLE NAMES
@@ -61,9 +64,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_rich_person_detector_area_entered(area: Area2D) -> void:
-	if area.is_in_group("rich_people"):
-		position = Vector2(randi_range(-(get_parent().x_limit), get_parent().x_limit), randi_range(-(get_parent().y_limit), get_parent().y_limit))
-
+	if area.get_parent() is HigherClass:
+		rich_person_collision.play()
+	if area.get_parent() is Player:
+		player_collision.play()
+	
 func spoken_to():
 	Globals.rich_person_name = my_name
 	get_tree().change_scene_to_packed(preload("uid://dpgtm36htk3qw"))
