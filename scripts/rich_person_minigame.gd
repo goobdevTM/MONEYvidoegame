@@ -5,12 +5,13 @@ extends Node2D
 @onready var time_left: ProgressBar = $Control/TimeLeft
 @onready var buttons: HBoxContainer = $Control/Buttons
 @onready var graph_camera: Camera2D = $Graph/SubViewport/GraphCamera
-@onready var customer_satisfaction: HSlider = $CustomerSatisfaction
+@onready var customer_satisfaction: HSlider = $Control/CustomerSatisfaction
 @onready var question: RichTextLabel = $Control/Question
 @onready var timer: Timer = $Timer
 @onready var wrong_anim: AnimationPlayer = $Control/Wrong/WrongAnim
 @onready var time_up_anim: AnimationPlayer = $Control/TimeUp/TimeUpAnim
 @onready var correct_anim: AnimationPlayer = $Control/Correct/CorrectAnim
+@onready var start_anim: AnimationPlayer = $Control/Start/StartAnim
 
 var bad_questions : Array[Dictionary] = [
 	{'q': "Are you a fool?", 'good': "Of course not sir!", 'bad': "Maybe..."},
@@ -33,7 +34,7 @@ var good_questions : Array[Dictionary] = [
 	{'q': "This is very interesting...", 'good': "I knew you would like it!", 'bad': "I wouldn't quite say that."},
 	{'q': "What is the significance of this art piece?", 'good': "It's made by a very famous and rich artist", 'bad': "I think it looks really cool."},
 	{'q': "Where do you reside?", 'good': "In a giant mansion of course!", 'bad': "Over there in the alleyway."},
-	{'q': "Where did you find this art piece?", 'good': "I got it from the original artist at an auction.", 'bad': "In a smelly dumpster. (A really cool dumpster though)."},
+	{'q': "Where did you find this art piece?", 'good': "I got it from the original artist at an auction.", 'bad': "In a smelly dumpster."},
 	{'q': "I'm pretty convinced on purchasing this.", 'good': "That's great to hear!", 'bad': "Uhh... Totally radical?"},
 ]
 
@@ -49,6 +50,8 @@ func _ready() -> void:
 	name_text.text = "[center]Deal with " + Globals.rich_person_name
 	add_to_graph(0.0)
 	ask_question()
+	
+	
 
 func _process(delta: float) -> void:
 	if success_graph.position.x > target_line_x + 325:
@@ -61,7 +64,10 @@ func _process(delta: float) -> void:
 	while success_graph.get_point_position(camera_line_index).x < -success_graph.position.x + 320:
 		camera_line_index += 1
 	graph_camera.position.y = lerp(graph_camera.position.y, success_graph.get_point_position(camera_line_index).y, delta * 2)
+
 func ask_question() -> void:
+	if start_anim.is_playing():
+		await start_anim.animation_finished
 	timer.start()
 	var question_int : int =  0
 	var question_dict : Dictionary = {}
@@ -69,11 +75,11 @@ func ask_question() -> void:
 		question_int = randi_range(0,len(bad_questions) - 1)
 		question_dict = bad_questions[question_int]
 		
-	if satisfaction > customer_satisfaction.max_value / 1.5:
+	if satisfaction > customer_satisfaction.max_value / 3:
 		question_int = randi_range(0,len(neutral_questions) - 1)
 		question_dict = neutral_questions[question_int]
 		
-	if satisfaction > customer_satisfaction.max_value / 3:
+	if satisfaction > customer_satisfaction.max_value / 1.5:
 		question_int = randi_range(0,len(good_questions) - 1)
 		question_dict = good_questions[question_int]
 		
@@ -97,23 +103,30 @@ func add_to_graph(point : float) -> void:
 
 
 func _on_button_pressed(index : int) -> void:
+	timer.stop()
 	if good == index:
+		correct_anim.play("show")
 		satisfaction += 1
 		customer_satisfaction.value = satisfaction
 		add_to_graph((success_graph.points[len(success_graph.points) - 1].y - time_left.value))
 		success_graph.default_color = Color.GREEN
-		
+		await correct_anim.animation_finished
 	else:
+		wrong_anim.play("show")
 		satisfaction -= 2
 		customer_satisfaction.value = satisfaction
 		add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (150 -  time_left.value)))
 		success_graph.default_color = Color.RED
+		await wrong_anim.animation_finished
 	ask_question()
 
 
 func _on_timer_timeout() -> void:
+	timer.stop()
+	time_up_anim.play("show")
 	satisfaction -= 2
 	customer_satisfaction.value = satisfaction
 	add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (150 -  time_left.value)))
 	success_graph.default_color = Color.RED
+	await time_up_anim.animation_finished
 	ask_question()
