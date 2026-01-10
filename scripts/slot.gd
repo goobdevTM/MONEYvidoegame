@@ -104,7 +104,8 @@ func update_slot() -> void:
 	last_slot = local_slot
 	last_count = local_inventory[index]['count']
 	last_item = local_inventory[index]['id']
-
+	await get_tree().create_timer(0).timeout
+	name_text.position.x = -name_text.size.x / 2
 
 func _on_button_pressed() -> void:
 	var can_add : bool = false

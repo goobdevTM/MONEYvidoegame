@@ -30,25 +30,43 @@ var roman_numerals : Array[String] = [
 ]
 
 var rich_people_names : Array[String] = [
-	"StringsWorth",
-	"ToppenHagger",
-	"BingleBottoms",
+	"Stringsworth",
+	"Toppenwagger",
+	"Binglebottoms",
 	"Bartholomeus",
 	"Mozart",
 	"Beethoven",
 	"Gilly",
 	"Wiggens",
 	"Thomas",
-	"ToppleGoinginger",
+	"Topplegoinginger",
 	"Glagglewares",
 	"PigFart",
 	"PigeonHead",
 	"Gurteth",
-	"LarryTipper",
+	"Larrytipper",
 	"Flange",
-	"FlangesWorth",
+	"Flangesworth",
 	"Charles",
-	"Charlemagne"
+	"Charlemagne",
+	"Schlongebong",
+	"Homplytoopsworth",
+	"Bonbon",
+	"Von",
+	"King",
+	"Queen",
+	"Crontleploppy",
+	"Hoogansworth",
+	"Moneysworth",
+	"Richie",
+	"Cashinator",
+	"Frontleswoop",
+	"Plungus",
+	"Bart",
+	"Domer",
+	"Gabblyshoop",
+	"Gibbysplop",
+	"Slop"
 ]
 
 var items : Array[Dictionary] = [
@@ -119,8 +137,13 @@ var hover_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 #GAME
 var working_rats : int = 0
 var money : int = 0
+var time : float = 0
 var day : int = 0
 var start_pos : Vector2 = Vector2(0, 0) #where player spawns
+
+#SAVE
+var saves : Array[Dictionary] = [{},{},{}]
+var current_save : int = 0
 
 func _ready() -> void:
 	load_data()
@@ -153,11 +176,31 @@ func load_data():
 		print(warning)
 		return warning
 	emit_signal("loaded_data")
-
+	
+#SET SAVES VARAIBALE
+func set_saves(save : int) -> void:
+	saves[save]['working_rats'] = working_rats
+	saves[save]['money'] = money
+	saves[save]['time'] = time
+	saves[save]['day'] = day
+	saves[save]['inventory'] = inventory
+	saves[save]['storage'] = storage
+	
+#LOAD SAVES VARIALBLELY
+func load_saves(save : int) -> void:
+	if saves[save].has('working_rats'): #check if not save empty
+		working_rats = saves[save]['working_rats']
+		money = saves[save]['money']
+		time = saves[save]['time']
+		day = saves[save]['day']
+		inventory = saves[save]['inventory']
+		storage = saves[save]['storage']
+	
+	
 #molodur awsoml
 func save_and_quit() -> void:
 	Globals.save_data()
-	await get_tree().create_timer(0.03).timeout
+	await get_tree().create_timer(0.05).timeout
 	get_tree().quit()
 	
 #save when window closed

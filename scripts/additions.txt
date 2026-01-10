@@ -65,7 +65,7 @@ Version 0.286
 			
 Version 0.696
 	Glagglewares employee 1,
-	gnvnlv (8:00 PM JAN8)
+	gnvnlv (10:00 PM JAN8)
 	Added:
 		home,
 		rich plaza,

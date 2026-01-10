@@ -15,3 +15,6 @@ func _ready() -> void:
 	Globals.emit_signal("slot_selected")
 	Globals.selected_slot -= 1
 	Globals.emit_signal("slot_selected")
+	while is_inside_tree(): #AUTOSAVE
+		await get_tree().create_timer(15).timeout
+		Globals.set_saves(Globals.current_save)

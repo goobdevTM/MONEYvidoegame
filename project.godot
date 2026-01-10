@@ -10,11 +10,13 @@ config_version=5
 
 [application]
 
-config/name="giggly rich"
+config/name="Sell Trash To Rich People"
 run/main_scene="uid://jjo26rmcgd4a"
 config/auto_accept_quit=false
-config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="uid://n1ekgf53qxc7"
+config/macos_native_icon="uid://n1ekgf53qxc7"
+config/windows_native_icon="res://sprites/icon.ico"
 
 [autoload]
 

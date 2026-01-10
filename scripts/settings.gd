@@ -57,6 +57,7 @@ func _on_quit_button_pressed() -> void:
 	if Globals.in_game:
 		get_tree().paused = false
 		close()
-		get_tree().change_scene_to_packed(preload("uid://jjo26rmcgd4a"))
+		Globals.set_saves(Globals.current_save)
+		get_tree().change_scene_to_file("res://scenes/titlescreen.tscn")
 	else:
 		Globals.save_and_quit()
