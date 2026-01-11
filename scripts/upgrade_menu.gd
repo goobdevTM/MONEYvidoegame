@@ -11,6 +11,7 @@ extends CanvasLayer
 const UPGRADE_BUTTON = preload("uid://rjw35yafxwvf")
 
 
+
 var reload_cost: int = 10
 
 func _ready() -> void:
