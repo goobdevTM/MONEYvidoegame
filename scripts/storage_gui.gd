@@ -76,7 +76,6 @@ func close() -> void:
 	music.stop()
 	if Globals.selected_slot >= Globals.inventory_slots:
 		Globals.selected_slot = 0
-	show()
 	inventory.h_box_container.show()
 	var tween : Tween = create_tween()
 	tween.set_parallel()

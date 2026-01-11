@@ -13,14 +13,21 @@ var reload_cost: int = 10
 
 func _ready() -> void:
 	set_buttons()
+	
+func _process(delta: float) -> void:
+	if Globals.in_smellizon:
+		if Input.is_action_just_pressed("settings"):
+			close()
 
 func set_buttons():
 	for i in h_box_container.get_children():
 		var upgrade: int = randi_range(0, len(Globals.upgrades) - 1)
 		
 		i.upgrade = upgrade
+		i._ready()
 
 func open() -> void:
+	money.text = "[right]$" + str(int(Globals.money))
 	music.play()
 	if Globals.in_settings:
 		Globals.in_settings = false
@@ -46,9 +53,9 @@ func close() -> void:
 	var tween : Tween = create_tween()
 	tween.tween_property(panel, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.1)
 	
-	hide()
+	await tween.finished
 	get_tree().paused = false
-
+	hide()
 
 func _on_reload_pressed() -> void:
 	if Globals.money >= reload_cost:
