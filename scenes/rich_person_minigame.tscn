@@ -3416,11 +3416,13 @@ volume_db = -1.0
 bus = &"Sounds"
 
 [node name="Kaching" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("15_7cwb0")
 volume_db = -1.0
 bus = &"Sounds"
 
 [node name="Boowomp" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("14_7cwb0")
 volume_db = -1.0
 bus = &"Sounds"
