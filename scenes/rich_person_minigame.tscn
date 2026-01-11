@@ -3423,7 +3423,7 @@ bus = &"Music"
 [node name="ClickAndHover" parent="." instance=ExtResource("10_ihibx")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.1
+wait_time = 2.3
 
 [connection signal="pressed" from="Control/Buttons/Left/Left" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/Buttons/Right/Right" to="." method="_on_button_pressed" binds= [1]]

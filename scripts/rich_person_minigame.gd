@@ -190,6 +190,7 @@ func _on_button_pressed(index : int) -> void:
 
 func _on_timer_timeout() -> void:
 	timer.stop()
+	buzzer.play()
 	time_up_anim.play("show")
 	satisfaction -= 2
 	customer_satisfaction.value = satisfaction
