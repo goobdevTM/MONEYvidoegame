@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=4 uid="uid://bug8okbqgftl2"]
+[gd_scene load_steps=127 format=4 uid="uid://bug8okbqgftl2"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gi00y"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_ip4d6"]
@@ -121,8 +121,6 @@ normal = Vector2(0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wa7t7"]
 size = Vector2(30, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8n7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6k6s7"]
 atlas = ExtResource("18_kc6b6")
@@ -3749,29 +3747,6 @@ collision_layer = 84
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Bed/HandArea"]
 shape = SubResource("RectangleShape2D_wa7t7")
-
-[node name="BuyArea" type="Node2D" parent="Level" groups=["buy_area"]]
-position = Vector2(133, 33)
-
-[node name="HandArea" type="Area2D" parent="Level/BuyArea" groups=["for_hand"]]
-collision_layer = 32
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/BuyArea/HandArea"]
-shape = SubResource("RectangleShape2D_g8n7j")
-
-[node name="BuyText" type="RichTextLabel" parent="Level/BuyArea"]
-clip_contents = false
-offset_left = -55.0
-offset_top = 10.0
-offset_right = 75.0
-offset_bottom = 50.0
-scale = Vector2(0.5, 0.5)
-theme = ExtResource("11_jdxxw")
-theme_override_font_sizes/normal_font_size = 9
-bbcode_enabled = true
-text = "[right]Area Name
-Area Cost"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
