@@ -22,9 +22,10 @@ var appeared : bool = false
 var local_inventory : Array[Dictionary] = []
 var local_slot : int = 0
 var mouse_over : bool = false
-
+var tween: Tween = create_tween()
 func _ready() -> void:
-	
+	tween = create_tween()
+	tween.set_parallel()
 	#make unique
 	item_sprite.texture = item_sprite.texture.duplicate()
 	
@@ -70,14 +71,17 @@ func update_slot() -> void:
 		tool_tip.global_position.x = clamp(tool_tip.global_position.x, -300 + (len(item['name']) * 10), 300 - (len(item['name']) * 10))
 		name_text.text = "[center]" + item['name']
 		if ((not local_slot == last_slot) or (local_inventory[index]['count'] > last_count)) and local_slot == index:
-			var tween: Tween = create_tween()
+			
 			tool_tip.show()
+			tween.stop()
+			tween = create_tween()
 			tween.set_parallel()
 			tween.tween_property(tool_tip, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
 			tween.tween_property(tool_tip, "scale", Vector2(1, 1), 0.1)
 	
 	if local_inventory[index]['count'] <= 0 or not local_slot == index:
-		var tween: Tween = create_tween()
+		tween.stop()
+		tween = create_tween()
 		tween.set_parallel()
 		tween.tween_property(tool_tip, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.1)
 		tween.tween_property(tool_tip, "scale", Vector2(0, 0), 0.1)
