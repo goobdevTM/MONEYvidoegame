@@ -189,6 +189,7 @@ func _process(delta: float) -> void:
 				tween.tween_property(camera, "global_position", items_in_hand[0].global_position, 0.15).set_trans(Tween.TRANS_SINE)
 				Globals.sleeping = true
 			elif items_in_hand[0] is HigherClass:
+				talk_to_rich_person.connect(items_in_hand[0].spoken_to)
 				emit_signal("talk_to_rich_person")
 				if len(items_in_hand) > 0: #stop crash
 					talk_to_rich_person.disconnect(items_in_hand[0].spoken_to)
@@ -320,7 +321,7 @@ func highlight_item() -> void:
 		elif items_in_hand[0].is_in_group("computer"):
 			text.text = "[center][E] - go on computer?"
 		elif items_in_hand[0].is_in_group("npc"):
-			"[center][E] - talk to?"
+			text.text = "[center][E] - talk to?"
 
 		
 		#dont show empty trash
