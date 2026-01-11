@@ -9,6 +9,7 @@ var current_dialogue: int = 0
 var gave_tip : bool = false
 var tween : Tween = create_tween()
 var dialogue_shown : bool = false
+var crashout_number: int = 0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var piano_slam: AudioStreamPlayer = $PianoSlam
@@ -17,9 +18,17 @@ var dialogue_shown : bool = false
 @onready var player_collision: AudioStreamPlayer = $PlayerCollision
 @onready var dialogue: CanvasLayer = $"../Dialogue"
 @onready var buttons: Control = $"../Dialogue/Panel/Buttons"
+@onready var plane_crash: AudioStreamPlayer = $PlaneCrash
+@onready var angry_particles: GPUParticles2D = $AngryParticles
+@onready var hand_area: Area2D = $HandArea
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 
 func _ready() -> void:
+	canvas_layer.hide()
+	
+	crashout_number = 0
+	current_dialogue = 0
 	dialogue_shown = false
 	tween = create_tween()
 	tween.set_parallel()
@@ -46,10 +55,15 @@ func _physics_process(delta: float) -> void:
 	velocity *= friction
 	
 	if Input.is_action_just_pressed("enter"):
-		if dialogue_shown:
-			spoken_to()
+		speaking_to_enter()
+		
 	
 	move_and_slide()
+
+func speaking_to_enter():
+	
+	if dialogue_shown:
+		spoken_to()
 
 func _on_rich_person_detector_area_entered(area: Area2D) -> void:
 	if area.get_parent() is HigherClass:
@@ -70,10 +84,13 @@ func spoken_to():
 			hide_dialogue()
 		return
 	if Globals.first_interaction_with_garby:
+		
 		if current_dialogue < len(Globals.garby_dialogue["first_encounter"]):
+			
 			dialogue.get_child(0).get_child(3).text = Globals.garby_dialogue["first_encounter"][current_dialogue]
 			current_dialogue += 1
 			return
+			
 		else:
 			current_dialogue = 0
 			Globals.first_interaction_with_garby = false
@@ -89,6 +106,26 @@ func spoken_to():
 			if current_dialogue < len(Globals.garby_dialogue["bothered_dialogue"]):
 				dialogue.get_child(0).get_child(3).text = Globals.garby_dialogue["bothered_dialogue"][current_dialogue]
 				current_dialogue += 1
+				crashout_number += 1
+				if crashout_number >= 25:
+					canvas_layer.show()
+					hand_area.queue_free()
+					
+					piano_slam.play()
+					plane_crash.play()
+					angry_particles.emitting = true
+					
+					var tween: Tween = create_tween()
+					
+					tween.tween_property(sprite, "scale", Vector2(3, 3), 1)
+					var og_pos: Vector2 = global_position
+					
+					for i in range(200):
+						global_position = og_pos + Vector2(randi_range(-25, 25), randi_range(-50, 50))
+						await get_tree().create_timer(0.02).timeout
+					
+					
+					Globals.save_and_quit()
 				return
 			else:
 				current_dialogue = 0
