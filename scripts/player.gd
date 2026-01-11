@@ -2,7 +2,7 @@ class_name Player
 
 extends CharacterBody2D
 
-@onready var game: Game = $"../../.."
+@onready var game: Node2D = $"../../.."
 @onready var text_anim: AnimationPlayer = $HandArea/Text/Anim
 @onready var text: RichTextLabel = $HandArea/Text/Text
 @onready var camera: Camera2D = $"../../../Camera"
