@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://my0n35c0lp3w"]
 
-[ext_resource type="AudioStream" uid="uid://bwn7grqvfsywe" path="res://audio/music/mouse-click-sound.ogg" id="1_jjm6c"]
+[ext_resource type="AudioStream" uid="uid://bwn7grqvfsywe" path="res://audio/sfx/mouse-click-sound.ogg" id="1_jjm6c"]
 
 [node name="ClickAndHover" type="Node"]
 process_mode = 3
