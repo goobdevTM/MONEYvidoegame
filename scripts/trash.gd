@@ -27,6 +27,7 @@ enum Types {
 @onready var static_body: StaticBody2D = $StaticBody2D
 @onready var smell_particles_1: GPUParticles2D = $SmellParticles1
 @onready var smell_particles_2: GPUParticles2D = $SmellParticles2
+@onready var open_container: AudioStreamPlayer = $OpenContainer
 
 var type : int = 0
 var old : bool = false
@@ -114,6 +115,10 @@ func _on_area_area_entered(area: Area2D) -> void:
 #too far away from player?
 func _on_delete_check_area_entered(area: Area2D) -> void:
 	queue_free()
+	
+func _open() -> void:
+	#SOUND
+	open_container.play()
 	
 #spawn rat if in correct conditions
 func spawn_rat_randomly() -> void:

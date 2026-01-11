@@ -71,7 +71,7 @@ func sprint(sprint_speed: int) -> void:
 		return
 
 func _physics_process(delta: float) -> void:
-	
+	stamina_bar.max_value = Globals.get_upgrade_value(1)
 	if Input.is_action_pressed("sprint") and not direction == Vector2(0,0):
 		sprint((Globals.get_upgrade_value(0) + Globals.get_upgrade_value(6)) + (stamina * 10)) #800 is default
 		
@@ -156,24 +156,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pickup"):
 		if len(items_in_hand) > 0:
 			if items_in_hand[0] is Trash: #is in trash class
-				#spawn rat if not already opened
-				items_in_hand[0].spawn_rat_randomly()
-				for i in range(items_in_hand[0].amounts_of_trash[items_in_hand[0].type]):
-					#SOUND
-					open_container.play()
-					
-					#double check to prevent crash
-					if len(items_in_hand) > 0 and items_in_hand[0] is Trash:
-						#SETS TRASH TO EMPTY SPRITE
-						items_in_hand[0].sprite.hide()
-						items_in_hand[0].sprite_open.hide()
-						items_in_hand[0].sprite_empty.show()
-						items_in_hand[0].empty = true
-						items_in_hand.remove_at(0)
-					highlight_item()
-					
-					#ADDS TO INVENTORY
-					add_item_to_inventory(Globals.get_item_with_chance(), false)
+				open_trash()
 					
 			elif items_in_hand[0] is Litter: #is litter
 				if items_in_hand[0].rat_spawned:
@@ -231,6 +214,26 @@ func _process(delta: float) -> void:
 			drop_item(Globals.selected_slot, 1)
 
 				
+func open_trash() -> void:
+	#spawn rat if not already opened
+	if items_in_hand[0] is Trash:
+		items_in_hand[0].spawn_rat_randomly()
+		items_in_hand[0].open()
+		for i in range(items_in_hand[0].amounts_of_trash[items_in_hand[0].type]):
+			
+			
+			#double check to prevent crash
+			if len(items_in_hand) > 0 and items_in_hand[0] is Trash:
+				#SETS TRASH TO EMPTY SPRITE
+				items_in_hand[0].sprite.hide()
+				items_in_hand[0].sprite_open.hide()
+				items_in_hand[0].sprite_empty.show()
+				items_in_hand[0].empty = true
+				items_in_hand.remove_at(0)
+			highlight_item()
+			
+			#ADDS TO INVENTORY
+			add_item_to_inventory(Globals.get_item_with_chance(), false)
 #add item with inventory or swap
 func add_item_to_inventory(item : int, drop_items_at_hand : bool = true) -> void:
 	
