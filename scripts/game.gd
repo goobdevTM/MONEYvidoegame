@@ -12,6 +12,7 @@ extends Node2D
 @onready var buy_text: RichTextLabel = $Level/RightBorder/BuyArea/BuyText
 
 
+
 const RAT = preload("uid://cuwxqyo26k0jd")
 
 var speed_up : float = 1
@@ -66,6 +67,8 @@ func _process(delta: float) -> void:
 			buy_text.modulate = Color.GREEN
 		else:
 			buy_text.modulate = Color.RED
+		
+
 		
 	
 		
