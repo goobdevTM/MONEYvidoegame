@@ -17,6 +17,7 @@ var difficulty: int = 0
 @onready var player_collision: AudioStreamPlayer = $PlayerCollision
 @onready var poor_particles: GPUParticles2D = $PoorParticles
 @onready var poor_sound: AudioStreamPlayer = $PoorSound
+@onready var fade: Fade = $"../../../Fade"
 
 
 func generate_my_name() -> String:
@@ -85,7 +86,7 @@ func spoken_to():
 	if can_sell_to:
 		Globals.rich_difficulty = difficulty
 		Globals.rich_person_name = my_name
-		get_tree().change_scene_to_packed(preload("uid://dpgtm36htk3qw"))
+		fade.fade_out(load("uid://dpgtm36htk3qw"))
 	else:
 		poor_particles.emitting = true
 		poor_particles.restart()

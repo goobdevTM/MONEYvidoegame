@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=4 uid="uid://buv7xaj8dmplv"]
+[gd_scene load_steps=126 format=4 uid="uid://buv7xaj8dmplv"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gdncb"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="2_2ugsq"]
@@ -14,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="12_pgk7r"]
 [ext_resource type="PackedScene" uid="uid://dxyfiauc044l2" path="res://scenes/storage_dumpster.tscn" id="13_73oun"]
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="14_suir8"]
-[ext_resource type="PackedScene" uid="uid://7xb7pi6ik7sv" path="res://scenes/game.tscn" id="15_t82cu"]
-[ext_resource type="PackedScene" uid="uid://cwq0qr0p3gujk" path="res://scenes/rich_plaza.tscn" id="16_7cs47"]
 [ext_resource type="Texture2D" uid="uid://cwcgct6xuspwh" path="res://sprites/bed.png" id="17_022ap"]
 [ext_resource type="Script" uid="uid://dv5ia44hgt5gt" path="res://scripts/bed.gd" id="18_133u5"]
 [ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="19_q1kkm"]
@@ -1916,7 +1914,7 @@ cache/0/64/0/glyphs/19/size = Vector2(34, 49)
 cache/0/64/0/glyphs/19/uv_rect = Rect2(1, 1, 34, 49)
 cache/0/64/0/glyphs/19/texture_idx = 0
 
-[sub_resource type="Image" id="Image_kvj23"]
+[sub_resource type="Image" id="Image_jrvvs"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1926,7 +1924,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_bt5mj"]
-image = SubResource("Image_kvj23")
+image = SubResource("Image_jrvvs")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
 content_margin_left = 4.0
@@ -3092,7 +3090,7 @@ variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 base_font = SubResource("FontFile_vj6dk")
 variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 
-[sub_resource type="Image" id="Image_dchyv"]
+[sub_resource type="Image" id="Image_aouhs"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -3102,7 +3100,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_n3ikw"]
-image = SubResource("Image_dchyv")
+image = SubResource("Image_aouhs")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mworl"]
 content_margin_left = 0.0
@@ -3707,7 +3705,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("14_suir8")
 start_pos = Vector2(-360, 0)
-to_scene = ExtResource("15_t82cu")
+to_scene = "uid://7xb7pi6ik7sv"
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterGame"]
 position = Vector2(160, 0)
@@ -3718,7 +3716,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("14_suir8")
 start_pos = Vector2(240, 0)
-to_scene = ExtResource("16_7cs47")
+to_scene = "uid://cwq0qr0p3gujk"
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterRich"]
 position = Vector2(-160, 0)
