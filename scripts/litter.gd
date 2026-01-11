@@ -55,9 +55,9 @@ func _on_delete_check_area_entered(area: Area2D) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	sprite.show()
-	area_2d.disabled = false
+	area_2d.get_child(0).disabled = false
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	sprite.hide()
-	area_2d.disabled = true
+	area_2d.get_child(0).disabled = true
