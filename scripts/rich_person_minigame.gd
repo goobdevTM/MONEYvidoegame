@@ -14,6 +14,10 @@ extends Node2D
 @onready var start_anim: AnimationPlayer = $Control/Start/StartAnim
 @onready var number: RichTextLabel = $Control/Number
 @onready var click_and_hover: Node = $ClickAndHover
+@onready var convinced: Control = $Control/Convinced
+@onready var unconvinced: Control = $Control/Unconvinced
+@onready var help: Control = $Help
+
 
 var bad_questions : Array[Dictionary] = [
 	{'q': "Are you a fool?", 'good': "Of course not sir!", 'bad': "Maybe..."},
@@ -22,6 +26,9 @@ var bad_questions : Array[Dictionary] = [
 	{'q': "Are you some scamming heathen?!", 'good': 'Nope, I just have a great deal for you!', 'bad': "Well.. yes.. but.."},
 	{'q': "You're gonna take my riches, arent you?!!", 'good': "Wouldn't dream of it!", 'bad': "Technically yes..."},
 	{'q': "Are you a part of the slob glagglewares family!??", 'good': "Nope, I hate them too.", 'bad': "HEY! Glagglewares is awesome!"},
+	{'q': "Filthy cretin...", 'good': "I take a shower every day!", 'bad': "Well I bet you are uhh... Pretty stinky!!!"},
+	{'q': "No way I'll buy this!", 'good': "Just wait, it gets way better!", 'bad': "Fair point."},
+	{'q': "Scram!!!", 'good': "I'm not going anywhere!", 'bad': "Rude!!!"}
 ]
 
 var neutral_questions : Array[Dictionary] = [
@@ -30,6 +37,9 @@ var neutral_questions : Array[Dictionary] = [
 	{'q': "What's your opinion on the slob they call GlaggleWares?", 'good': "They're awful...", 'bad': "I love Glagglewares so much and I even have their album!"},
 	{'q': "You're not from the IRS right?", 'good': 'Nope!', 'bad': "..Who??"},
 	{'q': "You better not be selling TRASH!", 'good': "I would never sell trash to such a fine rich man!", 'bad': "What does it matter to you snob?!!"},
+	{'q': "Is there anything else?", 'good': "There's so much more!", 'bad': 'Nope, nothing else.'},
+	{'q': "Why should I buy this?", 'good': "Because it's a masterpiece!", 'bad': "To give me money."},
+	{'q': "What is your stance on rats?", 'good': "Rats? Gross...", 'bad': "I love rats so much!"},
 ]
 
 var good_questions : Array[Dictionary] = [
@@ -38,6 +48,10 @@ var good_questions : Array[Dictionary] = [
 	{'q': "Where do you reside?", 'good': "In a giant mansion of course!", 'bad': "Over there in the alleyway."},
 	{'q': "Where did you find this art piece?", 'good': "I got it from the original artist at an auction.", 'bad': "In a smelly dumpster."},
 	{'q': "I'm pretty convinced on purchasing this.", 'good': "That's great to hear!", 'bad': "Uhh... Totally radical?"},
+	{'q': "By jove! this is so cool!", 'good': "That's what I was thinking!", 'bad': 'Who even says "by jove" these days...'},
+	{'q': "How do I know this is a good deal?", 'good': "I just called my financial advisor and he said it's good.", 'bad': "Trust me, it's definitely good..."},
+	{'q': "Are you rather wealthy?", 'good': "Obviously yes!", 'bad': "I can barely afford my alleyway..."},
+	{'q': "What's your favorite song?", 'good': "Corporate presentation music by Mr. Corporations!", 'bad': "Rats inna Hood Dumpster by GlaggleTunes"},
 ]
 
 var good : int = randi_range(0,1)
@@ -51,16 +65,29 @@ var last_question : Dictionary = {}
 func _ready() -> void:
 	Globals.set_ui_sounds(click_and_hover)
 	if Globals.first_time_minigame:
-		Globals.question_speed_mult = 0.25
+		Globals.question_speed_mult = 0.4
 	else:
 		Globals.question_speed_mult = 1
+	Globals.question_speed_mult *= (0.75 + (float(Globals.rich_difficulty) / 4.0))
 	timer.wait_time = 1 / Globals.question_speed_mult
 	time_left.max_value = timer.wait_time
 	satisfaction = 10
 	customer_satisfaction.value = satisfaction
 	name_text.text = "[center]Deal with " + Globals.rich_person_name
 	add_to_graph(0.0)
+	#more random feling
+	for i in range(randi_range(0,2)):
+		good_questions.remove_at(randi_range(0,len(good_questions) - 1))
+		
+	for i in range(randi_range(0,2)):
+		neutral_questions.remove_at(randi_range(0,len(neutral_questions) - 1))
+		
+	for i in range(randi_range(0,2)):
+		bad_questions.remove_at(randi_range(0,len(bad_questions) - 1))
+		
 	ask_question()
+	
+		
 	
 	
 	
@@ -81,6 +108,14 @@ func _process(delta: float) -> void:
 	time_left.self_modulate = lerp(Color.RED, Color.GREEN, timer.time_left / timer.wait_time)
 
 func ask_question() -> void:
+	if questions_answered >= max_questions:
+		help.queue_free()
+		if satisfaction > (customer_satisfaction.max_value / 2):
+			convinced.start()
+		else:
+			unconvinced.start()
+		get_tree().paused = true
+		return
 	questions_answered += 1
 	number.text = "[center]" + str(questions_answered) + "/" + str(max_questions) + " Questions Answered"
 	number.modulate = lerp(Color.YELLOW, Color.GREEN, float(questions_answered) / float(max_questions))
@@ -123,7 +158,7 @@ func add_to_graph(point : float) -> void:
 		if i.x > x_pos:
 			x_pos = i.x + 1
 	new_points.append(Vector2(x_pos, new_points[len(new_points) - 1].y))
-	new_points.append(Vector2(x_pos + 64 * randf_range(0.9,1.1), (point * randf_range(0.9,1.1))))
+	new_points.append(Vector2(x_pos + 64 * randf_range(1,1.1), (point * randf_range(1,1.1))))
 	target_line_x = -x_pos - (new_points[len(new_points) - 1].x - x_pos)
 	new_points.append(Vector2(-success_graph.position.x + 1000000, new_points[len(new_points) - 1].y))
 	success_graph.points = new_points
@@ -133,9 +168,9 @@ func _on_button_pressed(index : int) -> void:
 	timer.stop()
 	if good == index:
 		correct_anim.play("show")
-		satisfaction += (time_left.value / time_left.max_value)/2 + 0.5 
+		satisfaction += 2
 		customer_satisfaction.value = satisfaction
-		add_to_graph((success_graph.points[len(success_graph.points) - 1].y - ((time_left.value / time_left.max_value) * 64) - 48))
+		add_to_graph((success_graph.points[len(success_graph.points) - 1].y - 48))
 		success_graph.default_color = Color.GREEN
 		await correct_anim.animation_finished
 	else:
@@ -145,6 +180,7 @@ func _on_button_pressed(index : int) -> void:
 		add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (1 -  (time_left.value / time_left.max_value)) * 64) + 48)
 		success_graph.default_color = Color.RED
 		await wrong_anim.animation_finished
+	satisfaction = clamp(satisfaction, 0, customer_satisfaction.max_value)
 	ask_question()
 
 

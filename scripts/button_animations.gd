@@ -20,7 +20,8 @@ func _ready() -> void:
 			else:
 				button_size = Vector2(child.size.x, child.size.y)
 				
-			child.pivot_offset = Vector2(button_size.x * offset.x, button_size.y * offset.y)
+			if child.pivot_offset == Vector2(0,0):
+				child.pivot_offset = Vector2(button_size.x * offset.x, button_size.y * offset.y)
 			child.mouse_entered.connect(button_entered.bind(child))
 			child.mouse_exited.connect(button_exited.bind(child))
 			child.button_down.connect(button_pressed.bind(0))
@@ -49,6 +50,4 @@ func button_exited(button : Control) -> void:
 func button_pressed(index : int) -> void:
 	Globals.click_sound.pitch_scale = 1.0
 	Globals.click_sound.play()
-	
-
 	

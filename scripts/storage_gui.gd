@@ -30,7 +30,6 @@ func _ready() -> void:
 		clone_slot.slot_bg.play("dumpster")
 		clone_slot.show()
 		clone_slot.index = i
-		clone_slot.get_child(0).text = str(clone_slot.index + 1)
 		
 	#CREATES INVENTORY
 	for i in range(Globals.inventory_slots):
@@ -39,7 +38,6 @@ func _ready() -> void:
 		h_box_container.add_child(clone_slot)
 		clone_slot.show()
 		clone_slot.index = i
-		clone_slot.get_child(0).text = str(clone_slot.index + 1)
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("settings") or Input.is_action_just_pressed("pickup") and Globals.in_storage and not opening_storage:

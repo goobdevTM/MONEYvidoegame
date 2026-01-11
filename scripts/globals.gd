@@ -39,12 +39,14 @@ var garby_dialogue: Dictionary = {
 		"Ay there! Im Garbyy. But you can call me Garbo, Garbonzo bean, or even Garboggle!",
 		"Anyways nice alley-way ya got here! I think I might stay a while!",
 		"Oh? Ya want some advice? You wanna make some sweet moola??",
-		"While theres no way better than selling to rich people! Theres plenty of garbage in the courtyard. What would you do with garbage?",
-		"Sell it to rich people!! They aint that smart, so you can probably trick them into thinking its somthin worth a dime or 2!",
+		"Well there's no way better than selling to rich people!",
+		"There's plenty of garbage in the courtyard. What would you do with garbage?",
+		"Sell it to rich people!!",
+		"They aint that smart, so you can probably trick them into thinking its somthin worth a dime or 2!",
 		"Oh ya, I almost forgot! If you give me a random piece of garbage, I'll give ya a tip! A TIP!!",
 	],
 	"bothered_dialogue": [
-		"Thats all bud!",
+		"That's all bud!",
 		"Nothin' else to say!",
 		"I have nothin' else for ya to hear!",
 		"You want a lollipop or somethin??",
@@ -62,6 +64,11 @@ var garby_dialogue: Dictionary = {
 		"You can unlock different areas with more trash!",
 		"Careful what ya say in front of them rich folks!",
 	],
+	"ask_for_litter": [
+		"Gimme some litter and I can tell ya some secrets!",
+		"Gimme that litter!",
+		"I can give ya some tips if I can get some litter...",
+	]
 }
 
 var dumpster_slots : int = 6
@@ -194,6 +201,8 @@ var start_pos : Vector2 = Vector2(0, 0) #where player spawns
 const day_length : float = 1440.0 #seconds
 var rich_person_name : String = ""
 var question_speed_mult : float = 0.5
+var item_selling : Dictionary = {}
+var rich_difficulty : int = 0
 
 #SAVE
 var saves : Array[Dictionary] = [{},{},{}]
@@ -218,7 +227,6 @@ func save_data():
 	
 	file.store_var(saves)
 	
-	file.store_var(first_interaction_with_garby)
 	file.store_var(sound_volume)
 	file.store_var(music_volume)
 	file.store_var(master_volume)
@@ -231,6 +239,8 @@ func load_data():
 		
 		saves = file.get_var()
 		
+		sound_volume = file.get_var()
+		music_volume = file.get_var()
 		master_volume = file.get_var()
 		stamina_bar_opacity = file.get_var()
 	else:
@@ -249,6 +259,7 @@ func set_saves(save : int) -> void:
 	saves[save]['inventory'] = inventory
 	saves[save]['storage'] = storage
 	saves[save]['first_time_minigame'] = first_time_minigame
+	saves[save]['first_interaction_with_garby'] = first_interaction_with_garby
 	
 #LOAD SAVES VARIALBLELY
 func load_saves(save : int) -> void:
@@ -260,6 +271,7 @@ func load_saves(save : int) -> void:
 		first_time_minigame = saves[save]['first_time_minigame']
 		inventory = saves[save]['inventory']
 		storage = saves[save]['storage']
+		first_interaction_with_garby = saves[save]['first_interaction_with_garby']
 	else: #else reset
 		#STARTING VALUES
 		working_rats = 0
@@ -283,6 +295,7 @@ func load_saves(save : int) -> void:
 		]
 
 		storage = []
+		first_interaction_with_garby = true
 	
 #molodur awsoml
 func save_and_quit() -> void:

@@ -62,18 +62,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 404.0
-offset_right = -480.0
-offset_bottom = 420.0
-grow_horizontal = 2
-scale = Vector2(4, 4)
-theme_override_constants/separation = 1
-alignment = 1
-
 [node name="Stamina" type="HSlider" parent="Control"]
 layout_mode = 0
 offset_left = 234.0
@@ -88,6 +76,18 @@ theme_override_styles/slider = SubResource("StyleBoxFlat_5uoah")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_uvj3h")
 value = 100.0
 editable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 404.0
+offset_right = -480.0
+offset_bottom = 420.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+theme_override_constants/separation = 1
+alignment = 1
 
 [node name="RatsHired" type="RichTextLabel" parent="."]
 clip_contents = false

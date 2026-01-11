@@ -8,6 +8,7 @@ var direction : Vector2
 var hired : bool = false
 var hovering : bool = false
 var my_name: String = ""
+var difficulty: int = 0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var piano_slam: AudioStreamPlayer = $PianoSlam
@@ -33,11 +34,18 @@ func generate_my_name() -> String:
 	return my_name
 
 func _ready() -> void:
-	
+	difficulty = randi_range(0,2)
 	hovering = false
 	
 	#NAME
 	name_text.text = generate_my_name()
+	match difficulty:
+		0:
+			name_text.modulate = Color.GREEN
+		1:
+			name_text.modulate = Color.YELLOW
+		2:
+			name_text.modulate = Color.RED
 	
 	#MOVEMENT
 	speed = randi_range(200, 300)
@@ -50,8 +58,6 @@ func _physics_process(delta: float) -> void:
 		direction.y = randi_range(-1,1)
 	if randi_range(0,50) == 0:
 		direction.x = randi_range(-1,1)
-	if direction == Vector2(0,0):
-			direction = Vector2(randi_range(-1,1), randi_range(-1,1))
 	velocity += direction.normalized() * speed * delta
 	velocity *= friction
 	
@@ -77,6 +83,7 @@ func spoken_to():
 		if i.count > 0:
 			can_sell_to = true
 	if can_sell_to:
+		Globals.rich_difficulty = difficulty
 		Globals.rich_person_name = my_name
 		get_tree().change_scene_to_packed(preload("uid://dpgtm36htk3qw"))
 	else:

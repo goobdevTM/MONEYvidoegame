@@ -18,7 +18,7 @@ func _ready() -> void:
 		clone_slot.slot_bg.play("inventory")
 		clone_slot.show()
 		clone_slot.index = i
-		clone_slot.get_child(0).text = str(clone_slot.index + 1)
+		
 
 func _process(delta: float) -> void:
 	if Globals.working_rats > 0:

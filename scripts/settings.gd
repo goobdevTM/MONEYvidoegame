@@ -18,6 +18,7 @@ func _ready() -> void:
 	sound_slider.value = Globals.sound_volume
 	music_slider.value = Globals.music_volume
 	master_slider.value = Globals.master_volume
+	
 	_on_master_value_changed(Globals.master_volume)
 	_on_music_value_changed(Globals.music_volume)
 	_on_sound_value_changed(Globals.sound_volume)

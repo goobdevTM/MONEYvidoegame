@@ -23,7 +23,10 @@ var local_inventory : Array[Dictionary] = []
 var local_slot : int = 0
 var mouse_over : bool = false
 var tween: Tween = create_tween()
+
 func _ready() -> void:
+	tool_tip.hide()
+	number.text = str(get_index() + 1)
 	tween = create_tween()
 	tween.set_parallel()
 	#make unique
@@ -79,8 +82,10 @@ func update_slot() -> void:
 			tween.set_parallel()
 			tween.tween_property(tool_tip, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
 			tween.tween_property(tool_tip, "scale", Vector2(1, 1), 0.1)
+			appeared = true
 	
-	if local_inventory[index]['count'] <= 0 or not local_slot == index:
+	if local_inventory[index]['count'] <= 0 or not local_slot == index and appeared:
+		appeared = false
 		tween.stop()
 		tween = create_tween()
 		tween.set_parallel()
