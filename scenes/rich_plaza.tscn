@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_5pgt4"]
 [ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="13_0w0s1"]
 [ext_resource type="PackedScene" uid="uid://crhwl6opbfl82" path="res://scenes/fade.tscn" id="15_42p0x"]
-[ext_resource type="Texture2D" uid="uid://bopau3x6f88p4" path="res://sprites/scroll.png" id="16_f2a0u"]
+[ext_resource type="Texture2D" uid="uid://bw5ntqavrg2u8" path="res://sprites/note_paper.png" id="16_tsjoh"]
 [ext_resource type="AudioStream" uid="uid://bbb6crjxasldh" path="res://audio/sfx/pop_7e9Is8L.ogg" id="17_tsjoh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axcjw"]
@@ -75,8 +75,8 @@ size = Vector2(20, 193)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0w0s1"]
 radius = 32.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f2a0u"]
-radius = 10.049875
+[sub_resource type="CircleShape2D" id="CircleShape2D_tsjoh"]
+radius = 7.0
 
 [node name="RichPlaza" type="Node2D"]
 script = ExtResource("1_hos2y")
@@ -210,10 +210,10 @@ position = Vector2(208, -32)
 collision_layer = 84
 
 [node name="Scroll" type="Sprite2D" parent="Note/HandArea"]
-texture = ExtResource("16_f2a0u")
+texture = ExtResource("16_tsjoh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Note/HandArea"]
-shape = SubResource("CircleShape2D_f2a0u")
+shape = SubResource("CircleShape2D_tsjoh")
 disabled = true
 
 [node name="Pop" type="AudioStreamPlayer" parent="."]

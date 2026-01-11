@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://buv7xaj8dmplv"]
+[gd_scene load_steps=84 format=4 uid="uid://buv7xaj8dmplv"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gdncb"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="2_2ugsq"]
@@ -27,7 +27,11 @@
 [ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="32_ug8ri"]
 [ext_resource type="AudioStream" uid="uid://cyli55p1plii2" path="res://audio/music/PianoSlam.ogg" id="33_i85uk"]
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="34_70ow4"]
+[ext_resource type="Texture2D" uid="uid://bw7tug6qk04wp" path="res://sprites/news_paper.png" id="35_ahbrv"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="35_mi5hh"]
+[ext_resource type="Texture2D" uid="uid://bw5ntqavrg2u8" path="res://sprites/note_paper.png" id="35_qtorc"]
+[ext_resource type="Script" uid="uid://cxr48i6rrdmet" path="res://scripts/newspaper.gd" id="35_yecmm"]
+[ext_resource type="AudioStream" uid="uid://lxnbowhasjqt" path="res://audio/sfx/paper-crumpling.ogg" id="36_dqru6"]
 [ext_resource type="Texture2D" uid="uid://byl616mv141w5" path="res://sprites/table.png" id="36_i20vv"]
 [ext_resource type="Texture2D" uid="uid://6afursnu8iy1" path="res://sprites/computer.png" id="37_4eirr"]
 [ext_resource type="PackedScene" uid="uid://ba1405fyb1n12" path="res://scenes/garby.tscn" id="38_6s8gi"]
@@ -1909,7 +1913,7 @@ cache/0/64/0/glyphs/19/size = Vector2(34, 49)
 cache/0/64/0/glyphs/19/uv_rect = Rect2(1, 1, 34, 49)
 cache/0/64/0/glyphs/19/texture_idx = 0
 
-[sub_resource type="Image" id="Image_ctnpg"]
+[sub_resource type="Image" id="Image_ahbrv"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1919,7 +1923,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_bt5mj"]
-image = SubResource("Image_ctnpg")
+image = SubResource("Image_ahbrv")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
 content_margin_left = 4.0
@@ -2100,6 +2104,9 @@ border_width_bottom = 8
 border_color = Color(0.14, 0, 0, 1)
 corner_detail = 5
 anti_aliasing = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqru6"]
+radius = 7.071068
 
 [node name="Home" type="Node2D"]
 script = ExtResource("1_gdncb")
@@ -2638,6 +2645,40 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_0grxe")
 text = "Nope!"
 
 [node name="Fade" parent="." instance=ExtResource("41_v61ha")]
+
+[node name="Newspaper" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 99
+visible = false
+script = ExtResource("35_yecmm")
+
+[node name="NewsPaper" type="Sprite2D" parent="Newspaper"]
+process_mode = 3
+z_index = 4096
+texture = ExtResource("35_ahbrv")
+centered = false
+
+[node name="PaperCrumpling" type="AudioStreamPlayer" parent="Newspaper"]
+process_mode = 3
+stream = ExtResource("36_dqru6")
+volume_db = -3.207
+bus = &"Sounds"
+
+[node name="Note" type="Node2D" parent="." groups=["home", "note"]]
+z_index = -1
+position = Vector2(-54, 8)
+rotation = -1.5707964
+
+[node name="HandArea" type="Area2D" parent="Note" groups=["for_hand", "note"]]
+collision_layer = 84
+
+[node name="Scroll" type="Sprite2D" parent="Note/HandArea"]
+position = Vector2(2.9999998, 4)
+texture = ExtResource("35_qtorc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Note/HandArea"]
+position = Vector2(3, 4)
+shape = SubResource("CircleShape2D_dqru6")
 
 [connection signal="body_entered" from="Level/EnterGame" to="Level/EnterGame" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/EnterRich" to="Level/EnterRich" method="_on_body_entered"]
