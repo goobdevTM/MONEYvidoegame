@@ -18,11 +18,15 @@ extends CharacterBody2D
 @onready var storage_gui: CanvasLayer = $"../../../StorageGUI"
 @onready var upgrade_menu: CanvasLayer = $"../../../UpgradeMenu"
 
+#NEWSPAER
+@onready var newspaper: CanvasLayer = $"../../../Newspaper"
+
 #SOUND
 @onready var open_container: AudioStreamPlayer = $OpenContainer
 @onready var open_litter: AudioStreamPlayer = $OpenLitter
 @onready var purchase: AudioStreamPlayer = $Purchase
 @onready var wrong: AudioStreamPlayer = $Wrong
+@onready var paper_crumpling: AudioStreamPlayer = $"../../../Newspaper/PaperCrumpling"
 
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
 @onready var music_controller: Node = $"../../../MusicController"
@@ -54,6 +58,7 @@ var hand_range : int = 32
 var items_in_hand : Array[Node2D] = []
 
 func _ready() -> void:
+	
 	stamina = 100
 	stamina_bar.value = stamina
 	stamina_bar.self_modulate = Color(1.0, 1.0, 1.0, 0.05)
@@ -106,6 +111,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _process(delta: float) -> void:
+	
 	
 	if Globals.show_fps:
 		fps.show()
@@ -207,7 +213,11 @@ func _process(delta: float) -> void:
 						items_in_hand[0].get_child(0).get_child(0).emitting = true
 						items_in_hand[0].get_child(0).get_child(0).restart()
 						wrong.play()
-						
+			elif items_in_hand[0].is_in_group("note"):
+				if items_in_hand[0].is_in_group("home"):
+					newspaper.show()
+					paper_crumpling.play()
+					get_tree().paused = true
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -357,9 +367,11 @@ func highlight_item() -> void:
 			else:
 				text.text = "max area purchased"
 		elif items_in_hand[0].is_in_group("note"):
-			text.text = "[center] We all retreat to our mansions at night
+			if not items_in_hand[0].is_in_group("home"):
+				text.text = "[center] We all retreat to our mansions at night
 - rich people "
-		
+			else:
+				text.text = "[center][E] - read?"
 		#dont show empty trash
 		if len(items_in_hand) > 0: #stop crash
 			if not is_trash_empty(items_in_hand[0]):
