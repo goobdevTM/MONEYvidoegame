@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://rjw35yafxwvf"]
+[gd_scene load_steps=43 format=4 uid="uid://rjw35yafxwvf"]
 
 [ext_resource type="FontFile" uid="uid://camgkxjqsnse2" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_s22sv"]
 [ext_resource type="Texture2D" uid="uid://c3fwqcvylpheb" path="res://sprites/grabber.png" id="2_1axxs"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://gyq76winb4sb" path="res://sprites/grabber_highlight.png" id="4_xss6n"]
 [ext_resource type="Script" uid="uid://7lkotviw1pav" path="res://scripts/upgrade_button.gd" id="5_1fgxu"]
 [ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="6_4t3on"]
-[ext_resource type="AudioStream" uid="uid://brehgxah1718g" path="res://audio/sfx/kaching-sound-fx.mp3" id="7_1axxs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjfk0"]
 content_margin_left = 4.0
@@ -1430,8 +1429,3 @@ bbcode_enabled = true
 text = "caching$"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Kaching" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_1axxs")
-volume_db = -1.0
-bus = &"Sounds"

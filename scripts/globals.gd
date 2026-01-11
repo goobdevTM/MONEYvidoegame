@@ -21,6 +21,12 @@ var upgrade_multipliers: Dictionary[String, float] = {
 
 #UPGRADES
 var upgrades: Array[Dictionary] = [] #SET LATER
+var upgrade_textures : Array = [
+	preload("uid://dcgaageqts4jm"), #money upgrade
+	preload("uid://cmskhxtkedqcc"), #rat upgrade
+	preload("uid://dgoli22eldhpr"), #small garbage bag
+	preload("uid://bfwlc8spvq4i1"), #speed upgrade
+]
 
 var garby_dialogue: Dictionary = {
 	"first_encounter": [
@@ -198,13 +204,13 @@ var question_speed_mult : float = 0.5
 var item_selling : Dictionary = {}
 var rich_difficulty : int = 0
 var areas : Array[Dictionary] = [
-	{'name': "Basic Area", 'length': 256, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'trash_amount': 15, 'cost': 0},
-	{'name': "Basic Area", 'length': 320, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 25, 'cost': 100},
-	{'name': "Unpleasant Area", 'length': 500, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'trash_amount': 30, 'cost': 250},
-	{'name': "Smelly Area", 'length': 640, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'trash_amount': 35, 'cost': 750},
-	{'name': "Nasty Area", 'length': 800, 'max_trash': 3, 'max_litter': 12, 'luck': 1, 'smelly_chance': 7, 'trash_amount': 42, 'cost': 1500},
-	{'name': "Gross Area", 'length': 1150, 'max_trash': 3, 'max_litter': 14, 'luck': 1.2, 'smelly_chance': 6, 'trash_amount': 50, 'cost': 2500},
-	{'name': "Disgusting Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.5, 'smelly_chance': 3, 'trash_amount': 75, 'cost': 10000},
+	{'name': "Basic Area", 'length': 256, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'trash_amount': 10, 'cost': 0},
+	{'name': "Basic Area", 'length': 320, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 20, 'cost': 100},
+	{'name': "Unpleasant Area", 'length': 500, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'trash_amount': 25, 'cost': 250},
+	{'name': "Smelly Area", 'length': 640, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'trash_amount': 32, 'cost': 750},
+	{'name': "Nasty Area", 'length': 800, 'max_trash': 3, 'max_litter': 12, 'luck': 1, 'smelly_chance': 7, 'trash_amount': 40, 'cost': 1500},
+	{'name': "Gross Area", 'length': 1150, 'max_trash': 3, 'max_litter': 14, 'luck': 1.2, 'smelly_chance': 6, 'trash_amount': 45, 'cost': 2500},
+	{'name': "Disgusting Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.5, 'smelly_chance': 3, 'trash_amount': 60, 'cost': 10000},
 ]
 
 #SAVE
@@ -315,13 +321,13 @@ func load_saves(save : int) -> void:
 		
 		#BASE UPGRADES
 		upgrades = [
-			{"name": "Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_speed"], "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": preload("uid://bfwlc8spvq4i1"), "times_upgraded": 0},
-			{"name": "Stamina", "base_cost": 40, "var": upgrade_multipliers["stamina_max"], "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": preload("uid://bfwlc8spvq4i1"), "times_upgraded": 0},
-			{"name": "Money", "base_cost": 100, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": preload("res://sprites/money_upgrade.png"), "times_upgraded": 0},
-			{"name": "Opening Trash", "base_cost": 50, "var": upgrade_multipliers["trash_speed_multiplier"], "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": preload("res://sprites/small_garbage_bag.png"), "times_upgraded": 0},
-			{"name": "Trash Density", "base_cost": 100, "var": upgrade_multipliers["trash_density_multiplier"], "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": preload("res://sprites/small_garbage_bag.png"), "times_upgraded": 0},
-			{"name": "Rat Speed", "base_cost": 30, "var": upgrade_multipliers["rat_speed_multiplier"], "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": preload("res://sprites/rat_upgrade.png"), "times_upgraded": 0},
-			{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": preload("uid://bfwlc8spvq4i1"), "times_upgraded": 0},
+			{"name": "Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_speed"], "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": 3, "times_upgraded": 0},
+			{"name": "Stamina", "base_cost": 40, "var": upgrade_multipliers["stamina_max"], "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": 3, "times_upgraded": 0},
+			{"name": "Money", "base_cost": 100, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": 0, "times_upgraded": 0},
+			{"name": "Opening Trash", "base_cost": 50, "var": upgrade_multipliers["trash_speed_multiplier"], "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": 2, "times_upgraded": 0},
+			{"name": "Trash Density", "base_cost": 100, "var": upgrade_multipliers["trash_density_multiplier"], "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": 2, "times_upgraded": 0},
+			{"name": "Rat Speed", "base_cost": 30, "var": upgrade_multipliers["rat_speed_multiplier"], "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": 1, "times_upgraded": 0},
+			{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": 3, "times_upgraded": 0},
 		]
 	
 func get_upgrade_value(index : int) -> float:
