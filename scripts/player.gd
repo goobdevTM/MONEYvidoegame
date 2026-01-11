@@ -161,16 +161,19 @@ func _process(delta: float) -> void:
 					add_item_to_inventory(Globals.get_item_with_chance(), false)
 					
 			elif items_in_hand[0] is Litter: #is litter
+				if items_in_hand[0].rat_spawned:
+					items_in_hand[0].emit_signal("picked_up")
 				open_litter.play()
 				add_item_to_inventory(items_in_hand[0].type)
 				
 			elif items_in_hand[0] is Rat: #is rat
 				if items_in_hand[0].hired:
 					#send rat to work
-					items_in_hand[0].queue_free()
-					Globals.working_rats += 1
+					items_in_hand[0].go_to_work()
+					
 				else:
 					#mark rat as hired
+					Globals.working_rats += 1
 					items_in_hand[0].hired = true
 					stop_rat_theme.connect(music_controller.stop_rat_theme)
 					emit_signal("stop_rat_theme")

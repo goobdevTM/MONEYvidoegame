@@ -93,24 +93,23 @@ var max_per_slot : int = 25
 var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
 var last_given_slot : bool = false
 
-
 var items : Array[Dictionary] = [
 	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 0.4},
 	{'name': "Cup", 'coords': Vector2i(1,0), 'chance': 0.3},
-	{'name': "Soda Can", 'coords': Vector2i(2,0), 'chance': 0.25},
 	{'name': "Water Bottle", 'coords': Vector2i(3,0), 'chance': 0.3},
+	{'name': "Soda Can", 'coords': Vector2i(2,0), 'chance': 0.25},
 	{'name': "Smelly Sock", 'coords': Vector2i(0,1), 'chance': 0.25},
 	{'name': "Candy Wrapper", 'coords': Vector2i(1,1), 'chance': 0.15},
-	{'name': "Poopy haha", 'coords': Vector2i(2,1), 'chance': 0.1},
-	{'name': "Child", 'coords': Vector2i(3,1), 'chance': 0.01},
-	{'name': "Bone", 'coords': Vector2i(0,2), 'chance': 0.04},
-	{'name': "Broken CD", 'coords': Vector2i(1,2), 'chance': 0.05},
 	{'name': "Fish Bone", 'coords': Vector2i(2,2), 'chance': 0.1},
-	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.003},
+	{'name': "Poopy haha", 'coords': Vector2i(2,1), 'chance': 0.1},
 	{'name': "Glove", 'coords': Vector2i(0,3), 'chance': 0.1},
+	{'name': "Broken CD", 'coords': Vector2i(1,2), 'chance': 0.05},
 	{'name': "Fries", 'coords': Vector2i(1,3), 'chance': 0.05},
 	{'name': "Banana Peel", 'coords': Vector2i(2,3), 'chance': 0.05},
+	{'name': "Bone", 'coords': Vector2i(0,2), 'chance': 0.04},
 	{'name': "Photo", 'coords': Vector2i(3,3), 'chance': 0.025},
+	{'name': "Child", 'coords': Vector2i(3,1), 'chance': 0.01},
+	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.002},
 ]
 
 var inventory : Array[Dictionary] = [
@@ -293,11 +292,14 @@ func _notification(what: int) -> void:
 		save_and_quit()
 
 #get random item int based on percentages
-func get_item_with_chance() -> int:
+func get_item_with_chance(lucky_multiplier : int = 1) -> int:
+	
+	var to_return: int = 0
+	
 	for i in range(len(Globals.items)):
-		if randf_range(0.0, 1.0) <= Globals.items[i]['chance']:
-			return i
-	return 0 #in case big bug crash
+		if randf_range(0.0, 1.0 / lucky_multiplier) <= Globals.items[i]['chance']:
+			to_return = i
+	return to_return
 	
 
 

@@ -5,16 +5,25 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: Player = $"../../TrashSpawner/Player"
 @onready var music_controller: Node = $"../../../MusicController"
+@onready var litter_spawner: Node2D = $Level/LitterSpawner
+@onready var hand_area: Area2D = $HandArea
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+
+const LITTER = preload("uid://6nia0edfdeaj")
 
 #RATS ARE FAST SO YOU HAVE TO SPRINT TO CATCH THEM
 var speed : int = 1200
 var friction : float = 0.7
 var direction : Vector2
 var hired : bool = false
+var currently_working : bool = false
+var on_screen : bool
 
 signal play_theme
 
 func _ready() -> void:
+	on_screen = true
+	
 	direction = Vector2(randi_range(-1,1), randi_range(-1,1))
 
 	#CONNECTS
@@ -25,15 +34,19 @@ func _physics_process(delta: float) -> void:
 
 	#basic movement
 	if hired:
-		direction = player.global_position - global_position
-		if global_position.distance_to(player.global_position) < 20:
-			direction = global_position - player.global_position
+		#NOT WORKING
+		if not currently_working:
+			direction = player.global_position - global_position
+			if global_position.distance_to(player.global_position) < 20:
+				direction = Vector2(0, 0)
+		#WORKING
+			
 	else:
 		if randi_range(0,50) == 0:
 			direction.y = randi_range(-1,1)
 		if randi_range(0,50) == 0:
 			direction.x = randi_range(-1,1)
-		if direction == Vector2(0,0):
+		while direction == Vector2(0,0):
 			direction = Vector2(randi_range(-1,1), randi_range(-1,1))
 	velocity += direction.normalized() * speed * delta
 	velocity *= friction
@@ -47,3 +60,38 @@ func _physics_process(delta: float) -> void:
 		sprite.scale.x = -direction.x
 	
 	move_and_slide()
+
+func go_to_work():
+	
+	currently_working = true
+	
+	speed = 1400
+
+	
+	
+	while direction == Vector2(0,0):
+		direction = Vector2(randi_range(-1,1), randi_range(-1,1))
+	
+	
+	await visible_on_screen_notifier_2d.screen_exited
+	sprite.hide()
+	
+	await get_tree().create_timer(1).timeout
+	
+	sprite.show()
+	currently_working = false
+	var clone_litter: Litter = LITTER.instantiate()
+	clone_litter.rat_spawned = true
+	add_child(clone_litter)
+	move_child(clone_litter, 0)
+	hand_area.get_child(0).disabled = true
+	
+	await clone_litter.picked_up
+	hand_area.get_child(0).disabled = false
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	on_screen = true
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	on_screen = false

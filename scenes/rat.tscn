@@ -64,4 +64,10 @@ shape = SubResource("CircleShape2D_77a1s")
 collision_layer = 84
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_acf8p")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
