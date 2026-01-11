@@ -8,8 +8,6 @@ var fading: bool = false
 @onready var color_rect: ColorRect = $ColorRect
 
 func _ready() -> void:
-	color_rect.color = Color()
-	show()
 	fade_in()
 
 func fade_in():
@@ -31,6 +29,5 @@ func fade_out(scene_change: PackedScene):
 		tween.tween_property(color_rect, "color", Color(0.0, 0.0, 0.0, 1.0), 0.25)
 		
 		await tween.finished
-		await get_tree().create_timer(0.1).timeout
 		
 		get_tree().change_scene_to_packed(scene_change)

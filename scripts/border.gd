@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var start_pos : Vector2
-@export var change_to_scene : PackedScene = preload("res://scenes/home.tscn")
+@export var change_to_scene : PackedScene = preload("uid://bug8okbqgftl2")
 @onready var fade: Fade = $"../../Fade"
 
 func _on_body_entered(body: Node2D) -> void:
