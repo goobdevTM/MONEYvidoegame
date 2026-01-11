@@ -21,8 +21,12 @@ func _on_mouse_entered() -> void:
 	mouse_touching = true
 	tween.stop()
 	tween = create_tween()
-	if not Globals.saves[Globals.hovered_save] == {}:
+
+	if Globals.saves[Globals.hovered_save] == {}:
+		tool_tip.get_child(1).text = "empty."
+	else:
 		tool_tip.show()
+		tool_tip.get_child(1).text = "press x to delete."
 	tween.set_parallel()
 	tween.tween_property(tool_tip, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
 	tween.tween_property(tool_tip, "scale", Vector2(3.565, 3.565), 0.1)
