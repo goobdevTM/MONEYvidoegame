@@ -317,7 +317,6 @@ func highlight_item() -> void:
 		elif items_in_hand[0].is_in_group("bed"):
 			text.text = "[center][E] - sleep?"
 			#SIGNALS
-			talk_to_rich_person.connect(items_in_hand[0].spoken_to)
 		elif items_in_hand[0].is_in_group("computer"):
 			text.text = "[center][E] - go on computer?"
 		elif items_in_hand[0].is_in_group("npc"):
