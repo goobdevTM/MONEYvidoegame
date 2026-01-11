@@ -15,6 +15,7 @@ var my_name: String = ""
 @onready var rich_person_collision: AudioStreamPlayer = $RichPersonCollision
 @onready var player_collision: AudioStreamPlayer = $PlayerCollision
 @onready var poor_particles: GPUParticles2D = $PoorParticles
+@onready var poor_sound: AudioStreamPlayer = $PoorSound
 
 
 func generate_my_name() -> String:
@@ -80,3 +81,5 @@ func spoken_to():
 		get_tree().change_scene_to_packed(preload("uid://dpgtm36htk3qw"))
 	else:
 		poor_particles.emitting = true
+		poor_sound.play()
+		piano_slam.play()

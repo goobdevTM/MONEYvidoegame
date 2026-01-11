@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8fkuapxu0pm6"]
+[gd_scene load_steps=17 format=3 uid="uid://8fkuapxu0pm6"]
 
 [ext_resource type="Script" uid="uid://b44cbc58uf4c2" path="res://scripts/rich_person.gd" id="1_4hxcs"]
 [ext_resource type="Texture2D" uid="uid://q05x7hlewo1o" path="res://sprites/rich_man.png" id="1_akup7"]
@@ -29,9 +29,11 @@ size = Vector2(16, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hxcs"]
 radius = 8.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tubap"]
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_prf6t"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52tp8"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cyvq0"]
 
 [sub_resource type="Curve" id="Curve_52tp8"]
 _data = [Vector2(0, 1), 0.0, 0.15547447, 0, 0, Vector2(0.92352945, 0.6516854), -1.4325839, -1.4325839, 0, 0, Vector2(1, 0.056179762), -11.142324, 0.0, 0, 0]
@@ -77,6 +79,7 @@ shape = SubResource("CircleShape2D_4hxcs")
 
 [node name="PianoSlam" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_d1oat")
+bus = &"Sounds"
 
 [node name="Name" type="RichTextLabel" parent="."]
 z_index = 10
@@ -93,18 +96,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RichPersonCollision" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_tubap")
+stream = SubResource("AudioStreamRandomizer_prf6t")
 bus = &"Sounds"
 
 [node name="PlayerCollision" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_prf6t")
+stream = SubResource("AudioStreamRandomizer_52tp8")
+bus = &"Sounds"
+
+[node name="PoorSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_cyvq0")
 bus = &"Sounds"
 
 [node name="PoorParticles" type="GPUParticles2D" parent="."]
 emitting = false
 texture = ExtResource("5_prf6t")
 one_shot = true
-explosiveness = 0.75
+explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_liyb7")
 
 [connection signal="area_entered" from="RichPersonDetector" to="." method="_on_rich_person_detector_area_entered"]
