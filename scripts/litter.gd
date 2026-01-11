@@ -4,15 +4,22 @@ extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite
 
+
 var type : int = -1
 var old : bool = false
+var rat_spawned : bool = false
 
+signal picked_up
 
 func _ready() -> void:
+	
 	hide()
 	
 	if type == -1:
-		type = Globals.get_item_with_chance()
+		if rat_spawned:
+			type = Globals.get_item_with_chance(2)
+		else:
+			type = Globals.get_item_with_chance(1)
 	
 	#ANIMATION
 	var randi_bool: bool = bool(randi_range(0, 1))
@@ -34,10 +41,12 @@ func _ready() -> void:
 	show()
 #DELETES ITS SELF IF IT COLLIDES WITH OTHER TRASH
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("trash"):
-		queue_free()
+	if not rat_spawned == true:
+		if area.is_in_group("trash"):
+			queue_free()
 
 
 #too far away from player?
 func _on_delete_check_area_entered(area: Area2D) -> void:
-	queue_free()
+	if not rat_spawned == true:
+		queue_free()
