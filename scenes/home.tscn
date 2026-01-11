@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://bug8okbqgftl2"]
+[gd_scene load_steps=121 format=4 uid="uid://bug8okbqgftl2"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gi00y"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_ip4d6"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://gyq76winb4sb" path="res://sprites/grabber_highlight.png" id="35_34np2"]
 [ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="36_ri7o4"]
 [ext_resource type="AudioStream" uid="uid://cyli55p1plii2" path="res://audio/music/PianoSlam.ogg" id="37_ucx8p"]
+[ext_resource type="PackedScene" uid="uid://ba1405fyb1n12" path="res://scenes/garby.tscn" id="38_0ltf8"]
 [ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="38_34np2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa7t7"]
@@ -4117,6 +4118,9 @@ collision_layer = 84
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Table/HandArea"]
 position = Vector2(-1, -11)
 shape = SubResource("CircleShape2D_mg211")
+
+[node name="Garby" parent="." instance=ExtResource("38_0ltf8")]
+position = Vector2(-59, -32)
 
 [connection signal="body_entered" from="Level/EnterGame" to="Level/EnterGame" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/EnterRich" to="Level/EnterRich" method="_on_body_entered"]

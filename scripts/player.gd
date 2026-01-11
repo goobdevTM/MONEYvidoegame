@@ -42,6 +42,7 @@ var sprint_base_speed: int = 800
 
 signal stop_rat_theme
 signal talk_to_rich_person
+signal talk_to_garby
 
 #hand variables
 var last_positions : Array[Vector2] = []
@@ -188,11 +189,15 @@ func _process(delta: float) -> void:
 				tween.tween_property(camera, "global_position", items_in_hand[0].global_position, 0.15).set_trans(Tween.TRANS_SINE)
 				Globals.sleeping = true
 			elif items_in_hand[0] is HigherClass:
+				talk_to_rich_person.connect(items_in_hand[0].spoken_to)
 				emit_signal("talk_to_rich_person")
 				if len(items_in_hand) > 0: #stop crash
 					talk_to_rich_person.disconnect(items_in_hand[0].spoken_to)
 			elif items_in_hand[0].is_in_group("computer"):
 				upgrade_menu.open()
+			elif items_in_hand[0].is_in_group("garby"):
+				talk_to_garby.connect(items_in_hand[0].spoken_to)
+				emit_signal("talk_to_garby")
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -311,13 +316,12 @@ func highlight_item() -> void:
 			text.text = "[center][E] - open storage"
 		elif items_in_hand[0].is_in_group("bed"):
 			text.text = "[center][E] - sleep?"
-		#Get it? Higher CLASS? HGAWHIWFAIHAIFOHAHAEHEEHEHEHOIHIOOIHJESBGRRP{PRRBSGOPEAS
-		elif items_in_hand[0] is HigherClass:
-			text.text = "[center][E] - talk to?"
 			#SIGNALS
 			talk_to_rich_person.connect(items_in_hand[0].spoken_to)
 		elif items_in_hand[0].is_in_group("computer"):
 			text.text = "[center][E] - go on computer?"
+		elif items_in_hand[0].is_in_group("npc"):
+			text.text = "[center][E] - talk to?"
 
 		
 		#dont show empty trash

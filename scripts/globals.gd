@@ -9,27 +9,30 @@ var trash_amount : int = 40
 var rat_rarity : int = 12
 
 
+#ALSO UPGRADES
+var upgrade_multipliers: Dictionary[String, float] = {
+	"money_multiplier": 1,
+	"player_base_speed": 1000,
+	"trash_speed_multiplier": 1,
+	"trash_density_multiplier": 1,
+	"rat_speed_multiplier": 1,
+	"stamina_max": 100,
+	"player_base_sprint_speed": 800,
+}
+
 #UPGRADES
 var upgrades: Array[Dictionary] = [
-	{"name": "Speed", "base_cost": 50, "var": player_base_speed, "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
-	{"name": "Stamina", "base_cost": 40, "var": stamina_max, "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": preload("uid://bfwlc8spvq4i1")},
-	{"name": "Money", "base_cost": 100, "var": money_multiplier, "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": preload("res://sprites/money_upgrade.png")},
-	{"name": "Opening Trash", "base_cost": 50, "var": trash_speed_multiplier, "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": preload("res://sprites/small_garbage_bag.png")},
-	{"name": "Trash Density", "base_cost": 100, "var": trash_density_multiplier, "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": preload("res://sprites/small_garbage_bag.png")},
-	{"name": "Rat Speed", "base_cost": 30, "var": rat_speed_multiplier, "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": preload("res://sprites/rat_upgrade.png")},
-	{"name": "Sprint Speed", "base_cost": 50, "var": player_base_sprint_speed, "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
+	{"name": "Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_speed"], "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
+	{"name": "Stamina", "base_cost": 40, "var": upgrade_multipliers["stamina_max"], "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": preload("uid://bfwlc8spvq4i1")},
+	{"name": "Money", "base_cost": 100, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": preload("res://sprites/money_upgrade.png")},
+	{"name": "Opening Trash", "base_cost": 50, "var": upgrade_multipliers["trash_speed_multiplier"], "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": preload("res://sprites/small_garbage_bag.png")},
+	{"name": "Trash Density", "base_cost": 100, "var": upgrade_multipliers["trash_density_multiplier"], "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": preload("res://sprites/small_garbage_bag.png")},
+	{"name": "Rat Speed", "base_cost": 30, "var": upgrade_multipliers["rat_speed_multiplier"], "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": preload("res://sprites/rat_upgrade.png")},
+	{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
 
 ]
 
 
-#ALSO UPGRADES
-var money_multiplier: float = 1
-var player_base_speed: float = 1000
-var trash_speed_multiplier: float = 1
-var trash_density_multiplier: float = 1
-var rat_speed_multiplier: float = 1
-var stamina_max: float = 100
-var player_base_sprint_speed: float = 800
 
 var dumpster_slots : int = 6
 var max_dumpster_slots : int = 18
@@ -92,7 +95,7 @@ var rich_people_names : Array[String] = [
 #INVENTORY
 var inventory_slots : int = 9
 var selected_slot : int = -1
-var max_per_slot : int = 25
+var max_per_slot : int = 32
 var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
 var last_given_slot : bool = false
 

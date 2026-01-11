@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://ba1405fyb1n12"]
+
+[ext_resource type="Texture2D" uid="uid://eypqtl16fn8l" path="res://sprites/garby.png" id="1_scbf1"]
+[ext_resource type="Script" uid="uid://bm31gj1qbm77f" path="res://scripts/garby.gd" id="1_wgjji"]
+[ext_resource type="AudioStream" uid="uid://cyli55p1plii2" path="res://audio/music/PianoSlam.ogg" id="3_mes2j"]
+[ext_resource type="Texture2D" uid="uid://bsa68mp2vvgv6" path="res://sprites/hand.png" id="4_m8vop"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hxcs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_scbf1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1oat"]
+radius = 7.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8vop"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hxcs"]
+radius = 8.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_prf6t"]
+
+[node name="Garby" type="CharacterBody2D" groups=["garby", "npc"]]
+collision_mask = 387
+script = ExtResource("1_wgjji")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4hxcs")
+
+[node name="Body" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d1oat")
+
+[node name="RichPersonDetector" type="Area2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RichPersonDetector"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_m8vop")
+
+[node name="HandArea" type="Area2D" parent="." groups=["for_hand"]]
+position = Vector2(0, -4)
+collision_layer = 84
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_4hxcs")
+
+[node name="PianoSlam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mes2j")
+
+[node name="PlayerCollision" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_prf6t")
+bus = &"Sounds"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-14, 0)
+texture = ExtResource("4_m8vop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" groups=["npc"]]
+position = Vector2(28, 0)
+texture = ExtResource("4_m8vop")
+
+[connection signal="area_entered" from="RichPersonDetector" to="." method="_on_rich_person_detector_area_entered"]
+[connection signal="area_entered" from="HandArea" to="." method="_on_hand_area_area_entered"]
+[connection signal="area_exited" from="HandArea" to="." method="_on_hand_area_area_exited"]

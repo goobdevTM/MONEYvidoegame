@@ -50,7 +50,7 @@ initial_velocity_max = 96.15
 gravity = Vector3(0, 98, 0)
 alpha_curve = SubResource("CurveTexture_cyvq0")
 
-[node name="RichPerson" type="CharacterBody2D" groups=["rich_people"]]
+[node name="RichPerson" type="CharacterBody2D" groups=["npc", "rich_people"]]
 collision_mask = 387
 script = ExtResource("1_4hxcs")
 
