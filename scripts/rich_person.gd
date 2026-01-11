@@ -81,5 +81,6 @@ func spoken_to():
 		get_tree().change_scene_to_packed(preload("uid://dpgtm36htk3qw"))
 	else:
 		poor_particles.emitting = true
+		poor_particles.restart()
 		poor_sound.play()
 		piano_slam.play()
