@@ -315,13 +315,13 @@ func load_saves(save : int) -> void:
 		
 		#BASE UPGRADES
 		upgrades = [
-			{"name": "Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_speed"], "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
-			{"name": "Stamina", "base_cost": 40, "var": upgrade_multipliers["stamina_max"], "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": preload("uid://bfwlc8spvq4i1")},
-			{"name": "Money", "base_cost": 100, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": preload("res://sprites/money_upgrade.png")},
-			{"name": "Opening Trash", "base_cost": 50, "var": upgrade_multipliers["trash_speed_multiplier"], "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": preload("res://sprites/small_garbage_bag.png")},
-			{"name": "Trash Density", "base_cost": 100, "var": upgrade_multipliers["trash_density_multiplier"], "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": preload("res://sprites/small_garbage_bag.png")},
-			{"name": "Rat Speed", "base_cost": 30, "var": upgrade_multipliers["rat_speed_multiplier"], "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": preload("res://sprites/rat_upgrade.png")},
-			{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
+			{"name": "Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_speed"], "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": preload("uid://bfwlc8spvq4i1"), "times_upgraded": 0},
+			{"name": "Stamina", "base_cost": 40, "var": upgrade_multipliers["stamina_max"], "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": preload("uid://bfwlc8spvq4i1"), "times_upgraded": 0},
+			{"name": "Money", "base_cost": 100, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": preload("res://sprites/money_upgrade.png"), "times_upgraded": 0},
+			{"name": "Opening Trash", "base_cost": 50, "var": upgrade_multipliers["trash_speed_multiplier"], "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": preload("res://sprites/small_garbage_bag.png"), "times_upgraded": 0},
+			{"name": "Trash Density", "base_cost": 100, "var": upgrade_multipliers["trash_density_multiplier"], "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": preload("res://sprites/small_garbage_bag.png"), "times_upgraded": 0},
+			{"name": "Rat Speed", "base_cost": 30, "var": upgrade_multipliers["rat_speed_multiplier"], "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": preload("res://sprites/rat_upgrade.png"), "times_upgraded": 0},
+			{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": preload("uid://bfwlc8spvq4i1"), "times_upgraded": 0},
 		]
 	
 #molodur awsoml

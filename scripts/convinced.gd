@@ -28,9 +28,8 @@ func _on_continue_pressed() -> void:
 	button.disabled = true
 	if convinced:
 		kaching.play()
-		await kaching.finished
 	else:
 		boowomp.play()
-		await boowomp.finished
+	await get_tree().create_timer(0.1).timeout
 	get_tree().paused = false
 	fade.fade_out(preload("uid://cwq0qr0p3gujk"))

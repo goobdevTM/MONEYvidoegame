@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var reload: Button = $Panel/Reload
 @onready var piano_slam: AudioStreamPlayer = $Panel/PianoSlam
 @onready var panel: Panel = $Panel
+@onready var money: RichTextLabel = $Panel/Money
+
 
 var reload_cost: int = 10
 
@@ -17,12 +19,9 @@ func set_buttons():
 		var upgrade: int = randi_range(0, len(Globals.upgrades) - 1)
 		
 		i.upgrade = upgrade
-		i.get_child(2).texture = Globals.upgrades[upgrade]["texture"]
-		i.get_child(3).text = Globals.upgrades[upgrade]["name"]
-		i.get_child(0).text = Globals.upgrades[upgrade]["description"]
-		i.get_child(4).text = "[center]" + str(Globals.upgrades[upgrade]["base_cost"]) + "$"
 
 func open() -> void:
+	money.text = "[right]$" + str(Globals.money)
 	music.play()
 	if Globals.in_settings:
 		Globals.in_settings = false

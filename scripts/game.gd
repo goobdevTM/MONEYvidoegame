@@ -21,7 +21,6 @@ var speed_up : float = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if game:
-		right_border.position.x = Globals.areas[Globals.area]['length']
 		set_area_upgrade_text()
 	for i in range(Globals.working_rats):
 		var new_rat = RAT.instantiate()
@@ -75,6 +74,7 @@ func _process(delta: float) -> void:
 		
 func set_area_upgrade_text() -> void:
 	if game:
+		right_border.position.x = Globals.areas[Globals.area]['length']
 		if Globals.area < len(Globals.areas):
 			buy_text.text = "[right]" + Globals.areas[Globals.area + 1]['name'] + "
 

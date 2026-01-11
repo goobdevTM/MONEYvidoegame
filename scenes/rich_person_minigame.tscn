@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=65 format=4 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bf2webwe8pc11" path="res://audio/sfx/buzzer.mp3" id="13_rvpi8"]
 [ext_resource type="AudioStream" uid="uid://4kgup6xrg0wt" path="res://audio/sfx/ding.mp3" id="14_7cwb0"]
 [ext_resource type="AudioStream" uid="uid://dix0u8vxnm54w" path="res://audio/sfx/boowomp.mp3" id="15_7cwb0"]
+[ext_resource type="AudioStream" uid="uid://brehgxah1718g" path="res://audio/sfx/kaching-sound-fx.mp3" id="15_277d7"]
 [ext_resource type="PackedScene" uid="uid://crhwl6opbfl82" path="res://scenes/fade.tscn" id="18_hgi1x"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
@@ -3426,13 +3427,13 @@ bus = &"Sounds"
 
 [node name="Kaching" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("15_7cwb0")
+stream = ExtResource("15_277d7")
 volume_db = -1.0
 bus = &"Sounds"
 
 [node name="Boowomp" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("14_7cwb0")
+stream = ExtResource("15_7cwb0")
 volume_db = -1.0
 bus = &"Sounds"
 
