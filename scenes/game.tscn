@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=39 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c1tr1iau1hmtj" path="res://sprites/fence.png" id="6_264po"]
 [ext_resource type="PackedScene" uid="uid://b6bbthyyqtxrt" path="res://scenes/noise_overlay.tscn" id="8_rysoc"]
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_ca42v"]
+[ext_resource type="Texture2D" uid="uid://bey8tymwabowi" path="res://sprites/area_buy_signifier.png" id="13_1kice"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
 [ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="13_ir15t"]
 [ext_resource type="Texture2D" uid="uid://dg8ugiys8tlq2" path="res://sprites/sign.png" id="13_ssvqc"]
@@ -85,6 +86,15 @@ normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ssvqc"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt5mj"]
+texture = ExtResource("13_1kice")
+texture_region_size = Vector2i(16, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ssvqc"]
+tile_size = Vector2i(16, 32)
+sources/0 = SubResource("TileSetAtlasSource_bt5mj")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ssvqc")
@@ -189,6 +199,10 @@ collision_mask = 7
 
 [node name="Collision" type="CollisionShape2D" parent="Level/RightBorder"]
 shape = SubResource("WorldBoundaryShape2D_ssvqc")
+
+[node name="BuyThisArea" type="TileMapLayer" parent="Level/RightBorder"]
+tile_map_data = PackedByteArray("AAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAPf/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ssvqc")
 
 [node name="HomeSign" type="Sprite2D" parent="Level"]
 z_index = 10

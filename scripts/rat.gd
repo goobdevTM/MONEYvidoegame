@@ -31,6 +31,9 @@ func _ready() -> void:
 	if not hired:
 		play_theme.connect(music_controller.play_rat_theme)
 		emit_signal("play_theme")
+		sprite.play("walk")
+	else:
+		sprite.play("walk_hired")
 		
 
 func _physics_process(delta: float) -> void:
@@ -38,6 +41,7 @@ func _physics_process(delta: float) -> void:
 	#basic movement
 	if hired:
 		#NOT WORKING
+		sprite.play("walk_hired")
 		if not currently_working:
 			direction = player.global_position - global_position
 			if global_position.distance_to(player.global_position) < 20:

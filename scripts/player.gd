@@ -105,6 +105,11 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	
+	if Globals.sleeping:
+		eyes.play("closed")
+	else:
+		eyes.play("open")
+	
 	#ADDS STAMINA EVERY ONE SECOND
 	if stamina < 0:
 		stamina = 0
@@ -189,6 +194,7 @@ func _process(delta: float) -> void:
 				tween.tween_property(self, "global_position", items_in_hand[0].global_position, 0.1).set_trans(Tween.TRANS_SINE)
 				tween.tween_property(camera, "global_position", items_in_hand[0].global_position, 0.15).set_trans(Tween.TRANS_SINE)
 				Globals.sleeping = true
+				
 			elif items_in_hand[0] is HigherClass:
 				talk_to_rich_person.connect(items_in_hand[0].spoken_to)
 				emit_signal("talk_to_rich_person")
