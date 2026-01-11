@@ -11,6 +11,7 @@ var hovering : bool = false
 @onready var name_text: RichTextLabel = $Name
 @onready var rich_person_collision: AudioStreamPlayer = $RichPersonCollision
 @onready var player_collision: AudioStreamPlayer = $PlayerCollision
+@onready var dialogue: CanvasLayer = $"../Dialogue"
 
 
 func _ready() -> void:
@@ -28,20 +29,9 @@ func _physics_process(delta: float) -> void:
 		direction.y = randi_range(-1,1)
 	if randi_range(0,150) == 0:
 		direction.x = randi_range(-1,1)
-	if direction == Vector2(0,0):
-			direction = Vector2(randi_range(-1,1), randi_range(-1,1))
-	if randi_range(0, 5) == 0:
-		direction = Vector2(0, 0)
+
 	velocity += direction.normalized() * speed * delta
 	velocity *= friction
-	
-	#rich animation
-	if direction.x > 0:
-		direction.x = 1
-	elif direction.x < 0:
-		direction.x = -1
-	if abs(direction.x) == 1:
-		sprite.scale.x = -direction.x
 	
 	move_and_slide()
 
@@ -52,5 +42,8 @@ func _on_rich_person_detector_area_entered(area: Area2D) -> void:
 		player_collision.play()
 	
 func spoken_to():
-	pass
-	
+	dialogue.show()
+	var current_dialogue: int = 0
+	if Globals.first_interaction_with_garby:
+		dialogue.get_child(0).get_child(3).text = Globals.garby_dialogue["first_interaction"][0]
+		

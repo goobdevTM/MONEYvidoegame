@@ -9,6 +9,8 @@ var trash_amount : int = 40
 var rat_rarity : int = 12
 
 
+var first_interaction_with_garby: bool = true
+
 #ALSO UPGRADES
 var upgrade_multipliers: Dictionary[String, float] = {
 	"money_multiplier": 1,
@@ -32,7 +34,35 @@ var upgrades: Array[Dictionary] = [
 
 ]
 
-
+var garby_dialogue: Dictionary = {
+	"first_encounter": [
+		"Ay there! Im Garbyy. But you can call me Garbo, Garbonzo bean, or even Garboggle!",
+		"Anyways nice alley-way ya got here! I think I might stay a while!",
+		"Oh? Ya want some advice? You wanna make some sweet moola??",
+		"While theres no way better than selling to rich people! Theres plenty of garbage in the courtyard. What would you do with garbage?",
+		"Sell it to rich people!! They aint that smart, so you can probably trick them into thinking its somthin worth a dime or 2!",
+		"Oh ya, I almost forgot! If you give me a random piece of garbage, I'll give ya a tip! A TIP!!",
+	],
+	"bothered_dialogue": [
+		"Thats all bud!",
+		"Nothin' else to say!",
+		"I have nothin' else for ya to hear!",
+		"You want a lollipop or somethin??",
+		"Im tired of talkin to ya, scram!",
+		"Get out of here! go get sum garbage or something!",
+		"Heya look.. Its a.. a giant piece a' garbage over there!! Go get it.",
+		"...",
+	],
+	"tips": [
+		"The rarer trash usually sells for more!",
+		"I hear theres sum rats in those garbage bags! Who knows, they may work for ya!",
+		"You can use tha computer to upgrade stuffs!",
+		"You can store all ya stuff in that dumpster!",
+		"That bed of yours makes time go faster!",
+		"You can unlock different areas with more trash!",
+		"Careful what ya say in front of them rich folks!",
+	],
+}
 
 var dumpster_slots : int = 6
 var max_dumpster_slots : int = 18
@@ -188,6 +218,7 @@ func save_data():
 	
 	file.store_var(saves)
 	
+	file.store_var(first_interaction_with_garby)
 	file.store_var(sound_volume)
 	file.store_var(music_volume)
 	file.store_var(master_volume)
@@ -221,7 +252,7 @@ func set_saves(save : int) -> void:
 	
 #LOAD SAVES VARIALBLELY
 func load_saves(save : int) -> void:
-	if saves[save].has('working_rats'): #check if not save empty
+	if not saves[save] == {}: #check if not save empty
 		working_rats = saves[save]['working_rats']
 		money = saves[save]['money']
 		time = saves[save]['time']
@@ -235,6 +266,7 @@ func load_saves(save : int) -> void:
 		money = 0
 		dumpster_slots = 6
 		inventory_slots = 3
+		first_interaction_with_garby = true
 		time = day_length / 2
 		day = 0
 		first_time_minigame = true
