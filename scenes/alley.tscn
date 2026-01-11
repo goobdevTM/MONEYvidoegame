@@ -21,7 +21,7 @@
 [ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="21_jhv7o"]
 [ext_resource type="AudioStream" uid="uid://cikb4bhtb4yq7" path="res://audio/music/Storage Music Trash.ogg" id="22_p33y7"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="23_tft22"]
-[ext_resource type="PackedScene" uid="uid://rjw35yafxwvf" path="res://scenes/upgrade_button2.tscn" id="24_ctnpg"]
+[ext_resource type="PackedScene" uid="uid://rjw35yafxwvf" path="res://scenes/upgrade_button.tscn" id="24_ctnpg"]
 [ext_resource type="Script" uid="uid://bchc8awf5l3ro" path="res://scripts/upgrade_menu.gd" id="24_ftgv5"]
 [ext_resource type="Texture2D" uid="uid://b5jndoufqowsa" path="res://sprites/smellizon logo.png" id="25_tpp26"]
 [ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="32_ug8ri"]
