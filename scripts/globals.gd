@@ -31,6 +31,9 @@ var rat_speed_multiplier: float = 1
 var stamina_max: float = 100
 var player_base_sprint_speed: float = 800
 
+var dumpster_slots : int = 6
+var max_dumpster_slots : int = 18
+
 #RICH PERSON
 var rich_person_max : int = 48
 var roman_numerals : Array[String] = [
@@ -124,26 +127,7 @@ var inventory : Array[Dictionary] = [
 	{'id': 0, 'count': 0},
 ]
 
-var storage : Array[Dictionary] = [
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-	{'id': 0, 'count': 0},
-]
+var storage : Array[Dictionary] = []
 
 #CONDITIONS
 var in_settings : bool = false
@@ -245,6 +229,8 @@ func load_saves(save : int) -> void:
 		#STARTING VALUES
 		working_rats = 0
 		money = 0
+		dumpster_slots = 6
+		inventory_slots = 3
 		time = day_length / 2
 		day = 0
 		first_time_minigame = true
@@ -260,26 +246,7 @@ func load_saves(save : int) -> void:
 			{'id': 0, 'count': 0},
 		]
 
-		storage = [
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-			{'id': 0, 'count': 0},
-		]
+		storage = []
 	
 #molodur awsoml
 func save_and_quit() -> void:

@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 	if type == -1:
 		if rat_spawned:
-			type = Globals.get_item_with_chance(2)
+			type = Globals.get_item_with_chance(3)
 		else:
 			type = Globals.get_item_with_chance(1)
 	

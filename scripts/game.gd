@@ -2,11 +2,22 @@ extends Node2D
 
 @onready var click_and_hover: Node = $ClickAndHover
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
+@onready var rat_spawner: Node2D = $Level/RatSpawner
+@onready var player: Player = $Level/TrashSpawner/Player
+
+const RAT = preload("uid://cuwxqyo26k0jd")
 
 var speed_up : float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for i in range(Globals.working_rats):
+		var new_rat = RAT.instantiate()
+		new_rat.hired = true
+		
+		rat_spawner.add_child(new_rat)
+		new_rat.global_position = player.global_position + Vector2(randi_range(-50, 50), randi_range(-50, 50))
+	
 	Globals.set_ui_sounds(click_and_hover)
 	Globals.in_game = true
 	Globals.selected_slot += 1

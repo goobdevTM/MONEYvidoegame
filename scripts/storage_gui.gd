@@ -19,6 +19,9 @@ func _ready() -> void:
 	hide()
 	
 	#CREATES STORAGE
+	for i in range(Globals.dumpster_slots - len(Globals.storage)):
+		Globals.storage.append({'id': 0, 'count': 0})
+	
 	for i in range(len(Globals.storage)):
 		var clone_slot: Control = SLOT.instantiate()
 		clone_slot.storage = true

@@ -22,6 +22,7 @@ var on_screen : bool
 signal play_theme
 
 func _ready() -> void:
+	
 	on_screen = true
 	
 	direction = Vector2(randi_range(-1,1), randi_range(-1,1))
