@@ -86,7 +86,7 @@ func spoken_to():
 	if can_sell_to:
 		Globals.rich_difficulty = difficulty
 		Globals.rich_person_name = my_name
-		fade.fade_out(load("uid://dpgtm36htk3qw"))
+		fade.fade_out(load("res://scenes/rich_person_minigame.tscn"))
 	else:
 		poor_particles.emitting = true
 		poor_particles.restart()
