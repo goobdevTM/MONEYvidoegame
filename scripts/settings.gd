@@ -20,14 +20,18 @@ func _ready() -> void:
 	
 	#CHECK BUTTONS
 	
-	
+	show_fps.button_pressed = Globals.show_fps
+	check_button_vsync.button_pressed = Globals.vsync_mode
 	sound_slider.value = Globals.sound_volume
 	music_slider.value = Globals.music_volume
 	master_slider.value = Globals.master_volume
 	
+	_on_show_fps_toggled(Globals.show_fps)
+	_on_vsync_toggled(Globals.vsync_mode)
 	_on_master_value_changed(Globals.master_volume)
 	_on_music_value_changed(Globals.music_volume)
 	_on_sound_value_changed(Globals.sound_volume)
+
 	
 	hide()
 

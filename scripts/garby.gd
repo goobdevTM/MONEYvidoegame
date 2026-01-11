@@ -73,22 +73,27 @@ func spoken_to():
 		if current_dialogue < len(Globals.garby_dialogue["first_encounter"]):
 			dialogue.get_child(0).get_child(3).text = Globals.garby_dialogue["first_encounter"][current_dialogue]
 			current_dialogue += 1
+			return
 		else:
 			current_dialogue = 0
 			Globals.first_interaction_with_garby = false
 			hide_dialogue()
+			return
 	else:
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
 			current_dialogue = 0
 			dialogue.get_child(0).get_child(3).text = Globals.garby_dialogue["ask_for_litter"][randi_range(0,len(Globals.garby_dialogue["ask_for_litter"]) - 1)]
 			buttons.show()
+			return
 		else:
 			if current_dialogue < len(Globals.garby_dialogue["bothered_dialogue"]):
 				dialogue.get_child(0).get_child(3).text = Globals.garby_dialogue["bothered_dialogue"][current_dialogue]
 				current_dialogue += 1
+				return
 			else:
 				current_dialogue = 0
 				hide_dialogue()
+				return
 
 
 func _on_give_pressed() -> void:

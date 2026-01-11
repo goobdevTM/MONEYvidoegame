@@ -221,7 +221,7 @@ var saves : Array[Dictionary] = [{},{},{}]
 var current_save : int = 0
 
 func _ready() -> void:
-	load_data()
+	save_data()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 #SAVING AND LOADING
