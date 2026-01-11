@@ -13,6 +13,7 @@ extends Node2D
 @onready var correct_anim: AnimationPlayer = $Control/Correct/CorrectAnim
 @onready var start_anim: AnimationPlayer = $Control/Start/StartAnim
 @onready var number: RichTextLabel = $Control/Number
+@onready var click_and_hover: Node = $ClickAndHover
 
 var bad_questions : Array[Dictionary] = [
 	{'q': "Are you a fool?", 'good': "Of course not sir!", 'bad': "Maybe..."},
@@ -48,6 +49,7 @@ var max_questions : int = 20
 var last_question : Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.set_ui_sounds(click_and_hover)
 	if Globals.first_time_minigame:
 		Globals.question_speed_mult = 0.4
 	else:

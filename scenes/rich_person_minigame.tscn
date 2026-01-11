@@ -1,13 +1,15 @@
-[gd_scene load_steps=31 format=3 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=33 format=3 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
 [ext_resource type="Texture2D" uid="uid://36aawsxe7l0x" path="res://sprites/graph_bg.png" id="3_fgf4e"]
+[ext_resource type="Script" uid="uid://bj1lmperb6mvp" path="res://scripts/button_animations.gd" id="4_0lf00"]
 [ext_resource type="AudioStream" uid="uid://dgqjd6bxlh6ih" path="res://audio/music/Rich People Theme Sale.ogg" id="4_hapmi"]
 [ext_resource type="FontFile" uid="uid://camgkxjqsnse2" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="4_wq1ny"]
 [ext_resource type="FontFile" uid="uid://uljll8355fgf" path="res://fonts/PixeloidSans-mLxMm.ttf" id="5_hvqj5"]
 [ext_resource type="Texture2D" uid="uid://bopau3x6f88p4" path="res://sprites/scroll.png" id="6_hvqj5"]
 [ext_resource type="Script" uid="uid://bokb5sdc2yqae" path="res://scripts/help.gd" id="7_vi0dq"]
+[ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="10_ihibx"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
 length = 0.001
@@ -358,6 +360,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_ihibx"]
 resource_name = "show"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -365,7 +368,7 @@ tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -377,7 +380,7 @@ tracks/1/path = NodePath("BG:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.75, 1),
+"times": PackedFloat32Array(0, 0.1, 2.75, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -389,7 +392,7 @@ tracks/2/path = NodePath("Text:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.2, 0.75000006, 1),
+"times": PackedFloat32Array(0, 0.10000001, 0.2, 2.75, 3),
 "transitions": PackedFloat32Array(2, 0.5, 2, 2, -2),
 "update": 0,
 "values": [Vector2(0, 480), Vector2(0, 206), Vector2(0, 180), Vector2(0, 180), Vector2(0, 480)]
@@ -401,7 +404,7 @@ tracks/3/path = NodePath("../Buttons/Right:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -413,7 +416,7 @@ tracks/4/path = NodePath("../Buttons/Left:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -569,6 +572,7 @@ offset_bottom = 480.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_jupnj")
+script = ExtResource("4_0lf00")
 
 [node name="Name" type="RichTextLabel" parent="Control"]
 clip_contents = false
@@ -684,6 +688,7 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+script = ExtResource("4_0lf00")
 
 [node name="Left" type="Button" parent="Control/Buttons"]
 custom_minimum_size = Vector2(300, 0)
@@ -754,6 +759,35 @@ theme = ExtResource("2_jupnj")
 theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 text = "Customer Satisfaction:"
 horizontal_alignment = 1
+
+[node name="HelpButton" type="Button" parent="Control"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -98.0
+offset_right = -16.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("6_hvqj5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/HelpButton"]
+clip_contents = false
+layout_mode = 0
+offset_top = 66.0
+offset_right = 84.0
+offset_bottom = 112.0
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
+bbcode_enabled = true
+text = "[center]Help [H]"
 
 [node name="Wrong" type="Control" parent="Control"]
 visible = false
@@ -923,36 +957,8 @@ libraries = {
 }
 autoplay = "show"
 
-[node name="HelpButton" type="Button" parent="Control"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -98.0
-offset_right = -16.0
-offset_bottom = -26.0
-grow_horizontal = 0
-grow_vertical = 2
-icon = ExtResource("6_hvqj5")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/HelpButton"]
-clip_contents = false
-layout_mode = 0
-offset_top = 66.0
-offset_right = 84.0
-offset_bottom = 112.0
-theme_override_fonts/normal_font = ExtResource("5_hvqj5")
-bbcode_enabled = true
-text = "[center]Help"
-
 [node name="Help" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -984,6 +990,7 @@ offset_right = -64.0
 offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_0lf00")
 
 [node name="Panel" type="Panel" parent="Help/Control"]
 layout_mode = 1
@@ -993,14 +1000,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Help/Control/Panel"]
+[node name="Title" type="RichTextLabel" parent="Help/Control/Panel"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 51.0
+offset_top = 12.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Help"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Help/Control/Panel"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 64.0
+offset_right = -4.0
+offset_bottom = 115.0
 grow_horizontal = 2
 bbcode_enabled = true
-text = "[center]Answer the rich people's "
+text = "[center]Answer the rich people's questions with the best answers."
 
 [node name="Close" type="Button" parent="Help/Control"]
 layout_mode = 1
@@ -1016,11 +1039,30 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_s8cbi")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
 text = "X"
 
+[node name="Cool" type="Button" parent="Help/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -47.0
+offset_right = 103.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
+text = "Coolio Schmoolio!"
+
 [node name="RichMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hapmi")
 volume_db = -9.062
 autoplay = true
 bus = &"Music"
+
+[node name="ClickAndHover" parent="." instance=ExtResource("10_ihibx")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -1029,4 +1071,5 @@ wait_time = 2.0
 [connection signal="pressed" from="Control/Buttons/Right" to="." method="_on_button_pressed" binds= [1]]
 [connection signal="pressed" from="Control/HelpButton" to="Help" method="_on_help_button_pressed"]
 [connection signal="pressed" from="Help/Control/Close" to="Help" method="close"]
+[connection signal="pressed" from="Help/Control/Cool" to="Help" method="close"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
