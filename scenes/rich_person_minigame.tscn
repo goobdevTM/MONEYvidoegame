@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=26 format=3 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dgqjd6bxlh6ih" path="res://audio/music/Rich People Theme Sale.ogg" id="4_hapmi"]
 [ext_resource type="FontFile" uid="uid://camgkxjqsnse2" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="4_wq1ny"]
 [ext_resource type="FontFile" uid="uid://uljll8355fgf" path="res://fonts/PixeloidSans-mLxMm.ttf" id="5_hvqj5"]
+[ext_resource type="Texture2D" uid="uid://bopau3x6f88p4" path="res://sprites/scroll.png" id="6_hvqj5"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
 length = 0.001
@@ -865,6 +866,35 @@ libraries = {
 }
 autoplay = "show"
 
+[node name="Help" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -98.0
+offset_right = -16.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("6_hvqj5")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Help"]
+clip_contents = false
+layout_mode = 0
+offset_left = -73.0
+offset_top = 66.0
+offset_right = 157.0
+offset_bottom = 112.0
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
+bbcode_enabled = true
+text = "[center]HELP HELP ME GHLEP AHHHHHH"
+
 [node name="RichMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hapmi")
 volume_db = -9.062
@@ -872,7 +902,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.0
 
 [connection signal="pressed" from="Control/Buttons/Left" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/Buttons/Right" to="." method="_on_button_pressed" binds= [1]]

@@ -8,15 +8,8 @@ var trash_amount : int = 40
 #	WILL BE MAX IN A RANDI RANGE
 var rat_rarity : int = 12
 
+#RICH PERSON
 var rich_person_max : int = 48
-
-#INVENTORY
-var inventory_slots : int = 9
-var selected_slot : int = -1
-var max_per_slot : int = 25
-var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
-var last_given_slot : bool = false
-
 var roman_numerals : Array[String] = [
 	"I",
 	"II",
@@ -69,6 +62,14 @@ var rich_people_names : Array[String] = [
 	"Gibbysplop",
 	"Slop"
 ]
+
+#INVENTORY
+var inventory_slots : int = 9
+var selected_slot : int = -1
+var max_per_slot : int = 25
+var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
+var last_given_slot : bool = false
+
 
 var items : Array[Dictionary] = [
 	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 0.4},
@@ -140,13 +141,15 @@ var click_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 var hover_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 
 #GAME
+#SAVE RELATED VARIABLES SET LATER
 var working_rats : int = 0
 var money : int = 0
 var time : float = 720.0 #day length / 2
 var day : int = 0
 var sleeping : bool = false
+var first_time_minigame : bool = true
 var start_pos : Vector2 = Vector2(0, 0) #where player spawns
-var day_length : float = 1440.0 #seconds
+const day_length : float = 1440.0 #seconds
 var rich_person_name : String = ""
 var question_speed_mult : float = 0.5
 
@@ -202,6 +205,7 @@ func set_saves(save : int) -> void:
 	saves[save]['day'] = day
 	saves[save]['inventory'] = inventory
 	saves[save]['storage'] = storage
+	saves[save]['first_time_minigame'] = first_time_minigame
 	
 #LOAD SAVES VARIALBLELY
 func load_saves(save : int) -> void:
@@ -210,9 +214,48 @@ func load_saves(save : int) -> void:
 		money = saves[save]['money']
 		time = saves[save]['time']
 		day = saves[save]['day']
+		first_time_minigame = saves[save]['first_time_minigame']
 		inventory = saves[save]['inventory']
 		storage = saves[save]['storage']
-	
+	else: #else reset
+		#STARTING VALUES
+		working_rats = 0
+		money = 0
+		time = day_length / 2
+		day = 0
+		first_time_minigame = true
+		inventory = [
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+		]
+
+		storage = [
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+			{'id': 0, 'count': 0},
+		]
 	
 #molodur awsoml
 func save_and_quit() -> void:

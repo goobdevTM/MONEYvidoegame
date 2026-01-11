@@ -48,13 +48,18 @@ var max_questions : int = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.wait_time /= Globals.question_speed_mult
+	if Globals.first_time_minigame:
+		Globals.question_speed_mult = 0.4
+	else:
+		Globals.question_speed_mult = 1
+	timer.wait_time = 1 / Globals.question_speed_mult
+	time_left.max_value = timer.wait_time
 	satisfaction = 10
 	customer_satisfaction.value = satisfaction
 	name_text.text = "[center]Deal with " + Globals.rich_person_name
 	add_to_graph(0.0)
 	ask_question()
-	time_left.max_value = timer.wait_time
+	
 	
 	
 
@@ -77,6 +82,9 @@ func ask_question() -> void:
 	questions_answered += 1
 	number.text = "[center]" + str(questions_answered) + "/" + str(max_questions) + " Questions Answered"
 	number.modulate = lerp(Color.YELLOW, Color.GREEN, float(questions_answered) / float(max_questions))
+	Globals.question_speed_mult += 0.01
+	timer.wait_time = 1 / Globals.question_speed_mult
+	time_left.max_value = timer.wait_time
 	
 	var question_int : int = randi_range(0,len(bad_questions) - 1)
 	var question_dict : Dictionary = bad_questions[question_int]
