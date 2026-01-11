@@ -150,6 +150,7 @@ var in_settings : bool = false
 var in_game : bool = false
 var in_storage : bool = false
 var in_smellizon : bool = false
+var in_help : bool = false
 
 #SETTINGS
 var stamina_bar_opacity: float = 1
