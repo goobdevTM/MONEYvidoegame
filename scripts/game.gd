@@ -11,7 +11,9 @@ extends Node2D
 @onready var right_border: StaticBody2D = $Level/RightBorder
 @onready var buy_text: RichTextLabel = $Level/RightBorder/BuyArea/BuyText
 @onready var fade: Fade = $Fade
+@onready var note: Node2D = $Note
 
+@export var rich_plaza : bool = false
 
 
 const RAT = preload("uid://cuwxqyo26k0jd")
@@ -20,6 +22,9 @@ var speed_up : float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	Globals.has_rich_people = false
+	
 	if game:
 		set_area_upgrade_text()
 	for i in range(Globals.working_rats):
@@ -45,6 +50,17 @@ func _ready() -> void:
 		Globals.save_data()
 		
 func _process(delta: float) -> void:
+	
+	if 
+	
+	if rich_plaza:
+		if not Globals.has_rich_people: #is night?
+			note.show()
+			note.get_child(0).get_child(1).disabled = false
+		else:
+			note.hide()
+			note.get_child(0).get_child(1).disabled = true
+		
 	canvas_modulate.color = lerp(Color.WHITE, Color(0.245, 0.362, 0.514, 1.0), clampf(abs(Globals.time - (Globals.day_length / 1.85)) / (Globals.day_length / 8) - 1.65, 0, 1))
 	if Globals.sleeping:
 		Globals.time += delta * speed_up #speed time

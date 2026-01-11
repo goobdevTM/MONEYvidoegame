@@ -49,6 +49,7 @@ computer=""
 garby=""
 npc=""
 buy_area=""
+note=""
 
 [input]
 

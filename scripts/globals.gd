@@ -180,6 +180,7 @@ var click_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 var hover_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 var show_fps: bool = false
 var vsync_mode: bool = false
+var has_rich_people: bool = false
 
 #GAME
 #SAVE RELATED VARIABLES SET LATER
