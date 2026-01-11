@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var h_box_container: HBoxContainer = $Panel/HBoxContainer
 @onready var reload: Button = $Panel/Reload
 @onready var piano_slam: AudioStreamPlayer = $Panel/PianoSlam
+@onready var panel: Panel = $Panel
 
 var reload_cost: int = 10
 
@@ -29,13 +30,12 @@ func open() -> void:
 	get_tree().paused = true
 	show()
 	
-	#control.position = Vector2(0,480)
-	#bg.modulate.a = 0
+
+	panel.modulate.a = 0
 	
-	#var tween : Tween = create_tween()
-	#tween.set_parallel()
-	#tween.tween_property(bg, "modulate", Color(0.0, 0.0, 0.0, 0.502), 0.1)
-	#tween.tween_property(control, "position", Vector2(0,0), 0.1)
+	Globals.in_smellizon = true
+	var tween : Tween = create_tween()
+	tween.tween_property(panel, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
 	
 	#await tween.finished
 	#inventory.h_box_container.hide()
@@ -44,10 +44,9 @@ func open() -> void:
 func close() -> void:
 	music.stop()
 	
-	#var tween : Tween = create_tween()
-	#tween.set_parallel()
-	#tween.tween_property(bg, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.1)
-	#tween.tween_property(control, "position", Vector2(0,480), 0.1)
+	Globals.in_smellizon = false
+	var tween : Tween = create_tween()
+	tween.tween_property(panel, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.1)
 	
 	hide()
 	get_tree().paused = false

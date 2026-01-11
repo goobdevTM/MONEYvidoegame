@@ -25,7 +25,7 @@ func _ready() -> void:
 	hide()
 
 func _process(delta: float) -> void:
-	if not Globals.in_storage:
+	if not Globals.in_storage and not Globals.in_smellizon:
 		if Input.is_action_just_pressed("settings"):
 			Globals.in_settings = not Globals.in_settings
 			if Globals.in_settings:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=31 format=3 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://camgkxjqsnse2" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="4_wq1ny"]
 [ext_resource type="FontFile" uid="uid://uljll8355fgf" path="res://fonts/PixeloidSans-mLxMm.ttf" id="5_hvqj5"]
 [ext_resource type="Texture2D" uid="uid://bopau3x6f88p4" path="res://sprites/scroll.png" id="6_hvqj5"]
+[ext_resource type="Script" uid="uid://bokb5sdc2yqae" path="res://scripts/help.gd" id="7_vi0dq"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
 length = 0.001
@@ -423,6 +424,62 @@ _data = {
 &"RESET": SubResource("Animation_s8cbi"),
 &"show": SubResource("Animation_ihibx")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lf00"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.64, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.23, 0, 0, 1)
+corner_detail = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihibx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.34, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.14, 0, 0, 1)
+corner_detail = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8cbi"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.45, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.23, 0, 0, 1)
+corner_detail = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dof8y"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.34, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.14, 0, 0, 1)
+corner_detail = 5
+anti_aliasing = false
 
 [node name="RichPersonMinigame" type="Node2D"]
 script = ExtResource("1_jwd4e")
@@ -866,7 +923,8 @@ libraries = {
 }
 autoplay = "show"
 
-[node name="Help" type="Button" parent="Control"]
+[node name="HelpButton" type="Button" parent="Control"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -884,16 +942,79 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Help"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/HelpButton"]
 clip_contents = false
 layout_mode = 0
-offset_left = -73.0
 offset_top = 66.0
-offset_right = 157.0
+offset_right = 84.0
 offset_bottom = 112.0
 theme_override_fonts/normal_font = ExtResource("5_hvqj5")
 bbcode_enabled = true
-text = "[center]HELP HELP ME GHLEP AHHHHHH"
+text = "[center]Help"
+
+[node name="Help" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_jupnj")
+script = ExtResource("7_vi0dq")
+
+[node name="BG" type="ColorRect" parent="Help"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Control" type="Control" parent="Help"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Help/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Help/Control/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 51.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center]Answer the rich people's "
+
+[node name="Close" type="Button" parent="Help/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0lf00")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ihibx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s8cbi")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
+text = "X"
 
 [node name="RichMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hapmi")
@@ -906,4 +1027,6 @@ wait_time = 2.0
 
 [connection signal="pressed" from="Control/Buttons/Left" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/Buttons/Right" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="Control/HelpButton" to="Help" method="_on_help_button_pressed"]
+[connection signal="pressed" from="Help/Control/Close" to="Help" method="close"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

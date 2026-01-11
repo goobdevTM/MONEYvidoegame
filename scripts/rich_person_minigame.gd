@@ -45,7 +45,7 @@ var target_line_x : float = 0
 var satisfaction : float = 10
 var questions_answered : int = 0
 var max_questions : int = 20
-
+var last_question : Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Globals.first_time_minigame:
@@ -105,6 +105,7 @@ func ask_question() -> void:
 	if start_anim.is_playing():
 		await start_anim.animation_finished
 	timer.start()
+	last_question = question_dict
 	
 func add_to_graph(point : float) -> void:
 	var new_points : Array = success_graph.points
