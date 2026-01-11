@@ -38,7 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://ba1405fyb1n12" path="res://scenes/garby.tscn" id="38_6s8gi"]
 [ext_resource type="Texture2D" uid="uid://eypqtl16fn8l" path="res://sprites/garby.png" id="39_kmot5"]
 [ext_resource type="Script" uid="uid://bj1lmperb6mvp" path="res://scripts/button_animations.gd" id="40_nqjib"]
-[ext_resource type="PackedScene" path="res://scenes/fade.tscn" id="41_v61ha"]
+[ext_resource type="PackedScene" uid="uid://crhwl6opbfl82" path="res://scenes/fade.tscn" id="41_v61ha"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa7t7"]
 atlas = ExtResource("5_x14hh")
