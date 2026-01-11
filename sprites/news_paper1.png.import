@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bw7tug6qk04wp"
-path="res://.godot/imported/news_paper.png-49296cb631a510b0c827053c75bdc978.ctex"
+path="res://.godot/imported/news_paper1.png-ba587a6a0e03511bcb59471cc94544a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/news_paper.png"
-dest_files=["res://.godot/imported/news_paper.png-49296cb631a510b0c827053c75bdc978.ctex"]
+source_file="res://sprites/news_paper1.png"
+dest_files=["res://.godot/imported/news_paper1.png-ba587a6a0e03511bcb59471cc94544a0.ctex"]
 
 [params]
 
