@@ -1147,34 +1147,7 @@ offset_bottom = 63.0
 grow_horizontal = 2
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "[center]Help"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ChooseItem/Control/Panel"]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 4.0
-offset_top = 64.0
-offset_right = -4.0
-offset_bottom = 115.0
-grow_horizontal = 2
-bbcode_enabled = true
-text = "[center]Answer the rich people's questions with the best answers."
-
-[node name="Close" type="Button" parent="ChooseItem/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_bottom = 31.0
-grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_0lf00")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ihibx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_s8cbi")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
-text = "X"
+text = "[center]Choose an Item"
 
 [node name="Cool" type="Button" parent="ChooseItem/Control"]
 layout_mode = 1
@@ -1191,7 +1164,15 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 18
 theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
-text = "Coolio Schmoolio!"
+text = "Choose"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseItem/Control"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 150.0
+offset_right = 174.0
+offset_bottom = 190.0
+scale = Vector2(3, 3)
 
 [node name="RichMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hapmi")
@@ -1209,6 +1190,5 @@ wait_time = 2.1999999999999997
 [connection signal="pressed" from="Control/HelpButton" to="Help" method="_on_help_button_pressed"]
 [connection signal="pressed" from="Help/Control/Close" to="Help" method="close"]
 [connection signal="pressed" from="Help/Control/Cool" to="Help" method="close"]
-[connection signal="pressed" from="ChooseItem/Control/Close" to="ChooseItem" method="close"]
 [connection signal="pressed" from="ChooseItem/Control/Cool" to="ChooseItem" method="close"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

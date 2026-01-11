@@ -107,8 +107,8 @@ func ask_question() -> void:
 		
 	question.text = "[center]" + question_dict['q']
 	good = randi_range(0,1)
-	buttons.get_child(0).get_child(good).get_child(0).text = question_dict['good']
-	buttons.get_child(0).get_child(posmod(good + 1, 2)).get_child(0).text = question_dict['bad']
+	buttons.get_child(good).get_child(0).get_child(0).text = question_dict['good']
+	buttons.get_child(posmod(good + 1, 2)).get_child(0).get_child(0).text = question_dict['bad']
 	
 	if start_anim.is_playing():
 		await start_anim.animation_finished

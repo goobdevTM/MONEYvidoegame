@@ -14,6 +14,7 @@ var my_name: String = ""
 @onready var name_text: RichTextLabel = $Name
 @onready var rich_person_collision: AudioStreamPlayer = $RichPersonCollision
 @onready var player_collision: AudioStreamPlayer = $PlayerCollision
+@onready var poor_particles: GPUParticles2D = $PoorParticles
 
 
 func generate_my_name() -> String:
@@ -70,6 +71,12 @@ func _on_rich_person_detector_area_entered(area: Area2D) -> void:
 		player_collision.play()
 	
 func spoken_to():
-	Globals.rich_person_name = my_name
-	get_tree().change_scene_to_packed(preload("uid://dpgtm36htk3qw"))
-	
+	var can_sell_to : bool = false
+	for i in Globals.inventory:
+		if i.count > 0:
+			can_sell_to = true
+	if can_sell_to:
+		Globals.rich_person_name = my_name
+		get_tree().change_scene_to_packed(preload("uid://dpgtm36htk3qw"))
+	else:
+		poor_particles.emitting = true
