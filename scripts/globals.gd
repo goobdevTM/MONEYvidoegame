@@ -3,8 +3,7 @@ extends Node
 signal slot_selected
 signal next_day
 
-#TRASH STUFF
-var trash_amount : int = 40
+
 #	WILL BE MAX IN A RANDI RANGE
 var rat_rarity : int = 12
 
@@ -17,7 +16,7 @@ var upgrade_multipliers: Dictionary[String, float] = {
 	"trash_density_multiplier": 1,
 	"rat_speed_multiplier": 1,
 	"stamina_max": 100,
-	"player_base_sprint_speed": 800,
+	"player_base_sprint_speed": 200,
 }
 
 #UPGRADES
@@ -199,13 +198,13 @@ var question_speed_mult : float = 0.5
 var item_selling : Dictionary = {}
 var rich_difficulty : int = 0
 var areas : Array[Dictionary] = [
-	{'name': "Basic Area", 'length': 300, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'cost': 0},
-	{'name': "Basic Area", 'length': 400, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'cost': 100},
-	{'name': "Unpleasant Area", 'length': 640, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'cost': 250},
-	{'name': "Smelly Area", 'length': 800, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'cost': 750},
-	{'name': "Nasty Area", 'length': 900, 'max_trash': 3, 'max_litter': 12, 'luck': 0.9, 'smelly_chance': 7, 'cost': 1500},
-	{'name': "Gross Area", 'length': 1150, 'max_trash': 3, 'max_litter': 14, 'luck': 1, 'smelly_chance': 6, 'cost': 2500},
-	{'name': "Disgusting Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.25, 'smelly_chance': 4, 'cost': 10000},
+	{'name': "Basic Area", 'length': 256, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'trash_amount': 15, 'cost': 0},
+	{'name': "Basic Area", 'length': 320, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 25, 'cost': 100},
+	{'name': "Unpleasant Area", 'length': 500, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'trash_amount': 30, 'cost': 250},
+	{'name': "Smelly Area", 'length': 640, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'trash_amount': 35, 'cost': 750},
+	{'name': "Nasty Area", 'length': 800, 'max_trash': 3, 'max_litter': 12, 'luck': 1, 'smelly_chance': 7, 'trash_amount': 42, 'cost': 1500},
+	{'name': "Gross Area", 'length': 1150, 'max_trash': 3, 'max_litter': 14, 'luck': 1.2, 'smelly_chance': 6, 'trash_amount': 50, 'cost': 2500},
+	{'name': "Disgusting Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.5, 'smelly_chance': 3, 'trash_amount': 75, 'cost': 10000},
 ]
 
 #SAVE
@@ -325,6 +324,13 @@ func load_saves(save : int) -> void:
 			{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": preload("uid://bfwlc8spvq4i1"), "times_upgraded": 0},
 		]
 	
+func get_upgrade_value(index : int) -> float:
+	var value : float = 0
+	if upgrades[index].has("upgrade_amount"): #add
+		value = Globals.upgrades[index]['var'] + (Globals.upgrades[index]['upgrade_amount'] * Globals.upgrades[index]['times_upgraded'])
+	else: #multiply
+		value = Globals.upgrades[index]['var'] * (Globals.upgrades[index]['upgrade_multiplier'] * Globals.upgrades[index]['times_upgraded'])
+	return value
 #molodur awsoml
 func save_and_quit() -> void:
 	Globals.save_data()

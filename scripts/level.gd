@@ -28,7 +28,7 @@ func generate_trash(spawn_x: int) -> void:
 func generate_trash_thread() -> void:
 	await get_tree().create_timer(0).timeout
 	#generate a piece of trash trash_amount times
-	for i in range(Globals.trash_amount):
+	for i in range(Globals.areas[Globals.area]['trash_amount'] + randi_range(-1,1)):
 		var new_trash : Node2D = TRASH.instantiate()
 		trash_spawner.call_deferred("add_child", new_trash)
 		call_deferred("move", new_trash, Vector2(randi_range(thread_spawn_x, thread_spawn_x + 256), randi_range(top.position.y + 24, bottom.position.y - 24)))

@@ -58,7 +58,10 @@ func _physics_process(delta: float) -> void:
 		if not on_screen: #don run away to far.
 			direction = Vector2(0,0)
 			
-	velocity += direction.normalized() * speed * delta
+	if hired:
+		velocity += direction.normalized() * speed * delta * Globals.get_upgrade_value(5)
+	else:
+		velocity += direction.normalized() * speed * delta
 	velocity *= friction
 	
 	#animation

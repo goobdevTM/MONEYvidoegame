@@ -82,19 +82,20 @@ func _process(delta: float) -> void:
 		Globals.money += 5
 		
 	if game:
-		if Globals.money >= Globals.areas[Globals.area + 1]['cost']:
-			buy_text.modulate = Color.GREEN
+		if Globals.area < len(Globals.areas) - 1:
+			if Globals.money >= Globals.areas[Globals.area + 1]['cost']:
+				buy_text.modulate = Color.GREEN
+			else:
+				buy_text.modulate = Color.RED
 		else:
 			buy_text.modulate = Color.RED
-		
-
 		
 	
 		
 func set_area_upgrade_text() -> void:
 	if game:
 		right_border.position.x = Globals.areas[Globals.area]['length']
-		if Globals.area < len(Globals.areas):
+		if Globals.area < len(Globals.areas) - 1:
 			buy_text.text = "[right]" + Globals.areas[Globals.area + 1]['name'] + "
 
 Buy for: $" + str(Globals.areas[Globals.area + 1]['cost'])

@@ -25,8 +25,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	#move slowly towards player
-	if player.direction:
-		position = lerp(position, player.position + (player.direction.normalized() * 16), delta * 6)
+	position = lerp(position, player.position, delta * 8)
 	#infinite THINGIE loop
 	ground.position = floor(position / 64) * 64
 	if noise_overlay:

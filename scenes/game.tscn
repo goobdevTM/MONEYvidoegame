@@ -125,6 +125,7 @@ zoom = Vector2(4, 4)
 limit_left = -384
 limit_top = -256
 limit_bottom = 256
+position_smoothing_speed = 16.0
 script = ExtResource("1_iywne")
 generate_trash = true
 player = NodePath("../Level/TrashSpawner/Player")

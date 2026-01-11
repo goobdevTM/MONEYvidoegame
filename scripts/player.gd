@@ -72,15 +72,15 @@ func sprint(sprint_speed: int) -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if Input.is_action_pressed("sprint"):
-		sprint(sprint_base_speed + (stamina * 10)) #800 is default
+	if Input.is_action_pressed("sprint") and not direction == Vector2(0,0):
+		sprint((Globals.get_upgrade_value(0) + Globals.get_upgrade_value(6)) + (stamina * 10)) #800 is default
 		
 		#ANIMATES STAMINA BAR
 		var tween: Tween = create_tween()
 		tween.tween_property(stamina_bar, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), 0.2)
 		
 	else:
-		speed = 800 #800
+		speed = Globals.get_upgrade_value(0) #800
 		var tween: Tween = create_tween()
 		tween.tween_property(stamina_bar, "self_modulate", Color(1.0, 1.0, 1.0, Globals.stamina_bar_opacity), 0.2)
 		
