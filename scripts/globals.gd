@@ -207,12 +207,12 @@ var question_speed_mult : float = 0.5
 var item_selling : Dictionary = {}
 var rich_difficulty : int = 0
 var areas : Array[Dictionary] = [
-	{'name': "Starter Area", 'length': 480, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'cost': 0},
-	{'name': "Basic Area", 'length': 640, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'cost': 100},
-	{'name': "Unpleasant Area", 'length': 800, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'cost': 250},
-	{'name': "Smelly Area", 'length': 1000, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'cost': 750},
-	{'name': "Nasty Area", 'length': 1200, 'max_trash': 3, 'max_litter': 12, 'luck': 0.9, 'smelly_chance': 7, 'cost': 1500},
-	{'name': "Gross Area", 'length': 1800, 'max_trash': 3, 'max_litter': 14, 'luck': 1, 'smelly_chance': 6, 'cost': 2500},
+	{'name': "Basic Area", 'length': 300, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'cost': 0},
+	{'name': "Basic Area", 'length': 400, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'cost': 100},
+	{'name': "Unpleasant Area", 'length': 640, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'cost': 250},
+	{'name': "Smelly Area", 'length': 800, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'cost': 750},
+	{'name': "Nasty Area", 'length': 900, 'max_trash': 3, 'max_litter': 12, 'luck': 0.9, 'smelly_chance': 7, 'cost': 1500},
+	{'name': "Gross Area", 'length': 1150, 'max_trash': 3, 'max_litter': 14, 'luck': 1, 'smelly_chance': 6, 'cost': 2500},
 	{'name': "Disgusting Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.25, 'smelly_chance': 4, 'cost': 10000},
 ]
 

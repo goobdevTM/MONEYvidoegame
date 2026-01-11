@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=44 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dg8ugiys8tlq2" path="res://sprites/sign.png" id="13_ssvqc"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="14_trtic"]
+[ext_resource type="Texture2D" uid="uid://cvr2g2xqqc5j1" path="res://sprites/poor.png" id="15_1kice"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="16_ca42v"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kice"]
@@ -95,6 +96,21 @@ texture_region_size = Vector2i(16, 32)
 [sub_resource type="TileSet" id="TileSet_ssvqc"]
 tile_size = Vector2i(16, 32)
 sources/0 = SubResource("TileSetAtlasSource_bt5mj")
+
+[sub_resource type="Curve" id="Curve_5newe"]
+_data = [Vector2(0, 1), 0.0, 0.15547447, 0, 0, Vector2(0.92352945, 0.6516854), -1.4325839, -1.4325839, 0, 0, Vector2(1, 0.056179762), -11.142324, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cyvq0"]
+curve = SubResource("Curve_5newe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_37s47"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 96.15
+initial_velocity_max = 96.15
+gravity = Vector3(0, 98, 0)
+alpha_curve = SubResource("CurveTexture_cyvq0")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_264po"]
 size = Vector2(329, 587)
@@ -210,14 +226,6 @@ tile_set = SubResource("TileSet_ssvqc")
 [node name="BuyArea" type="Node2D" parent="Level/RightBorder" groups=["buy_area"]]
 position = Vector2(-12, 33)
 
-[node name="HandArea" type="Area2D" parent="Level/RightBorder/BuyArea" groups=["for_hand"]]
-collision_layer = 32
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/RightBorder/BuyArea/HandArea"]
-position = Vector2(154.5, -34.5)
-shape = SubResource("RectangleShape2D_264po")
-
 [node name="BuyText" type="RichTextLabel" parent="Level/RightBorder/BuyArea"]
 clip_contents = false
 offset_left = -55.0
@@ -225,11 +233,28 @@ offset_top = 10.0
 offset_right = 75.0
 offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)
+mouse_filter = 2
 theme = ExtResource("14_264po")
 theme_override_font_sizes/normal_font_size = 9
 bbcode_enabled = true
 text = "[right]Area Name
 Area Cost"
+
+[node name="PoorParticles" type="GPUParticles2D" parent="Level/RightBorder/BuyArea/BuyText"]
+position = Vector2(102, 104)
+emitting = false
+texture = ExtResource("15_1kice")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_37s47")
+
+[node name="HandArea" type="Area2D" parent="Level/RightBorder/BuyArea" groups=["for_hand"]]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/RightBorder/BuyArea/HandArea"]
+position = Vector2(154.5, -34.5)
+shape = SubResource("RectangleShape2D_264po")
 
 [node name="HomeSign" type="Sprite2D" parent="Level"]
 z_index = 10

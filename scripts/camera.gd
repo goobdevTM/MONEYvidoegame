@@ -8,7 +8,7 @@ extends Camera2D
 @onready var delete_trash: Area2D = $"../Level/DeleteTrash"
 @onready var bushes: TileMapLayer = $"../Level/Bushes"
 @onready var fence: TileMapLayer = $"../Level/Fence"
-@onready var buy_text: RichTextLabel = $"../Level/RightBorder/BuyArea/BuyText"
+@onready var buy_area: Node2D = $"../Level/RightBorder/BuyArea"
 
 var max_distance_from_spawn : int = 0
 var old_distance_calc : int = 0
@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 				level.generate_trash(new_distance_calc * 256)
 				
 		#buy text
-		buy_text.position.y = position.y
+		buy_area.position.y = position.y - 64
 			
 		old_distance_calc = new_distance_calc
 	

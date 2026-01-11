@@ -17,6 +17,8 @@ extends Node2D
 @onready var convinced: Control = $Control/Convinced
 @onready var unconvinced: Control = $Control/Unconvinced
 @onready var help: Control = $Help
+@onready var buzzer: AudioStreamPlayer = $Buzzer
+@onready var ding: AudioStreamPlayer = $Ding
 
 
 var bad_questions : Array[Dictionary] = [
@@ -167,6 +169,7 @@ func add_to_graph(point : float) -> void:
 func _on_button_pressed(index : int) -> void:
 	timer.stop()
 	if good == index:
+		ding.play()
 		correct_anim.play("show")
 		satisfaction += 1
 		customer_satisfaction.value = satisfaction
@@ -174,6 +177,7 @@ func _on_button_pressed(index : int) -> void:
 		success_graph.default_color = Color.GREEN
 		await correct_anim.animation_finished
 	else:
+		buzzer.play()
 		wrong_anim.play("show")
 		satisfaction -= 2
 		customer_satisfaction.value = satisfaction

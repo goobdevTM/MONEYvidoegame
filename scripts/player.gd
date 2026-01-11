@@ -22,6 +22,7 @@ extends CharacterBody2D
 @onready var open_container: AudioStreamPlayer = $OpenContainer
 @onready var open_litter: AudioStreamPlayer = $OpenLitter
 @onready var purchase: AudioStreamPlayer = $Purchase
+@onready var wrong: AudioStreamPlayer = $Wrong
 
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
 @onready var music_controller: Node = $"../../../MusicController"
@@ -219,6 +220,11 @@ func _process(delta: float) -> void:
 						Globals.money -= Globals.areas[Globals.area + 1]['cost']
 						Globals.area += 1
 						game.set_area_upgrade_text()
+					else:
+						items_in_hand[0].get_child(0).get_child(0).emitting = true
+						items_in_hand[0].get_child(0).get_child(0).restart()
+						wrong.play()
+						
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
