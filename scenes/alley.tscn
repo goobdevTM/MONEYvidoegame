@@ -1,57 +1,57 @@
-[gd_scene load_steps=128 format=4 uid="uid://bug8okbqgftl2"]
+[gd_scene load_steps=128 format=4 uid="uid://buv7xaj8dmplv"]
 
-[ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gi00y"]
-[ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_ip4d6"]
-[ext_resource type="Texture2D" uid="uid://o7wlo442yfo5" path="res://sprites/money.png" id="3_6k6s7"]
-[ext_resource type="Texture2D" uid="uid://bsa68mp2vvgv6" path="res://sprites/hand.png" id="4_rqor2"]
-[ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="5_o7pnx"]
-[ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="6_aish6"]
-[ext_resource type="Texture2D" uid="uid://dg8ugiys8tlq2" path="res://sprites/sign.png" id="6_qmde4"]
-[ext_resource type="PackedScene" uid="uid://b6bbthyyqtxrt" path="res://scenes/noise_overlay.tscn" id="7_e42qu"]
-[ext_resource type="Texture2D" uid="uid://f87h168v8mn4" path="res://sprites/brick.png" id="7_snnha"]
-[ext_resource type="Texture2D" uid="uid://c7c1eqy34y7vb" path="res://sprites/outline.png" id="8_e42qu"]
-[ext_resource type="PackedScene" uid="uid://dxyfiauc044l2" path="res://scenes/storage_dumpster.tscn" id="8_o7pnx"]
-[ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="9_rpgsi"]
-[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="11_jdxxw"]
-[ext_resource type="PackedScene" uid="uid://cwq0qr0p3gujk" path="res://scenes/rich_plaza.tscn" id="11_ju5sp"]
-[ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="12_6k6s7"]
-[ext_resource type="PackedScene" uid="uid://7xb7pi6ik7sv" path="res://scenes/game.tscn" id="13_e42qu"]
-[ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="13_o7pnx"]
-[ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="13_rqor2"]
-[ext_resource type="Script" uid="uid://dck8ygq420e5n" path="res://scripts/storage_gui.gd" id="14_o7pnx"]
-[ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="18_aish6"]
-[ext_resource type="Texture2D" uid="uid://cro8d4w40plyr" path="res://sprites/trash_atlas_1.png" id="18_kc6b6"]
-[ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="19_jdxxw"]
-[ext_resource type="AudioStream" uid="uid://cikb4bhtb4yq7" path="res://audio/music/Storage Music Trash.ogg" id="20_jdxxw"]
-[ext_resource type="Texture2D" uid="uid://cwcgct6xuspwh" path="res://sprites/bed.png" id="20_wa7t7"]
-[ext_resource type="Script" uid="uid://dv5ia44hgt5gt" path="res://scripts/bed.gd" id="21_vysw7"]
-[ext_resource type="Texture2D" uid="uid://byl616mv141w5" path="res://sprites/table.png" id="29_miq5y"]
-[ext_resource type="Texture2D" uid="uid://6afursnu8iy1" path="res://sprites/computer.png" id="30_mg211"]
-[ext_resource type="Texture2D" uid="uid://b5jndoufqowsa" path="res://sprites/smellizon logo.png" id="31_sh163"]
-[ext_resource type="Script" uid="uid://bchc8awf5l3ro" path="res://scripts/upgrade_menu.gd" id="31_ucx8p"]
-[ext_resource type="FontFile" uid="uid://camgkxjqsnse2" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="32_oku8d"]
-[ext_resource type="Texture2D" uid="uid://c3fwqcvylpheb" path="res://sprites/grabber.png" id="33_ri7o4"]
-[ext_resource type="Script" uid="uid://7lkotviw1pav" path="res://scripts/upgrade_button.gd" id="34_ri7o4"]
-[ext_resource type="Texture2D" uid="uid://oexpatgxqxni" path="res://sprites/grabber_disabled.png" id="34_ucx8p"]
-[ext_resource type="Texture2D" uid="uid://gyq76winb4sb" path="res://sprites/grabber_highlight.png" id="35_34np2"]
-[ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="36_ri7o4"]
-[ext_resource type="AudioStream" uid="uid://cyli55p1plii2" path="res://audio/music/PianoSlam.ogg" id="37_ucx8p"]
-[ext_resource type="PackedScene" uid="uid://ba1405fyb1n12" path="res://scenes/garby.tscn" id="38_0ltf8"]
-[ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="38_34np2"]
-[ext_resource type="Texture2D" uid="uid://eypqtl16fn8l" path="res://sprites/garby.png" id="39_0ltf8"]
-[ext_resource type="Script" uid="uid://bj1lmperb6mvp" path="res://scripts/button_animations.gd" id="39_g8n7j"]
-[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="41_kvj23"]
+[ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gdncb"]
+[ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="2_2ugsq"]
+[ext_resource type="Texture2D" uid="uid://o7wlo442yfo5" path="res://sprites/money.png" id="3_dicu7"]
+[ext_resource type="Texture2D" uid="uid://bsa68mp2vvgv6" path="res://sprites/hand.png" id="4_ejpdk"]
+[ext_resource type="Texture2D" uid="uid://cro8d4w40plyr" path="res://sprites/trash_atlas_1.png" id="5_x14hh"]
+[ext_resource type="Texture2D" uid="uid://dg8ugiys8tlq2" path="res://sprites/sign.png" id="6_ontve"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="7_tqr01"]
+[ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="8_5aarl"]
+[ext_resource type="PackedScene" uid="uid://b6bbthyyqtxrt" path="res://scenes/noise_overlay.tscn" id="9_lpms5"]
+[ext_resource type="Texture2D" uid="uid://f87h168v8mn4" path="res://sprites/brick.png" id="10_k1t18"]
+[ext_resource type="Texture2D" uid="uid://c7c1eqy34y7vb" path="res://sprites/outline.png" id="11_mislo"]
+[ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="12_pgk7r"]
+[ext_resource type="PackedScene" uid="uid://dxyfiauc044l2" path="res://scenes/storage_dumpster.tscn" id="13_73oun"]
+[ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="14_suir8"]
+[ext_resource type="PackedScene" uid="uid://7xb7pi6ik7sv" path="res://scenes/game.tscn" id="15_t82cu"]
+[ext_resource type="PackedScene" uid="uid://cwq0qr0p3gujk" path="res://scenes/rich_plaza.tscn" id="16_7cs47"]
+[ext_resource type="Texture2D" uid="uid://cwcgct6xuspwh" path="res://sprites/bed.png" id="17_022ap"]
+[ext_resource type="Script" uid="uid://dv5ia44hgt5gt" path="res://scripts/bed.gd" id="18_133u5"]
+[ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="19_q1kkm"]
+[ext_resource type="Script" uid="uid://dck8ygq420e5n" path="res://scripts/storage_gui.gd" id="20_0ny8m"]
+[ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="21_jhv7o"]
+[ext_resource type="AudioStream" uid="uid://cikb4bhtb4yq7" path="res://audio/music/Storage Music Trash.ogg" id="22_p33y7"]
+[ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="23_tft22"]
+[ext_resource type="Script" uid="uid://bchc8awf5l3ro" path="res://scripts/upgrade_menu.gd" id="24_ftgv5"]
+[ext_resource type="Texture2D" uid="uid://b5jndoufqowsa" path="res://sprites/smellizon logo.png" id="25_tpp26"]
+[ext_resource type="FontFile" uid="uid://camgkxjqsnse2" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="26_myfyg"]
+[ext_resource type="Texture2D" uid="uid://c3fwqcvylpheb" path="res://sprites/grabber.png" id="27_pltnk"]
+[ext_resource type="Texture2D" uid="uid://oexpatgxqxni" path="res://sprites/grabber_disabled.png" id="28_kj3uu"]
+[ext_resource type="Texture2D" uid="uid://gyq76winb4sb" path="res://sprites/grabber_highlight.png" id="29_40djg"]
+[ext_resource type="Script" uid="uid://7lkotviw1pav" path="res://scripts/upgrade_button.gd" id="30_p6kkj"]
+[ext_resource type="Texture2D" uid="uid://dgoli22eldhpr" path="res://sprites/small_garbage_bag.png" id="31_8xmgw"]
+[ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="32_ug8ri"]
+[ext_resource type="AudioStream" uid="uid://cyli55p1plii2" path="res://audio/music/PianoSlam.ogg" id="33_i85uk"]
+[ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="34_70ow4"]
+[ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="35_mi5hh"]
+[ext_resource type="Texture2D" uid="uid://byl616mv141w5" path="res://sprites/table.png" id="36_i20vv"]
+[ext_resource type="Texture2D" uid="uid://6afursnu8iy1" path="res://sprites/computer.png" id="37_4eirr"]
+[ext_resource type="PackedScene" uid="uid://ba1405fyb1n12" path="res://scenes/garby.tscn" id="38_6s8gi"]
+[ext_resource type="Texture2D" uid="uid://eypqtl16fn8l" path="res://sprites/garby.png" id="39_kmot5"]
+[ext_resource type="Script" uid="uid://bj1lmperb6mvp" path="res://scripts/button_animations.gd" id="40_nqjib"]
+[ext_resource type="PackedScene" path="res://scenes/fade.tscn" id="41_v61ha"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa7t7"]
-atlas = ExtResource("18_kc6b6")
+atlas = ExtResource("5_x14hh")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmde4"]
-atlas = ExtResource("18_kc6b6")
+atlas = ExtResource("5_x14hh")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqor2"]
-atlas = ExtResource("18_kc6b6")
+atlas = ExtResource("5_x14hh")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qmde4"]
@@ -82,7 +82,7 @@ animations = [{
 }]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppa51"]
-texture = ExtResource("5_o7pnx")
+texture = ExtResource("8_5aarl")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
@@ -91,12 +91,12 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_ppa51")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6k6s7"]
-texture = ExtResource("7_snnha")
+texture = ExtResource("10_k1t18")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqor2"]
-texture = ExtResource("8_e42qu")
+texture = ExtResource("11_mislo")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
 
@@ -124,7 +124,7 @@ normal = Vector2(0, 1)
 size = Vector2(30, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6k6s7"]
-atlas = ExtResource("18_kc6b6")
+atlas = ExtResource("5_x14hh")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="Image" id="Image_trtic"]
@@ -1916,7 +1916,7 @@ cache/0/64/0/glyphs/19/size = Vector2(34, 49)
 cache/0/64/0/glyphs/19/uv_rect = Rect2(1, 1, 34, 49)
 cache/0/64/0/glyphs/19/texture_idx = 0
 
-[sub_resource type="Image" id="Image_g8n7j"]
+[sub_resource type="Image" id="Image_kvj23"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1926,7 +1926,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_bt5mj"]
-image = SubResource("Image_g8n7j")
+image = SubResource("Image_kvj23")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
 content_margin_left = 4.0
@@ -1985,7 +1985,7 @@ RichTextLabel/fonts/bold_font = SubResource("FontVariation_264po")
 RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_1kice")
 RichTextLabel/fonts/italics_font = SubResource("FontVariation_5newe")
 RichTextLabel/fonts/mono_font = SubResource("FontFile_ssvqc")
-RichTextLabel/fonts/normal_font = ExtResource("19_jdxxw")
+RichTextLabel/fonts/normal_font = ExtResource("21_jhv7o")
 RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_bt5mj")
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_e1j6l")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_pl11u")
@@ -3092,7 +3092,7 @@ variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 base_font = SubResource("FontFile_vj6dk")
 variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 
-[sub_resource type="Image" id="Image_kvj23"]
+[sub_resource type="Image" id="Image_dchyv"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -3102,7 +3102,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_n3ikw"]
-image = SubResource("Image_kvj23")
+image = SubResource("Image_dchyv")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mworl"]
 content_margin_left = 0.0
@@ -3228,7 +3228,7 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 36
-Button/fonts/font = ExtResource("32_oku8d")
+Button/fonts/font = ExtResource("26_myfyg")
 Button/styles/disabled = SubResource("StyleBoxFlat_cjfk0")
 Button/styles/focus = SubResource("StyleBoxEmpty_e1x85")
 Button/styles/hover = SubResource("StyleBoxFlat_e1x85")
@@ -3237,9 +3237,9 @@ Button/styles/pressed = SubResource("StyleBoxFlat_cjfk0")
 HSlider/constants/center_grabber = 0
 HSlider/constants/grabber_offset = 0
 HSlider/constants/tick_offset = 0
-HSlider/icons/grabber = ExtResource("33_ri7o4")
-HSlider/icons/grabber_disabled = ExtResource("34_ucx8p")
-HSlider/icons/grabber_highlight = ExtResource("35_34np2")
+HSlider/icons/grabber = ExtResource("27_pltnk")
+HSlider/icons/grabber_disabled = ExtResource("28_kj3uu")
+HSlider/icons/grabber_highlight = ExtResource("29_40djg")
 HSlider/icons/tick = SubResource("DPITexture_05tig")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_wdt2l")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_6cw85")
@@ -3274,7 +3274,7 @@ RichTextLabel/fonts/bold_font = SubResource("FontVariation_wdt2l")
 RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_6cw85")
 RichTextLabel/fonts/italics_font = SubResource("FontVariation_504p6")
 RichTextLabel/fonts/mono_font = SubResource("FontFile_vj6dk")
-RichTextLabel/fonts/normal_font = ExtResource("32_oku8d")
+RichTextLabel/fonts/normal_font = ExtResource("26_myfyg")
 RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_n3ikw")
 RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_e1x85")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_mworl")
@@ -3289,7 +3289,7 @@ TabContainer/constants/icon_separation = 4
 TabContainer/constants/outline_size = 0
 TabContainer/constants/side_margin = 8
 TabContainer/font_sizes/font_size = 18
-TabContainer/fonts/font = ExtResource("32_oku8d")
+TabContainer/fonts/font = ExtResource("26_myfyg")
 TabContainer/icons/decrement = SubResource("DPITexture_ndmpe")
 TabContainer/icons/decrement_highlight = SubResource("DPITexture_0ceoj")
 TabContainer/icons/drop_mark = SubResource("DPITexture_6q1gq")
@@ -3550,7 +3550,7 @@ corner_detail = 5
 anti_aliasing = false
 
 [node name="Home" type="Node2D"]
-script = ExtResource("1_gi00y")
+script = ExtResource("1_gdncb")
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 zoom = Vector2(4, 4)
@@ -3558,7 +3558,7 @@ limit_left = -160
 limit_top = -120
 limit_right = 160
 limit_bottom = 80
-script = ExtResource("1_ip4d6")
+script = ExtResource("2_2ugsq")
 player = NodePath("../Level/TrashSpawner/Player")
 
 [node name="Level" type="Node2D" parent="."]
@@ -3567,26 +3567,26 @@ player = NodePath("../Level/TrashSpawner/Player")
 
 [node name="cash1" type="Sprite2D" parent="Level/MoneyOnGround"]
 position = Vector2(-131, -9)
-texture = ExtResource("3_6k6s7")
+texture = ExtResource("3_dicu7")
 
 [node name="cash2" type="Sprite2D" parent="Level/MoneyOnGround"]
 position = Vector2(-141, 5)
 rotation = -1.5707964
-texture = ExtResource("3_6k6s7")
+texture = ExtResource("3_dicu7")
 
 [node name="cash3" type="Sprite2D" parent="Level/MoneyOnGround"]
 position = Vector2(-150, -1)
 rotation = 1.5707964
-texture = ExtResource("3_6k6s7")
+texture = ExtResource("3_dicu7")
 
 [node name="coin1" type="Sprite2D" parent="Level/MoneyOnGround"]
 position = Vector2(-134, 4)
-texture = ExtResource("4_rqor2")
+texture = ExtResource("4_ejpdk")
 
 [node name="coin2" type="Sprite2D" parent="Level/MoneyOnGround"]
 position = Vector2(-153, -10)
 rotation = -6.2831855
-texture = ExtResource("4_rqor2")
+texture = ExtResource("4_ejpdk")
 
 [node name="TrashOnGround" type="Node2D" parent="Level"]
 
@@ -3622,45 +3622,45 @@ animation = &"bottle"
 [node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround"]
 z_index = 10
 position = Vector2(136, -27)
-texture = ExtResource("6_qmde4")
+texture = ExtResource("6_ontve")
 
 [node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
 position = Vector2(-14, 0)
-texture = ExtResource("6_qmde4")
+texture = ExtResource("6_ontve")
 
 [node name="TrashSign2" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
 position = Vector2(-14, 3)
-texture = ExtResource("6_qmde4")
+texture = ExtResource("6_ontve")
 
 [node name="TrashSign3" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
 position = Vector2(0, 3)
-texture = ExtResource("6_qmde4")
+texture = ExtResource("6_ontve")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/TrashOnGround/TrashSign"]
 offset_left = -23.0
 offset_right = 141.0
 offset_bottom = 40.0
 scale = Vector2(0.20148136, 0.20148136)
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 text = "courtyard"
 horizontal_alignment = 1
 
 [node name="RichSign" type="Sprite2D" parent="Level/TrashOnGround"]
 z_index = 10
 position = Vector2(-122, -27)
-texture = ExtResource("6_qmde4")
+texture = ExtResource("6_ontve")
 
 [node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
 position = Vector2(-14, 0)
-texture = ExtResource("6_qmde4")
+texture = ExtResource("6_ontve")
 
 [node name="TrashSign2" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
 position = Vector2(-14, 3)
-texture = ExtResource("6_qmde4")
+texture = ExtResource("6_ontve")
 
 [node name="TrashSign3" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
 position = Vector2(0, 3)
-texture = ExtResource("6_qmde4")
+texture = ExtResource("6_ontve")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/TrashOnGround/RichSign"]
 offset_left = -20.0
@@ -3668,7 +3668,7 @@ offset_top = -1.0000001
 offset_right = 144.0
 offset_bottom = 39.0
 scale = Vector2(0.16063894, 0.16063894)
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 text = "rich person
 plaza"
 horizontal_alignment = 1
@@ -3678,7 +3678,7 @@ z_index = -4096
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_k665q")
 
-[node name="NoiseOverlay" parent="Level" instance=ExtResource("7_e42qu")]
+[node name="NoiseOverlay" parent="Level" instance=ExtResource("9_lpms5")]
 
 [node name="Shadow" type="TileMapLayer" parent="Level"]
 tile_map_data = PackedByteArray("AAD2//7/AQAAAAAAAAD2//3/AQAAAAAAAAD2//z/AQAAAAAAAAD2//v/AQAAAAAAAAD2//r/AQAAAAAAAAD2//n/AQAAAAAAAAD2//j/AQAAAAAAAAD3//j/AQAAAAAAAAD4//j/AQAAAAAAAAD5//j/AQAAAAAAAAD6//j/AQAAAAAAAAD7//j/AQAAAAAAAAD8//j/AQAAAAAAAAD9//j/AQAAAAAAAAD+//j/AQAAAAAAAAD///j/AQAAAAAAAAAAAPj/AQAAAAAAAAABAPj/AQAAAAAAAAACAPj/AQAAAAAAAAADAPj/AQAAAAAAAAAEAPj/AQAAAAAAAAAFAPj/AQAAAAAAAAAGAPj/AQAAAAAAAAAHAPj/AQAAAAAAAAAIAPj/AQAAAAAAAAAJAPj/AQAAAAAAAAAJAPn/AQAAAAAAAAAJAPr/AQAAAAAAAAAJAPv/AQAAAAAAAAAJAPz/AQAAAAAAAAAJAP3/AQAAAAAAAAAJAP7/AQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAHAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAADAAcAAQAAAAAAAAACAAcAAQAAAAAAAAABAAcAAQAAAAAAAAAAAAcAAQAAAAAAAAD//wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD7/wcAAQAAAAAAAAD6/wcAAQAAAAAAAAD5/wcAAQAAAAAAAAD4/wcAAQAAAAAAAAD3/wcAAQAAAAAAAAD2/wcAAQAAAAAAAAD2/wYAAQAAAAAAAAD2/wUAAQAAAAAAAAD2/wQAAQAAAAAAAAD2/wMAAQAAAAAAAAD2/wIAAQAAAAAAAAD2/wEAAQAAAAAAAAD3/wQAAQAAAAAAAAD4/wQAAQAAAAAAAAD5/wQAAQAAAAAAAAD6/wQAAQAAAAAAAAD7/wQAAQAAAAAAAAD8/wQAAQAAAAAAAAD9/wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD//wQAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAIAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAADAAYAAQAAAAAAAAACAAYAAQAAAAAAAAABAAYAAQAAAAAAAAAAAAYAAQAAAAAAAAD//wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD4/wYAAQAAAAAAAAD3/wYAAQAAAAAAAAD3/wUAAQAAAAAAAAD4/wUAAQAAAAAAAAD5/wUAAQAAAAAAAAD6/wUAAQAAAAAAAAD7/wUAAQAAAAAAAAD8/wUAAQAAAAAAAAD9/wUAAQAAAAAAAAD+/wUAAQAAAAAAAAD//wUAAQAAAAAAAAAAAAUAAQAAAAAAAAABAAUAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAQAAAAAAAAAHAAUAAQAAAAAAAAAGAAUAAQAAAAAAAAAFAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAD3//v/AQAAAAAAAAD4//v/AQAAAAAAAAD5//v/AQAAAAAAAAD6//v/AQAAAAAAAAD7//v/AQAAAAAAAAD8//v/AQAAAAAAAAD9//v/AQAAAAAAAAD+//v/AQAAAAAAAAD///v/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPv/AQAAAAAAAAACAPv/AQAAAAAAAAACAPr/AQAAAAAAAAADAPr/AQAAAAAAAAAEAPr/AQAAAAAAAAAFAPr/AQAAAAAAAAAFAPv/AQAAAAAAAAAGAPv/AQAAAAAAAAAHAPv/AQAAAAAAAAAIAPv/AQAAAAAAAAAEAPv/AQAAAAAAAAADAPv/AQAAAAAAAAAIAPr/AQAAAAAAAAAHAPr/AQAAAAAAAAAGAPr/AQAAAAAAAAABAPr/AQAAAAAAAAAAAPn/AQAAAAAAAAD///n/AQAAAAAAAAD+//n/AQAAAAAAAAD9//n/AQAAAAAAAAD8//n/AQAAAAAAAAD7//n/AQAAAAAAAAD6//n/AQAAAAAAAAD5//n/AQAAAAAAAAD4//n/AQAAAAAAAAD3//n/AQAAAAAAAAD5//r/AQAAAAAAAAD6//r/AQAAAAAAAAD7//r/AQAAAAAAAAD8//r/AQAAAAAAAAD9//r/AQAAAAAAAAD+//r/AQAAAAAAAAD///r/AQAAAAAAAAAAAPr/AQAAAAAAAAAEAPn/AQAAAAAAAAAFAPn/AQAAAAAAAAAGAPn/AQAAAAAAAAAHAPn/AQAAAAAAAAAIAPn/AQAAAAAAAAADAPn/AQAAAAAAAAACAPn/AQAAAAAAAAABAPn/AQAAAAAAAAD4//r/AQAAAAAAAAD3//r/AQAAAAAAAAA=")
@@ -3690,12 +3690,12 @@ tile_set = SubResource("TileSet_0ltf8")
 
 [node name="TrashSpawner" type="Node2D" parent="Level"]
 
-[node name="Player" parent="Level/TrashSpawner" instance=ExtResource("6_aish6")]
+[node name="Player" parent="Level/TrashSpawner" instance=ExtResource("12_pgk7r")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
 shape = SubResource("CircleShape2D_ri7o4")
 
-[node name="StorageDumpster" parent="Level" instance=ExtResource("8_o7pnx")]
+[node name="StorageDumpster" parent="Level" instance=ExtResource("13_73oun")]
 position = Vector2(115, 44)
 
 [node name="LitterSpawner" type="Node2D" parent="Level"]
@@ -3705,9 +3705,9 @@ position = Vector2(115, 44)
 [node name="EnterGame" type="Area2D" parent="Level"]
 collision_layer = 128
 collision_mask = 2
-script = ExtResource("9_rpgsi")
+script = ExtResource("14_suir8")
 start_pos = Vector2(-360, 0)
-change_to_scene = ExtResource("13_e42qu")
+to_scene = ExtResource("15_t82cu")
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterGame"]
 position = Vector2(160, 0)
@@ -3716,9 +3716,9 @@ shape = SubResource("WorldBoundaryShape2D_g8n7j")
 [node name="EnterRich" type="Area2D" parent="Level"]
 collision_layer = 128
 collision_mask = 2
-script = ExtResource("9_rpgsi")
+script = ExtResource("14_suir8")
 start_pos = Vector2(240, 0)
-change_to_scene = ExtResource("11_ju5sp")
+to_scene = ExtResource("16_7cs47")
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterRich"]
 position = Vector2(-160, 0)
@@ -3740,8 +3740,8 @@ shape = SubResource("WorldBoundaryShape2D_dchyv")
 [node name="Bed" type="Sprite2D" parent="Level" groups=["bed"]]
 z_index = -1
 position = Vector2(-22, 16)
-texture = ExtResource("20_wa7t7")
-script = ExtResource("21_vysw7")
+texture = ExtResource("17_022ap")
+script = ExtResource("18_133u5")
 
 [node name="HandArea" type="Area2D" parent="Level/Bed" groups=["bed", "for_hand"]]
 collision_layer = 84
@@ -3751,13 +3751,13 @@ shape = SubResource("RectangleShape2D_wa7t7")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
-[node name="INVENTORY" parent="." instance=ExtResource("13_o7pnx")]
+[node name="INVENTORY" parent="." instance=ExtResource("19_q1kkm")]
 
 [node name="StorageGUI" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 2
 visible = false
-script = ExtResource("14_o7pnx")
+script = ExtResource("20_0ny8m")
 
 [node name="BG" type="ColorRect" parent="StorageGUI"]
 anchors_preset = 15
@@ -3774,7 +3774,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 
 [node name="Storage" type="Panel" parent="StorageGUI/Control"]
 layout_mode = 1
@@ -3844,18 +3844,18 @@ text = "[right]x10
 scroll_active = false
 
 [node name="Music" type="AudioStreamPlayer" parent="StorageGUI"]
-stream = ExtResource("20_jdxxw")
+stream = ExtResource("22_p33y7")
 volume_db = -6.041
 bus = &"Music"
 
-[node name="Settings" parent="." instance=ExtResource("12_6k6s7")]
+[node name="Settings" parent="." instance=ExtResource("23_tft22")]
 layer = 3
 visible = false
 
 [node name="UpgradeMenu" type="CanvasLayer" parent="."]
 process_mode = 3
 visible = false
-script = ExtResource("31_ucx8p")
+script = ExtResource("24_ftgv5")
 
 [node name="Panel" type="Panel" parent="UpgradeMenu"]
 process_mode = 3
@@ -3876,7 +3876,7 @@ offset_top = 13.0
 offset_right = 138.0
 offset_bottom = 39.0
 scale = Vector2(1.1281362, 1.1281362)
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 theme_override_colors/default_color = Color(1, 0.6666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0.4674765, 0.29414296, 4.813075e-08, 1)
 bbcode_enabled = true
@@ -3892,7 +3892,7 @@ offset_right = 323.0
 offset_bottom = 108.00001
 scale = Vector2(2.0149875, 2.0149875)
 mouse_filter = 2
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 theme_override_colors/default_color = Color(0.9483334, 1, 0.38, 1)
 bbcode_enabled = true
 text = "Upgrades:"
@@ -3901,7 +3901,7 @@ text = "Upgrades:"
 process_mode = 3
 position = Vector2(169.00002, 18.000002)
 scale = Vector2(2.5625, 2.5625)
-texture = ExtResource("31_sh163")
+texture = ExtResource("25_tpp26")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenu/Panel"]
 process_mode = 3
@@ -3919,7 +3919,7 @@ theme = SubResource("Theme_0ltf8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5uoah")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_e11fr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g8n7j")
-script = ExtResource("34_ri7o4")
+script = ExtResource("30_p6kkj")
 
 [node name="Description" type="RichTextLabel" parent="UpgradeMenu/Panel/HBoxContainer/Button1"]
 clip_contents = false
@@ -3947,7 +3947,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ri7o4")
 [node name="Sprite2D" type="Sprite2D" parent="UpgradeMenu/Panel/HBoxContainer/Button1"]
 position = Vector2(60, 70)
 scale = Vector2(4.212005, 4.212005)
-texture = ExtResource("36_ri7o4")
+texture = ExtResource("31_8xmgw")
 
 [node name="Name" type="RichTextLabel" parent="UpgradeMenu/Panel/HBoxContainer/Button1"]
 clip_contents = false
@@ -3983,7 +3983,7 @@ theme = SubResource("Theme_0ltf8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_uvj3h")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dchyv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_34np2")
-script = ExtResource("34_ri7o4")
+script = ExtResource("30_p6kkj")
 
 [node name="Description" type="RichTextLabel" parent="UpgradeMenu/Panel/HBoxContainer/Button2"]
 clip_contents = false
@@ -4011,7 +4011,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ri7o4")
 [node name="Sprite2D" type="Sprite2D" parent="UpgradeMenu/Panel/HBoxContainer/Button2"]
 position = Vector2(60, 70)
 scale = Vector2(4.212005, 4.212005)
-texture = ExtResource("36_ri7o4")
+texture = ExtResource("31_8xmgw")
 
 [node name="Name" type="RichTextLabel" parent="UpgradeMenu/Panel/HBoxContainer/Button2"]
 clip_contents = false
@@ -4047,7 +4047,7 @@ theme = SubResource("Theme_0ltf8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qejtw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kvj23")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0ltf8")
-script = ExtResource("34_ri7o4")
+script = ExtResource("30_p6kkj")
 
 [node name="Description" type="RichTextLabel" parent="UpgradeMenu/Panel/HBoxContainer/Button3"]
 clip_contents = false
@@ -4075,7 +4075,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ri7o4")
 [node name="Sprite2D" type="Sprite2D" parent="UpgradeMenu/Panel/HBoxContainer/Button3"]
 position = Vector2(60, 70)
 scale = Vector2(4.212005, 4.212005)
-texture = ExtResource("36_ri7o4")
+texture = ExtResource("31_8xmgw")
 
 [node name="Name" type="RichTextLabel" parent="UpgradeMenu/Panel/HBoxContainer/Button3"]
 clip_contents = false
@@ -4106,7 +4106,7 @@ vertical_alignment = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="UpgradeMenu/Panel"]
 process_mode = 3
-stream = ExtResource("38_34np2")
+stream = ExtResource("32_ug8ri")
 volume_db = -11.089
 bus = &"Music"
 
@@ -4118,7 +4118,7 @@ offset_top = 434.0
 offset_right = 291.0
 offset_bottom = 496.3841
 scale = Vector2(0.45536616, 0.45536616)
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 text = "reload - 10$"
 alignment = 0
 
@@ -4130,7 +4130,7 @@ offset_top = 426.0
 offset_right = 720.3745
 offset_bottom = 508.14844
 scale = Vector2(0.45536616, 0.45536616)
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ucx8p")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_v8i26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jbfel")
@@ -4146,25 +4146,25 @@ offset_right = 473.36032
 offset_bottom = 50.36291
 scale = Vector2(2.2000604, 2.2000604)
 mouse_filter = 2
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 theme_override_colors/default_color = Color(0, 1, 0, 1)
 text = "0$"
 horizontal_alignment = 2
 
 [node name="PianoSlam" type="AudioStreamPlayer" parent="UpgradeMenu/Panel"]
-stream = ExtResource("37_ucx8p")
+stream = ExtResource("33_i85uk")
 
-[node name="MusicController" parent="." instance=ExtResource("13_rqor2")]
+[node name="MusicController" parent="." instance=ExtResource("34_70ow4")]
 
-[node name="ClickAndHover" parent="." instance=ExtResource("18_aish6")]
+[node name="ClickAndHover" parent="." instance=ExtResource("35_mi5hh")]
 
 [node name="Table" type="Sprite2D" parent="." groups=["computer"]]
 position = Vector2(122, -50)
-texture = ExtResource("29_miq5y")
+texture = ExtResource("36_i20vv")
 
 [node name="Computer" type="Sprite2D" parent="Table"]
 position = Vector2(-1, -11)
-texture = ExtResource("30_mg211")
+texture = ExtResource("37_4eirr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Table"]
 
@@ -4179,7 +4179,7 @@ collision_layer = 84
 position = Vector2(-1, -11)
 shape = SubResource("CircleShape2D_mg211")
 
-[node name="Garby" parent="." instance=ExtResource("38_0ltf8")]
+[node name="Garby" parent="." instance=ExtResource("38_6s8gi")]
 position = Vector2(-59, -32)
 
 [node name="Dialogue" type="CanvasLayer" parent="."]
@@ -4192,7 +4192,7 @@ offset_right = 560.0
 offset_bottom = 378.0
 pivot_offset = Vector2(243, 112)
 mouse_filter = 2
-theme = ExtResource("11_jdxxw")
+theme = ExtResource("7_tqr01")
 
 [node name="Panel" type="Panel" parent="Dialogue/Panel"]
 layout_mode = 0
@@ -4205,7 +4205,7 @@ mouse_filter = 2
 [node name="Garby" type="Sprite2D" parent="Dialogue/Panel"]
 position = Vector2(66, 65)
 scale = Vector2(5.375, 5.375)
-texture = ExtResource("39_0ltf8")
+texture = ExtResource("39_kmot5")
 
 [node name="Name" type="RichTextLabel" parent="Dialogue/Panel"]
 clip_contents = false
@@ -4240,7 +4240,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("39_g8n7j")
+script = ExtResource("40_nqjib")
 
 [node name="Give" type="Button" parent="Dialogue/Panel/Buttons"]
 layout_mode = 0
@@ -4264,7 +4264,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hsf4p")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_0grxe")
 text = "Nope!"
 
-[node name="Fade" parent="." instance=ExtResource("41_kvj23")]
+[node name="Fade" parent="." instance=ExtResource("41_v61ha")]
 
 [connection signal="body_entered" from="Level/EnterGame" to="Level/EnterGame" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/EnterRich" to="Level/EnterRich" method="_on_body_entered"]
