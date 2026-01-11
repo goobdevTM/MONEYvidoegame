@@ -2,6 +2,7 @@ extends Button
 
 @onready var tool_tip: Node2D = $ToolTip
 @onready var confirm_delete: Panel = $"../../../ConfirmDelete"
+@onready var panel: Panel = $ToolTip/Panel
 
 var mouse_touching: bool = false
 var tween : Tween = create_tween()
@@ -25,15 +26,21 @@ func _on_mouse_entered() -> void:
 	tool_tip.show()
 	if Globals.saves[Globals.hovered_save] == {}:
 		tool_tip.get_child(1).text = "empty."
+		panel.size.y = 5
+		panel.position.y = -5
 	else:
 		tool_tip.get_child(1).text = "press x to delete."
+		panel.size.y = 9
+		panel.position.y = -9
 	tween.set_parallel()
 	tween.tween_property(tool_tip, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
 	tween.tween_property(tool_tip, "scale", Vector2(3.565, 3.565), 0.1)
 
 func _on_mouse_exited() -> void:
 	mouse_touching = false
-	var tween: Tween = create_tween()
+	
+	tween.stop()
+	tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(tool_tip, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.1)
 	tween.tween_property(tool_tip, "scale", Vector2(0, 0), 0.1)

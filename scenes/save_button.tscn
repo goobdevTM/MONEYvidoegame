@@ -78,10 +78,10 @@ position = Vector2(-16, -3)
 scale = Vector2(3.5654097, 3.5654097)
 
 [node name="Panel" type="Panel" parent="ToolTip"]
-offset_left = -7.011818
-offset_top = -9.255599
-offset_right = 22.437815
-offset_bottom = 0.28047276
+offset_left = -7.0
+offset_top = -9.0
+offset_right = 23.0
+mouse_filter = 2
 theme = ExtResource("1_72h3h")
 theme_override_styles/panel = SubResource("StyleBoxFlat_53dfd")
 
