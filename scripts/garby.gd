@@ -18,18 +18,20 @@ func _ready() -> void:
 	hovering = false
 		
 	#MOVEMENT
-	speed = 100
+	speed = 200
 	direction = Vector2(randi_range(-1,1), randi_range(-1,1))
 
 func _physics_process(delta: float) -> void:
 
 	#luxorious movement
-	if randi_range(0,50) == 0:
+	if randi_range(0,150) == 0:
 		direction.y = randi_range(-1,1)
-	if randi_range(0,50) == 0:
+	if randi_range(0,150) == 0:
 		direction.x = randi_range(-1,1)
 	if direction == Vector2(0,0):
 			direction = Vector2(randi_range(-1,1), randi_range(-1,1))
+	if randi_range(0, 5) == 0:
+		direction = Vector2(0, 0)
 	velocity += direction.normalized() * speed * delta
 	velocity *= friction
 	
