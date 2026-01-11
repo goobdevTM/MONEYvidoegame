@@ -22,7 +22,7 @@ func set_saves() -> void:
 			
 func _on_play_pressed() -> void:
 	Globals.load_saves(Globals.current_save)
-	fade.fade_out(preload("uid://buv7xaj8dmplv"))
+	fade.fade_out(preload("res://scenes/alley.tscn"))
 
 
 func save_pressed(index : int) -> void:

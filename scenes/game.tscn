@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="14_trtic"]
 [ext_resource type="Texture2D" uid="uid://cvr2g2xqqc5j1" path="res://sprites/poor.png" id="15_1kice"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="16_ca42v"]
-[ext_resource type="PackedScene" path="res://scenes/fade.tscn" id="21_5newe"]
+[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="21_5newe"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kice"]
 normal = Vector2(1, 0)
@@ -78,7 +78,7 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_5newe")
 sources/1 = SubResource("TileSetAtlasSource_37s47")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_37s47"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_js0lu"]
 normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gxtfn"]
@@ -191,16 +191,15 @@ tile_set = SubResource("TileSet_v2yb1")
 tile_map_data = PackedByteArray("AADo//D/AAAAAAAAAADo//H/AAAAAAAAAADo//L/AAAAAAAAAADo//P/AAAAAAAAAADo//T/AAAAAAAAAADo//X/AAAAAAAAAADo//b/AAAAAAAAAADo//f/AAAAAAAAAADo//j/AAAAAAAAAADo//n/AAAAAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAAAAADo//z/AAAAAAAAAADo//3/AAAAAAAAAADo//7/AAAAAAAAAADo/wEAAAAAAAAAAADo/wIAAAAAAAAAAADo/wMAAAAAAAAAAADo/wQAAAAAAAAAAADo/wUAAAAAAAAAAADo/wYAAAAAAAAAAADo/wcAAAAAAAAAAADo/wgAAAAAAAAAAADo/wkAAAAAAAAAAADo/woAAAAAAAAAAADo/wsAAAAAAAAAAADo/wwAAAAAAAAAAADo/w0AAAAAAAAAAADo/w4AAAAAAAAAAADo/w8AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_v2yb1")
 
-[node name="HomeEnter" type="Area2D" parent="Level"]
-position = Vector2(-384, 0)
+[node name="EnterHome" type="Area2D" parent="Level"]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("11_ca42v")
-to_home = true
-to_scene = "uid://buv7xaj8dmplv"
+start_pos = Vector2(144, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/HomeEnter"]
-shape = SubResource("WorldBoundaryShape2D_37s47")
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
+position = Vector2(-384, 0)
+shape = SubResource("WorldBoundaryShape2D_js0lu")
 
 [node name="Borders" type="StaticBody2D" parent="Level"]
 collision_layer = 65
@@ -289,4 +288,4 @@ visible = false
 
 [node name="Fade" parent="." instance=ExtResource("21_5newe")]
 
-[connection signal="body_entered" from="Level/HomeEnter" to="Level/HomeEnter" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/EnterHome" to="Level/EnterHome" method="_on_body_entered"]
