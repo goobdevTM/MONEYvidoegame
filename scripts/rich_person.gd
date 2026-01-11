@@ -18,6 +18,9 @@ var difficulty: int = 0
 @onready var poor_particles: GPUParticles2D = $PoorParticles
 @onready var poor_sound: AudioStreamPlayer = $PoorSound
 @onready var fade: Fade = $"../../../Fade"
+@onready var body: CollisionShape2D = $Body
+@onready var hat: CollisionShape2D = $Hat
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 
 func generate_my_name() -> String:
@@ -37,6 +40,10 @@ func generate_my_name() -> String:
 func _ready() -> void:
 	
 	
+	
+	body.disabled = false
+	hat.disabled = false
+	
 	difficulty = randi_range(0,2)
 	hovering = false
 	
@@ -53,9 +60,19 @@ func _ready() -> void:
 	#MOVEMENT
 	speed = randi_range(200, 300)
 	direction = Vector2(randi_range(-1,1), randi_range(-1,1))
+	
+	await get_tree().create_timer(0.1).timeout
+	if not Globals.has_rich_people:
+		queue_free()
 
 func _physics_process(delta: float) -> void:
-
+	
+	if not Globals.has_rich_people:
+		skedaddle(delta)
+		return
+	else:
+		body.disabled = false
+		hat.disabled = false
 	#luxorious movement
 	if randi_range(0,50) == 0:
 		direction.y = randi_range(-1,1)
@@ -64,6 +81,7 @@ func _physics_process(delta: float) -> void:
 	velocity += direction.normalized() * speed * delta
 	velocity *= friction
 	
+		
 	#rich animation
 	if direction.x > 0:
 		direction.x = 1
@@ -94,3 +112,26 @@ func spoken_to():
 		poor_particles.restart()
 		poor_sound.play()
 		piano_slam.play()
+
+func skedaddle(delta: float):
+	
+	body.disabled = true
+	hat.disabled = true
+		
+	while direction == Vector2(0,0):
+		direction = Vector2(randi_range(-1,1), randi_range(-1,1))
+	
+	if direction.x > 0:
+		direction.x = 1
+	elif direction.x < 0:
+		direction.x = -1
+	if abs(direction.x) == 1:
+		sprite.scale.x = -direction.x
+	
+	velocity += direction.normalized() * speed * delta * 6
+	velocity *= friction
+	
+	if not visible_on_screen_notifier_2d.is_on_screen():
+		queue_free()
+	
+	move_and_slide()
