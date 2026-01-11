@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://ntfh4303tst3"]
+[gd_scene load_steps=6 format=3 uid="uid://ntfh4303tst3"]
 
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="1_72h3h"]
 [ext_resource type="Texture2D" uid="uid://bm8e8bcibkjrb" path="res://sprites/save_empty.png" id="2_53dfd"]
+[ext_resource type="Script" uid="uid://dqecj7opydbt" path="res://scripts/save_button.gd" id="2_56r8p"]
 [ext_resource type="Texture2D" uid="uid://cst62rwkny7x3" path="res://sprites/save_full.png" id="3_56r8p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53dfd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.6431373, 0.19607843, 0.58431375)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.10980392, 0.22745098, 0, 0.5921569)
+corner_detail = 5
+anti_aliasing = false
 
 [node name="1" type="Button"]
 custom_minimum_size = Vector2(64, 64)
@@ -10,6 +25,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 theme = ExtResource("1_72h3h")
 toggle_mode = true
+script = ExtResource("2_56r8p")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -54,3 +70,37 @@ offset_bottom = 26.0
 scale = Vector2(1.5, 1.5)
 mouse_filter = 2
 text = "1"
+
+[node name="ToolTip" type="Node2D" parent="."]
+visible = false
+z_index = 4096
+position = Vector2(-16, -3)
+scale = Vector2(3.5654097, 3.5654097)
+
+[node name="Panel" type="Panel" parent="ToolTip"]
+offset_left = -7.011818
+offset_top = -9.255599
+offset_right = 22.437815
+offset_bottom = 0.28047276
+theme = ExtResource("1_72h3h")
+theme_override_styles/panel = SubResource("StyleBoxFlat_53dfd")
+
+[node name="Name" type="RichTextLabel" parent="ToolTip"]
+z_index = 999
+clip_contents = false
+offset_left = -6.450871
+offset_top = -8.975126
+offset_right = 120.1121
+offset_bottom = 27.547716
+scale = Vector2(0.22603935, 0.22603935)
+mouse_filter = 2
+theme = ExtResource("1_72h3h")
+theme_override_constants/line_separation = 2
+theme_override_constants/outline_size = 0
+bbcode_enabled = true
+text = "press x to delete"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -96,6 +96,8 @@ var max_per_slot : int = 25
 var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
 var last_given_slot : bool = false
 
+var hovered_save : int
+
 var items : Array[Dictionary] = [
 	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 0.4},
 	{'name': "Cup", 'coords': Vector2i(1,0), 'chance': 0.3},
