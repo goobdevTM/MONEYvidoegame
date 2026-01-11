@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="14_trtic"]
 [ext_resource type="Texture2D" uid="uid://cvr2g2xqqc5j1" path="res://sprites/poor.png" id="15_1kice"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="16_ca42v"]
-[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="21_5newe"]
+[ext_resource type="PackedScene" uid="uid://crhwl6opbfl82" path="res://scenes/fade.tscn" id="21_5newe"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kice"]
 normal = Vector2(1, 0)
@@ -196,6 +196,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("11_ca42v")
 start_pos = Vector2(144, 0)
+to_scene = "uid://buv7xaj8dmplv"
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
 position = Vector2(-384, 0)
