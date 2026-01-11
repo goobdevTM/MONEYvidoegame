@@ -11,7 +11,7 @@ var cost: float
 @onready var money: RichTextLabel = $"../../Money"
 
 func _ready() -> void:
-	money.text = "[right]$" + str(Globals.money)
+	money.text = "[right]$" + str(int(Globals.money))
 	if Globals.upgrades[upgrade].has("upgrade_amount"): #add
 		cost = int(Globals.upgrades[upgrade]["base_cost"] + (Globals.upgrades[upgrade]["upgrade_amount"] * Globals.upgrades[upgrade]["times_upgraded"]))
 	else: #multiply
@@ -19,7 +19,7 @@ func _ready() -> void:
 	sprite.texture = Globals.upgrades[upgrade]["texture"]
 	name_text.text = Globals.upgrades[upgrade]["name"]
 	description_text.text = Globals.upgrades[upgrade]["description"]
-	cost_text.text = "[center]$" + str(cost)
+	cost_text.text = "[center]$" + str(int(cost))
 
 func _pressed() -> void:
 	if Globals.money >= cost:
@@ -28,9 +28,9 @@ func _pressed() -> void:
 		cost *= Globals.upgrades[upgrade]["cost_multiplier"]
 		
 		if Globals.upgrades[upgrade].has("upgrade_amount"):
-			Globals.Globals.upgrades[upgrade]["var"] += Globals.upgrades[upgrade]["upgrade_amount"]
+			Globals.upgrades[upgrade]["var"] += Globals.upgrades[upgrade]["upgrade_amount"]
 		else:
-			Globals.Globals.upgrades[upgrade]["var"] *= Globals.upgrades[upgrade]["upgrade_amount"]
+			Globals.upgrades[upgrade]["var"] *= Globals.upgrades[upgrade]["upgrade_amount"]
 	else:
 		piano_slam.play()
 	_ready()

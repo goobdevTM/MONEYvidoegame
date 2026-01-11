@@ -21,7 +21,6 @@ func set_buttons():
 		i.upgrade = upgrade
 
 func open() -> void:
-	money.text = "[right]$" + str(Globals.money)
 	music.play()
 	if Globals.in_settings:
 		Globals.in_settings = false
