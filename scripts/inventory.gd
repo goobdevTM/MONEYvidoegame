@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	if minute < 10:
 		time.text += "0"
 	time.text += str(minute)
-	if Globals.time > (Globals.day_length / 2):
+	if Globals.time > (Globals.day_length / 2) - (Globals.day_length / 24) and not (Globals.time > ((Globals.day_length / 24) * 22)):
 		time.text += " PM"
 	else:
 		time.text += " AM"

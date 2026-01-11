@@ -236,6 +236,7 @@ script = ExtResource("10_8or72")
 
 [node name="1" parent="BottomButtons/Saves" instance=ExtResource("12_lsij0")]
 layout_mode = 2
+button_pressed = true
 
 [node name="2" parent="BottomButtons/Saves" instance=ExtResource("12_lsij0")]
 layout_mode = 2

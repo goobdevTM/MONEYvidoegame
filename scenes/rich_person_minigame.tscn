@@ -436,6 +436,45 @@ _data = {
 &"show": SubResource("Animation_ihibx")
 }
 
+[sub_resource type="Animation" id="Animation_kemgk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 480)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Earnings:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 656)]
+}
+
 [sub_resource type="Animation" id="Animation_mh7p8"]
 resource_name = "show"
 length = 5.0
@@ -474,45 +513,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 2, 0.5, 2),
 "update": 0,
 "values": [Vector2(0, 656), Vector2(0, 656), Vector2(0, 286), Vector2(0, 260)]
-}
-
-[sub_resource type="Animation" id="Animation_kemgk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.033333335),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Text:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 480)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Earnings:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 656)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lpkfe"]
@@ -2356,7 +2356,7 @@ cache/0/64/0/glyphs/19/size = Vector2(34, 49)
 cache/0/64/0/glyphs/19/uv_rect = Rect2(1, 1, 34, 49)
 cache/0/64/0/glyphs/19/texture_idx = 0
 
-[sub_resource type="Image" id="Image_mh7p8"]
+[sub_resource type="Image" id="Image_kemgk"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -2366,7 +2366,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_bt5mj"]
-image = SubResource("Image_mh7p8")
+image = SubResource("Image_kemgk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
 content_margin_left = 4.0

@@ -168,7 +168,7 @@ func _on_button_pressed(index : int) -> void:
 	timer.stop()
 	if good == index:
 		correct_anim.play("show")
-		satisfaction += 2
+		satisfaction += 1
 		customer_satisfaction.value = satisfaction
 		add_to_graph((success_graph.points[len(success_graph.points) - 1].y - 48))
 		success_graph.default_color = Color.GREEN

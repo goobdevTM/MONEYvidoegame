@@ -41,8 +41,8 @@ var amounts_of_trash : Array[int] = [
 var percentages : Array[float] = [
 	1,
 	0.25,
-	0.1,
-	0.05
+	0.125,
+	0.08
 ]
 
 var open : bool = false
@@ -50,8 +50,9 @@ var empty : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	type = 0
 	for i in range(Types.size()):
-		if randf_range(0.0, 1.0) <= percentages[i]:
+		if randf_range(0.0, 1.0) <= percentages[i] and i <= Globals.areas[Globals.area]['max_trash']:
 			type = i
 			
 	open = (randi_range(0,10) == 0)
@@ -86,10 +87,11 @@ func _ready() -> void:
 		litter_spawner.add_child(clone_litter)
 		clone_litter.global_position = global_position + Vector2(randi_range(-40, 40), randi_range(-40, 40))
 		await get_tree().create_timer(randf_range(0,0.05)).timeout
-
+	if Globals.areas[Globals.area]['max_trash'] == -1:
+		queue_free()
 
 	#show particles and increase trash amount
-	if not randi_range(1, 3) == 3:
+	if (not randi_range(0, Globals.areas[Globals.area]['smelly_chance']) < 2) or (Globals.areas[Globals.area]['smelly_chance'] == -1):
 		smell_particles_1.emitting = false
 		smell_particles_2.emitting = false
 		smell_particles_1.hide()

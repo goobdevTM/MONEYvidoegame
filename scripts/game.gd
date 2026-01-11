@@ -1,9 +1,16 @@
+class_name Game
+
 extends Node2D
+
+@export var game : bool = false
+@export var home : bool = false
 
 @onready var click_and_hover: Node = $ClickAndHover
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var rat_spawner: Node2D = $Level/RatSpawner
 @onready var player: Player = $Level/TrashSpawner/Player
+@onready var right_border: StaticBody2D = $Level/RightBorder
+@onready var buy_text: RichTextLabel = $Level/BuyArea/BuyText
 
 const RAT = preload("uid://cuwxqyo26k0jd")
 
@@ -11,6 +18,10 @@ var speed_up : float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if game:
+		right_border.position.x = Globals.areas[Globals.area]['length']
+	if home:
+		set_area_upgrade_text()
 	for i in range(Globals.working_rats):
 		var new_rat = RAT.instantiate()
 		new_rat.hired = true
@@ -47,3 +58,23 @@ func _process(delta: float) -> void:
 		Globals.emit_signal("next_day")
 		Globals.day += 1
 		Globals.time = 0
+		
+	if Input.is_action_pressed("give_money"):
+		Globals.money += 5
+		
+	if home:
+		if Globals.money >= Globals.areas[Globals.area + 1]['cost']:
+			buy_text.modulate = Color.GREEN
+		else:
+			buy_text.modulate = Color.RED
+		
+	
+		
+func set_area_upgrade_text() -> void:
+	if home:
+		if Globals.area < len(Globals.areas):
+			buy_text.text = "[right]" + Globals.areas[Globals.area + 1]['name'] + "
+
+	Buy for: $" + str(Globals.areas[Globals.area + 1]['cost'])
+		else:
+			buy_text.text = "Max Area Unlocked"

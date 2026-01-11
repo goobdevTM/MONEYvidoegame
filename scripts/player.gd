@@ -2,7 +2,7 @@ class_name Player
 
 extends CharacterBody2D
 
-
+@onready var game: Game = $"../../.."
 @onready var text_anim: AnimationPlayer = $HandArea/Text/Anim
 @onready var text: RichTextLabel = $HandArea/Text/Text
 @onready var camera: Camera2D = $"../../../Camera"
@@ -21,6 +21,7 @@ extends CharacterBody2D
 #SOUND
 @onready var open_container: AudioStreamPlayer = $OpenContainer
 @onready var open_litter: AudioStreamPlayer = $OpenLitter
+@onready var purchase: AudioStreamPlayer = $Purchase
 
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
 @onready var music_controller: Node = $"../../../MusicController"
@@ -198,6 +199,13 @@ func _process(delta: float) -> void:
 			elif items_in_hand[0].is_in_group("garby"):
 				talk_to_garby.connect(items_in_hand[0].spoken_to)
 				emit_signal("talk_to_garby")
+			elif items_in_hand[0].is_in_group("buy_area"):
+				if Globals.area < len(Globals.areas):
+					if Globals.money >= Globals.areas[Globals.area + 1]['cost']:
+						purchase.play()
+						Globals.money -= Globals.areas[Globals.area + 1]['cost']
+						Globals.area += 1
+						game.set_area_upgrade_text()
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -304,16 +312,16 @@ func _on_hand_area_area_exited(area: Area2D) -> void:
 func highlight_item() -> void:
 	if len(items_in_hand) > 0:
 		if items_in_hand[0] is Trash:
-			text.text = "[center][E] - open"
+			text.text = "[center][E] - open?"
 		elif items_in_hand[0] is Litter:
-			text.text = "[center][E] - pick up"
+			text.text = "[center][E] - pick up?"
 		elif items_in_hand[0] is Rat:
 			if items_in_hand[0].hired:
-				text.text = "[center][E] - send to work"
+				text.text = "[center][E] - send to work?"
 			else:
-				text.text = "[center][E] - recruit"
+				text.text = "[center][E] - recruit?"
 		elif items_in_hand[0].is_in_group("storage_dumpster"):
-			text.text = "[center][E] - open storage"
+			text.text = "[center][E] - open storage?"
 		elif items_in_hand[0].is_in_group("bed"):
 			text.text = "[center][E] - sleep?"
 			#SIGNALS
@@ -321,7 +329,11 @@ func highlight_item() -> void:
 			text.text = "[center][E] - go on computer?"
 		elif items_in_hand[0].is_in_group("npc"):
 			text.text = "[center][E] - talk to?"
-
+		elif items_in_hand[0].is_in_group("buy_area"):
+			if Globals.area < len(Globals.areas):
+				text.text = "[center][E] - purchase area?"
+			else:
+				text.text = "max area purchased"
 		
 		#dont show empty trash
 		if len(items_in_hand) > 0: #stop crash

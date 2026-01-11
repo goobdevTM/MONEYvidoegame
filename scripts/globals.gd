@@ -9,8 +9,6 @@ var trash_amount : int = 40
 var rat_rarity : int = 12
 
 
-var first_interaction_with_garby: bool = true
-
 #ALSO UPGRADES
 var upgrade_multipliers: Dictionary[String, float] = {
 	"money_multiplier": 1,
@@ -63,6 +61,7 @@ var garby_dialogue: Dictionary = {
 		"That bed of yours makes time go faster!",
 		"You can unlock different areas with more trash!",
 		"Careful what ya say in front of them rich folks!",
+		"Selling those rarer items to the higher class is risky but can give ya some big moneys!"
 	],
 	"ask_for_litter": [
 		"Gimme some litter and I can tell ya some secrets!",
@@ -191,18 +190,29 @@ var hover_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 
 #GAME
 #SAVE RELATED VARIABLES SET LATER
-var working_rats : int = 0
-var money : int = 0
-var time : float = 720.0 #day length / 2
-var day : int = 0
-var sleeping : bool = false
-var first_time_minigame : bool = true
+var working_rats : int
+var money : int 
+var time : float
+var day : int
+var sleeping : bool
+var first_time_minigame : bool
+var first_interaction_with_garby: bool
+var area : int
 var start_pos : Vector2 = Vector2(0, 0) #where player spawns
 const day_length : float = 1440.0 #seconds
 var rich_person_name : String = ""
 var question_speed_mult : float = 0.5
 var item_selling : Dictionary = {}
 var rich_difficulty : int = 0
+var areas : Array[Dictionary] = [
+	{'name': "Starter Area", 'length': 480, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'cost': 0},
+	{'name': "Basic Area", 'length': 640, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'cost': 100},
+	{'name': "Unpleasant Area", 'length': 800, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'cost': 250},
+	{'name': "Smelly Area", 'length': 1000, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'cost': 750},
+	{'name': "Nasty Area", 'length': 1200, 'max_trash': 3, 'max_litter': 12, 'luck': 0.9, 'smelly_chance': 7, 'cost': 1500},
+	{'name': "Gross Area", 'length': 1800, 'max_trash': 3, 'max_litter': 14, 'luck': 1, 'smelly_chance': 6, 'cost': 2500},
+	{'name': "Disgusting Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.25, 'smelly_chance': 4, 'cost': 10000},
+]
 
 #SAVE
 var saves : Array[Dictionary] = [{},{},{}]
@@ -254,8 +264,11 @@ func load_data():
 func set_saves(save : int) -> void:
 	saves[save]['working_rats'] = working_rats
 	saves[save]['money'] = money
+	saves[save]['dumpster_slots'] = dumpster_slots
+	saves[save]['inventory_slots'] = inventory_slots
 	saves[save]['time'] = time
 	saves[save]['day'] = day
+	saves[save]['area'] = area
 	saves[save]['inventory'] = inventory
 	saves[save]['storage'] = storage
 	saves[save]['first_time_minigame'] = first_time_minigame
@@ -266,12 +279,15 @@ func load_saves(save : int) -> void:
 	if not saves[save] == {}: #check if not save empty
 		working_rats = saves[save]['working_rats']
 		money = saves[save]['money']
+		dumpster_slots = saves[save]['dumpster_slots']
+		inventory_slots = saves[save]['inventory_slots']
 		time = saves[save]['time']
 		day = saves[save]['day']
 		first_time_minigame = saves[save]['first_time_minigame']
+		first_interaction_with_garby = saves[save]['first_interaction_with_garby']
+		area = saves[save]['area']
 		inventory = saves[save]['inventory']
 		storage = saves[save]['storage']
-		first_interaction_with_garby = saves[save]['first_interaction_with_garby']
 	else: #else reset
 		#STARTING VALUES
 		working_rats = 0
@@ -282,6 +298,8 @@ func load_saves(save : int) -> void:
 		time = day_length / 2
 		day = 0
 		first_time_minigame = true
+		first_interaction_with_garby = true
+		area = 0
 		inventory = [
 			{'id': 0, 'count': 0},
 			{'id': 0, 'count': 0},
@@ -295,7 +313,6 @@ func load_saves(save : int) -> void:
 		]
 
 		storage = []
-		first_interaction_with_garby = true
 	
 #molodur awsoml
 func save_and_quit() -> void:
@@ -313,8 +330,8 @@ func get_item_with_chance(lucky_multiplier : int = 1) -> int:
 	
 	var to_return: int = 0
 	
-	for i in range(len(Globals.items)):
-		if randf_range(0.0, 1.0 / lucky_multiplier) <= Globals.items[i]['chance']:
+	for i in range(len(items)):
+		if randf_range(0.0, 1.0 / lucky_multiplier) <= items[i]['chance'] and i <= areas[area]['max_litter']:
 			to_return = i
 	return to_return
 	

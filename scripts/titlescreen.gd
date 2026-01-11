@@ -7,9 +7,12 @@ func _ready() -> void:
 	Globals.selected_slot = 0
 	Globals.start_pos = Vector2(0, 0)
 	Globals.set_ui_sounds(click_and_hover)
+	set_saves()
+	
+func set_saves() -> void:
 	for i : Button in saves.get_children():
 		i.get_child(1).text = str(i.get_index() + 1)
-		if Globals.saves[i.get_index()].has('working_rats'): #check if not save empty
+		if not Globals.saves[i.get_index()] == {}: #check if not save empty
 			i.get_child(0).get_child(0).show()
 			i.get_child(0).get_child(1).hide()
 		else:
