@@ -32,8 +32,6 @@ func _ready() -> void:
 		play_theme.connect(music_controller.play_rat_theme)
 		emit_signal("play_theme")
 		
-	
-
 
 func _physics_process(delta: float) -> void:
 
