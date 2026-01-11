@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://buv7xaj8dmplv"]
+[gd_scene load_steps=80 format=4 uid="uid://buv7xaj8dmplv"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gdncb"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="2_2ugsq"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://rjw35yafxwvf" path="res://scenes/upgrade_button.tscn" id="24_ctnpg"]
 [ext_resource type="Script" uid="uid://bchc8awf5l3ro" path="res://scripts/upgrade_menu.gd" id="24_ftgv5"]
 [ext_resource type="Texture2D" uid="uid://b5jndoufqowsa" path="res://sprites/smellizon logo.png" id="25_tpp26"]
+[ext_resource type="AudioStream" uid="uid://brehgxah1718g" path="res://audio/sfx/kaching-sound-fx.mp3" id="27_qtorc"]
 [ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="32_ug8ri"]
 [ext_resource type="AudioStream" uid="uid://cyli55p1plii2" path="res://audio/music/PianoSlam.ogg" id="33_i85uk"]
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="34_70ow4"]
@@ -2526,6 +2527,9 @@ horizontal_alignment = 2
 
 [node name="PianoSlam" type="AudioStreamPlayer" parent="UpgradeMenu/Panel"]
 stream = ExtResource("33_i85uk")
+
+[node name="Kaching" type="AudioStreamPlayer" parent="UpgradeMenu/Panel"]
+stream = ExtResource("27_qtorc")
 
 [node name="MusicController" parent="." instance=ExtResource("34_70ow4")]
 
