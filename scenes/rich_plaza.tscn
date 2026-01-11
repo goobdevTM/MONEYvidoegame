@@ -14,7 +14,7 @@
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="10_42p0x"]
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_5pgt4"]
 [ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="13_0w0s1"]
-[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="15_42p0x"]
+[ext_resource type="PackedScene" path="res://scenes/fade.tscn" id="15_42p0x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axcjw"]
 texture = ExtResource("3_salir")
