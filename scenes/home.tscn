@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=4 uid="uid://bug8okbqgftl2"]
+[gd_scene load_steps=128 format=4 uid="uid://bug8okbqgftl2"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gi00y"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_ip4d6"]
@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="38_34np2"]
 [ext_resource type="Texture2D" uid="uid://eypqtl16fn8l" path="res://sprites/garby.png" id="39_0ltf8"]
 [ext_resource type="Script" uid="uid://bj1lmperb6mvp" path="res://scripts/button_animations.gd" id="39_g8n7j"]
+[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="41_kvj23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa7t7"]
 atlas = ExtResource("18_kc6b6")
@@ -4262,6 +4263,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_vwpem")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hsf4p")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_0grxe")
 text = "Nope!"
+
+[node name="Fade" parent="." instance=ExtResource("41_kvj23")]
 
 [connection signal="body_entered" from="Level/EnterGame" to="Level/EnterGame" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/EnterRich" to="Level/EnterRich" method="_on_body_entered"]

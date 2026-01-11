@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cwq0qr0p3gujk"]
+[gd_scene load_steps=31 format=4 uid="uid://cwq0qr0p3gujk"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_hos2y"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="2_4w4jk"]
@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="10_42p0x"]
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_5pgt4"]
 [ext_resource type="AudioStream" uid="uid://b8qrd0q17e4ln" path="res://audio/music/Rich People Theme normal.ogg" id="13_0w0s1"]
+[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="15_42p0x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axcjw"]
 texture = ExtResource("3_salir")
@@ -190,5 +191,7 @@ collision_layer = 256
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RichBorder"]
 position = Vector2(256, 0)
 shape = SubResource("CircleShape2D_0w0s1")
+
+[node name="Fade" parent="." instance=ExtResource("15_42p0x")]
 
 [connection signal="body_entered" from="Level/EnterHome" to="Level/EnterHome" method="_on_body_entered"]

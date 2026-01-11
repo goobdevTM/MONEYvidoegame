@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://jjo26rmcgd4a"]
+[gd_scene load_steps=27 format=4 uid="uid://jjo26rmcgd4a"]
 
 [ext_resource type="Texture2D" uid="uid://6xicn7mn56r0" path="res://sprites/STTRP_logo.png" id="1_6d6rd"]
 [ext_resource type="Script" uid="uid://cxkuuv3vfsnnu" path="res://scripts/titlescreen.gd" id="1_84han"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="13_hcbn3"]
 [ext_resource type="Script" uid="uid://bu8tlcju30cka" path="res://scripts/confirm_delete.gd" id="16_y7yat"]
 [ext_resource type="AudioStream" uid="uid://m2w5i2ccvghu" path="res://audio/sfx/plane_crash.mp3" id="17_t3dwt"]
+[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="18_anfsg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tt55a"]
 texture = ExtResource("2_3jj3l")
@@ -311,6 +312,9 @@ vertical_alignment = 1
 stream = ExtResource("17_t3dwt")
 volume_db = -4.9
 bus = &"Sounds"
+
+[node name="Fade" parent="." instance=ExtResource("18_anfsg")]
+visible = false
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="Settings" method="open"]

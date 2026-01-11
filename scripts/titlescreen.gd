@@ -2,6 +2,7 @@ extends Control
 
 @onready var click_and_hover: Node = $ClickAndHover
 @onready var saves: VBoxContainer = $BottomButtons/Saves
+@onready var fade: Fade = $Fade
 
 func _ready() -> void:
 	Globals.selected_slot = 0
@@ -21,7 +22,7 @@ func set_saves() -> void:
 			
 func _on_play_pressed() -> void:
 	Globals.load_saves(Globals.current_save)
-	get_tree().change_scene_to_packed(preload("uid://bug8okbqgftl2"))
+	fade.fade_out(preload("uid://bug8okbqgftl2"))
 
 
 func save_pressed(index : int) -> void:

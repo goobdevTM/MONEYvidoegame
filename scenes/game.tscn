@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=45 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="14_trtic"]
 [ext_resource type="Texture2D" uid="uid://cvr2g2xqqc5j1" path="res://sprites/poor.png" id="15_1kice"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="21_5newe"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kice"]
 normal = Vector2(1, 0)
@@ -284,5 +285,7 @@ visible = false
 [node name="MusicController" parent="." instance=ExtResource("14_trtic")]
 
 [node name="ClickAndHover" parent="." instance=ExtResource("16_ca42v")]
+
+[node name="Fade" parent="." instance=ExtResource("21_5newe")]
 
 [connection signal="body_entered" from="Level/EnterHome" to="Level/EnterHome" method="_on_body_entered"]

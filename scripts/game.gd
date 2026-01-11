@@ -10,6 +10,7 @@ extends Node2D
 @onready var player: Player = $Level/TrashSpawner/Player
 @onready var right_border: StaticBody2D = $Level/RightBorder
 @onready var buy_text: RichTextLabel = $Level/RightBorder/BuyArea/BuyText
+@onready var fade: Fade = $Fade
 
 
 
