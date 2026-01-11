@@ -51,7 +51,7 @@ var last_question : Dictionary = {}
 func _ready() -> void:
 	Globals.set_ui_sounds(click_and_hover)
 	if Globals.first_time_minigame:
-		Globals.question_speed_mult = 0.4
+		Globals.question_speed_mult = 0.25
 	else:
 		Globals.question_speed_mult = 1
 	timer.wait_time = 1 / Globals.question_speed_mult
@@ -85,6 +85,8 @@ func ask_question() -> void:
 	number.text = "[center]" + str(questions_answered) + "/" + str(max_questions) + " Questions Answered"
 	number.modulate = lerp(Color.YELLOW, Color.GREEN, float(questions_answered) / float(max_questions))
 	Globals.question_speed_mult += 0.01
+	if Globals.first_time_minigame and Globals.question_speed_mult < 1:
+		Globals.question_speed_mult += 0.1
 	timer.wait_time = 1 / Globals.question_speed_mult
 	time_left.max_value = timer.wait_time
 	

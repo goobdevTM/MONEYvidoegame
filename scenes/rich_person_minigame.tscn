@@ -395,7 +395,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.10000001, 0.2, 2.75, 3),
 "transitions": PackedFloat32Array(2, 0.5, 2, 2, -2),
 "update": 0,
-"values": [Vector2(0, 480), Vector2(0, 206), Vector2(0, 180), Vector2(0, 180), Vector2(0, 480)]
+"values": [Vector2(0, 480), Vector2(0, 110), Vector2(0, 84), Vector2(0, 84), Vector2(0, 480)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -951,6 +951,23 @@ theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "[center]ANSWER QUICKLY!!!"
 
+[node name="MiniTutorial" type="RichTextLabel" parent="Control/Start/Text"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 176.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.78431374, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_hvqj5")
+theme_override_font_sizes/normal_font_size = 27
+bbcode_enabled = true
+text = "[center]Pick the best option, H for help."
+
 [node name="StartAnim" type="AnimationPlayer" parent="Control/Start"]
 libraries = {
 &"": SubResource("AnimationLibrary_dof8y")
@@ -958,6 +975,7 @@ libraries = {
 autoplay = "show"
 
 [node name="Help" type="Control" parent="."]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -977,7 +995,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.5019608)
+color = Color(0, 0, 0, 0.78431374)
 
 [node name="Control" type="Control" parent="Help"]
 layout_mode = 1

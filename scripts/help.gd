@@ -11,8 +11,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("settings"):
 		if Globals.in_help:
 			close()
-		else:
-			open()
+	if Input.is_action_just_pressed("help"):
+		open()
 
 
 func open() -> void:

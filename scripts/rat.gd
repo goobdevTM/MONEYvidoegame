@@ -28,8 +28,12 @@ func _ready() -> void:
 	direction = Vector2(randi_range(-1,1), randi_range(-1,1))
 
 	#CONNECTS
-	play_theme.connect(music_controller.play_rat_theme)
-	emit_signal("play_theme")
+	if not hired:
+		play_theme.connect(music_controller.play_rat_theme)
+		emit_signal("play_theme")
+		
+	
+
 
 func _physics_process(delta: float) -> void:
 
@@ -49,6 +53,8 @@ func _physics_process(delta: float) -> void:
 			direction.x = randi_range(-1,1)
 		while direction == Vector2(0,0):
 			direction = Vector2(randi_range(-1,1), randi_range(-1,1))
+		if not on_screen: #don run away to far.
+			direction = Vector2(0,0)
 	velocity += direction.normalized() * speed * delta
 	velocity *= friction
 	
@@ -64,6 +70,7 @@ func _physics_process(delta: float) -> void:
 
 func go_to_work():
 	
+	hand_area.get_child(0).disabled = true
 	currently_working = true
 	
 	speed = 1400
@@ -85,7 +92,7 @@ func go_to_work():
 	clone_litter.rat_spawned = true
 	add_child(clone_litter)
 	move_child(clone_litter, 0)
-	hand_area.get_child(0).disabled = true
+	
 	
 	await clone_litter.picked_up
 	hand_area.get_child(0).disabled = false
