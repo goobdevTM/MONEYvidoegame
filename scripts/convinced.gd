@@ -21,7 +21,7 @@ func start() -> void:
 		earnings.text = "[center]+ $" + str(gain) + " Earned!"
 		Globals.inventory[Globals.item_selling['slot']]['count'] = 0
 	else:
-		earnings.text = '"GET OUT!!!" - the customer'
+		earnings.text = '[center]"GET OUT!!!" - the customer'
 	
 	
 func _on_continue_pressed() -> void:
