@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=40 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -95,6 +95,9 @@ texture_region_size = Vector2i(16, 32)
 [sub_resource type="TileSet" id="TileSet_ssvqc"]
 tile_size = Vector2i(16, 32)
 sources/0 = SubResource("TileSetAtlasSource_bt5mj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_264po"]
+size = Vector2(329, 587)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ssvqc")
@@ -203,6 +206,30 @@ shape = SubResource("WorldBoundaryShape2D_ssvqc")
 [node name="BuyThisArea" type="TileMapLayer" parent="Level/RightBorder"]
 tile_map_data = PackedByteArray("AAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAPf/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_ssvqc")
+
+[node name="BuyArea" type="Node2D" parent="Level/RightBorder" groups=["buy_area"]]
+position = Vector2(-12, 33)
+
+[node name="HandArea" type="Area2D" parent="Level/RightBorder/BuyArea" groups=["for_hand"]]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/RightBorder/BuyArea/HandArea"]
+position = Vector2(154.5, -34.5)
+shape = SubResource("RectangleShape2D_264po")
+
+[node name="BuyText" type="RichTextLabel" parent="Level/RightBorder/BuyArea"]
+clip_contents = false
+offset_left = -55.0
+offset_top = 10.0
+offset_right = 75.0
+offset_bottom = 50.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("14_264po")
+theme_override_font_sizes/normal_font_size = 9
+bbcode_enabled = true
+text = "[right]Area Name
+Area Cost"
 
 [node name="HomeSign" type="Sprite2D" parent="Level"]
 z_index = 10

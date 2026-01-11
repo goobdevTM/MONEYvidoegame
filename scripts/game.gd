@@ -3,7 +3,6 @@ class_name Game
 extends Node2D
 
 @export var game : bool = false
-@export var home : bool = false
 
 @onready var click_and_hover: Node = $ClickAndHover
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
@@ -20,7 +19,6 @@ var speed_up : float = 1
 func _ready() -> void:
 	if game:
 		right_border.position.x = Globals.areas[Globals.area]['length']
-	if home:
 		set_area_upgrade_text()
 	for i in range(Globals.working_rats):
 		var new_rat = RAT.instantiate()
@@ -62,7 +60,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("give_money"):
 		Globals.money += 5
 		
-	if home:
+	if game:
 		if Globals.money >= Globals.areas[Globals.area + 1]['cost']:
 			buy_text.modulate = Color.GREEN
 		else:
@@ -71,10 +69,10 @@ func _process(delta: float) -> void:
 	
 		
 func set_area_upgrade_text() -> void:
-	if home:
+	if game:
 		if Globals.area < len(Globals.areas):
 			buy_text.text = "[right]" + Globals.areas[Globals.area + 1]['name'] + "
 
-	Buy for: $" + str(Globals.areas[Globals.area + 1]['cost'])
+Buy for: $" + str(Globals.areas[Globals.area + 1]['cost'])
 		else:
 			buy_text.text = "Max Area Unlocked"
