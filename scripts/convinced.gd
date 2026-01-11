@@ -9,6 +9,7 @@ extends Control
 @onready var kaching: AudioStreamPlayer = $"../../Kaching"
 @onready var boowomp: AudioStreamPlayer = $"../../Boowomp"
 @onready var button: Button = $Earnings/Continue
+@onready var fade: Fade = $"../../Fade"
 
 
 func start() -> void:
@@ -32,4 +33,4 @@ func _on_continue_pressed() -> void:
 		boowomp.play()
 		await boowomp.finished
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/rich_plaza.tscn")
+	fade.fade_out(preload("uid://cwq0qr0p3gujk"))

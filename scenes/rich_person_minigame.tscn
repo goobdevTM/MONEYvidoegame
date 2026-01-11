@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bf2webwe8pc11" path="res://audio/sfx/buzzer.mp3" id="13_rvpi8"]
 [ext_resource type="AudioStream" uid="uid://4kgup6xrg0wt" path="res://audio/sfx/ding.mp3" id="14_7cwb0"]
 [ext_resource type="AudioStream" uid="uid://dix0u8vxnm54w" path="res://audio/sfx/boowomp.mp3" id="15_7cwb0"]
-[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="18_hgi1x"]
+[ext_resource type="PackedScene" path="res://scenes/fade.tscn" id="18_hgi1x"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
 length = 0.001
