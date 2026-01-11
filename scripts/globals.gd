@@ -11,13 +11,13 @@ var rat_rarity : int = 12
 
 #UPGRADES
 var upgrades: Array[Dictionary] = [
-	{"name": "Speed", "base_cost": 25, "var": player_base_speed, "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
-	{"name": "Stamina", "base_cost": 20, "var": stamina_max, "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": preload("uid://bfwlc8spvq4i1")},
-	{"name": "Money", "base_cost": 50, "var": money_multiplier, "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": preload("uid://o7wlo442yfo5")},
-	{"name": "Opening Trash", "base_cost": 25, "var": trash_speed_multiplier, "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": preload("res://sprites/small_garbage_bag.png")},
-	{"name": "Trash Density", "base_cost": 50, "var": trash_density_multiplier, "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": preload("res://sprites/small_garbage_bag.png")},
-	{"name": "Rat Speed", "base_cost": 15, "var": rat_speed_multiplier, "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": preload("res://sprites/rat.png")},
-	{"name": "Sprint Speed", "base_cost": 25, "var": player_base_sprint_speed, "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
+	{"name": "Speed", "base_cost": 50, "var": player_base_speed, "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
+	{"name": "Stamina", "base_cost": 40, "var": stamina_max, "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": preload("uid://bfwlc8spvq4i1")},
+	{"name": "Money", "base_cost": 100, "var": money_multiplier, "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": preload("res://sprites/money_upgrade.png")},
+	{"name": "Opening Trash", "base_cost": 50, "var": trash_speed_multiplier, "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": preload("res://sprites/small_garbage_bag.png")},
+	{"name": "Trash Density", "base_cost": 100, "var": trash_density_multiplier, "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": preload("res://sprites/small_garbage_bag.png")},
+	{"name": "Rat Speed", "base_cost": 30, "var": rat_speed_multiplier, "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": preload("res://sprites/rat_upgrade.png")},
+	{"name": "Sprint Speed", "base_cost": 50, "var": player_base_sprint_speed, "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
 
 ]
 
@@ -99,22 +99,21 @@ var last_given_slot : bool = false
 var hovered_save : int
 
 var items : Array[Dictionary] = [
-	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 0.4},
-	{'name': "Cup", 'coords': Vector2i(1,0), 'chance': 0.3},
-	{'name': "Water Bottle", 'coords': Vector2i(3,0), 'chance': 0.3},
-	{'name': "Soda Can", 'coords': Vector2i(2,0), 'chance': 0.25},
-	{'name': "Smelly Sock", 'coords': Vector2i(0,1), 'chance': 0.25},
-	{'name': "Candy Wrapper", 'coords': Vector2i(1,1), 'chance': 0.15},
-	{'name': "Fish Bone", 'coords': Vector2i(2,2), 'chance': 0.1},
-	{'name': "Poopy haha", 'coords': Vector2i(2,1), 'chance': 0.1},
-	{'name': "Glove", 'coords': Vector2i(0,3), 'chance': 0.1},
-	{'name': "Broken CD", 'coords': Vector2i(1,2), 'chance': 0.05},
-	{'name': "Fries", 'coords': Vector2i(1,3), 'chance': 0.05},
-	{'name': "Banana Peel", 'coords': Vector2i(2,3), 'chance': 0.05},
-	{'name': "Bone", 'coords': Vector2i(0,2), 'chance': 0.04},
-	{'name': "Photo", 'coords': Vector2i(3,3), 'chance': 0.025},
-	{'name': "Child", 'coords': Vector2i(3,1), 'chance': 0.01},
-	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.002},
+	{'name': "Tissue", 'coords': Vector2i(0,0), 'chance': 1, "worth": 1,},
+	{'name': "Cup", 'coords': Vector2i(1,0), 'chance': 0.3, "worth": 2,},
+	{'name': "Water Bottle", 'coords': Vector2i(3,0), 'chance': 0.3, "worth": 2,},
+	{'name': "Soda Can", 'coords': Vector2i(2,0), 'chance': 0.2, "worth": 3,},
+	{'name': "Smelly Sock", 'coords': Vector2i(0,1), 'chance': 0.15, "worth": 2,},
+	{'name': "Candy Wrapper", 'coords': Vector2i(1,1), 'chance': 0.15, "worth": 5,},
+	{'name': "Fish Bone", 'coords': Vector2i(2,2), 'chance': 0.1, "worth": 8,},
+	{'name': "Glove", 'coords': Vector2i(0,3), 'chance': 0.1, "worth": 5,},
+	{'name': "Poopy haha", 'coords': Vector2i(2,1), 'chance': 0.08, "worth": 0,},
+	{'name': "Banana Peel", 'coords': Vector2i(2,3), 'chance': 0.04, "worth": 3,},
+	{'name': "Bone", 'coords': Vector2i(0,2), 'chance': 0.04, "worth": 8,},
+	{'name': "Broken CD", 'coords': Vector2i(1,2), 'chance': 0.03, "worth": 10,},
+	{'name': "Photo", 'coords': Vector2i(3,3), 'chance': 0.02, "worth": 10,},
+	{'name': "Child", 'coords': Vector2i(3,1), 'chance': 0.008, "worth": 25,},
+	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.0005, "worth": 250,},
 ]
 
 var inventory : Array[Dictionary] = [
