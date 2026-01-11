@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var panel: Panel = $Panel
 @onready var money: RichTextLabel = $Panel/Money
 
+const UPGRADE_BUTTON = preload("uid://rjw35yafxwvf")
+
 
 var reload_cost: int = 10
 
@@ -21,8 +23,15 @@ func _process(delta: float) -> void:
 
 func set_buttons():
 	for i in h_box_container.get_children():
-		var upgrade: int = randi_range(0, len(Globals.upgrades) - 1)
+		i.queue_free()
 		
+	for i in range(3):
+		var new_button : Button = UPGRADE_BUTTON.instantiate()
+		h_box_container.add_child(new_button)
+
+	for i in h_box_container.get_children():
+		var upgrade : int = randi_range(0,len(Globals.upgrades) - 1)
+		print("UPGRADE: " + str(upgrade))
 		i.upgrade = upgrade
 		i._ready()
 
