@@ -3,6 +3,7 @@ class_name Litter
 extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite
+@onready var area_2d: Area2D = $Area2D
 
 
 var type : int = -1
@@ -50,3 +51,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_delete_check_area_entered(area: Area2D) -> void:
 	if not rat_spawned == true:
 		queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	sprite.show()
+	area_2d.disabled = false
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	sprite.hide()
+	area_2d.disabled = true
