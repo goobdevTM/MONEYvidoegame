@@ -119,7 +119,7 @@ func _on_delete_check_area_entered(area: Area2D) -> void:
 func spawn_rat_randomly() -> void:
 	if not open and not empty:
 		var local_rarity : int = Globals.rat_rarity #night multiplier
-		if Globals.time > Globals.day_length / 2: #is night?
+		if Globals.time < (Globals.day_length / 2) + ((Globals.day_length / 24) * 8): #is night?
 			local_rarity /= 2 #less rare
 		if randi_range(1, local_rarity) == local_rarity:
 			var new_rat = RAT.instantiate()

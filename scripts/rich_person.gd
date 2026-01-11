@@ -35,6 +35,8 @@ func generate_my_name() -> String:
 	return my_name
 
 func _ready() -> void:
+	
+	
 	difficulty = randi_range(0,2)
 	hovering = false
 	

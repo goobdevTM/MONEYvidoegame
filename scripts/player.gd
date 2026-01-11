@@ -353,6 +353,9 @@ func highlight_item() -> void:
 				text.text = "[center][E] - purchase area? "
 			else:
 				text.text = "max area purchased"
+		elif items_in_hand[0].is_in_group("note"):
+			text.text = "[center] We all retreat to our mansions at night
+- rich people "
 		
 		#dont show empty trash
 		if len(items_in_hand) > 0: #stop crash
