@@ -13,7 +13,7 @@ config_version=5
 config/name="Sell Trash To Rich People"
 run/main_scene="uid://jjo26rmcgd4a"
 config/auto_accept_quit=false
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.15137342, 0.111670725, 0.2504761, 1)
 boot_splash/image="uid://imusob7sg53d"
 config/icon="uid://n1ekgf53qxc7"
@@ -45,6 +45,7 @@ main_songs=""
 storage_dumpster=""
 rich_people=""
 bed=""
+computer=""
 
 [input]
 

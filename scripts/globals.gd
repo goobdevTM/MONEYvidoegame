@@ -8,6 +8,19 @@ var trash_amount : int = 40
 #	WILL BE MAX IN A RANDI RANGE
 var rat_rarity : int = 12
 
+
+#UPGRADES
+var upgrades: Array[Dictionary] = [
+	{"name": "Speed", "base_cost": 25, "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": preload("uid://bfwlc8spvq4i1")},
+	{"name": "Stamina", "base_cost": 20, "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": preload("res://sprites/rat.png")},
+	{"name": "Money", "base_cost": 50, "cost_multiplier": 1.2, "upgrade_amount": 1.05, "description": "You'll make more money overall.", "texture": preload("uid://o7wlo442yfo5")},
+	{"name": "Opening Trash", "base_cost": 25, "cost_multiplier": 1.1, "upgrade_amount": 1, "description": "You can open trash containers quicker.", "texture": preload("res://sprites/small_garbage_bag.png")},
+	{"name": "Trash Density", "base_cost": 50, "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": preload("res://sprites/small_garbage_bag.png")},
+	{"name": "Rat Speed", "base_cost": 15, "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": preload("res://sprites/rat.png")},
+
+]
+
+
 #RICH PERSON
 var rich_person_max : int = 48
 var roman_numerals : Array[String] = [

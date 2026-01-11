@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	if noise_overlay:
 		noise_overlay.position.x = floor(position.x / 384) * 384
 	if fence:
-		fence.position.x = floor(position.x / 32) * 32
+		fence.position.x = floor(position.x / 16) * 16
 	if bushes:
 		bushes.position.x = floor(position.x / 32) * 32
 	if delete_trash:

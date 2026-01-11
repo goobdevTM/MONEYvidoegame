@@ -16,6 +16,7 @@ extends CharacterBody2D
 #UI
 @onready var stamina_bar: HSlider = $"../../../INVENTORY/Control/Stamina"
 @onready var storage_gui: CanvasLayer = $"../../../StorageGUI"
+@onready var upgrade_menu: CanvasLayer = $"../../../UpgradeMenu"
 
 #SOUND
 @onready var open_container: AudioStreamPlayer = $OpenContainer
@@ -34,8 +35,9 @@ var direction : Vector2
 #	FOR SPRINTING
 var stamina: float = 100
 var stamina_timer: float = 0
-#		SHOULDNT BE CHANGED (FOR NOW)
-const max_stamina: float = 100
+#		SHOULDNT BE CHANGED (FOR NOW)... wait a minute... i feel somethimg..
+#	 	the MONEY!! the MONEY has arrvied YIPPESKIPY
+var max_stamina: float = 100
 
 signal stop_rat_theme
 signal talk_to_rich_person
@@ -185,6 +187,8 @@ func _process(delta: float) -> void:
 				emit_signal("talk_to_rich_person")
 				if len(items_in_hand) > 0: #stop crash
 					talk_to_rich_person.disconnect(items_in_hand[0].spoken_to)
+			elif items_in_hand[0].is_in_group("computer"):
+				upgrade_menu.open()
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -308,6 +312,8 @@ func highlight_item() -> void:
 			text.text = "[center][E] - talk to?"
 			#SIGNALS
 			talk_to_rich_person.connect(items_in_hand[0].spoken_to)
+		elif items_in_hand[0].is_in_group("computer"):
+			text.text = "[center][E] - go on computer?"
 
 		
 		#dont show empty trash
