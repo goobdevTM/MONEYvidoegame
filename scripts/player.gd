@@ -25,6 +25,7 @@ extends CharacterBody2D
 
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
 @onready var music_controller: Node = $"../../../MusicController"
+@onready var fps: CanvasLayer = $FPS
 
 #litter scene
 const LITTER = preload("uid://6nia0edfdeaj")
@@ -104,6 +105,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _process(delta: float) -> void:
+	
+	if Globals.show_fps:
+		fps.show()
+		fps.get_child(0).text = "FPS: " + str(Engine.get_frames_per_second())
+	else:
+		fps.hide()
 	
 	if Globals.sleeping:
 		eyes.play("closed")

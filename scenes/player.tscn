@@ -185,5 +185,21 @@ stream = ExtResource("8_smehm")
 volume_db = -2.0
 bus = &"Sounds"
 
+[node name="FPS" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FPS"]
+clip_contents = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 452.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "FPS:"
+
 [connection signal="area_entered" from="HandArea" to="." method="_on_hand_area_area_entered"]
 [connection signal="area_exited" from="HandArea" to="." method="_on_hand_area_area_exited"]

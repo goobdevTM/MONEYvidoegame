@@ -187,6 +187,8 @@ var music_volume : float = 50
 #UI
 var click_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 var hover_sound : AudioStreamPlayer = AudioStreamPlayer.new()
+var show_fps: bool = false
+var vsync_mode: bool = false
 
 #GAME
 #SAVE RELATED VARIABLES SET LATER
@@ -237,6 +239,8 @@ func save_data():
 	
 	file.store_var(saves)
 	
+	file.store_var(vsync_mode)
+	file.store_var(show_fps)
 	file.store_var(sound_volume)
 	file.store_var(music_volume)
 	file.store_var(master_volume)
@@ -249,6 +253,8 @@ func load_data():
 		
 		saves = file.get_var()
 		
+		vsync_mode = file.get_var()
+		show_fps = file.get_var()
 		sound_volume = file.get_var()
 		music_volume = file.get_var()
 		master_volume = file.get_var()

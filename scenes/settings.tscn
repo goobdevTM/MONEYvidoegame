@@ -149,6 +149,7 @@ max_value = 1.0
 step = 0.01
 
 [node name="Label" type="RichTextLabel" parent="Control/TabContainer/Video/StaminaOpacity"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,9 +158,64 @@ offset_top = -20.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("2_6wm04")
 bbcode_enabled = true
 text = "[center]stamina bar opacity"
+
+[node name="Vsync" type="CheckButton" parent="Control/TabContainer/Video"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 136.0
+offset_right = 88.0
+offset_bottom = 167.0
+theme = ExtResource("2_6wm04")
+
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Video/Vsync"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.061000004
+anchor_top = -0.38700002
+anchor_right = 2.163
+anchor_bottom = 0.5
+offset_left = 0.01099968
+offset_top = -0.0029993057
+offset_right = 0.012992859
+offset_bottom = -9.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_6wm04")
+bbcode_enabled = true
+text = "[center]v-sync"
+
+[node name="ShowFPS" type="CheckButton" parent="Control/TabContainer/Video"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 177.0
+offset_right = 88.0
+offset_bottom = 208.0
+theme = ExtResource("2_6wm04")
+
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Video/ShowFPS"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.061000004
+anchor_top = -0.38700002
+anchor_right = 2.163
+anchor_bottom = 0.5
+offset_left = 0.01099968
+offset_top = -0.0029993057
+offset_right = 29.012993
+offset_bottom = -9.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_6wm04")
+bbcode_enabled = true
+text = "[center]show FPS"
 
 [node name="Quit" type="Button" parent="Control"]
 layout_mode = 1
@@ -182,4 +238,6 @@ bus = &"Music"
 [connection signal="value_changed" from="Control/TabContainer/Audio/Sound" to="." method="_on_sound_value_changed"]
 [connection signal="value_changed" from="Control/TabContainer/Audio/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="Control/TabContainer/Video/StaminaOpacity" to="." method="_on_stamina_opacity_value_changed"]
+[connection signal="toggled" from="Control/TabContainer/Video/Vsync" to="." method="_on_vsync_toggled"]
+[connection signal="toggled" from="Control/TabContainer/Video/ShowFPS" to="." method="_on_show_fps_toggled"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_button_pressed"]

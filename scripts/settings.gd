@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var bg: ColorRect = $BG
 @onready var control: Control = $Control
 @onready var stamina_opacity: HSlider = $Control/TabContainer/Video/StaminaOpacity
+@onready var check_button_vsync: CheckButton = $Control/TabContainer/Video/Vsync
+@onready var show_fps: CheckButton = $Control/TabContainer/Video/ShowFPS
 
 #AUDIO STUFF yhuj
 @onready var music: AudioStreamPlayer = $Music
@@ -11,8 +13,12 @@ extends CanvasLayer
 @onready var master_slider: HSlider = $Control/TabContainer/Audio/Master
 
 
+
 func _ready() -> void:
+	
 	stamina_opacity.value = Globals.stamina_bar_opacity
+	
+	#CHECK BUTTONS
 	
 	
 	sound_slider.value = Globals.sound_volume
@@ -86,3 +92,14 @@ func _on_sound_value_changed(value: float) -> void:
 func _on_music_value_changed(value: float) -> void:
 	Globals.music_volume = value
 	AudioServer.set_bus_volume_linear(1, value / 75)
+
+func _on_vsync_toggled(toggled_on: bool) -> void:
+	Globals.vsync_mode = toggled_on
+	if toggled_on:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+
+func _on_show_fps_toggled(toggled_on: bool) -> void:
+	Globals.show_fps = toggled_on
