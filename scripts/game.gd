@@ -9,7 +9,8 @@ extends Node2D
 @onready var rat_spawner: Node2D = $Level/RatSpawner
 @onready var player: Player = $Level/TrashSpawner/Player
 @onready var right_border: StaticBody2D = $Level/RightBorder
-@onready var buy_text: RichTextLabel = $Level/BuyArea/BuyText
+@onready var buy_text: RichTextLabel = $Level/RightBorder/BuyArea/BuyText
+
 
 const RAT = preload("uid://cuwxqyo26k0jd")
 
