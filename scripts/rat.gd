@@ -53,6 +53,7 @@ func _physics_process(delta: float) -> void:
 			direction = Vector2(randi_range(-1,1), randi_range(-1,1))
 		if not on_screen: #don run away to far.
 			direction = Vector2(0,0)
+			
 	velocity += direction.normalized() * speed * delta
 	velocity *= friction
 	

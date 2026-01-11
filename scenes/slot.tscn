@@ -2030,15 +2030,20 @@ z_index = 4096
 
 [node name="Name" type="RichTextLabel" parent="ToolTip"]
 clip_contents = false
-offset_left = -31.0
-offset_top = -13.0
-offset_right = 309.64868
-offset_bottom = 40.088108
-scale = Vector2(0.22603935, 0.22603935)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -18.0
+offset_right = 232.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
 mouse_filter = 2
 theme = ExtResource("6_n3jes")
 bbcode_enabled = true
-text = "fsasfafas"
+text = "[center]fifrjoijoigj"
 horizontal_alignment = 1
 vertical_alignment = 2
 
