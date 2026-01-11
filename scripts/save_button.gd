@@ -4,7 +4,10 @@ extends Button
 @onready var confirm_delete: Panel = $"../../../ConfirmDelete"
 
 var mouse_touching: bool = false
-
+var tween : Tween = create_tween()
+func _ready() -> void:
+	tween = create_tween()
+	tween.set_parallel()
 func _process(delta: float) -> void:
 	if mouse_touching:
 		if Input.is_action_pressed("delete"):
@@ -16,7 +19,8 @@ func _on_mouse_entered() -> void:
 	Globals.hovered_save = get_index()
 	
 	mouse_touching = true
-	var tween: Tween = create_tween()
+	tween.stop()
+	tween = create_tween()
 	if not Globals.saves[Globals.hovered_save] == {}:
 		tool_tip.show()
 	tween.set_parallel()
