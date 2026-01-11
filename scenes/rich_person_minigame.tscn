@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=34 format=3 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://uljll8355fgf" path="res://fonts/PixeloidSans-mLxMm.ttf" id="5_hvqj5"]
 [ext_resource type="Texture2D" uid="uid://bopau3x6f88p4" path="res://sprites/scroll.png" id="6_hvqj5"]
 [ext_resource type="Script" uid="uid://bokb5sdc2yqae" path="res://scripts/help.gd" id="7_vi0dq"]
+[ext_resource type="Script" uid="uid://gkin631t6h4g" path="res://scripts/choose_item.gd" id="9_s8cbi"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="10_ihibx"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
@@ -203,7 +204,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Buttons/Left:disabled")
+tracks/3/path = NodePath("../Buttons/Left/Left:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -215,7 +216,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Buttons/Right:disabled")
+tracks/4/path = NodePath("../Buttons/Right/Right:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -267,7 +268,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Buttons/Left:disabled")
+tracks/3/path = NodePath("../Buttons/Left/Left:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -279,7 +280,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Buttons/Right:disabled")
+tracks/4/path = NodePath("../Buttons/Right/Right:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -336,7 +337,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Buttons/Right:disabled")
+tracks/3/path = NodePath("../Buttons/Right/Right:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -348,7 +349,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Buttons/Left:disabled")
+tracks/4/path = NodePath("../Buttons/Left/Left:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -400,7 +401,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Buttons/Right:disabled")
+tracks/3/path = NodePath("../Buttons/Right/Right:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -412,7 +413,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Buttons/Left:disabled")
+tracks/4/path = NodePath("../Buttons/Left/Left:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -688,14 +689,23 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-script = ExtResource("4_0lf00")
 
-[node name="Left" type="Button" parent="Control/Buttons"]
+[node name="Left" type="Control" parent="Control/Buttons"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+script = ExtResource("4_0lf00")
+
+[node name="Left" type="Button" parent="Control/Buttons/Left"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 18
 
-[node name="option_text" type="RichTextLabel" parent="Control/Buttons/Left"]
+[node name="option_text" type="RichTextLabel" parent="Control/Buttons/Left/Left"]
 clip_contents = false
 layout_mode = 0
 offset_left = 24.0
@@ -710,12 +720,22 @@ text = "fdssfdfssfddfdsdfsdsffsdsfdfsdfsdfsdsfd"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Right" type="Button" parent="Control/Buttons"]
+[node name="Right" type="Control" parent="Control/Buttons"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+script = ExtResource("4_0lf00")
+
+[node name="Right" type="Button" parent="Control/Buttons/Right"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 18
 
-[node name="option_text" type="RichTextLabel" parent="Control/Buttons/Right"]
+[node name="option_text" type="RichTextLabel" parent="Control/Buttons/Right/Right"]
 clip_contents = false
 layout_mode = 0
 offset_left = 24.0
@@ -1074,6 +1094,106 @@ theme_override_font_sizes/font_size = 18
 theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
 text = "Coolio Schmoolio!"
 
+[node name="ChooseItem" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_jupnj")
+script = ExtResource("9_s8cbi")
+
+[node name="BG" type="ColorRect" parent="ChooseItem"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="Control" type="Control" parent="ChooseItem"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_0lf00")
+
+[node name="Panel" type="Panel" parent="ChooseItem/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="ChooseItem/Control/Panel"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 12.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Help"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ChooseItem/Control/Panel"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 64.0
+offset_right = -4.0
+offset_bottom = 115.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center]Answer the rich people's questions with the best answers."
+
+[node name="Close" type="Button" parent="ChooseItem/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0lf00")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ihibx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s8cbi")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
+text = "X"
+
+[node name="Cool" type="Button" parent="ChooseItem/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -47.0
+offset_right = 103.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
+text = "Coolio Schmoolio!"
+
 [node name="RichMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hapmi")
 volume_db = -9.062
@@ -1083,11 +1203,13 @@ bus = &"Music"
 [node name="ClickAndHover" parent="." instance=ExtResource("10_ihibx")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.1999999999999997
 
-[connection signal="pressed" from="Control/Buttons/Left" to="." method="_on_button_pressed" binds= [0]]
-[connection signal="pressed" from="Control/Buttons/Right" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="Control/Buttons/Left/Left" to="." method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="Control/Buttons/Right/Right" to="." method="_on_button_pressed" binds= [1]]
 [connection signal="pressed" from="Control/HelpButton" to="Help" method="_on_help_button_pressed"]
 [connection signal="pressed" from="Help/Control/Close" to="Help" method="close"]
 [connection signal="pressed" from="Help/Control/Cool" to="Help" method="close"]
+[connection signal="pressed" from="ChooseItem/Control/Close" to="ChooseItem" method="close"]
+[connection signal="pressed" from="ChooseItem/Control/Cool" to="ChooseItem" method="close"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

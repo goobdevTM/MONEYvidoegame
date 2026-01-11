@@ -84,27 +84,31 @@ func ask_question() -> void:
 	questions_answered += 1
 	number.text = "[center]" + str(questions_answered) + "/" + str(max_questions) + " Questions Answered"
 	number.modulate = lerp(Color.YELLOW, Color.GREEN, float(questions_answered) / float(max_questions))
-	Globals.question_speed_mult += 0.01
+	Globals.question_speed_mult += 0.0075
 	if Globals.first_time_minigame and Globals.question_speed_mult < 1:
-		Globals.question_speed_mult += 0.1
+		Globals.question_speed_mult += 0.05
 	timer.wait_time = 1 / Globals.question_speed_mult
 	time_left.max_value = timer.wait_time
 	
-	var question_int : int = randi_range(0,len(bad_questions) - 1)
-	var question_dict : Dictionary = bad_questions[question_int]
-		
-	if satisfaction > customer_satisfaction.max_value / 3:
-		question_int = randi_range(0,len(neutral_questions) - 1)
-		question_dict = neutral_questions[question_int]
-		
-	if satisfaction > customer_satisfaction.max_value / 1.5:
-		question_int = randi_range(0,len(good_questions) - 1)
-		question_dict = good_questions[question_int]
+	var question_dict : Dictionary = last_question
+	
+	while question_dict == last_question:
+	
+		var question_int : int = randi_range(0,len(bad_questions) - 1)
+		question_dict = bad_questions[question_int]
+			
+		if satisfaction > customer_satisfaction.max_value / 3:
+			question_int = randi_range(0,len(neutral_questions) - 1)
+			question_dict = neutral_questions[question_int]
+			
+		if satisfaction > customer_satisfaction.max_value / 1.5:
+			question_int = randi_range(0,len(good_questions) - 1)
+			question_dict = good_questions[question_int]
 		
 	question.text = "[center]" + question_dict['q']
 	good = randi_range(0,1)
-	buttons.get_child(good).get_child(0).text = question_dict['good']
-	buttons.get_child(posmod(good + 1, 2)).get_child(0).text = question_dict['bad']
+	buttons.get_child(0).get_child(good).get_child(0).text = question_dict['good']
+	buttons.get_child(0).get_child(posmod(good + 1, 2)).get_child(0).text = question_dict['bad']
 	
 	if start_anim.is_playing():
 		await start_anim.animation_finished
