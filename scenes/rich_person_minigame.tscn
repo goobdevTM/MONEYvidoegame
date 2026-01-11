@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bf2webwe8pc11" path="res://audio/sfx/buzzer.mp3" id="13_rvpi8"]
 [ext_resource type="AudioStream" uid="uid://4kgup6xrg0wt" path="res://audio/sfx/ding.mp3" id="14_7cwb0"]
 [ext_resource type="AudioStream" uid="uid://dix0u8vxnm54w" path="res://audio/sfx/boowomp.mp3" id="15_7cwb0"]
-[ext_resource type="PackedScene" path="res://scenes/fade.tscn" id="18_hgi1x"]
+[ext_resource type="PackedScene" uid="uid://crhwl6opbfl82" path="res://scenes/fade.tscn" id="18_hgi1x"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
 length = 0.001
@@ -3307,7 +3307,6 @@ scroll_active = false
 
 [node name="Help" type="Control" parent="."]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -3368,12 +3367,21 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 4.0
-offset_top = 64.0
+offset_top = 49.0
 offset_right = -4.0
-offset_bottom = 115.0
+offset_bottom = 299.0
 grow_horizontal = 2
+theme_override_constants/line_separation = 6
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[center]Answer the rich people's questions with the best answers."
+text = "[center]
+You must convice the rich people to buy your garbage!!
+
+They will ask you questions quickly, 
+so just make sure to choose the right dialogue option, and answer in time.
+
+You have to get their satisfaction meter above half-way, a good response gives +1 satisfaction, and a bad response gives -2 satisfaction."
 
 [node name="Close" type="Button" parent="Help/Control"]
 layout_mode = 1
@@ -3440,6 +3448,7 @@ bus = &"Music"
 wait_time = 2.3
 
 [node name="Fade" parent="." instance=ExtResource("18_hgi1x")]
+process_mode = 0
 visible = false
 
 [connection signal="pressed" from="Control/Buttons/Left/Left" to="." method="_on_button_pressed" binds= [0]]
