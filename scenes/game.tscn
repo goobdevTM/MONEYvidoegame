@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene load_steps=45 format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b6bbthyyqtxrt" path="res://scenes/noise_overlay.tscn" id="8_rysoc"]
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="11_ca42v"]
 [ext_resource type="Texture2D" uid="uid://bey8tymwabowi" path="res://sprites/area_buy_signifier.png" id="13_1kice"]
-[ext_resource type="PackedScene" uid="uid://buv7xaj8dmplv" path="res://scenes/alley.tscn" id="13_37s47"]
 [ext_resource type="PackedScene" uid="uid://0m87sdsyy8cg" path="res://scenes/settings.tscn" id="13_264po"]
 [ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="13_ir15t"]
 [ext_resource type="Texture2D" uid="uid://dg8ugiys8tlq2" path="res://sprites/sign.png" id="13_ssvqc"]
@@ -21,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="14_trtic"]
 [ext_resource type="Texture2D" uid="uid://cvr2g2xqqc5j1" path="res://sprites/poor.png" id="15_1kice"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="16_ca42v"]
-[ext_resource type="PackedScene" path="res://scenes/fade.tscn" id="21_5newe"]
+[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="21_5newe"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kice"]
 normal = Vector2(1, 0)
@@ -79,7 +78,7 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_5newe")
 sources/1 = SubResource("TileSetAtlasSource_37s47")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_37s47"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_js0lu"]
 normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gxtfn"]
@@ -192,16 +191,15 @@ tile_set = SubResource("TileSet_v2yb1")
 tile_map_data = PackedByteArray("AADo//D/AAAAAAAAAADo//H/AAAAAAAAAADo//L/AAAAAAAAAADo//P/AAAAAAAAAADo//T/AAAAAAAAAADo//X/AAAAAAAAAADo//b/AAAAAAAAAADo//f/AAAAAAAAAADo//j/AAAAAAAAAADo//n/AAAAAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAAAAADo//z/AAAAAAAAAADo//3/AAAAAAAAAADo//7/AAAAAAAAAADo/wEAAAAAAAAAAADo/wIAAAAAAAAAAADo/wMAAAAAAAAAAADo/wQAAAAAAAAAAADo/wUAAAAAAAAAAADo/wYAAAAAAAAAAADo/wcAAAAAAAAAAADo/wgAAAAAAAAAAADo/wkAAAAAAAAAAADo/woAAAAAAAAAAADo/wsAAAAAAAAAAADo/wwAAAAAAAAAAADo/w0AAAAAAAAAAADo/w4AAAAAAAAAAADo/w8AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_v2yb1")
 
-[node name="HomeEnter" type="Area2D" parent="Level"]
-position = Vector2(-384, 0)
+[node name="EnterHome" type="Area2D" parent="Level"]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("11_ca42v")
-to_home = true
-to_scene = ExtResource("13_37s47")
+start_pos = Vector2(144, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/HomeEnter"]
-shape = SubResource("WorldBoundaryShape2D_37s47")
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
+position = Vector2(-384, 0)
+shape = SubResource("WorldBoundaryShape2D_js0lu")
 
 [node name="Borders" type="StaticBody2D" parent="Level"]
 collision_layer = 65
@@ -290,4 +288,4 @@ visible = false
 
 [node name="Fade" parent="." instance=ExtResource("21_5newe")]
 
-[connection signal="body_entered" from="Level/HomeEnter" to="Level/HomeEnter" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/EnterHome" to="Level/EnterHome" method="_on_body_entered"]
