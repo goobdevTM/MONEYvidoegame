@@ -3448,7 +3448,6 @@ bus = &"Music"
 wait_time = 2.3
 
 [node name="Fade" parent="." instance=ExtResource("18_hgi1x")]
-process_mode = 0
 visible = false
 
 [connection signal="pressed" from="Control/Buttons/Left/Left" to="." method="_on_button_pressed" binds= [0]]
