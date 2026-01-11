@@ -6,6 +6,9 @@ extends Control
 @onready var earnings: RichTextLabel = $Earnings
 @onready var anim: AnimationPlayer = $ConvincedAnim
 @onready var customer_satisfaction: HSlider = $"../CustomerSatisfaction"
+@onready var kaching: AudioStreamPlayer = $"../../Kaching"
+@onready var boowomp: AudioStreamPlayer = $"../../Boowomp"
+@onready var button: Button = $Earnings/Continue
 
 
 func start() -> void:
@@ -15,10 +18,18 @@ func start() -> void:
 		var gain : int = int(((Globals.items[Globals.item_selling['id']]['worth'] * Globals.item_selling['count']) * (1 + (rich_person_minigame.satisfaction / customer_satisfaction.max_value))) * mult)
 		Globals.money += gain
 		earnings.text = "[center]+ $" + str(gain) + " Earned!"
+		Globals.inventory[Globals.item_selling['slot']]['count'] = 0
 	else:
 		earnings.text = '"GET OUT!!!" - the customer'
-	Globals.inventory[Globals.item_selling['slot']]['count'] = 0
+	
 	
 func _on_continue_pressed() -> void:
+	button.disabled = true
+	if convinced:
+		kaching.play()
+		await kaching.finished
+	else:
+		boowomp.play()
+		await boowomp.finished
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/rich_plaza.tscn")

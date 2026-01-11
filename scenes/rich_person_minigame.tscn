@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=63 format=4 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://dsj5axxp7btws" path="res://fonts/pixelsix00.ttf" id="11_kemgk"]
 [ext_resource type="AudioStream" uid="uid://bf2webwe8pc11" path="res://audio/sfx/buzzer.mp3" id="13_rvpi8"]
 [ext_resource type="AudioStream" uid="uid://4kgup6xrg0wt" path="res://audio/sfx/ding.mp3" id="14_7cwb0"]
+[ext_resource type="AudioStream" uid="uid://dix0u8vxnm54w" path="res://audio/sfx/boowomp.mp3" id="15_7cwb0"]
 
 [sub_resource type="Animation" id="Animation_ikxhh"]
 length = 0.001
@@ -3410,6 +3411,16 @@ volume_db = -2.0
 bus = &"Sounds"
 
 [node name="Ding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_7cwb0")
+volume_db = -1.0
+bus = &"Sounds"
+
+[node name="Kaching" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_7cwb0")
+volume_db = -1.0
+bus = &"Sounds"
+
+[node name="Boowomp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_7cwb0")
 volume_db = -1.0
 bus = &"Sounds"
