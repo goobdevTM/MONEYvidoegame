@@ -38,6 +38,7 @@ var stamina_timer: float = 0
 #		SHOULDNT BE CHANGED (FOR NOW)... wait a minute... i feel somethimg..
 #	 	the MONEY!! the MONEY has arrvied YIPPESKIPY
 var max_stamina: float = 100
+var sprint_base_speed: int = 800
 
 signal stop_rat_theme
 signal talk_to_rich_person
@@ -68,7 +69,7 @@ func sprint(sprint_speed: int) -> void:
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("sprint"):
-		sprint(800 + (stamina * 10)) #800 is default
+		sprint(sprint_base_speed + (stamina * 10)) #800 is default
 		
 		#ANIMATES STAMINA BAR
 		var tween: Tween = create_tween()

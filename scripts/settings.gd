@@ -80,8 +80,8 @@ func _on_master_value_changed(value: float) -> void:
 
 func _on_sound_value_changed(value: float) -> void:
 	Globals.sound_volume = value
-	AudioServer.set_bus_volume_linear(0, value / 75)
+	AudioServer.set_bus_volume_linear(2, value / 75)
 
 func _on_music_value_changed(value: float) -> void:
 	Globals.music_volume = value
-	AudioServer.set_bus_volume_linear(0, value / 75)
+	AudioServer.set_bus_volume_linear(1, value / 75)

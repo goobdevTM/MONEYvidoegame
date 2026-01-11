@@ -4,6 +4,9 @@ extends CanvasLayer
 @onready var settings: CanvasLayer = $"../Settings"
 @onready var h_box_container: HBoxContainer = $Panel/HBoxContainer
 @onready var reload: Button = $Panel/Reload
+@onready var piano_slam: AudioStreamPlayer = $Panel/PianoSlam
+
+var reload_cost: int = 10
 
 func _ready() -> void:
 	set_buttons()
@@ -51,7 +54,11 @@ func close() -> void:
 
 
 func _on_reload_pressed() -> void:
-	set_buttons()
+	if Globals.money >= reload_cost:
+		Globals.money -= reload_cost
+		set_buttons()
+	else:
+		piano_slam.play()
 
 func _on_exit_pressed() -> void:
 	close()
