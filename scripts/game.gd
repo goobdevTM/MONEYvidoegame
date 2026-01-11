@@ -51,7 +51,10 @@ func _ready() -> void:
 		
 func _process(delta: float) -> void:
 	
-	if 
+	if (Globals.time < (Globals.day_length / 2) + ((Globals.day_length / 24) * 7) and Globals.time > (Globals.day_length / 2) - ((Globals.day_length / 24) * 5)): #is night?
+		Globals.has_rich_people = true
+	else:
+		Globals.has_rich_people = false
 	
 	if rich_plaza:
 		if not Globals.has_rich_people: #is night?

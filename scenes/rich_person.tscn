@@ -114,6 +114,8 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_liyb7")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="area_entered" from="RichPersonDetector" to="." method="_on_rich_person_detector_area_entered"]
 [connection signal="area_entered" from="HandArea" to="." method="_on_hand_area_area_entered"]
 [connection signal="area_exited" from="HandArea" to="." method="_on_hand_area_area_exited"]
