@@ -2,6 +2,7 @@ extends Area2D
 
 @export var start_pos : Vector2
 @export var change_to_scene : PackedScene = preload("res://scenes/home.tscn")
+@onready var fade: Fade = $"../../Fade"
 
 func _on_body_entered(body: Node2D) -> void:
 	print(self)
@@ -9,4 +10,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		#go
 		Globals.start_pos = start_pos
-		get_tree().change_scene_to_packed(change_to_scene)
+		fade.fade_out(change_to_scene)
