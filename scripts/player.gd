@@ -331,26 +331,26 @@ func _on_hand_area_area_exited(area: Area2D) -> void:
 func highlight_item() -> void:
 	if len(items_in_hand) > 0:
 		if items_in_hand[0] is Trash:
-			text.text = "[center][E] - open?"
+			text.text = "[center][E] - open? "
 		elif items_in_hand[0] is Litter:
-			text.text = "[center][E] - pick up?"
+			text.text = "[center][E] - pick up? "
 		elif items_in_hand[0] is Rat:
 			if items_in_hand[0].hired:
-				text.text = "[center][E] - send to work?"
+				text.text = "[center][E] - send to work? "
 			else:
-				text.text = "[center][E] - recruit?"
+				text.text = "[center][E] - recruit? "
 		elif items_in_hand[0].is_in_group("storage_dumpster"):
-			text.text = "[center][E] - open storage?"
+			text.text = "[center][E] - open storage? "
 		elif items_in_hand[0].is_in_group("bed"):
 			text.text = "[center][E] - sleep?"
 			#SIGNALS
 		elif items_in_hand[0].is_in_group("computer"):
-			text.text = "[center][E] - go on computer?"
+			text.text = "[center][E] - go on computer? "
 		elif items_in_hand[0].is_in_group("npc"):
-			text.text = "[center][E] - talk to?"
+			text.text = "[center][E] - talk to? "
 		elif items_in_hand[0].is_in_group("buy_area"):
 			if Globals.area < len(Globals.areas):
-				text.text = "[center][E] - purchase area?"
+				text.text = "[center][E] - purchase area? "
 			else:
 				text.text = "max area purchased"
 		

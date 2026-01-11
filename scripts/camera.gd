@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 				
 		#buy text
 		buy_area.position.y = position.y - 64
+		buy_area.position.y = clamp(buy_area.position.y, -260, 200)
 			
 		old_distance_calc = new_distance_calc
 	
