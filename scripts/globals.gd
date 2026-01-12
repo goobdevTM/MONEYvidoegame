@@ -12,11 +12,10 @@ var rat_rarity : int = 12
 var upgrade_multipliers: Dictionary[String, float] = {
 	"money_multiplier": 1,
 	"player_base_speed": 1000,
-	"trash_speed_multiplier": 1,
-	"trash_density_multiplier": 1,
+	"trash_density_multiplier": 0,
 	"rat_speed_multiplier": 0,
 	"stamina_max": 100,
-	"player_base_sprint_speed": 200,
+	"player_base_sprint_speed": 0,
 	"inventory_slots": 3,
 	"dumpster_slots": 6,
 	"max_per_slot": 16,
@@ -146,7 +145,7 @@ var items : Array[Dictionary] = [
 	{'name': "Soda Can", 'coords': Vector2i(2,0), 'chance': 0.2, "worth": 3,},
 	{'name': "Smelly Sock", 'coords': Vector2i(0,1), 'chance': 0.15, "worth": 2,},
 	{'name': "Candy Wrapper", 'coords': Vector2i(1,1), 'chance': 0.15, "worth": 5,},
-	{'name': "Fish Bone", 'coords': Vector2i(2,2), 'chance': 0.1, "worth": 8,},
+	{'name': "Fish Bone", 'coords': Vector2i(2,2), 'chance': 0.1, "worth": 7,},
 	{'name': "Glove", 'coords': Vector2i(0,3), 'chance': 0.1, "worth": 5,},
 	{'name': "Poopy haha", 'coords': Vector2i(2,1), 'chance': 0.08, "worth": 0,},
 	{'name': "Banana Peel", 'coords': Vector2i(2,3), 'chance': 0.04, "worth": 3,},
@@ -211,7 +210,7 @@ var item_selling : Dictionary = {}
 var rich_difficulty : int = 0
 var areas : Array[Dictionary] = [
 	{'name': "First Area", 'length': 256, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'trash_amount': 10, 'cost': 0},
-	{'name': "Smelly Area", 'length': 320, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 20, 'cost': 100},
+	{'name': "Smelly Area", 'length': 380, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 20, 'cost': 100},
 	{'name': "Dirty Area", 'length': 500, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'trash_amount': 25, 'cost': 250},
 	{'name': "Downright Nasty Area", 'length': 640, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'trash_amount': 32, 'cost': 750},
 	{'name': "Ew.. Disgusting Area", 'length': 800, 'max_trash': 3, 'max_litter': 12, 'luck': 1, 'smelly_chance': 7, 'trash_amount': 40, 'cost': 1500},
@@ -329,12 +328,12 @@ func load_saves(save : int) -> void:
 		upgrades = [
 			{"name": "Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_speed"], "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": 3, "times_upgraded": 0},
 			{"name": "Stamina", "base_cost": 40, "var": upgrade_multipliers["stamina_max"], "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": 3, "times_upgraded": 0},
-			{"name": "Money", "base_cost": 100, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.2, "upgrade_multiplier": 1.05, "description": "You'll make more money overall.", "texture": 0, "times_upgraded": 0},
+			{"name": "Money", "base_cost": 100, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.25, "upgrade_multiplier": 1.025, "description": "You'll make more money overall.", "texture": 0, "times_upgraded": 0},
 			{"name": "Trash Density", "base_cost": 100, "var": upgrade_multipliers["trash_density_multiplier"], "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": 2, "times_upgraded": 0},
 			{"name": "Rat Speed", "base_cost": 30, "var": upgrade_multipliers["rat_speed_multiplier"], "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": 1, "times_upgraded": 0},
 			{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": 3, "times_upgraded": 0},
-			{"name": "Inventory Slot", "base_cost": 50, "var": upgrade_multipliers["inventory_slots"], "cost_multiplier": 1.2, "upgrade_amount": 1, "description": "Adds an extra inventory slot.", "texture": 4, "times_upgraded": 0},
-			{"name": "Dumpster Slot", "base_cost": 50, "var": upgrade_multipliers["dumpster_slots"], "cost_multiplier": 1.2, "upgrade_amount": 1, "description": "Adds an extra storage dumpster slot.", "texture": 5, "times_upgraded": 0},
+			{"name": "Inventory Slot", "base_cost": 50, "var": upgrade_multipliers["inventory_slots"], "cost_multiplier": 1.25, "upgrade_amount": 1, "description": "Adds an extra inventory slot.", "texture": 4, "times_upgraded": 0},
+			{"name": "Dumpster Slot", "base_cost": 50, "var": upgrade_multipliers["dumpster_slots"], "cost_multiplier": 1.25, "upgrade_amount": 1, "description": "Adds an extra storage dumpster slot.", "texture": 5, "times_upgraded": 0},
 			{"name": "Max Per Slot", "base_cost": 20, "var": upgrade_multipliers["max_per_slot"], "cost_multiplier": 1.075, "upgrade_amount": 1, "description": "Increases the max amount of items per slot by 1", "texture": 6, "times_upgraded": 0},
 		]
 	

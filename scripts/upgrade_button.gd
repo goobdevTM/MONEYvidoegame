@@ -14,25 +14,28 @@ var cost: float
 
 
 func _ready() -> void:
-	while (upgrade == 7 and Globals.get_upgrade_value(7) >= Globals.max_dumpster_slots) or (upgrade == 6 and Globals.get_upgrade_value(6) >= 9):
-		upgrade = randi_range(0,len(Globals.upgrades) - 1)
+	for i in range(10):
+		while (upgrade == 7 and Globals.get_upgrade_value(7) >= Globals.max_dumpster_slots) or (upgrade == 6 and Globals.get_upgrade_value(6) >= 9):
+			upgrade = randi_range(0,len(Globals.upgrades) - 1)
+			
+		Globals.max_per_slot = Globals.get_upgrade_value(8)
+		Globals.dumpster_slots = Globals.get_upgrade_value(7)
+		Globals.inventory_slots = Globals.get_upgrade_value(6)
+		money.text = "[right]$" + str(int(Globals.money))
+		cost = int(Globals.upgrades[upgrade]["base_cost"] * (Globals.upgrades[upgrade]["cost_multiplier"] * (Globals.upgrades[upgrade]["times_upgraded"] + 1)))
+		print(Globals.upgrades[upgrade]["texture"])
+		sprite.texture = Globals.upgrade_textures[Globals.upgrades[upgrade]["texture"]]
+		print("TEXTURE: " + str(Globals.upgrades[upgrade]["texture"]) + " UPGRADE: " + str(upgrade))
+		name_text.text = Globals.upgrades[upgrade]["name"]
+		description_text.text = Globals.upgrades[upgrade]["description"]
+		cost_text.text = "[center]$" + str(int(cost))
+		await get_tree().create_timer(0).timeout
 		
-	Globals.max_per_slot = Globals.get_upgrade_value(8)
-	Globals.dumpster_slots = Globals.get_upgrade_value(7)
-	Globals.inventory_slots = Globals.get_upgrade_value(6)
-	money.text = "[right]$" + str(int(Globals.money))
-	cost = int(Globals.upgrades[upgrade]["base_cost"] * (Globals.upgrades[upgrade]["cost_multiplier"] * (Globals.upgrades[upgrade]["times_upgraded"] + 1)))
-	print(Globals.upgrades[upgrade]["texture"])
-	sprite.texture = Globals.upgrade_textures[Globals.upgrades[upgrade]["texture"]]
-	print("TEXTURE: " + str(Globals.upgrades[upgrade]["texture"]) + " UPGRADE: " + str(upgrade))
-	name_text.text = Globals.upgrades[upgrade]["name"]
-	description_text.text = Globals.upgrades[upgrade]["description"]
-	cost_text.text = "[center]$" + str(int(cost))
-
 func _pressed() -> void:
+	cost = int(Globals.upgrades[upgrade]["base_cost"] * (Globals.upgrades[upgrade]["cost_multiplier"] * (Globals.upgrades[upgrade]["times_upgraded"] + 1)))
 	if Globals.money >= cost:
 		kaching.play()
-		Globals.money -= Globals.upgrades[upgrade]["base_cost"]
+		Globals.money -= cost
 		Globals.upgrades[upgrade]["times_upgraded"] += 1
 		upgrade_menu.set_buttons()
 	else:

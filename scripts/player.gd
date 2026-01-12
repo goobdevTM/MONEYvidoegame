@@ -74,7 +74,7 @@ func sprint(sprint_speed: int) -> void:
 func _physics_process(delta: float) -> void:
 	stamina_bar.max_value = Globals.get_upgrade_value(1)
 	if Input.is_action_pressed("sprint") and not direction == Vector2(0,0):
-		sprint((Globals.get_upgrade_value(0) + Globals.get_upgrade_value(6)) + (stamina * 10)) #800 is default
+		sprint((Globals.get_upgrade_value(0) + Globals.get_upgrade_value(5)) + (stamina * 10)) #800 is default
 		
 		#ANIMATES STAMINA BAR
 		var tween: Tween = create_tween()
