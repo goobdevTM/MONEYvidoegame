@@ -7,7 +7,8 @@ extends CanvasLayer
 @onready var piano_slam: AudioStreamPlayer = $Panel/PianoSlam
 @onready var panel: Panel = $Panel
 @onready var money: RichTextLabel = $Panel/Money
-@onready var inventory: CanvasLayer = $INVENTORY
+@onready var inventory: CanvasLayer = $"../INVENTORY"
+
 
 const UPGRADE_BUTTON = preload("uid://rjw35yafxwvf")
 
