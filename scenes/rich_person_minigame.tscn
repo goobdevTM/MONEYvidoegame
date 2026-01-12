@@ -3446,7 +3446,7 @@ bus = &"Music"
 [node name="ClickAndHover" parent="." instance=ExtResource("10_ihibx")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.3
+wait_time = 2.65
 
 [node name="Fade" parent="." instance=ExtResource("18_hgi1x")]
 visible = false

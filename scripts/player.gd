@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 		
 	#basic movement
 	direction = Input.get_vector("left", "right", "up", "down")
-	velocity += direction.normalized() * speed * delta
+	velocity += direction.normalized() * (speed) * delta
 	velocity *= friction
 	
 	#hand and eye animation (smooth)

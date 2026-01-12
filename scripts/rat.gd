@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 			direction = Vector2(0,0)
 			
 	if hired:
-		velocity += direction.normalized() * speed * delta * Globals.get_upgrade_value(4)
+		velocity += direction.normalized() * (speed + Globals.get_upgrade_value(4)) * delta
 	else:
 		velocity += direction.normalized() * speed * delta
 	velocity *= friction

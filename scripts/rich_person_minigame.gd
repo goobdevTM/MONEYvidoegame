@@ -123,7 +123,7 @@ func ask_question() -> void:
 	number.modulate = lerp(Color.YELLOW, Color.GREEN, float(questions_answered) / float(max_questions))
 	Globals.question_speed_mult += 0.0075
 	if Globals.first_time_minigame and Globals.question_speed_mult < 1:
-		Globals.question_speed_mult += 0.05
+		Globals.question_speed_mult += 0.02
 	timer.wait_time = 1 / Globals.question_speed_mult
 	time_left.max_value = timer.wait_time
 	

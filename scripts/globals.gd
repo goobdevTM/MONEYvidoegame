@@ -14,7 +14,7 @@ var upgrade_multipliers: Dictionary[String, float] = {
 	"player_base_speed": 1000,
 	"trash_speed_multiplier": 1,
 	"trash_density_multiplier": 1,
-	"rat_speed_multiplier": 1,
+	"rat_speed_multiplier": 0,
 	"stamina_max": 100,
 	"player_base_sprint_speed": 200,
 	"inventory_slots": 3,
