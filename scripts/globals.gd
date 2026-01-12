@@ -210,13 +210,13 @@ var question_speed_mult : float = 0.5
 var item_selling : Dictionary = {}
 var rich_difficulty : int = 0
 var areas : Array[Dictionary] = [
-	{'name': "Basic Area", 'length': 256, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'trash_amount': 10, 'cost': 0},
-	{'name': "Basic Area", 'length': 320, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 20, 'cost': 100},
-	{'name': "Unpleasant Area", 'length': 500, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'trash_amount': 25, 'cost': 250},
-	{'name': "Smelly Area", 'length': 640, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'trash_amount': 32, 'cost': 750},
-	{'name': "Nasty Area", 'length': 800, 'max_trash': 3, 'max_litter': 12, 'luck': 1, 'smelly_chance': 7, 'trash_amount': 40, 'cost': 1500},
-	{'name': "Gross Area", 'length': 1150, 'max_trash': 3, 'max_litter': 14, 'luck': 1.2, 'smelly_chance': 6, 'trash_amount': 45, 'cost': 2500},
-	{'name': "Disgusting Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.5, 'smelly_chance': 3, 'trash_amount': 60, 'cost': 10000},
+	{'name': "First Area", 'length': 256, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'trash_amount': 10, 'cost': 0},
+	{'name': "Smelly Area", 'length': 320, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 20, 'cost': 100},
+	{'name': "Dirty Area", 'length': 500, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'trash_amount': 25, 'cost': 250},
+	{'name': "Downright Nasty Area", 'length': 640, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'trash_amount': 32, 'cost': 750},
+	{'name': "Ew.. Disgusting Area", 'length': 800, 'max_trash': 3, 'max_litter': 12, 'luck': 1, 'smelly_chance': 7, 'trash_amount': 40, 'cost': 1500},
+	{'name': "Call the garbage man! Area", 'length': 1150, 'max_trash': 3, 'max_litter': 14, 'luck': 1.2, 'smelly_chance': 6, 'trash_amount': 45, 'cost': 2500},
+	{'name': "Puke-Inducing Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.5, 'smelly_chance': 3, 'trash_amount': 60, 'cost': 10000},
 ]
 
 #SAVE
