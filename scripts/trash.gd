@@ -116,9 +116,6 @@ func _on_area_area_entered(area: Area2D) -> void:
 func _on_delete_check_area_entered(area: Area2D) -> void:
 	queue_free()
 	
-func _open() -> void:
-	#SOUND
-	open_container.play()
 	
 #spawn rat if in correct conditions
 func spawn_rat_randomly() -> void:

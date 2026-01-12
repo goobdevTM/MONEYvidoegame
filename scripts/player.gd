@@ -220,7 +220,7 @@ func open_trash() -> void:
 	#spawn rat if not already opened
 	if items_in_hand[0] is Trash:
 		items_in_hand[0].spawn_rat_randomly()
-		items_in_hand[0].open()
+		items_in_hand[0].open_container.play()
 		for i in range(items_in_hand[0].amounts_of_trash[items_in_hand[0].type]):
 			
 			
