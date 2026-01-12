@@ -27,6 +27,7 @@ extends CharacterBody2D
 @onready var litter_spawner: Node2D = $"../../LitterSpawner"
 @onready var music_controller: Node = $"../../../MusicController"
 @onready var fps: CanvasLayer = $FPS
+@onready var newspaper: CanvasLayer = $"../../../Newspaper"
 
 #litter scene
 const LITTER = preload("uid://6nia0edfdeaj")
@@ -207,7 +208,8 @@ func _process(delta: float) -> void:
 						items_in_hand[0].get_child(0).get_child(0).emitting = true
 						items_in_hand[0].get_child(0).get_child(0).restart()
 						wrong.play()
-						
+			elif items_in_hand[0].is_in_group("note") and items_in_hand[0].is_in_group("home"):
+				newspaper.open()
 	#drop item
 	if Input.is_action_just_pressed("drop"):
 		if Globals.inventory[Globals.selected_slot]['count'] > 0:
@@ -357,9 +359,11 @@ func highlight_item() -> void:
 			else:
 				text.text = "max area purchased"
 		elif items_in_hand[0].is_in_group("note"):
-			text.text = "[center] We all retreat to our mansions at night
+			if items_in_hand[0].is_in_group("home"):
+				text.text = "[center][E] - read newspaper? "
+			else:
+				text.text = "[center]We all retreat to our mansions at night
 - rich people "
-		
 		#dont show empty trash
 		if len(items_in_hand) > 0: #stop crash
 			if not is_trash_empty(items_in_hand[0]):

@@ -36,15 +36,16 @@ func _ready() -> void:
 	hide()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("settings"):
-		Globals.in_settings = not Globals.in_settings
-		if Globals.in_settings:
-			open()
-		else:
-			close()
+	not Globals.in_smellizon and not Globals.in_storage and not Globals.in_help
+		if Input.is_action_just_pressed("settings"):
+			Globals.in_settings = not Globals.in_settings
+			if Globals.in_settings:
+				open()
+			else:
+				close()
 	
 func open() -> void:
-	if not Globals.in_smellizon and not Globals.in_storage:
+	if not Globals.in_smellizon and not Globals.in_storage and not Globals.in_help:
 		Globals.in_settings = true
 		music.play()
 		get_tree().paused = true
@@ -66,7 +67,7 @@ func close() -> void:
 		tween.tween_property(control, "position", Vector2(0,480), 0.1)
 		await tween.finished
 		hide()
-		if not Globals.in_smellizon and not Globals.in_storage:
+		if not Globals.in_smellizon and not Globals.in_storage and not Globals.in_help:
 			get_tree().paused = false
 		
 

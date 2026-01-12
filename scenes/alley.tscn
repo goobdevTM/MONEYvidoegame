@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://buv7xaj8dmplv"]
+[gd_scene load_steps=83 format=4 uid="uid://buv7xaj8dmplv"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gdncb"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="2_2ugsq"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://owe37mt1cy0v" path="res://scenes/music_controller.tscn" id="34_70ow4"]
 [ext_resource type="Texture2D" uid="uid://bw7tug6qk04wp" path="res://sprites/news_paper.png" id="35_ahbrv"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="35_mi5hh"]
+[ext_resource type="Texture2D" uid="uid://bw5ntqavrg2u8" path="res://sprites/note_paper.png" id="35_qtorc"]
 [ext_resource type="Script" uid="uid://deqayhlf5fnog" path="res://scripts/newspaper.gd" id="35_yecmm"]
 [ext_resource type="Texture2D" uid="uid://byl616mv141w5" path="res://sprites/table.png" id="36_i20vv"]
 [ext_resource type="Texture2D" uid="uid://6afursnu8iy1" path="res://sprites/computer.png" id="37_4eirr"]
@@ -2662,6 +2663,7 @@ volume_db = -3.207
 bus = &"Sounds"
 
 [node name="Note" type="Node2D" parent="." groups=["home", "note"]]
+process_mode = 3
 z_index = -1
 position = Vector2(-54, 8)
 rotation = -1.5707964
@@ -2671,6 +2673,7 @@ collision_layer = 84
 
 [node name="Scroll" type="Sprite2D" parent="Note/HandArea"]
 position = Vector2(2.9999998, 4)
+texture = ExtResource("35_qtorc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Note/HandArea"]
 position = Vector2(3, 4)

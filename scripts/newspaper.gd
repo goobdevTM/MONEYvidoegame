@@ -4,10 +4,18 @@ extends CanvasLayer
 
 func _ready() -> void:
 	hide()
+	Globals.in_help = false
 #
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("delete") or Input.is_action_just_pressed("settings"):
+	if Input.is_action_just_pressed("delete") or Input.is_action_just_pressed("settings") or Input.is_action_just_pressed("pickup"):
 		if visible:
 			get_tree().paused = false
 			hide()
 			paper_crumpling.play()
+			await get_tree().create_timer(0).timeout
+			Globals.in_help = false
+			
+func open() -> void:
+	show()
+	Globals.in_help = true
+	get_tree().paused = true
