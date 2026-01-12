@@ -27,7 +27,7 @@ func _ready() -> void:
 		
 	for i in range(Globals.dumpster_slots - len(Globals.storage)):
 		Globals.storage.append({'id': 0, 'count': 0})
-	
+	await get_tree().create_timer(0.04).timeout
 	for i in range(len(Globals.storage)):
 		var clone_slot: Control = SLOT.instantiate()
 		clone_slot.storage = true

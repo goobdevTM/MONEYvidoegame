@@ -13,7 +13,7 @@ extends Control
 @onready var tool_tip: Node2D = $ToolTip
 
 var selected: bool = false
-var index: int
+var index: int = -1
 var item : Dictionary
 var last_slot : int = 0
 var last_count : int = 0
@@ -25,7 +25,7 @@ var mouse_over : bool = false
 var tween: Tween = create_tween()
 
 func _ready() -> void:
-	index = get_index()
+	index = 0
 	tool_tip.hide()
 	number.text = str(get_index() + 1)
 	tween = create_tween()
@@ -39,12 +39,17 @@ func _ready() -> void:
 		
 	#connect update slot function
 	Globals.slot_selected.connect(update_slot)
-	update_slot()
+	
 	await get_tree().create_timer(0).timeout
+	
 	index = get_index()
-
+	if index == 0:
+		last_slot = 9999
+	update_slot()
 
 func update_slot() -> void:
+	while index == -1:
+		await get_tree().create_timer(0).timeout
 	if storage:
 		local_inventory = Globals.storage
 		local_slot = Globals.selected_slot - 9

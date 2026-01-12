@@ -59,15 +59,17 @@ func open() -> void:
 	#opening_storage = false
 	
 func close() -> void:
+	get_tree().paused = false
 	music.stop()
 	inventory._ready()
+	await get_tree().create_timer(0.05).timeout
 	Globals.in_smellizon = false
+	
 	var tween : Tween = create_tween()
 	tween.tween_property(panel, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.1)
 	
 	await tween.finished
-	get_tree().paused = false
-	inventory._ready()
+	
 	hide()
 
 func _on_reload_pressed() -> void:

@@ -31,7 +31,7 @@ var upgrade_textures : Array = [
 	preload("uid://bfwlc8spvq4i1"), #speed upgrade
 	preload("uid://bb6xgxabnpt4p"), #inventory slot
 	preload("uid://dlsmogylw0g4b"), #dumpster slot
-	preload("uid://cro8d4w40plyr"), #extra max slot
+	preload("uid://bb6xgxabnpt4p"), #extra max slot
 ]
 
 var garby_dialogue: Dictionary = {
@@ -72,7 +72,7 @@ var garby_dialogue: Dictionary = {
 	]
 }
 
-var dumpster_slots : int = 6
+var dumpster_slots : int
 var max_dumpster_slots : int = 18
 
 #RICH PERSON
@@ -131,7 +131,7 @@ var rich_people_names : Array[String] = [
 ]
 
 #INVENTORY
-var inventory_slots : int = 9
+var inventory_slots : int = 3
 var selected_slot : int = -1
 var max_per_slot : int = 16
 var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}

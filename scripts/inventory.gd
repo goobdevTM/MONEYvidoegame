@@ -15,6 +15,7 @@ func _ready() -> void:
 	for i in h_box_container.get_children():
 		i.queue_free()
 		
+	await get_tree().create_timer(0).timeout
 	for i in range(Globals.inventory_slots):
 		var clone_slot: Control = SLOT.instantiate()
 		h_box_container.add_child(clone_slot)
