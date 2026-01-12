@@ -19,6 +19,12 @@ func _ready() -> void:
 	hide()
 	
 	#CREATES STORAGE
+	for i in h_box_container.get_children():
+		i.queue_free()
+		
+	for i in grid_container.get_children():
+		i.queue_free()
+		
 	for i in range(Globals.dumpster_slots - len(Globals.storage)):
 		Globals.storage.append({'id': 0, 'count': 0})
 	
@@ -50,6 +56,7 @@ func _process(delta: float) -> void:
 		hover_item.hide()
 	
 func open() -> void:
+	_ready()
 	music.play()
 	opening_storage = true
 	if Globals.in_settings:

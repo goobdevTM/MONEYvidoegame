@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var piano_slam: AudioStreamPlayer = $Panel/PianoSlam
 @onready var panel: Panel = $Panel
 @onready var money: RichTextLabel = $Panel/Money
+@onready var inventory: CanvasLayer = $INVENTORY
 
 const UPGRADE_BUTTON = preload("uid://rjw35yafxwvf")
 
@@ -58,13 +59,14 @@ func open() -> void:
 	
 func close() -> void:
 	music.stop()
-	
+	inventory._ready()
 	Globals.in_smellizon = false
 	var tween : Tween = create_tween()
 	tween.tween_property(panel, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.1)
 	
 	await tween.finished
 	get_tree().paused = false
+	inventory._ready()
 	hide()
 
 func _on_reload_pressed() -> void:

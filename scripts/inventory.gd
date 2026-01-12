@@ -12,6 +12,8 @@ const SLOT = preload("uid://ep7xcgg7p76x")
 func _ready() -> void:
 	rats_hired.text = ""
 	#CREATES INVENTORY
+	for i in h_box_container.get_children():
+		i.queue_free()
 	for i in range(Globals.inventory_slots):
 		var clone_slot: Control = SLOT.instantiate()
 		h_box_container.add_child(clone_slot)

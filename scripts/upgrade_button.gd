@@ -14,6 +14,9 @@ var cost: float
 
 
 func _ready() -> void:
+	Globals.max_per_slot = Globals.get_upgrade_value(7)
+	Globals.dumpster_slots = Globals.get_upgrade_value(6)
+	Globals.inventory_slots = Globals.get_upgrade_value(5)
 	money.text = "[right]$" + str(int(Globals.money))
 	cost = int(Globals.upgrades[upgrade]["base_cost"] * (Globals.upgrades[upgrade]["cost_multiplier"] * (Globals.upgrades[upgrade]["times_upgraded"] + 1)))
 	print(Globals.upgrades[upgrade]["texture"])
