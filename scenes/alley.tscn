@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://buv7xaj8dmplv"]
+[gd_scene load_steps=84 format=4 uid="uid://buv7xaj8dmplv"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gdncb"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="2_2ugsq"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://deqayhlf5fnog" path="res://scripts/newspaper.gd" id="35_yecmm"]
 [ext_resource type="Texture2D" uid="uid://byl616mv141w5" path="res://sprites/table.png" id="36_i20vv"]
 [ext_resource type="Texture2D" uid="uid://6afursnu8iy1" path="res://sprites/computer.png" id="37_4eirr"]
+[ext_resource type="AudioStream" uid="uid://lxnbowhasjqt" path="res://audio/sfx/paper-crumpling.ogg" id="37_yecmm"]
 [ext_resource type="PackedScene" uid="uid://ba1405fyb1n12" path="res://scenes/garby.tscn" id="38_6s8gi"]
 [ext_resource type="Texture2D" uid="uid://eypqtl16fn8l" path="res://sprites/garby.png" id="39_kmot5"]
 [ext_resource type="Script" uid="uid://bj1lmperb6mvp" path="res://scripts/button_animations.gd" id="40_nqjib"]
@@ -1912,7 +1913,7 @@ cache/0/64/0/glyphs/19/size = Vector2(34, 49)
 cache/0/64/0/glyphs/19/uv_rect = Rect2(1, 1, 34, 49)
 cache/0/64/0/glyphs/19/texture_idx = 0
 
-[sub_resource type="Image" id="Image_ahbrv"]
+[sub_resource type="Image" id="Image_dqru6"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1922,7 +1923,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_bt5mj"]
-image = SubResource("Image_ahbrv")
+image = SubResource("Image_dqru6")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
 content_margin_left = 4.0
@@ -2647,7 +2648,7 @@ text = "Nope!"
 
 [node name="Newspaper" type="CanvasLayer" parent="."]
 process_mode = 3
-layer = 99
+layer = 999
 visible = false
 script = ExtResource("35_yecmm")
 
@@ -2659,8 +2660,19 @@ centered = false
 
 [node name="PaperCrumpling" type="AudioStreamPlayer" parent="Newspaper"]
 process_mode = 3
+stream = ExtResource("37_yecmm")
 volume_db = -3.207
 bus = &"Sounds"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Newspaper"]
+clip_contents = false
+offset_left = 537.0
+offset_top = 457.0
+offset_right = 661.0
+offset_bottom = 490.0
+mouse_filter = 2
+theme = ExtResource("7_tqr01")
+text = "X - Exit"
 
 [node name="Note" type="Node2D" parent="." groups=["home", "note"]]
 process_mode = 3
