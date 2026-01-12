@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bslssn1cserx4"]
+[gd_scene load_steps=20 format=3 uid="uid://bslssn1cserx4"]
 
 [ext_resource type="Script" uid="uid://bcxv7rji0cs1r" path="res://scripts/player.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cjdxlfykxk3aw" path="res://sprites/body.png" id="2_tuyoq"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dxwyvcrb360pc" path="res://audio/sfx/loud-bone-crack.ogg" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://brehgxah1718g" path="res://audio/sfx/kaching-sound-fx.mp3" id="8_smehm"]
 [ext_resource type="AudioStream" uid="uid://bf2webwe8pc11" path="res://audio/sfx/buzzer.mp3" id="10_y4r1p"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="11_d2wvv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtaks"]
 radius = 8.0
@@ -205,6 +206,7 @@ offset_top = 452.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("11_d2wvv")
 theme_override_font_sizes/normal_font_size = 20
 text = "FPS:"
 

@@ -1,10 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://8fkuapxu0pm6"]
+[gd_scene load_steps=21 format=3 uid="uid://8fkuapxu0pm6"]
 
 [ext_resource type="Script" uid="uid://b44cbc58uf4c2" path="res://scripts/rich_person.gd" id="1_4hxcs"]
 [ext_resource type="Texture2D" uid="uid://q05x7hlewo1o" path="res://sprites/rich_man.png" id="1_akup7"]
 [ext_resource type="AudioStream" uid="uid://cyli55p1plii2" path="res://audio/music/PianoSlam.ogg" id="3_d1oat"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="4_tubap"]
 [ext_resource type="Texture2D" uid="uid://cvr2g2xqqc5j1" path="res://sprites/poor.png" id="5_prf6t"]
+[ext_resource type="AudioStream" uid="uid://ccmjer0u2ys36" path="res://audio/sfx/voice_lines/poor.ogg" id="5_sqieh"]
+[ext_resource type="AudioStream" uid="uid://b68psksw01sst" path="res://audio/sfx/voice_lines/i_dont_speak_poor.ogg" id="6_nl1df"]
+[ext_resource type="AudioStream" uid="uid://csmlsy2wmyjy5" path="res://audio/sfx/voice_lines/get_out_of_my_way.ogg" id="7_713dm"]
+[ext_resource type="AudioStream" uid="uid://cj3ykal44e0wh" path="res://audio/sfx/voice_lines/what_are_you_the_shoe_shiner.ogg" id="8_mq2j3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4hxcs"]
 animations = [{
@@ -34,6 +38,11 @@ radius = 8.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52tp8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cyvq0"]
+streams_count = 4
+stream_0/stream = ExtResource("5_sqieh")
+stream_1/stream = ExtResource("6_nl1df")
+stream_2/stream = ExtResource("7_713dm")
+stream_3/stream = ExtResource("8_mq2j3")
 
 [sub_resource type="Curve" id="Curve_52tp8"]
 _data = [Vector2(0, 1), 0.0, 0.15547447, 0, 0, Vector2(0.92352945, 0.6516854), -1.4325839, -1.4325839, 0, 0, Vector2(1, 0.056179762), -11.142324, 0.0, 0, 0]
@@ -105,6 +114,7 @@ bus = &"Sounds"
 
 [node name="PoorSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_cyvq0")
+volume_db = -4.0
 bus = &"Sounds"
 
 [node name="PoorParticles" type="GPUParticles2D" parent="."]
@@ -115,6 +125,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_liyb7")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -12, 16, 24)
 
 [connection signal="area_entered" from="RichPersonDetector" to="." method="_on_rich_person_detector_area_entered"]
 [connection signal="area_entered" from="HandArea" to="." method="_on_hand_area_area_entered"]

@@ -17,6 +17,9 @@ var upgrade_multipliers: Dictionary[String, float] = {
 	"rat_speed_multiplier": 1,
 	"stamina_max": 100,
 	"player_base_sprint_speed": 200,
+	"inventory_slots": 3,
+	"dumpster_slots": 6,
+	"max_per_slot": 16,
 }
 
 #UPGRADES
@@ -130,7 +133,7 @@ var rich_people_names : Array[String] = [
 #INVENTORY
 var inventory_slots : int = 9
 var selected_slot : int = -1
-var max_per_slot : int = 32
+var max_per_slot : int = 16
 var clicked_item : Dictionary = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
 var last_given_slot : bool = false
 
@@ -332,7 +335,7 @@ func load_saves(save : int) -> void:
 			{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": 3, "times_upgraded": 0},
 			{"name": "Inventory Slot", "base_cost": 50, "var": upgrade_multipliers["inventory_slots"], "cost_multiplier": 1.2, "upgrade_amount": 1, "description": "Adds an extra inventory slot.", "texture": 4, "times_upgraded": 0},
 			{"name": "Dumpster Slot", "base_cost": 50, "var": upgrade_multipliers["dumpster_slots"], "cost_multiplier": 1.2, "upgrade_amount": 1, "description": "Adds an extra storage dumpster slot.", "texture": 5, "times_upgraded": 0},
-			{"name": "Max Per Slot", "base_cost": 20, "var": upgrade_multipliers["inventory_slots"], "cost_multiplier": 1.075, "upgrade_amount": 1, "description": "Increases the max amount of items per slot by 1", "texture": 6, "times_upgraded": 0},
+			{"name": "Max Per Slot", "base_cost": 20, "var": upgrade_multipliers["max_per_slot"], "cost_multiplier": 1.075, "upgrade_amount": 1, "description": "Increases the max amount of items per slot by 1", "texture": 6, "times_upgraded": 0},
 		]
 	
 func get_upgrade_value(index : int) -> float:

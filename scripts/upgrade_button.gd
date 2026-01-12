@@ -14,9 +14,12 @@ var cost: float
 
 
 func _ready() -> void:
-	Globals.max_per_slot = Globals.get_upgrade_value(7)
-	Globals.dumpster_slots = Globals.get_upgrade_value(6)
-	Globals.inventory_slots = Globals.get_upgrade_value(5)
+	while (upgrade == 7 and Globals.get_upgrade_value(7) >= Globals.max_dumpster_slots) or (upgrade == 6 and Globals.get_upgrade_value(6) >= 9):
+		upgrade = randi_range(0,len(Globals.upgrades))
+		
+	Globals.max_per_slot = Globals.get_upgrade_value(8)
+	Globals.dumpster_slots = Globals.get_upgrade_value(7)
+	Globals.inventory_slots = Globals.get_upgrade_value(6)
 	money.text = "[right]$" + str(int(Globals.money))
 	cost = int(Globals.upgrades[upgrade]["base_cost"] * (Globals.upgrades[upgrade]["cost_multiplier"] * (Globals.upgrades[upgrade]["times_upgraded"] + 1)))
 	print(Globals.upgrades[upgrade]["texture"])
