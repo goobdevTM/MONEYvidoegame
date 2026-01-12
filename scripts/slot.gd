@@ -25,6 +25,7 @@ var mouse_over : bool = false
 var tween: Tween = create_tween()
 
 func _ready() -> void:
+	index = get_index()
 	tool_tip.hide()
 	number.text = str(get_index() + 1)
 	tween = create_tween()
@@ -40,6 +41,7 @@ func _ready() -> void:
 	Globals.slot_selected.connect(update_slot)
 	update_slot()
 	await get_tree().create_timer(0).timeout
+	index = get_index()
 
 
 func update_slot() -> void:

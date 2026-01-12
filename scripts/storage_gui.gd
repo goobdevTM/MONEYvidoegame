@@ -35,7 +35,6 @@ func _ready() -> void:
 		grid_container.add_child(clone_slot)
 		clone_slot.slot_bg.play("dumpster")
 		clone_slot.show()
-		clone_slot.index = i
 		
 	#CREATES INVENTORY
 	for i in range(Globals.inventory_slots):
