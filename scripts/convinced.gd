@@ -15,8 +15,8 @@ extends Control
 func start() -> void:
 	anim.play("show")
 	if convinced:
-		var mult : float = (0.75 + (float(Globals.rich_difficulty) / 4.0)) + (Globals.get_upgrade_value(3))
-		var gain : int = int(((Globals.items[Globals.item_selling['id']]['worth'] * Globals.item_selling['count']) * (1 + (rich_person_minigame.satisfaction / customer_satisfaction.max_value))) * mult)
+		var mult : float = (0.75 + (float(Globals.rich_difficulty) / 4.0)) + (Globals.get_upgrade_value(2))
+		var gain : int = int((float(Globals.items[Globals.item_selling['id']]['worth'] * Globals.item_selling['count']) * (1 + (rich_person_minigame.satisfaction / (customer_satisfaction.max_value * 2)))) * mult)
 		Globals.money += gain
 		earnings.text = "[center]+ $" + str(gain) + " Earned!"
 		Globals.inventory[Globals.item_selling['slot']]['count'] = 0

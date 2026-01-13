@@ -5,7 +5,7 @@ signal next_day
 
 
 #	WILL BE MAX IN A RANDI RANGE
-var rat_rarity : int = 12
+var rat_rarity : int = 15
 
 
 #ALSO UPGRADES
@@ -55,6 +55,7 @@ var garby_dialogue: Dictionary = {
 		"...",
 	],
 	"tips": [
+		"Rich folks with red or yellow names are usually a little trickier to talk to!",
 		"The rarer trash usually sells for more!",
 		"I hear theres sum rats in those garbage bags! Who knows, they may work for ya!",
 		"You can use tha computer to upgrade stuffs!",
@@ -62,7 +63,6 @@ var garby_dialogue: Dictionary = {
 		"That bed of yours makes time go faster!",
 		"You can unlock different areas with more trash!",
 		"Careful what ya say in front of them rich folks!",
-		"Selling those rarer items to the higher class is risky but can give ya some big moneys!"
 	],
 	"ask_for_litter": [
 		"Gimme some litter and I can tell ya some secrets!",
@@ -328,7 +328,7 @@ func load_saves(save : int) -> void:
 		upgrades = [
 			{"name": "Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_speed"], "cost_multiplier": 1.15, "upgrade_amount": 100, "description": "Makes you quicker.", "texture": 3, "times_upgraded": 0},
 			{"name": "Stamina", "base_cost": 40, "var": upgrade_multipliers["stamina_max"], "cost_multiplier": 1.1, "upgrade_amount": 5, "description": "You'll be able to sprint longer.", "texture": 3, "times_upgraded": 0},
-			{"name": "Money", "base_cost": 100, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.25, "upgrade_multiplier": 1.025, "description": "You'll make more money overall.", "texture": 0, "times_upgraded": 0},
+			{"name": "Money", "base_cost": 120, "var": upgrade_multipliers["money_multiplier"], "cost_multiplier": 1.2, "upgrade_amount": 0.45, "description": "You'll make more money overall.", "texture": 0, "times_upgraded": 0},
 			{"name": "Trash Density", "base_cost": 100, "var": upgrade_multipliers["trash_density_multiplier"], "cost_multiplier": 1.15, "upgrade_amount": 5, "description": "More trash will spawn.", "texture": 2, "times_upgraded": 0},
 			{"name": "Rat Speed", "base_cost": 30, "var": upgrade_multipliers["rat_speed_multiplier"], "cost_multiplier": 1.05, "upgrade_amount": 100, "description": "Rats will be quicker", "texture": 1, "times_upgraded": 0},
 			{"name": "Sprint Speed", "base_cost": 50, "var": upgrade_multipliers["player_base_sprint_speed"], "cost_multiplier": 1.1, "upgrade_amount": 50, "description": "Your sprint speed will be quicker.", "texture": 3, "times_upgraded": 0},

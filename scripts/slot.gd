@@ -42,11 +42,12 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0).timeout
 	
-	index = get_index()
-	if index == 0:
+	for i in range(6):
+		index = get_index()
 		last_slot = 9999
-	update_slot()
-
+		update_slot()
+		await get_tree().create_timer(0).timeout
+		
 func update_slot() -> void:
 	while index == -1:
 		await get_tree().create_timer(0).timeout

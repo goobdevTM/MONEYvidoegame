@@ -4,6 +4,7 @@ class_name Fade
 
 var tween: Tween = create_tween()
 var fading: bool = false
+var fading_in : bool = false
 
 @onready var color_rect: ColorRect = $ColorRect
 
@@ -12,13 +13,15 @@ func _ready() -> void:
 	fade_in()
 
 func fade_in():
-	tween.stop()
-	tween = create_tween()
-	color_rect.color = Color()
-	show()
-	tween.tween_property(color_rect, "color", Color(0.0, 0.0, 0.0, 0.0), 0.25)
-	await tween.finished
-	hide()
+	if not fading_in:
+		fading_in = true
+		tween.stop()
+		tween = create_tween()
+		color_rect.color = Color()
+		show()
+		tween.tween_property(color_rect, "color", Color(0.0, 0.0, 0.0, 0.0), 0.25)
+		await tween.finished
+		hide()
 
 func fade_out(scene_change: PackedScene):
 	if fading == false:

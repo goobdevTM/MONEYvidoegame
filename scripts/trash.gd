@@ -122,7 +122,7 @@ func spawn_rat_randomly() -> void:
 	if not open and not empty:
 		var local_rarity : int = Globals.rat_rarity #night multiplier
 		if not (Globals.time < (Globals.day_length / 2) + ((Globals.day_length / 24) * 7) and Globals.time > (Globals.day_length / 2) - ((Globals.day_length / 24) * 5)): #is night?
-			local_rarity /= 2 #less rare
+			local_rarity = int(float(local_rarity) / 1.6) #less rare
 		if randi_range(1, local_rarity) == local_rarity:
 			var new_rat = RAT.instantiate()
 			rat_spawner.add_child(new_rat)

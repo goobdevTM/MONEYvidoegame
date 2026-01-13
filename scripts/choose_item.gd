@@ -67,10 +67,10 @@ func _process(delta: float) -> void:
 		hover_item.hide()
 		
 	if Globals.inventory[Globals.selected_slot]['count'] > 0:
-		value.text = "[center]" + item['name'] + " - Count: " + str(Globals.inventory[Globals.selected_slot]['count']) + " Total Worth: $" + str(item['worth'] * Globals.inventory[Globals.selected_slot]['count'])
+		value.text = "[center]" + item['name'] + " - Count: " + str(Globals.inventory[Globals.selected_slot]['count']) + " Total Worth: $" + str(int((item['worth'] * Globals.inventory[Globals.selected_slot]['count']) * Globals.get_upgrade_value(2)))
 		cool.disabled = false
 	else:
-		value.text = "[center]Select and item..."
+		value.text = "[center]Select an item..."
 		cool.disabled = true
 		
 func _on_no_cool_pressed() -> void:

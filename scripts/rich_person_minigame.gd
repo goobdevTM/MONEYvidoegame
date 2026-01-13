@@ -59,7 +59,7 @@ var good_questions : Array[Dictionary] = [
 var good : int = randi_range(0,1)
 var camera_line_index : int = 0
 var target_line_x : float = 0
-var satisfaction : float = 10
+var satisfaction : float = 12
 var questions_answered : int = 0
 var max_questions : int = 20
 var last_question : Dictionary = {}
@@ -71,6 +71,8 @@ func _ready() -> void:
 	else:
 		Globals.question_speed_mult = 1
 	Globals.question_speed_mult *= (0.75 + (float(Globals.rich_difficulty) / 4.0))
+	if Globals.question_speed_mult == 0.75:
+		Globals.question_speed_mult = 0.65 #easier easy
 	timer.wait_time = 1 / Globals.question_speed_mult
 	time_left.max_value = timer.wait_time
 	satisfaction = 10
@@ -167,25 +169,27 @@ func add_to_graph(point : float) -> void:
 
 
 func _on_button_pressed(index : int) -> void:
-	timer.stop()
-	if good == index:
-		ding.play()
-		correct_anim.play("show")
-		satisfaction += 1
-		customer_satisfaction.value = satisfaction
-		add_to_graph((success_graph.points[len(success_graph.points) - 1].y - 48))
-		success_graph.default_color = Color.GREEN
-		await correct_anim.animation_finished
-	else:
-		buzzer.play()
-		wrong_anim.play("show")
-		satisfaction -= 2
-		customer_satisfaction.value = satisfaction
-		add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (1 -  (time_left.value / time_left.max_value)) * 64) + 48)
-		success_graph.default_color = Color.RED
-		await wrong_anim.animation_finished
-	satisfaction = clamp(satisfaction, 0, customer_satisfaction.max_value)
-	ask_question()
+	if not timer.time_left <= 0:
+		timer.stop()
+	
+		if good == index:
+			ding.play()
+			correct_anim.play("show")
+			satisfaction += 1
+			customer_satisfaction.value = satisfaction
+			add_to_graph((success_graph.points[len(success_graph.points) - 1].y - 48))
+			success_graph.default_color = Color.GREEN
+			await correct_anim.animation_finished
+		else:
+			buzzer.play()
+			wrong_anim.play("show")
+			satisfaction -= 2
+			customer_satisfaction.value = satisfaction
+			add_to_graph((success_graph.points[len(success_graph.points) - 1].y + (1 -  (time_left.value / time_left.max_value)) * 64) + 48)
+			success_graph.default_color = Color.RED
+			await wrong_anim.animation_finished
+		satisfaction = clamp(satisfaction, 0, customer_satisfaction.max_value)
+		ask_question()
 
 
 func _on_timer_timeout() -> void:

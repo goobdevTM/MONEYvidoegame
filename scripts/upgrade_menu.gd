@@ -61,14 +61,14 @@ func open() -> void:
 func close() -> void:
 	get_tree().paused = false
 	music.stop()
-	inventory._ready()
 	await get_tree().create_timer(0.05).timeout
 	Globals.in_smellizon = false
-	
+	inventory._ready()
 	var tween : Tween = create_tween()
 	tween.tween_property(panel, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.1)
 	
 	await tween.finished
+	
 	
 	hide()
 

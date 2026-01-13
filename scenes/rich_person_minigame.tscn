@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://dpgtm36htk3qw"]
+[gd_scene load_steps=66 format=4 uid="uid://dpgtm36htk3qw"]
 
 [ext_resource type="Script" uid="uid://bbtnyohhdghvq" path="res://scripts/rich_person_minigame.gd" id="1_jwd4e"]
 [ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="2_jupnj"]
@@ -2435,6 +2435,20 @@ RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_bt5mj")
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_e1j6l")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_pl11u")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_277d7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.64, 0.19199997, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.11116667, 0.23, 0, 1)
+corner_detail = 5
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dof8y"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -3333,9 +3347,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 64.0
+offset_left = 40.0
 offset_top = 64.0
-offset_right = -64.0
+offset_right = -40.0
 offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -3349,6 +3363,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_277d7")
 
 [node name="Title" type="RichTextLabel" parent="Help/Control/Panel"]
 clip_contents = false
@@ -3416,11 +3431,13 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_dof8y")
 text = "Coolio Schmoolio!"
 
 [node name="Buzzer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("13_rvpi8")
 volume_db = -2.0
 bus = &"Sounds"
 
 [node name="Ding" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("14_7cwb0")
 volume_db = -1.0
 bus = &"Sounds"
@@ -3446,7 +3463,7 @@ bus = &"Music"
 [node name="ClickAndHover" parent="." instance=ExtResource("10_ihibx")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.65
+wait_time = 2.6999999999999997
 
 [node name="Fade" parent="." instance=ExtResource("18_hgi1x")]
 visible = false
