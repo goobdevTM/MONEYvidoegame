@@ -5,8 +5,10 @@ signal next_day
 
 
 #	WILL BE MAX IN A RANDI RANGE
-var rat_rarity : int = 15
+var rat_rarity : int = 16 #16
+var rats_running : int = 0
 
+var song_playing : int = 0
 
 #ALSO UPGRADES
 var upgrade_multipliers: Dictionary[String, float] = {
@@ -62,7 +64,15 @@ var garby_dialogue: Dictionary = {
 		"You can store all ya stuff in that dumpster!",
 		"That bed of yours makes time go faster!",
 		"You can unlock different areas with more trash!",
+		"You can unlock different areas with more trash!",
 		"Careful what ya say in front of them rich folks!",
+		"Sell a whole stack of that litter ya got to them rich folks!",
+		"Sell a whole stack of that litter ya got to them rich folks!",
+		"Sell a whole stack of that litter ya got to them rich folks!",
+		"If ya want some rats, wait until night and open them trash bags!",
+		"If ya want some rats, wait until night and open them trash bags!",
+		"Sell to rich folks during the day, or else they'll retreat to their mansions!",
+		"Check what an item is worth before selling it!",
 	],
 	"ask_for_litter": [
 		"Gimme some litter and I can tell ya some secrets!",

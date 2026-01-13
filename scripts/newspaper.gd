@@ -7,7 +7,7 @@ func _ready() -> void:
 	Globals.in_help = false
 #
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("delete") or Input.is_action_just_pressed("settings"):
+	if Input.is_action_just_pressed("delete") or Input.is_action_just_pressed("settings") and not Globals.in_settings:
 		if visible:
 			paper_crumpling.play()
 			get_tree().paused = false

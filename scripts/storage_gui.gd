@@ -45,7 +45,7 @@ func _ready() -> void:
 		clone_slot.index = i
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("settings") or Input.is_action_just_pressed("pickup") and Globals.in_storage and not opening_storage:
+	if Input.is_action_just_pressed("settings") or Input.is_action_just_pressed("pickup") and Globals.in_storage and not opening_storage and not Globals.in_settings:
 		close()
 	if Globals.clicked_item['count'] > 0:
 		hover_item.show()
@@ -79,19 +79,21 @@ func open() -> void:
 	Globals.emit_signal("slot_selected")
 	
 func close() -> void:
-	music.stop()
-	if Globals.selected_slot >= Globals.inventory_slots:
-		Globals.selected_slot = 0
-	inventory.h_box_container.show()
-	var tween : Tween = create_tween()
-	tween.set_parallel()
-	tween.tween_property(bg, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.1)
-	tween.tween_property(control, "position", Vector2(0,480), 0.1)
-	Globals.emit_signal("slot_selected")
-	await get_tree().create_timer(0).timeout
-	Globals.emit_signal("slot_selected")
-	await tween.finished
-	hide()
-	get_tree().paused = false
-	Globals.in_storage = false
-	Globals.emit_signal("slot_selected")
+	if not Globals.in_settings and not Globals.in_smellizon and not Globals.in_help and Globals.in_storage:
+		show()
+		music.stop()
+		if Globals.selected_slot >= Globals.inventory_slots:
+			Globals.selected_slot = 0
+		inventory.h_box_container.show()
+		var tween : Tween = create_tween()
+		tween.set_parallel()
+		tween.tween_property(bg, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.1)
+		tween.tween_property(control, "position", Vector2(0,480), 0.1)
+		Globals.emit_signal("slot_selected")
+		await get_tree().create_timer(0).timeout
+		Globals.emit_signal("slot_selected")
+		await tween.finished
+		hide()
+		get_tree().paused = false
+		Globals.in_storage = false
+		Globals.emit_signal("slot_selected")

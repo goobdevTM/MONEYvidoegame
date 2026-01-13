@@ -22,7 +22,7 @@ var speed_up : float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	Globals.rats_running = 0
 	Globals.has_rich_people = false
 	
 	if game:

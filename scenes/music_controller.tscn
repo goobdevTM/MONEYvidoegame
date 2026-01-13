@@ -12,29 +12,31 @@
 script = ExtResource("1_ftu3d")
 
 [node name="RatTheme" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("2_nudl1")
 bus = &"Music"
 
 [node name="Tissues" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+process_mode = 1
 stream = ExtResource("3_hyjgr")
-volume_db = -1.726
 bus = &"Music"
 
 [node name="SmellySocks" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+process_mode = 1
 stream = ExtResource("4_1qrr5")
-volume_db = -3.884
 bus = &"Music"
 
 [node name="SodaCan" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+process_mode = 1
 stream = ExtResource("5_lttr1")
-volume_db = -1.295
 bus = &"Music"
 
 [node name="Dumpster" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+process_mode = 1
 stream = ExtResource("6_obdaw")
 bus = &"Music"
 
 [node name="TrashBags" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+process_mode = 1
 stream = ExtResource("7_r63yf")
-volume_db = 1.726
 bus = &"Music"

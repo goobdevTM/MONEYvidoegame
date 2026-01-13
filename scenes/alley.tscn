@@ -1914,7 +1914,7 @@ cache/0/64/0/glyphs/19/size = Vector2(34, 49)
 cache/0/64/0/glyphs/19/uv_rect = Rect2(1, 1, 34, 49)
 cache/0/64/0/glyphs/19/texture_idx = 0
 
-[sub_resource type="Image" id="Image_yecmm"]
+[sub_resource type="Image" id="Image_jrvvs"]
 data = {
 "data": PackedByteArray("/////////////////////w=="),
 "format": "RGBA8",
@@ -1924,7 +1924,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_bt5mj"]
-image = SubResource("Image_yecmm")
+image = SubResource("Image_jrvvs")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1j6l"]
 content_margin_left = 4.0
@@ -2539,6 +2539,7 @@ stream = ExtResource("33_i85uk")
 stream = ExtResource("27_qtorc")
 
 [node name="MusicController" parent="." instance=ExtResource("34_70ow4")]
+process_mode = 1
 
 [node name="ClickAndHover" parent="." instance=ExtResource("35_mi5hh")]
 

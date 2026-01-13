@@ -30,30 +30,30 @@ var bad_questions : Array[Dictionary] = [
 	{'q': "Are you a part of the slob glagglewares family!??", 'good': "Nope, I hate them too.", 'bad': "HEY! Glagglewares is awesome!"},
 	{'q': "Filthy cretin...", 'good': "I take a shower every day!", 'bad': "Well I bet you are uhh... Pretty stinky!!!"},
 	{'q': "No way I'll buy this!", 'good': "Just wait, it gets way better!", 'bad': "Fair point."},
-	{'q': "Scram!!!", 'good': "I'm not going anywhere!", 'bad': "Rude!!!"}
+	{'q': "Scram!!!", 'good': "But don't you want your masterpiece?", 'bad': "Rude!!!"}
 ]
 
 var neutral_questions : Array[Dictionary] = [
 	{'q': "What are you doing here?", 'good': 'I have a proposal!', 'bad': "Buy my garbage you butthead!!!"},
 	{'q': "Are you a professional entreprenuer?", 'good': "That's me!", 'bad': "What even is that???"},
-	{'q': "What's your opinion on the slob they call GlaggleWares?", 'good': "They're awful...", 'bad': "I love Glagglewares so much and I even have their album!"},
-	{'q': "You're not from the IRS right?", 'good': 'Nope!', 'bad': "..Who??"},
+	{'q': "What's your opinion on the slob they call GlaggleWares?", 'good': "Same as yours, of course!", 'bad': "GlaggleWares is not a slob!!!"},
+	{'q': "You're not from the IRS right?", 'good': 'Nope!', 'bad': "..The what??"},
 	{'q': "You better not be selling TRASH!", 'good': "I would never sell trash to such a fine rich man!", 'bad': "What does it matter to you snob?!!"},
 	{'q': "Is there anything else?", 'good': "There's so much more!", 'bad': 'Nope, nothing else.'},
 	{'q': "Why should I buy this?", 'good': "Because it's a masterpiece!", 'bad': "To give me money."},
-	{'q': "What is your stance on rats?", 'good': "Rats? Gross...", 'bad': "I love rats so much!"},
+	{'q': "What is your stance on filthy disgusting rats?", 'good': "Rats? Gross.", 'bad': "Rats aren't disgusting!"},
 ]
 
 var good_questions : Array[Dictionary] = [
-	{'q': "This is very interesting...", 'good': "I knew you would like it!", 'bad': "I wouldn't quite say that."},
-	{'q': "What is the significance of this art piece?", 'good': "It's made by a very famous and rich artist", 'bad': "I think it looks really cool."},
-	{'q': "Where do you reside?", 'good': "In a giant mansion of course!", 'bad': "Over there in the alleyway."},
+	{'q': "This is very interesting...", 'good': "I knew you would like it!", 'bad': "It's just trash..."},
+	{'q': "What is the significance of this art piece?", 'good': "It's made by a very famous and rich artist", 'bad': "Uhh... I think it looks really cool???"},
+	{'q': "Where do you reside?", 'good': "In a giant mansion of course!", 'bad': "Over there in the smelly alleyway."},
 	{'q': "Where did you find this art piece?", 'good': "I got it from the original artist at an auction.", 'bad': "In a smelly dumpster."},
-	{'q': "I'm pretty convinced on purchasing this.", 'good': "That's great to hear!", 'bad': "Uhh... Totally radical?"},
-	{'q': "By jove! this is so cool!", 'good': "That's what I was thinking!", 'bad': 'Who even says "by jove" these days...'},
-	{'q': "How do I know this is a good deal?", 'good': "I just called my financial advisor and he said it's good.", 'bad': "Trust me, it's definitely good..."},
-	{'q': "Are you rather wealthy?", 'good': "Obviously yes!", 'bad': "I can barely afford my alleyway..."},
-	{'q': "What's your favorite song?", 'good': "Corporate presentation music by Mr. Corporations!", 'bad': "Rats inna Hood Dumpster by GlaggleTunes"},
+	{'q': "I'm pretty convinced on purchasing this.", 'good': "That's great to hear!", 'bad': "Uhh... Are you sure you want this trash?"},
+	{'q': "By jove! this is so cool!", 'good': "That's what I was thinking!", 'bad': 'Only weird people like you say "by jove" these days...'},
+	{'q': "How do I know this is a good deal?", 'good': "My financial advisor says it's a great idea!", 'bad': "Trust me, it's definitely not trash..."},
+	{'q': "Are you rather wealthy?", 'good': "Obviously yes!", 'bad': "I can barely afford my disgusting alleyway..."},
+	{'q': "What's your favorite song?", 'good': "Rich corporate presentation music by Mr. Corporations!", 'bad': "Rats inna Nasty Hood Dumpster by GlaggleTunes"},
 ]
 
 var good : int = randi_range(0,1)

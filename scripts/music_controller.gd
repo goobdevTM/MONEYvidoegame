@@ -3,20 +3,25 @@ extends Node
 var current_song: AudioStreamPlayer
 
 @onready var rat_theme: AudioStreamPlayer = $RatTheme
-
+var tween : Tween = create_tween()
 #READY
 func _ready() -> void:
 	#LOOPS
 	while true:
 		#CYCLES THROUGH CHILDREN
-		for i: AudioStreamPlayer in get_children():
-			if i.is_in_group("main_songs"):
-				i.play()
-				current_song = i
-				await i.finished
+		for i in range(Globals.song_playing, len(get_children())):
+			if get_child(i).is_in_group("main_songs"):
+				if rat_theme.playing:
+					await rat_theme.finished
+				get_child(i).play()
+				current_song = get_child(i)
+				Globals.song_playing = i
+				await get_child(i).finished
 
 func play_rat_theme():
-	var tween: Tween = create_tween()
+	tween.stop()
+	tween = create_tween()
+	tween.set_parallel()
 	tween.tween_property(current_song, "volume_linear", 0, 0.5)
 	tween.tween_property(rat_theme, "volume_linear", 1, 0.25)
 	rat_theme.play()
@@ -24,8 +29,11 @@ func play_rat_theme():
 	tween.tween_property(current_song, "volume_linear", 1, 0.5)
 
 func stop_rat_theme():
-	var tween: Tween = create_tween()
-	tween.tween_property(rat_theme, "volume_linear", 0, 0.5)
-	tween.tween_property(current_song, "volume_linear", 1, 0.5)
-	await tween.finished
-	rat_theme.stop()
+	if Globals.rats_running <= 0:
+		tween.stop()
+		tween = create_tween()
+		tween.set_parallel()
+		tween.tween_property(rat_theme, "volume_linear", 0, 0.5)
+		tween.tween_property(current_song, "volume_linear", 1, 0.5)
+		await tween.finished
+		rat_theme.stop()

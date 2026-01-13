@@ -29,6 +29,7 @@ func _ready() -> void:
 
 	#CONNECTS
 	if not hired:
+		Globals.rats_running += 1
 		play_theme.connect(music_controller.play_rat_theme)
 		emit_signal("play_theme")
 		sprite.play("walk")
@@ -90,7 +91,7 @@ func go_to_work():
 	await visible_on_screen_notifier_2d.screen_exited
 	sprite.hide()
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(randf_range(1.5,2)).timeout
 	
 	sprite.show()
 	currently_working = false

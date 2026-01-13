@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ba1405fyb1n12"]
+[gd_scene load_steps=17 format=3 uid="uid://ba1405fyb1n12"]
 
 [ext_resource type="Texture2D" uid="uid://eypqtl16fn8l" path="res://sprites/garby.png" id="1_scbf1"]
 [ext_resource type="Script" uid="uid://bm31gj1qbm77f" path="res://scripts/garby.gd" id="1_wgjji"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsa68mp2vvgv6" path="res://sprites/hand.png" id="4_m8vop"]
 [ext_resource type="AudioStream" uid="uid://m2w5i2ccvghu" path="res://audio/sfx/plane_crash.mp3" id="5_pu4ka"]
 [ext_resource type="Texture2D" uid="uid://5o0gp8o3dpwx" path="res://sprites/AHH.png" id="6_mes2j"]
+[ext_resource type="Theme" uid="uid://dd0s34c5ii2ui" path="res://theme.tres" id="7_fc3p7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4hxcs"]
 animations = [{
@@ -52,7 +53,6 @@ collision_mask = 387
 script = ExtResource("1_wgjji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 99
 sprite_frames = SubResource("SpriteFrames_4hxcs")
 
 [node name="Body" type="CollisionShape2D" parent="."]
@@ -116,6 +116,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0.23529412)
+
+[node name="Name" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = -31.0
+offset_top = -11.0
+offset_right = 240.35822
+offset_bottom = 29.0
+scale = Vector2(0.23169994, 0.23169994)
+mouse_filter = 2
+theme = ExtResource("7_fc3p7")
+text = "Garby"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="RichPersonDetector" to="." method="_on_rich_person_detector_area_entered"]
 [connection signal="area_entered" from="HandArea" to="." method="_on_hand_area_area_entered"]

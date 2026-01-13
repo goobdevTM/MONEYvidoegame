@@ -173,6 +173,7 @@ func _process(delta: float) -> void:
 				else:
 					#mark rat as hired
 					Globals.working_rats += 1
+					Globals.rats_running -= 1
 					items_in_hand[0].hired = true
 					stop_rat_theme.connect(music_controller.stop_rat_theme)
 					emit_signal("stop_rat_theme")
