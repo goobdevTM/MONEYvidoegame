@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var stamina_opacity: HSlider = $Control/TabContainer/Video/StaminaOpacity
 @onready var check_button_vsync: CheckButton = $Control/TabContainer/Video/Vsync
 @onready var show_fps: CheckButton = $Control/TabContainer/Video/ShowFPS
+@onready var fullscreen: CheckButton = $Control/TabContainer/Video/Fullscreen
 
 #AUDIO STUFF yhuj
 @onready var music: AudioStreamPlayer = $Music
@@ -22,12 +23,14 @@ func _ready() -> void:
 	
 	show_fps.button_pressed = Globals.show_fps
 	check_button_vsync.button_pressed = Globals.vsync_mode
+	fullscreen.button_pressed = Globals.fullscreen
 	sound_slider.value = Globals.sound_volume
 	music_slider.value = Globals.music_volume
 	master_slider.value = Globals.master_volume
 	
 	_on_show_fps_toggled(Globals.show_fps)
 	_on_vsync_toggled(Globals.vsync_mode)
+	_on_fullscreen_toggled(Globals.fullscreen)
 	_on_master_value_changed(Globals.master_volume)
 	_on_music_value_changed(Globals.music_volume)
 	_on_sound_value_changed(Globals.sound_volume)
@@ -109,3 +112,11 @@ func _on_vsync_toggled(toggled_on: bool) -> void:
 
 func _on_show_fps_toggled(toggled_on: bool) -> void:
 	Globals.show_fps = toggled_on
+
+
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	Globals.fullscreen = toggled_on
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)

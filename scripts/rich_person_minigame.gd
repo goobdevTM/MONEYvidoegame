@@ -59,7 +59,7 @@ var good_questions : Array[Dictionary] = [
 var good : int = randi_range(0,1)
 var camera_line_index : int = 0
 var target_line_x : float = 0
-var satisfaction : float = 12
+var satisfaction : float
 var questions_answered : int = 0
 var max_questions : int = 20
 var last_question : Dictionary = {}
@@ -72,10 +72,12 @@ func _ready() -> void:
 		Globals.question_speed_mult = 1
 	Globals.question_speed_mult *= (0.75 + (float(Globals.rich_difficulty) / 4.0))
 	if Globals.question_speed_mult == 0.75:
-		Globals.question_speed_mult = 0.65 #easier easy
+		Globals.question_speed_mult = 0.55 #easier easy
 	timer.wait_time = 1 / Globals.question_speed_mult
 	time_left.max_value = timer.wait_time
-	satisfaction = 10
+	satisfaction = 12
+	if Globals.rich_difficulty == 0:
+		satisfaction = 18
 	customer_satisfaction.value = satisfaction
 	name_text.text = "[center]Deal with " + Globals.rich_person_name
 	add_to_graph(0.0)
@@ -123,9 +125,10 @@ func ask_question() -> void:
 	questions_answered += 1
 	number.text = "[center]" + str(questions_answered) + "/" + str(max_questions) + " Questions Answered"
 	number.modulate = lerp(Color.YELLOW, Color.GREEN, float(questions_answered) / float(max_questions))
-	Globals.question_speed_mult += 0.0075
-	if Globals.first_time_minigame and Globals.question_speed_mult < 1:
-		Globals.question_speed_mult += 0.02
+	if not Globals.rich_difficulty == 0:
+		Globals.question_speed_mult += 0.0075
+		if Globals.first_time_minigame and Globals.question_speed_mult < 1:
+			Globals.question_speed_mult += 0.02
 	timer.wait_time = 1 / Globals.question_speed_mult
 	time_left.max_value = timer.wait_time
 	

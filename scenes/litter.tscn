@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://6nia0edfdeaj"]
+[gd_scene load_steps=8 format=3 uid="uid://6nia0edfdeaj"]
 
 [ext_resource type="Script" uid="uid://do5njh3duccyx" path="res://scripts/litter.gd" id="1_dqed2"]
 [ext_resource type="Texture2D" uid="uid://cro8d4w40plyr" path="res://sprites/trash_atlas_1.png" id="2_dqed2"]
@@ -10,10 +10,48 @@ filter_clip = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqed2"]
 size = Vector2(6, 6)
 
+[sub_resource type="Animation" id="Animation_dqed2"]
+resource_name = "spawn"
+length = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mjfgb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_44tm8"]
+_data = {
+&"RESET": SubResource("Animation_mjfgb"),
+&"spawn": SubResource("Animation_dqed2")
+}
+
 [node name="Litter" type="Node2D" groups=["litter"]]
 script = ExtResource("1_dqed2")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
 texture = SubResource("AtlasTexture_dqed2")
 
 [node name="Area2D" type="Area2D" parent="." groups=["for_hand"]]
@@ -32,6 +70,12 @@ shape = SubResource("RectangleShape2D_dqed2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-4, -4, 8, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_44tm8")
+}
+autoplay = "spawn"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="DeleteCheck" to="." method="_on_delete_check_area_entered"]

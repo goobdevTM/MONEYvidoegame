@@ -9,7 +9,7 @@ var fading_in : bool = false
 @onready var color_rect: ColorRect = $ColorRect
 
 func _ready() -> void:
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.15).timeout
 	fade_in()
 
 func fade_in():

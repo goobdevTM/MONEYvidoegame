@@ -200,6 +200,7 @@ var click_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 var hover_sound : AudioStreamPlayer = AudioStreamPlayer.new()
 var show_fps: bool = false
 var vsync_mode: bool = false
+var fullscreen : bool = false
 var has_rich_people: bool = false
 
 #GAME
@@ -257,11 +258,13 @@ func save_data():
 	file.store_var(music_volume)
 	file.store_var(master_volume)
 	file.store_var(stamina_bar_opacity)
+	file.store_var(fullscreen)
 	
 #LOAD
 func load_data():
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
+		var current_var 
 		
 		saves = file.get_var()
 		
@@ -271,6 +274,9 @@ func load_data():
 		music_volume = file.get_var()
 		master_volume = file.get_var()
 		stamina_bar_opacity = file.get_var()
+		current_var = file.get_var()
+		if current_var:
+			fullscreen = current_var
 	else:
 		#ITS COOL AND MODULAR OK? DONT DELETE THIS AHG%^^&&$$BKDGSBKLGSDLKGELKMFS$$$$$
 		var warning: String = "NO SAVE DATA"

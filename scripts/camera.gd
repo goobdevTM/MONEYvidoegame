@@ -11,6 +11,7 @@ extends Camera2D
 @onready var buy_area: Node2D = $"../Level/RightBorder/BuyArea"
 
 var max_distance_from_spawn : int = 0
+var min_distance_from_spawn : int = 0
 var old_distance_calc : int = 0
 var new_distance_calc : int = 0
 
@@ -41,16 +42,19 @@ func _physics_process(delta: float) -> void:
 		#check if area ahead needs to be generated
 		new_distance_calc = floor((position.x + 128) / 256)
 		if new_distance_calc > max_distance_from_spawn:
-			
 			max_distance_from_spawn = new_distance_calc
-			
+		if new_distance_calc < min_distance_from_spawn:
+			min_distance_from_spawn = new_distance_calc
 		#generate
 		if not new_distance_calc == old_distance_calc and new_distance_calc >= 0:
 			if new_distance_calc < old_distance_calc:
-				level.generate_trash((new_distance_calc * 256) - (256*1))
+				if new_distance_calc < max_distance_from_spawn - 1:
+					level.generate_trash((new_distance_calc * 256) - (256*1))
+					max_distance_from_spawn = new_distance_calc + 1
 			else:
-				level.generate_trash(new_distance_calc * 256)
-				
+				if new_distance_calc > min_distance_from_spawn:
+					level.generate_trash(new_distance_calc * 256)
+					min_distance_from_spawn = new_distance_calc - 1
 		#buy text
 		buy_area.position.y = position.y - 64
 		buy_area.position.y = clamp(buy_area.position.y, -260, 140)
