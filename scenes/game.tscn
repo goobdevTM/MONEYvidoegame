@@ -137,11 +137,11 @@ script = ExtResource("2_ca42v")
 collision_layer = 8
 collision_mask = 48
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/DeleteTrash"]
+[node name="LeftDelete" type="CollisionShape2D" parent="Level/DeleteTrash"]
 position = Vector2(-256, 0)
 shape = SubResource("WorldBoundaryShape2D_1kice")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/DeleteTrash"]
+[node name="RightDelete" type="CollisionShape2D" parent="Level/DeleteTrash"]
 position = Vector2(512, 0)
 shape = SubResource("WorldBoundaryShape2D_5newe")
 

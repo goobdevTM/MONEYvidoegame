@@ -9,8 +9,10 @@ const TRASH = preload("res://scenes/trash.tscn")
 @onready var trash_spawner: Node2D = $TrashSpawner
 @onready var top: CollisionShape2D = $Borders/Top
 @onready var bottom: CollisionShape2D = $Borders/Bottom
+@onready var left_delete: CollisionShape2D = $DeleteTrash/LeftDelete
+@onready var right_delete: CollisionShape2D = $DeleteTrash/RightDelete
 
-var thread_spawn_x : int = 0
+var thread_spawn_x : int = -1
 
 var thread : Thread = Thread.new()
 	
@@ -24,9 +26,11 @@ func thread_generate_trash(spawn_x: int) -> void:
 		thread.wait_to_finish()
 		
 	thread_spawn_x = spawn_x
-	await get_tree().create_timer(0).timeout
+	await get_tree().create_timer(0.01).timeout
 	if thread.is_started():
 		thread.wait_to_finish()
+	right_delete.disabled = true
+	left_delete.disabled = true
 	thread.start(generate_trash)
 	
 func generate_trash() -> void:
