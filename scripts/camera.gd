@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 					max_distance_from_spawn = new_distance_calc + 1
 			else:
 				if new_distance_calc > min_distance_from_spawn:
-					level.generate_trash(new_distance_calc * 256)
+					level.thread_generate_trash(new_distance_calc * 256)
 					min_distance_from_spawn = new_distance_calc - 1
 		#buy text
 		buy_area.position.y = position.y - 64
