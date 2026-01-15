@@ -196,7 +196,7 @@ tile_set = SubResource("TileSet_v2yb1")
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("11_ca42v")
-start_pos = Vector2(144, 0)
+start_pos = Vector2(140, 0)
 to_scene = "uid://buv7xaj8dmplv"
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
@@ -214,6 +214,10 @@ shape = SubResource("WorldBoundaryShape2D_gxtfn")
 [node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
 position = Vector2(0, 246)
 shape = SubResource("WorldBoundaryShape2D_twgab")
+
+[node name="Home" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(-384, 0)
+shape = SubResource("WorldBoundaryShape2D_js0lu")
 
 [node name="RightBorder" type="StaticBody2D" parent="Level"]
 collision_layer = 65
@@ -288,6 +292,7 @@ visible = false
 
 [node name="ClickAndHover" parent="." instance=ExtResource("16_ca42v")]
 
-[node name="Fade" parent="." instance=ExtResource("21_5newe")]
+[node name="Fade" parent="." node_paths=PackedStringArray("borders") instance=ExtResource("21_5newe")]
+borders = [NodePath("../Level/Borders/Home")]
 
 [connection signal="body_entered" from="Level/EnterHome" to="Level/EnterHome" method="_on_body_entered"]

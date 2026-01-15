@@ -31,6 +31,7 @@ func _ready() -> void:
 	sprite.texture = sprite.texture.duplicate()
 	sprite.texture.region = Rect2(Globals.items[type]['coords'] * 8, Vector2(8,8))
 	#CHECKS IF ABOVE FENCE
+	await get_tree().create_timer(0).timeout
 	if global_position.y < -220:
 		global_position.y = -220
 		

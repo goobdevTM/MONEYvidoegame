@@ -2266,7 +2266,7 @@ position = Vector2(115, 44)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("14_suir8")
-start_pos = Vector2(-360, 0)
+start_pos = Vector2(-356, 0)
 to_scene = "uid://7xb7pi6ik7sv"
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterGame"]
@@ -2277,7 +2277,7 @@ shape = SubResource("WorldBoundaryShape2D_g8n7j")
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("14_suir8")
-start_pos = Vector2(240, 0)
+start_pos = Vector2(244, 0)
 to_scene = "uid://cwq0qr0p3gujk"
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterRich"]
@@ -2296,6 +2296,14 @@ shape = SubResource("WorldBoundaryShape2D_kvj23")
 [node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
 position = Vector2(0, 24)
 shape = SubResource("WorldBoundaryShape2D_dchyv")
+
+[node name="Game" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(160, 0)
+shape = SubResource("WorldBoundaryShape2D_g8n7j")
+
+[node name="Rich" type="CollisionShape2D" parent="Level/Borders"]
+position = Vector2(-160, 0)
+shape = SubResource("WorldBoundaryShape2D_ju5sp")
 
 [node name="Bed" type="Sprite2D" parent="Level" groups=["bed"]]
 z_index = -1
@@ -2649,7 +2657,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hsf4p")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_0grxe")
 text = "Nope!"
 
-[node name="Fade" parent="." instance=ExtResource("41_v61ha")]
+[node name="Fade" parent="." node_paths=PackedStringArray("borders") instance=ExtResource("41_v61ha")]
+borders = [NodePath("../Level/Borders/Game"), NodePath("../Level/Borders/Rich")]
 
 [node name="Newspaper" type="CanvasLayer" parent="."]
 process_mode = 3

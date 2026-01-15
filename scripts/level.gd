@@ -26,7 +26,7 @@ func thread_generate_trash(spawn_x: int) -> void:
 		thread.wait_to_finish()
 		
 	thread_spawn_x = spawn_x
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(0.02).timeout
 	if thread.is_started():
 		thread.wait_to_finish()
 	right_delete.disabled = true
@@ -38,6 +38,8 @@ func generate_trash() -> void:
 		var new_trash : Trash = TRASH.instantiate()
 		trash_spawner.call_deferred("add_child", new_trash)
 		call_deferred("move", new_trash, Vector2(randi_range(thread_spawn_x, thread_spawn_x + 256), randf_range(-225.0, 242.0)))
+		if randi_range(0,3) == 0:
+			await get_tree().create_timer(0).timeout
 		print(new_trash)
 	
 

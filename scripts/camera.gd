@@ -49,12 +49,12 @@ func _physics_process(delta: float) -> void:
 		if new_distance_calc < min_distance_from_spawn:
 			min_distance_from_spawn = new_distance_calc
 		#generate
-		if not new_distance_calc == old_distance_calc and new_distance_calc >= 0:
+		if not new_distance_calc == old_distance_calc and new_distance_calc > -1:
 			if new_distance_calc < old_distance_calc:
 				if new_distance_calc < max_distance_from_spawn:
 					left_delete.global_position.x = (new_distance_calc * 256)
 					left_delete.disabled = false
-					right_delete.global_position.x = (new_distance_calc * 256) + 512
+					right_delete.global_position.x = (new_distance_calc * 256) + 256
 					right_delete.disabled = false
 					level.thread_generate_trash((new_distance_calc * 256) - (256*1))
 					
@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 				if new_distance_calc > min_distance_from_spawn:
 					right_delete.global_position.x = (new_distance_calc * 256)
 					right_delete.disabled = false
-					left_delete.global_position.x = (new_distance_calc * 256) - 512
+					left_delete.global_position.x = (new_distance_calc * 256) - 256
 					left_delete.disabled = false
 					level.thread_generate_trash(new_distance_calc * 256)
 					

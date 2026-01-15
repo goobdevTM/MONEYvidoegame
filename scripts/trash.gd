@@ -87,7 +87,7 @@ func _ready() -> void:
 		var clone_litter = LITTER.instantiate()
 		litter_spawner.add_child(clone_litter)
 		clone_litter.global_position = global_position + Vector2(randi_range(-40, 40), randi_range(-40, 40))
-		if randi_range(0,2) == 0:
+		if not randi_range(0,3) == 0:
 			await get_tree().create_timer(0).timeout
 	if Globals.areas[Globals.area]['max_trash'] == -1:
 		queue_free()

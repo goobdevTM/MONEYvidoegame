@@ -145,7 +145,7 @@ func _on_button_pressed() -> void:
 		Globals.emit_signal("slot_selected")
 
 func give_item() -> void:
-	if (local_inventory[index]['id'] == Globals.clicked_item['id'] and local_inventory[index]['count'] + Globals.clicked_item['count'] < Globals.max_per_slot) or (local_inventory[index]['count'] == 0):
+	if (local_inventory[index]['id'] == Globals.clicked_item['id'] and local_inventory[index]['count'] < Globals.max_per_slot) or (local_inventory[index]['count'] == 0):
 		if Globals.clicked_item['count'] > 0:
 			if storage:
 				Globals.storage[index] = {'id': Globals.clicked_item['id'], 'count': Globals.storage[index]['count'] + 1}
@@ -182,7 +182,6 @@ func _input(event: InputEvent) -> void:
 							Globals.last_given_slot = true
 							for i in range(Globals.clicked_item['count']):
 								give_item()
-							Globals.clicked_item = {'id': 0, 'count': 0, 'slot': 0, 'storage': false}
 					else: #right click, give one item
 						give_item()
 					Globals.emit_signal("slot_selected")
