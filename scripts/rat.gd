@@ -22,11 +22,13 @@ var on_screen : bool
 var tick : float = 0.0
 var random_offset : int
 var random_speed_mult : float
+var random_direction_mult : Vector2
 
 signal play_theme
 
 func _ready() -> void:
-	random_offset = randi_range(18, 26)
+	random_offset = randi_range(16, 34)
+	random_direction_mult = Vector2(1.0 + randf_range(-0.04, 0.04), 1.0 + randf_range(-0.04, 0.04))
 	random_speed_mult = randf_range(0.965, 1.035)
 	on_screen = true
 	
@@ -52,7 +54,10 @@ func _physics_process(delta: float) -> void:
 	if hired and not currently_working:
 		direction = player.global_position - global_position
 		if global_position.distance_to(player.global_position) < random_offset:
+				while global_position.distance_to(player.global_position) < random_offset - 1:
+					global_position -= (direction.normalized() / 2)
 				direction = Vector2(0, 0)
+				
 	if tick == 0 and on_screen:
 		#basic movement
 		if hired:
@@ -84,13 +89,19 @@ func _physics_process(delta: float) -> void:
 		else:
 			sprite.speed_scale = 0.0
 			
+	
 	if hired:
-		velocity += direction.normalized() * (speed + Globals.get_upgrade_value(4)) * delta * random_speed_mult
+		velocity += (direction.normalized() * random_direction_mult) * (speed + Globals.get_upgrade_value(4)) * delta * random_speed_mult
 	else:
 		velocity += direction.normalized() * speed * delta * random_speed_mult
 	velocity *= friction
 			
 	tick += delta
+	
+	if direction.x > 0:
+		direction.x = 1
+	elif direction.x < 0:
+		direction.x = -1
 		
 	move_and_slide()
 
@@ -114,7 +125,7 @@ func go_to_work():
 	
 	sprite.show()
 	currently_working = false
-	var clone_litter: Litter = LITTER.instantiate()
+	var clone_litter : Litter = LITTER.instantiate()
 	clone_litter.rat_spawned = true
 	add_child(clone_litter)
 	move_child(clone_litter, 0)

@@ -32,7 +32,7 @@ func _ready() -> void:
 	sprite.texture.region = Rect2(Globals.items[type]['coords'] * 8, Vector2(8,8))
 	#CHECKS IF ABOVE FENCE
 	await get_tree().create_timer(0).timeout
-	if global_position.y < -220:
+	if global_position.y < -220 and not rat_spawned:
 		global_position.y = -220
 		
 	show()

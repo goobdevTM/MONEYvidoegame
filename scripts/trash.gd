@@ -117,6 +117,13 @@ func _on_area_area_entered(area: Area2D) -> void:
 func _on_delete_check_area_entered(area: Area2D) -> void:
 	queue_free()
 	
+func _open() -> void:
+	smell_particles_1.queue_free()
+	smell_particles_2.queue_free()
+	if type < Types.TRASH_CAN: #is a garbage bag?
+		static_body.queue_free()
+		get_parent().remove_child(self)
+		litter_spawner.add_child(self)
 	
 #spawn rat if in correct conditions
 func spawn_rat_randomly() -> void:

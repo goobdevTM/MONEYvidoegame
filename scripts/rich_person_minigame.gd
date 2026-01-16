@@ -27,10 +27,11 @@ var bad_questions : Array[Dictionary] = [
 	{'q': "What do you want?!", 'good': 'You to have some awesome new stuff!', 'bad': "To sell you garbage."},
 	{'q': "Are you some scamming heathen?!", 'good': 'Nope, I just have a great deal for you!', 'bad': "Well.. yes.. but.."},
 	{'q': "You're gonna take my riches, arent you?!!", 'good': "Wouldn't dream of it!", 'bad': "Technically yes..."},
-	{'q': "Are you a part of the slob glagglewares family!??", 'good': "Nope, I hate them too.", 'bad': "HEY! Glagglewares is awesome!"},
+	{'q': "Are you a part of the slob GlaggleWares family!??", 'good': "Nope, I'm actually really cool.", 'bad': "Watch it with your language, buddy pal!!!"},
 	{'q': "Filthy cretin...", 'good': "I take a shower every day!", 'bad': "Well I bet you are uhh... Pretty stinky!!!"},
-	{'q': "No way I'll buy this!", 'good': "Just wait, it gets way better!", 'bad': "Fair point."},
-	{'q': "Scram!!!", 'good': "But don't you want your masterpiece?", 'bad': "Rude!!!"}
+	{'q': "No way I'll buy this!", 'good': "Just wait, it gets way better!", 'bad': "Okay, I don't even want your money."},
+	{'q': "Scram!!!", 'good': "But don't you want your masterpiece?", 'bad': "Rude!!!"},
+	{'q': "You disgust me.", 'good': "Okay.", 'bad': "You disgust ME, actually."}
 ]
 
 var neutral_questions : Array[Dictionary] = [
@@ -41,7 +42,8 @@ var neutral_questions : Array[Dictionary] = [
 	{'q': "You better not be selling TRASH!", 'good': "I would never sell trash to such a fine rich man!", 'bad': "What does it matter to you snob?!!"},
 	{'q': "Is there anything else?", 'good': "There's so much more!", 'bad': 'Nope, nothing else.'},
 	{'q': "Why should I buy this?", 'good': "Because it's a masterpiece!", 'bad': "To give me money."},
-	{'q': "What is your stance on filthy disgusting rats?", 'good': "Rats? Gross.", 'bad': "Rats aren't disgusting!"},
+	{'q': "What is your stance on filthy disgusting rats?", 'good': "Rats? Gross.", 'bad': "Rats aren't disgusting! Rude!!!"},
+	{'q': "I need to know more!", 'good': "I have so much to tell you!", 'bad': "Well too bad!!!"}
 ]
 
 var good_questions : Array[Dictionary] = [
@@ -54,6 +56,7 @@ var good_questions : Array[Dictionary] = [
 	{'q': "How do I know this is a good deal?", 'good': "My financial advisor says it's a great idea!", 'bad': "Trust me, it's definitely not trash..."},
 	{'q': "Are you rather wealthy?", 'good': "Obviously yes!", 'bad': "I can barely afford my disgusting alleyway..."},
 	{'q': "What's your favorite song?", 'good': "Rich corporate presentation music by Mr. Corporations!", 'bad': "Rats inna Nasty Hood Dumpster by GlaggleTunes"},
+	{'q': "This seems like it has potential...", 'good': "It sure does!", 'bad': "I don't think so..."}
 ]
 
 var good : int = randi_range(0,1)
@@ -75,7 +78,7 @@ func _ready() -> void:
 		Globals.question_speed_mult = 0.55 #easier easy
 	timer.wait_time = 1 / Globals.question_speed_mult
 	time_left.max_value = timer.wait_time
-	satisfaction = 12
+	satisfaction = 13
 	if Globals.rich_difficulty == 0:
 		satisfaction = 18
 	customer_satisfaction.value = satisfaction

@@ -233,11 +233,14 @@ func open_trash() -> void:
 				items_in_hand[0].sprite_open.hide()
 				items_in_hand[0].sprite_empty.show()
 				items_in_hand[0].empty = true
-				items_in_hand.remove_at(0)
 			highlight_item()
 			
 			#ADDS TO INVENTORY
 			add_item_to_inventory(Globals.get_item_with_chance(), false)
+		#double check to prevent crash
+		if len(items_in_hand) > 0 and items_in_hand[0] is Trash:
+			items_in_hand[0]._open()
+			items_in_hand.remove_at(0)
 #add item with inventory or swap
 func add_item_to_inventory(item : int, drop_items_at_hand : bool = true) -> void:
 	
