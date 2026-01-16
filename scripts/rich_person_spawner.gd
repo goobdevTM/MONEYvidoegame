@@ -13,7 +13,7 @@ func _ready() -> void:
 		for i in Globals.rich_person_max:
 			var rich_clone = RICH_PERSON.instantiate()
 			add_child(rich_clone)
-			rich_clone.position = Vector2(randi_range(-x_limit, x_limit), randi_range(-y_limit, y_limit))
+			rich_clone.global_position = Vector2(randi_range(-x_limit, x_limit), randi_range(-y_limit, y_limit))
 	else:
 		Globals.has_rich_people = false
 		while not (Globals.time < (Globals.day_length / 2) + ((Globals.day_length / 24) * 7) and Globals.time > (Globals.day_length / 2) - ((Globals.day_length / 24) * 5)):
@@ -22,4 +22,4 @@ func _ready() -> void:
 		for i in Globals.rich_person_max:
 			var rich_clone = RICH_PERSON.instantiate()
 			add_child(rich_clone)
-			rich_clone.position = Vector2(randi_range(-x_limit, x_limit), randi_range(-y_limit, y_limit))
+			rich_clone.global_position = Vector2(randi_range(-x_limit, x_limit), randi_range(-y_limit, y_limit))

@@ -125,6 +125,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("11_5pgt4")
 start_pos = Vector2(-140, 0)
+fade_dir = 1
 to_scene = "uid://buv7xaj8dmplv"
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
@@ -204,6 +205,7 @@ position = Vector2(256, 0)
 shape = SubResource("CircleShape2D_0w0s1")
 
 [node name="Fade" parent="." node_paths=PackedStringArray("borders") instance=ExtResource("15_42p0x")]
+fade_direction = -1
 borders = [NodePath("../Level/Borders/Home")]
 
 [node name="Note" type="Node2D" parent="." groups=["note"]]

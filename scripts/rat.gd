@@ -13,7 +13,7 @@ extends CharacterBody2D
 const LITTER = preload("uid://6nia0edfdeaj")
 
 #RATS ARE FAST SO YOU HAVE TO SPRINT TO CATCH THEM
-var speed : int = 1200
+var speed : int = 1450
 var friction : float = 0.7
 var direction : Vector2
 var hired : bool = false

@@ -9,6 +9,7 @@ var hired : bool = false
 var hovering : bool = false
 var my_name: String = ""
 var difficulty: int = 0
+var skedaddling : bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var piano_slam: AudioStreamPlayer = $PianoSlam
@@ -21,6 +22,7 @@ var difficulty: int = 0
 @onready var body: CollisionShape2D = $Body
 @onready var hat: CollisionShape2D = $Hat
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var timer: Timer = $Timer
 
 
 func generate_my_name() -> String:
@@ -67,7 +69,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if not Globals.has_rich_people:
+	if not Globals.has_rich_people and timer.time_left < 0.8:
 		skedaddle(delta)
 		return
 	else:
@@ -114,7 +116,6 @@ func spoken_to():
 		piano_slam.play()
 
 func skedaddle(delta: float):
-	
 	body.disabled = true
 	hat.disabled = true
 		

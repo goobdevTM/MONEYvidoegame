@@ -2659,6 +2659,7 @@ text = "Nope!"
 
 [node name="Fade" parent="." node_paths=PackedStringArray("borders") instance=ExtResource("41_v61ha")]
 borders = [NodePath("../Level/Borders/Game"), NodePath("../Level/Borders/Rich")]
+use_global_dir = true
 
 [node name="Newspaper" type="CanvasLayer" parent="."]
 process_mode = 3

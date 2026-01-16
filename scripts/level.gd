@@ -38,7 +38,7 @@ func generate_trash() -> void:
 		var new_trash : Trash = TRASH.instantiate()
 		trash_spawner.call_deferred("add_child", new_trash)
 		call_deferred("move", new_trash, Vector2(randi_range(thread_spawn_x, thread_spawn_x + 256), randf_range(-225.0, 242.0)))
-		if randi_range(0,3) == 0:
+		if i % 10 == 0:
 			await get_tree().create_timer(0).timeout
 		print(new_trash)
 	
