@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://buv7xaj8dmplv"]
+[gd_scene format=4 uid="uid://buv7xaj8dmplv"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_gdncb"]
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="2_2ugsq"]
@@ -169,6 +169,15 @@ font_weight = 600
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
 cache/0/16/0/ascent = 18.0
 cache/0/16/0/descent = 5.0
 cache/0/16/0/underline_position = 1.609375
@@ -1070,6 +1079,15 @@ font_weight = 600
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
 cache/0/16/0/ascent = 18.0
 cache/0/16/0/descent = 5.0
 cache/0/16/0/underline_position = 1.609375
@@ -2109,10 +2127,10 @@ anti_aliasing = false
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqru6"]
 radius = 7.071068
 
-[node name="Home" type="Node2D"]
+[node name="Home" type="Node2D" unique_id=527901898]
 script = ExtResource("1_gdncb")
 
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Camera" type="Camera2D" parent="." unique_id=231930495 node_paths=PackedStringArray("player")]
 zoom = Vector2(4, 4)
 limit_left = -160
 limit_top = -120
@@ -2121,82 +2139,82 @@ limit_bottom = 80
 script = ExtResource("2_2ugsq")
 player = NodePath("../Level/TrashSpawner/Player")
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="." unique_id=1861333968]
 
-[node name="MoneyOnGround" type="Node2D" parent="Level"]
+[node name="MoneyOnGround" type="Node2D" parent="Level" unique_id=713252591]
 
-[node name="cash1" type="Sprite2D" parent="Level/MoneyOnGround"]
+[node name="cash1" type="Sprite2D" parent="Level/MoneyOnGround" unique_id=1089993068]
 position = Vector2(-131, -9)
 texture = ExtResource("3_dicu7")
 
-[node name="cash2" type="Sprite2D" parent="Level/MoneyOnGround"]
+[node name="cash2" type="Sprite2D" parent="Level/MoneyOnGround" unique_id=2115827118]
 position = Vector2(-141, 5)
 rotation = -1.5707964
 texture = ExtResource("3_dicu7")
 
-[node name="cash3" type="Sprite2D" parent="Level/MoneyOnGround"]
+[node name="cash3" type="Sprite2D" parent="Level/MoneyOnGround" unique_id=600289558]
 position = Vector2(-150, -1)
 rotation = 1.5707964
 texture = ExtResource("3_dicu7")
 
-[node name="coin1" type="Sprite2D" parent="Level/MoneyOnGround"]
+[node name="coin1" type="Sprite2D" parent="Level/MoneyOnGround" unique_id=194437410]
 position = Vector2(-134, 4)
 texture = ExtResource("4_ejpdk")
 
-[node name="coin2" type="Sprite2D" parent="Level/MoneyOnGround"]
+[node name="coin2" type="Sprite2D" parent="Level/MoneyOnGround" unique_id=586731892]
 position = Vector2(-153, -10)
 rotation = -6.2831855
 texture = ExtResource("4_ejpdk")
 
-[node name="TrashOnGround" type="Node2D" parent="Level"]
+[node name="TrashOnGround" type="Node2D" parent="Level" unique_id=505801575]
 
-[node name="tissue1" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+[node name="tissue1" type="AnimatedSprite2D" parent="Level/TrashOnGround" unique_id=1452278507]
 position = Vector2(130, -10)
 sprite_frames = SubResource("SpriteFrames_qmde4")
 animation = &"tissue"
 
-[node name="tissue2" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+[node name="tissue2" type="AnimatedSprite2D" parent="Level/TrashOnGround" unique_id=232195854]
 position = Vector2(137, 9)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_qmde4")
 animation = &"tissue"
 
-[node name="cup1" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+[node name="cup1" type="AnimatedSprite2D" parent="Level/TrashOnGround" unique_id=899855311]
 position = Vector2(124, 4)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_qmde4")
 animation = &"cup"
 
-[node name="bottle1" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+[node name="bottle1" type="AnimatedSprite2D" parent="Level/TrashOnGround" unique_id=1829777870]
 position = Vector2(146, -4)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_qmde4")
 animation = &"bottle"
 
-[node name="bottle2" type="AnimatedSprite2D" parent="Level/TrashOnGround"]
+[node name="bottle2" type="AnimatedSprite2D" parent="Level/TrashOnGround" unique_id=372767892]
 position = Vector2(151, 5.000003)
 rotation = -3.1415925
 sprite_frames = SubResource("SpriteFrames_qmde4")
 animation = &"bottle"
 
-[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround"]
+[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround" unique_id=812272849]
 z_index = 10
 position = Vector2(136, -27)
 texture = ExtResource("6_ontve")
 
-[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
+[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround/TrashSign" unique_id=835872348]
 position = Vector2(-14, 0)
 texture = ExtResource("6_ontve")
 
-[node name="TrashSign2" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
+[node name="TrashSign2" type="Sprite2D" parent="Level/TrashOnGround/TrashSign" unique_id=499730116]
 position = Vector2(-14, 3)
 texture = ExtResource("6_ontve")
 
-[node name="TrashSign3" type="Sprite2D" parent="Level/TrashOnGround/TrashSign"]
+[node name="TrashSign3" type="Sprite2D" parent="Level/TrashOnGround/TrashSign" unique_id=216839989]
 position = Vector2(0, 3)
 texture = ExtResource("6_ontve")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Level/TrashOnGround/TrashSign"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/TrashOnGround/TrashSign" unique_id=924021561]
 offset_left = -23.0
 offset_right = 141.0
 offset_bottom = 40.0
@@ -2205,24 +2223,24 @@ theme = ExtResource("7_tqr01")
 text = "courtyard"
 horizontal_alignment = 1
 
-[node name="RichSign" type="Sprite2D" parent="Level/TrashOnGround"]
+[node name="RichSign" type="Sprite2D" parent="Level/TrashOnGround" unique_id=1409762496]
 z_index = 10
 position = Vector2(-122, -27)
 texture = ExtResource("6_ontve")
 
-[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
+[node name="TrashSign" type="Sprite2D" parent="Level/TrashOnGround/RichSign" unique_id=1341141640]
 position = Vector2(-14, 0)
 texture = ExtResource("6_ontve")
 
-[node name="TrashSign2" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
+[node name="TrashSign2" type="Sprite2D" parent="Level/TrashOnGround/RichSign" unique_id=1211778461]
 position = Vector2(-14, 3)
 texture = ExtResource("6_ontve")
 
-[node name="TrashSign3" type="Sprite2D" parent="Level/TrashOnGround/RichSign"]
+[node name="TrashSign3" type="Sprite2D" parent="Level/TrashOnGround/RichSign" unique_id=1121044795]
 position = Vector2(0, 3)
 texture = ExtResource("6_ontve")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Level/TrashOnGround/RichSign"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/TrashOnGround/RichSign" unique_id=1489628348]
 offset_left = -20.0
 offset_top = -1.0000001
 offset_right = 144.0
@@ -2233,101 +2251,99 @@ text = "rich person
 plaza"
 horizontal_alignment = 1
 
-[node name="Ground" type="TileMapLayer" parent="Level"]
+[node name="Ground" type="TileMapLayer" parent="Level" unique_id=887903453]
 z_index = -4096
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_k665q")
 
-[node name="NoiseOverlay" parent="Level" instance=ExtResource("9_lpms5")]
+[node name="NoiseOverlay" parent="Level" unique_id=752548046 instance=ExtResource("9_lpms5")]
 
-[node name="Shadow" type="TileMapLayer" parent="Level"]
+[node name="Shadow" type="TileMapLayer" parent="Level" unique_id=1065228474]
 tile_map_data = PackedByteArray("AAD2//7/AQAAAAAAAAD2//3/AQAAAAAAAAD2//z/AQAAAAAAAAD2//v/AQAAAAAAAAD2//r/AQAAAAAAAAD2//n/AQAAAAAAAAD2//j/AQAAAAAAAAD3//j/AQAAAAAAAAD4//j/AQAAAAAAAAD5//j/AQAAAAAAAAD6//j/AQAAAAAAAAD7//j/AQAAAAAAAAD8//j/AQAAAAAAAAD9//j/AQAAAAAAAAD+//j/AQAAAAAAAAD///j/AQAAAAAAAAAAAPj/AQAAAAAAAAABAPj/AQAAAAAAAAACAPj/AQAAAAAAAAADAPj/AQAAAAAAAAAEAPj/AQAAAAAAAAAFAPj/AQAAAAAAAAAGAPj/AQAAAAAAAAAHAPj/AQAAAAAAAAAIAPj/AQAAAAAAAAAJAPj/AQAAAAAAAAAJAPn/AQAAAAAAAAAJAPr/AQAAAAAAAAAJAPv/AQAAAAAAAAAJAPz/AQAAAAAAAAAJAP3/AQAAAAAAAAAJAP7/AQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAHAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAADAAcAAQAAAAAAAAACAAcAAQAAAAAAAAABAAcAAQAAAAAAAAAAAAcAAQAAAAAAAAD//wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD7/wcAAQAAAAAAAAD6/wcAAQAAAAAAAAD5/wcAAQAAAAAAAAD4/wcAAQAAAAAAAAD3/wcAAQAAAAAAAAD2/wcAAQAAAAAAAAD2/wYAAQAAAAAAAAD2/wUAAQAAAAAAAAD2/wQAAQAAAAAAAAD2/wMAAQAAAAAAAAD2/wIAAQAAAAAAAAD2/wEAAQAAAAAAAAD3/wQAAQAAAAAAAAD4/wQAAQAAAAAAAAD5/wQAAQAAAAAAAAD6/wQAAQAAAAAAAAD7/wQAAQAAAAAAAAD8/wQAAQAAAAAAAAD9/wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD//wQAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAIAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAADAAYAAQAAAAAAAAACAAYAAQAAAAAAAAABAAYAAQAAAAAAAAAAAAYAAQAAAAAAAAD//wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD4/wYAAQAAAAAAAAD3/wYAAQAAAAAAAAD3/wUAAQAAAAAAAAD4/wUAAQAAAAAAAAD5/wUAAQAAAAAAAAD6/wUAAQAAAAAAAAD7/wUAAQAAAAAAAAD8/wUAAQAAAAAAAAD9/wUAAQAAAAAAAAD+/wUAAQAAAAAAAAD//wUAAQAAAAAAAAAAAAUAAQAAAAAAAAABAAUAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAQAAAAAAAAAHAAUAAQAAAAAAAAAGAAUAAQAAAAAAAAAFAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAD3//v/AQAAAAAAAAD4//v/AQAAAAAAAAD5//v/AQAAAAAAAAD6//v/AQAAAAAAAAD7//v/AQAAAAAAAAD8//v/AQAAAAAAAAD9//v/AQAAAAAAAAD+//v/AQAAAAAAAAD///v/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPv/AQAAAAAAAAACAPv/AQAAAAAAAAACAPr/AQAAAAAAAAADAPr/AQAAAAAAAAAEAPr/AQAAAAAAAAAFAPr/AQAAAAAAAAAFAPv/AQAAAAAAAAAGAPv/AQAAAAAAAAAHAPv/AQAAAAAAAAAIAPv/AQAAAAAAAAAEAPv/AQAAAAAAAAADAPv/AQAAAAAAAAAIAPr/AQAAAAAAAAAHAPr/AQAAAAAAAAAGAPr/AQAAAAAAAAABAPr/AQAAAAAAAAAAAPn/AQAAAAAAAAD///n/AQAAAAAAAAD+//n/AQAAAAAAAAD9//n/AQAAAAAAAAD8//n/AQAAAAAAAAD7//n/AQAAAAAAAAD6//n/AQAAAAAAAAD5//n/AQAAAAAAAAD4//n/AQAAAAAAAAD3//n/AQAAAAAAAAD5//r/AQAAAAAAAAD6//r/AQAAAAAAAAD7//r/AQAAAAAAAAD8//r/AQAAAAAAAAD9//r/AQAAAAAAAAD+//r/AQAAAAAAAAD///r/AQAAAAAAAAAAAPr/AQAAAAAAAAAEAPn/AQAAAAAAAAAFAPn/AQAAAAAAAAAGAPn/AQAAAAAAAAAHAPn/AQAAAAAAAAAIAPn/AQAAAAAAAAADAPn/AQAAAAAAAAACAPn/AQAAAAAAAAABAPn/AQAAAAAAAAD4//r/AQAAAAAAAAD3//r/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_0ltf8")
 
-[node name="Bricks" type="TileMapLayer" parent="Level"]
+[node name="Bricks" type="TileMapLayer" parent="Level" unique_id=1662414050]
 tile_map_data = PackedByteArray("AAD2/wIAAAAAAAAAAAD2/wMAAAAAAAAAAAD2/wQAAAAAAAAAAAD2/wUAAAAAAAAAAAD2/wYAAAAAAAAAAAD2/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD4/wcAAAAAAAAAAAD5/wcAAAAAAAAAAAD6/wcAAAAAAAAAAAD7/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD9/wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAEAAAAAAAAAAAD2/wEAAAAAAAAAAAD2//7/AAAAAAAAAAD2//3/AAAAAAAAAAD2//z/AAAAAAAAAAD2//v/AAAAAAAAAAD2//r/AAAAAAAAAAD2//n/AAAAAAAAAAD2//j/AAAAAAAAAAD3//j/AAAAAAAAAAD4//j/AAAAAAAAAAD5//j/AAAAAAAAAAD6//j/AAAAAAAAAAD7//j/AAAAAAAAAAD8//j/AAAAAAAAAAD9//j/AAAAAAAAAAD+//j/AAAAAAAAAAD///j/AAAAAAAAAAAAAPj/AAAAAAAAAAABAPj/AAAAAAAAAAACAPj/AAAAAAAAAAADAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAHAPj/AAAAAAAAAAAIAPj/AAAAAAAAAAAJAPj/AAAAAAAAAAAJAPn/AAAAAAAAAAAJAPr/AAAAAAAAAAAJAPv/AAAAAAAAAAAJAPz/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAP7/AAAAAAAAAAD3//v/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//v/AAAAAAAAAAD7//v/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD+//r/AAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAACAPr/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAIAPv/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAADAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAIAPn/AAAAAAAAAAAHAPn/AAAAAAAAAAAGAPn/AAAAAAAAAAD8//n/AAAAAAAAAAD7//n/AAAAAAAAAAD6//n/AAAAAAAAAAD5//n/AAAAAAAAAAD4//n/AAAAAAAAAAD3//n/AAAAAAAAAAD3//r/AAAAAAAAAAD4//r/AAAAAAAAAAD5//r/AAAAAAAAAAD6//r/AAAAAAAAAAD7//r/AAAAAAAAAAD8//r/AAAAAAAAAAD9//r/AAAAAAAAAAD+//v/AAAAAAAAAAD9//n/AAAAAAAAAAD+//n/AAAAAAAAAAD///n/AAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAAFAPn/AAAAAAAAAAD3/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAD//wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD4/wUAAAAAAAAAAAD3/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD6/wYAAAAAAAAAAAD5/wYAAAAAAAAAAAD7/wYAAAAAAAAAAAD3/wUAAAAAAAAAAAD8/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAAAAPr/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_0ltf8")
 
-[node name="TrashSpawner" type="Node2D" parent="Level"]
+[node name="TrashSpawner" type="Node2D" parent="Level" unique_id=162144694]
 
-[node name="Player" parent="Level/TrashSpawner" instance=ExtResource("12_pgk7r")]
+[node name="Player" parent="Level/TrashSpawner" unique_id=317937265 instance=ExtResource("12_pgk7r")]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player" unique_id=1863000089]
 shape = SubResource("CircleShape2D_ri7o4")
 
-[node name="StorageDumpster" parent="Level" instance=ExtResource("13_73oun")]
+[node name="StorageDumpster" parent="Level" unique_id=212957073 instance=ExtResource("13_73oun")]
 position = Vector2(115, 44)
 
-[node name="LitterSpawner" type="Node2D" parent="Level"]
+[node name="LitterSpawner" type="Node2D" parent="Level" unique_id=1739242206]
 
-[node name="RatSpawner" type="Node2D" parent="Level"]
+[node name="RatSpawner" type="Node2D" parent="Level" unique_id=853727330]
 
-[node name="EnterGame" type="Area2D" parent="Level"]
+[node name="EnterGame" type="Area2D" parent="Level" unique_id=534984526]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("14_suir8")
 start_pos = Vector2(-356, 0)
-to_scene = "uid://7xb7pi6ik7sv"
 
-[node name="Collision" type="CollisionShape2D" parent="Level/EnterGame"]
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterGame" unique_id=918902777]
 position = Vector2(160, 0)
 shape = SubResource("WorldBoundaryShape2D_g8n7j")
 
-[node name="EnterRich" type="Area2D" parent="Level"]
+[node name="EnterRich" type="Area2D" parent="Level" unique_id=1675419276]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("14_suir8")
 start_pos = Vector2(244, 0)
-to_scene = "uid://cwq0qr0p3gujk"
 
-[node name="Collision" type="CollisionShape2D" parent="Level/EnterRich"]
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterRich" unique_id=2087339853]
 position = Vector2(-160, 0)
 shape = SubResource("WorldBoundaryShape2D_ju5sp")
 
-[node name="Borders" type="StaticBody2D" parent="Level"]
+[node name="Borders" type="StaticBody2D" parent="Level" unique_id=1909021239]
 position = Vector2(0, 41)
 collision_layer = 65
 collision_mask = 7
 
-[node name="Top" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Top" type="CollisionShape2D" parent="Level/Borders" unique_id=632323294]
 position = Vector2(0, -111)
 shape = SubResource("WorldBoundaryShape2D_kvj23")
 
-[node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Bottom" type="CollisionShape2D" parent="Level/Borders" unique_id=515706256]
 position = Vector2(0, 24)
 shape = SubResource("WorldBoundaryShape2D_dchyv")
 
-[node name="Game" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Game" type="CollisionShape2D" parent="Level/Borders" unique_id=273164006]
 position = Vector2(160, 0)
 shape = SubResource("WorldBoundaryShape2D_g8n7j")
 
-[node name="Rich" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Rich" type="CollisionShape2D" parent="Level/Borders" unique_id=246915226]
 position = Vector2(-160, 0)
 shape = SubResource("WorldBoundaryShape2D_ju5sp")
 
-[node name="Bed" type="Sprite2D" parent="Level" groups=["bed"]]
+[node name="Bed" type="Sprite2D" parent="Level" unique_id=1726554375 groups=["bed"]]
 z_index = -1
 position = Vector2(-22, 16)
 texture = ExtResource("17_022ap")
 script = ExtResource("18_133u5")
 
-[node name="HandArea" type="Area2D" parent="Level/Bed" groups=["bed", "for_hand"]]
+[node name="HandArea" type="Area2D" parent="Level/Bed" unique_id=958157585 groups=["bed", "for_hand"]]
 collision_layer = 84
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Bed/HandArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Bed/HandArea" unique_id=1726171347]
 shape = SubResource("RectangleShape2D_wa7t7")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1369210200]
 
-[node name="INVENTORY" parent="." instance=ExtResource("19_q1kkm")]
+[node name="INVENTORY" parent="." unique_id=1052428239 instance=ExtResource("19_q1kkm")]
 
-[node name="StorageGUI" type="CanvasLayer" parent="."]
+[node name="StorageGUI" type="CanvasLayer" parent="." unique_id=1534892071]
 process_mode = 3
 layer = 2
 visible = false
 script = ExtResource("20_0ny8m")
 
-[node name="BG" type="ColorRect" parent="StorageGUI"]
+[node name="BG" type="ColorRect" parent="StorageGUI" unique_id=1926429296]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2335,7 +2351,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control" parent="StorageGUI"]
+[node name="Control" type="Control" parent="StorageGUI" unique_id=1200887029]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2344,7 +2360,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_tqr01")
 
-[node name="Storage" type="Panel" parent="StorageGUI/Control"]
+[node name="Storage" type="Panel" parent="StorageGUI/Control" unique_id=1815016266]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2356,7 +2372,7 @@ offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="StorageGUI/Control/Storage"]
+[node name="GridContainer" type="GridContainer" parent="StorageGUI/Control/Storage" unique_id=2003145417]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2370,7 +2386,7 @@ grow_vertical = 2
 scale = Vector2(4, 4)
 columns = 6
 
-[node name="Inventory" type="Control" parent="StorageGUI/Control"]
+[node name="Inventory" type="Control" parent="StorageGUI/Control" unique_id=116130209]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2379,7 +2395,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="StorageGUI/Control/Inventory"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StorageGUI/Control/Inventory" unique_id=1816251887]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2391,11 +2407,11 @@ scale = Vector2(4, 4)
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="HoverItem" type="Sprite2D" parent="StorageGUI/Control"]
+[node name="HoverItem" type="Sprite2D" parent="StorageGUI/Control" unique_id=937858678]
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_6k6s7")
 
-[node name="Amount" type="RichTextLabel" parent="StorageGUI/Control/HoverItem"]
+[node name="Amount" type="RichTextLabel" parent="StorageGUI/Control/HoverItem" unique_id=1711526413]
 z_index = 100
 clip_contents = false
 offset_left = -6.75
@@ -2411,21 +2427,21 @@ text = "[right]x10
 "
 scroll_active = false
 
-[node name="Music" type="AudioStreamPlayer" parent="StorageGUI"]
+[node name="Music" type="AudioStreamPlayer" parent="StorageGUI" unique_id=1052390920]
 stream = ExtResource("22_p33y7")
 volume_db = -6.041
 bus = &"Music"
 
-[node name="Settings" parent="." instance=ExtResource("23_tft22")]
+[node name="Settings" parent="." unique_id=602881644 instance=ExtResource("23_tft22")]
 layer = 3
 visible = false
 
-[node name="UpgradeMenu" type="CanvasLayer" parent="."]
+[node name="UpgradeMenu" type="CanvasLayer" parent="." unique_id=177624339]
 process_mode = 3
 visible = false
 script = ExtResource("24_ftgv5")
 
-[node name="Panel" type="Panel" parent="UpgradeMenu"]
+[node name="Panel" type="Panel" parent="UpgradeMenu" unique_id=1896443109]
 process_mode = 3
 z_index = 999
 anchors_preset = 15
@@ -2435,7 +2451,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mg211")
 
-[node name="Smellizon" type="RichTextLabel" parent="UpgradeMenu/Panel"]
+[node name="Smellizon" type="RichTextLabel" parent="UpgradeMenu/Panel" unique_id=16097678]
 process_mode = 3
 clip_contents = false
 layout_mode = 0
@@ -2450,7 +2466,7 @@ theme_override_colors/font_outline_color = Color(0.4674765, 0.29414296, 4.813075
 bbcode_enabled = true
 text = "Smellizon"
 
-[node name="UpgradesText" type="RichTextLabel" parent="UpgradeMenu/Panel"]
+[node name="UpgradesText" type="RichTextLabel" parent="UpgradeMenu/Panel" unique_id=1007020508]
 process_mode = 3
 clip_contents = false
 layout_mode = 0
@@ -2465,13 +2481,13 @@ theme_override_colors/default_color = Color(0.9483334, 1, 0.38, 1)
 bbcode_enabled = true
 text = "Upgrades:"
 
-[node name="SmellizonLogo" type="Sprite2D" parent="UpgradeMenu/Panel"]
+[node name="SmellizonLogo" type="Sprite2D" parent="UpgradeMenu/Panel" unique_id=1515275449]
 process_mode = 3
 position = Vector2(169.00002, 18.000002)
 scale = Vector2(2.5625, 2.5625)
 texture = ExtResource("25_tpp26")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenu/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenu/Panel" unique_id=1489461670]
 process_mode = 3
 layout_mode = 0
 offset_left = 99.0
@@ -2480,25 +2496,25 @@ offset_right = 506.0
 offset_bottom = 346.0
 theme_override_constants/separation = 16
 
-[node name="Button1" parent="UpgradeMenu/Panel/HBoxContainer" instance=ExtResource("24_ctnpg")]
+[node name="Button1" parent="UpgradeMenu/Panel/HBoxContainer" unique_id=1626913840 instance=ExtResource("24_ctnpg")]
 process_mode = 3
 layout_mode = 2
 
-[node name="Button2" parent="UpgradeMenu/Panel/HBoxContainer" instance=ExtResource("24_ctnpg")]
+[node name="Button2" parent="UpgradeMenu/Panel/HBoxContainer" unique_id=84292808 instance=ExtResource("24_ctnpg")]
 process_mode = 3
 layout_mode = 2
 
-[node name="Button3" parent="UpgradeMenu/Panel/HBoxContainer" instance=ExtResource("24_ctnpg")]
+[node name="Button3" parent="UpgradeMenu/Panel/HBoxContainer" unique_id=1712914320 instance=ExtResource("24_ctnpg")]
 process_mode = 3
 layout_mode = 2
 
-[node name="Music" type="AudioStreamPlayer" parent="UpgradeMenu/Panel"]
+[node name="Music" type="AudioStreamPlayer" parent="UpgradeMenu/Panel" unique_id=839613967]
 process_mode = 3
 stream = ExtResource("32_ug8ri")
 volume_db = -11.089
 bus = &"Music"
 
-[node name="Reload" type="Button" parent="UpgradeMenu/Panel"]
+[node name="Reload" type="Button" parent="UpgradeMenu/Panel" unique_id=2056433868]
 process_mode = 3
 layout_mode = 0
 offset_left = 19.0
@@ -2510,7 +2526,7 @@ theme = ExtResource("7_tqr01")
 text = "reload - 10$"
 alignment = 0
 
-[node name="Exit" type="Button" parent="UpgradeMenu/Panel"]
+[node name="Exit" type="Button" parent="UpgradeMenu/Panel" unique_id=899069161]
 process_mode = 3
 layout_mode = 0
 offset_left = 545.0
@@ -2524,7 +2540,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_v8i26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jbfel")
 text = "exit"
 
-[node name="Money" type="RichTextLabel" parent="UpgradeMenu/Panel"]
+[node name="Money" type="RichTextLabel" parent="UpgradeMenu/Panel" unique_id=1100827744]
 process_mode = 3
 clip_contents = false
 layout_mode = 0
@@ -2540,44 +2556,44 @@ bbcode_enabled = true
 text = "0$"
 horizontal_alignment = 2
 
-[node name="PianoSlam" type="AudioStreamPlayer" parent="UpgradeMenu/Panel"]
+[node name="PianoSlam" type="AudioStreamPlayer" parent="UpgradeMenu/Panel" unique_id=831199342]
 stream = ExtResource("33_i85uk")
 
-[node name="Kaching" type="AudioStreamPlayer" parent="UpgradeMenu/Panel"]
+[node name="Kaching" type="AudioStreamPlayer" parent="UpgradeMenu/Panel" unique_id=356519440]
 stream = ExtResource("27_qtorc")
 
-[node name="MusicController" parent="." instance=ExtResource("34_70ow4")]
+[node name="MusicController" parent="." unique_id=547428515 instance=ExtResource("34_70ow4")]
 process_mode = 1
 
-[node name="ClickAndHover" parent="." instance=ExtResource("35_mi5hh")]
+[node name="ClickAndHover" parent="." unique_id=173343571 instance=ExtResource("35_mi5hh")]
 
-[node name="Table" type="Sprite2D" parent="." groups=["computer"]]
+[node name="Table" type="Sprite2D" parent="." unique_id=120663808 groups=["computer"]]
 position = Vector2(122, -50)
 texture = ExtResource("36_i20vv")
 
-[node name="Computer" type="Sprite2D" parent="Table"]
+[node name="Computer" type="Sprite2D" parent="Table" unique_id=1189320686]
 position = Vector2(-1, -11)
 texture = ExtResource("37_4eirr")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Table"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Table" unique_id=214354780]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/StaticBody2D" unique_id=35610072]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_mg211")
 
-[node name="HandArea" type="Area2D" parent="Table" groups=["computer", "for_hand"]]
+[node name="HandArea" type="Area2D" parent="Table" unique_id=1654992264 groups=["computer", "for_hand"]]
 collision_layer = 84
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/HandArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/HandArea" unique_id=341866778]
 position = Vector2(-1, -11)
 shape = SubResource("CircleShape2D_mg211")
 
-[node name="Garby" parent="." instance=ExtResource("38_6s8gi")]
+[node name="Garby" parent="." unique_id=1295062836 instance=ExtResource("38_6s8gi")]
 position = Vector2(-59, -32)
 
-[node name="Dialogue" type="CanvasLayer" parent="."]
+[node name="Dialogue" type="CanvasLayer" parent="." unique_id=1236777790]
 
-[node name="Panel" type="Panel" parent="Dialogue"]
+[node name="Panel" type="Panel" parent="Dialogue" unique_id=624569940]
 z_index = 999
 offset_left = 74.0
 offset_top = 234.0
@@ -2587,7 +2603,7 @@ pivot_offset = Vector2(243, 112)
 mouse_filter = 2
 theme = ExtResource("7_tqr01")
 
-[node name="Panel" type="Panel" parent="Dialogue/Panel"]
+[node name="Panel" type="Panel" parent="Dialogue/Panel" unique_id=1484018722]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
@@ -2595,12 +2611,12 @@ offset_right = 121.0
 offset_bottom = 130.0
 mouse_filter = 2
 
-[node name="Garby" type="Sprite2D" parent="Dialogue/Panel"]
+[node name="Garby" type="Sprite2D" parent="Dialogue/Panel" unique_id=1071242002]
 position = Vector2(66, 65)
 scale = Vector2(5.375, 5.375)
 texture = ExtResource("39_kmot5")
 
-[node name="Name" type="RichTextLabel" parent="Dialogue/Panel"]
+[node name="Name" type="RichTextLabel" parent="Dialogue/Panel" unique_id=2094959813]
 clip_contents = false
 layout_mode = 0
 offset_left = 17.0
@@ -2611,7 +2627,7 @@ scale = Vector2(1.3010098, 1.3010098)
 mouse_filter = 2
 text = "Garby:"
 
-[node name="Dialogue" type="RichTextLabel" parent="Dialogue/Panel"]
+[node name="Dialogue" type="RichTextLabel" parent="Dialogue/Panel" unique_id=1063156438]
 clip_contents = false
 layout_mode = 0
 offset_left = 131.0
@@ -2625,7 +2641,7 @@ text = "fasasfsaffafasafsfsaasfafsfasaffsafasfassfafsafasfasasfafssfafasfasfasas
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="Control" parent="Dialogue/Panel"]
+[node name="Buttons" type="Control" parent="Dialogue/Panel" unique_id=1196426139]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2635,7 +2651,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("40_nqjib")
 
-[node name="Give" type="Button" parent="Dialogue/Panel/Buttons"]
+[node name="Give" type="Button" parent="Dialogue/Panel/Buttons" unique_id=55619483]
 layout_mode = 0
 offset_left = 255.0
 offset_top = 106.0
@@ -2644,7 +2660,7 @@ offset_bottom = 137.0
 theme_override_font_sizes/font_size = 18
 text = "Give Litter"
 
-[node name="No" type="Button" parent="Dialogue/Panel/Buttons"]
+[node name="No" type="Button" parent="Dialogue/Panel/Buttons" unique_id=103765782]
 layout_mode = 0
 offset_left = 415.0
 offset_top = 106.0
@@ -2657,29 +2673,30 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hsf4p")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_0grxe")
 text = "Nope!"
 
-[node name="Fade" parent="." node_paths=PackedStringArray("borders") instance=ExtResource("41_v61ha")]
+[node name="Fade" parent="." unique_id=1749048039 node_paths=PackedStringArray("borders") instance=ExtResource("41_v61ha")]
+visible = false
 borders = [NodePath("../Level/Borders/Game"), NodePath("../Level/Borders/Rich")]
 use_global_dir = true
 
-[node name="Newspaper" type="CanvasLayer" parent="."]
+[node name="Newspaper" type="CanvasLayer" parent="." unique_id=1207213970]
 process_mode = 3
 layer = 999
 visible = false
 script = ExtResource("35_yecmm")
 
-[node name="NewsPaper" type="Sprite2D" parent="Newspaper"]
+[node name="NewsPaper" type="Sprite2D" parent="Newspaper" unique_id=1076713788]
 process_mode = 3
 z_index = 4096
 texture = ExtResource("35_ahbrv")
 centered = false
 
-[node name="PaperCrumpling" type="AudioStreamPlayer" parent="Newspaper"]
+[node name="PaperCrumpling" type="AudioStreamPlayer" parent="Newspaper" unique_id=1407468212]
 process_mode = 3
 stream = ExtResource("37_yecmm")
 volume_db = -3.207
 bus = &"Sounds"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Newspaper"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Newspaper" unique_id=1189717935]
 clip_contents = false
 offset_left = 537.0
 offset_top = 457.0
@@ -2689,20 +2706,20 @@ mouse_filter = 2
 theme = ExtResource("7_tqr01")
 text = "X - Exit"
 
-[node name="Note" type="Node2D" parent="." groups=["home", "note"]]
+[node name="Note" type="Node2D" parent="." unique_id=1859987382 groups=["home", "note"]]
 process_mode = 3
 z_index = -1
 position = Vector2(-54, 8)
 rotation = -1.5707964
 
-[node name="HandArea" type="Area2D" parent="Note" groups=["for_hand", "note"]]
+[node name="HandArea" type="Area2D" parent="Note" unique_id=1180480418 groups=["for_hand", "note"]]
 collision_layer = 84
 
-[node name="Scroll" type="Sprite2D" parent="Note/HandArea"]
+[node name="Scroll" type="Sprite2D" parent="Note/HandArea" unique_id=1201401051]
 position = Vector2(2.9999998, 4)
 texture = ExtResource("35_qtorc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Note/HandArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Note/HandArea" unique_id=826253012]
 position = Vector2(3, 4)
 shape = SubResource("CircleShape2D_dqru6")
 

@@ -4,7 +4,7 @@ extends Area2D
 
 @export var start_pos : Vector2
 @export var fade_dir : int = 0
-@export var to_scene : String
+@export var to_scene : PackedScene
 @onready var fade: Fade = $"../../Fade"
 
 func _on_body_entered(body: Node2D) -> void:
@@ -14,4 +14,4 @@ func _on_body_entered(body: Node2D) -> void:
 		#go
 		Globals.fade_dir = fade_dir
 		Globals.start_pos = start_pos
-		fade.fade_out(load(to_scene))
+		fade.fade_out(to_scene)

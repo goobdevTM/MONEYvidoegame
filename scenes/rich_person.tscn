@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://8fkuapxu0pm6"]
+[gd_scene format=3 uid="uid://8fkuapxu0pm6"]
 
 [ext_resource type="Script" uid="uid://b44cbc58uf4c2" path="res://scripts/rich_person.gd" id="1_4hxcs"]
 [ext_resource type="Texture2D" uid="uid://q05x7hlewo1o" path="res://sprites/rich_man.png" id="1_akup7"]
@@ -59,38 +59,38 @@ initial_velocity_max = 96.15
 gravity = Vector3(0, 98, 0)
 alpha_curve = SubResource("CurveTexture_prf6t")
 
-[node name="RichPerson" type="CharacterBody2D" groups=["npc", "rich_people"]]
+[node name="RichPerson" type="CharacterBody2D" unique_id=1327482195 groups=["npc", "rich_people"]]
 collision_mask = 387
 script = ExtResource("1_4hxcs")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=822706327]
 sprite_frames = SubResource("SpriteFrames_4hxcs")
 
-[node name="Body" type="CollisionShape2D" parent="."]
+[node name="Body" type="CollisionShape2D" parent="." unique_id=506019412]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_d1oat")
 
-[node name="Hat" type="CollisionShape2D" parent="."]
+[node name="Hat" type="CollisionShape2D" parent="." unique_id=1320603179]
 position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_akup7")
 
-[node name="RichPersonDetector" type="Area2D" parent="."]
+[node name="RichPersonDetector" type="Area2D" parent="." unique_id=1094399049]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RichPersonDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RichPersonDetector" unique_id=233384448]
 shape = SubResource("RectangleShape2D_4hxcs")
 
-[node name="HandArea" type="Area2D" parent="." groups=["for_hand"]]
+[node name="HandArea" type="Area2D" parent="." unique_id=517468274 groups=["for_hand"]]
 collision_layer = 84
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea" unique_id=1730116611]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_4hxcs")
 
-[node name="PianoSlam" type="AudioStreamPlayer" parent="."]
+[node name="PianoSlam" type="AudioStreamPlayer" parent="." unique_id=1302803413]
 stream = ExtResource("3_d1oat")
 bus = &"Sounds"
 
-[node name="Name" type="RichTextLabel" parent="."]
+[node name="Name" type="RichTextLabel" parent="." unique_id=1747748511]
 z_index = 10
 clip_contents = false
 offset_left = -31.0
@@ -104,30 +104,30 @@ text = "bob"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichPersonCollision" type="AudioStreamPlayer" parent="."]
+[node name="RichPersonCollision" type="AudioStreamPlayer" parent="." unique_id=1775271435]
 stream = SubResource("AudioStreamRandomizer_prf6t")
 bus = &"Sounds"
 
-[node name="PlayerCollision" type="AudioStreamPlayer" parent="."]
+[node name="PlayerCollision" type="AudioStreamPlayer" parent="." unique_id=1534581178]
 stream = SubResource("AudioStreamRandomizer_52tp8")
 bus = &"Sounds"
 
-[node name="PoorSound" type="AudioStreamPlayer" parent="."]
+[node name="PoorSound" type="AudioStreamPlayer" parent="." unique_id=362696330]
 stream = SubResource("AudioStreamRandomizer_cyvq0")
 volume_db = -4.0
 bus = &"Sounds"
 
-[node name="PoorParticles" type="GPUParticles2D" parent="."]
+[node name="PoorParticles" type="GPUParticles2D" parent="." unique_id=2131244920]
 emitting = false
 texture = ExtResource("5_prf6t")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_liyb7")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2005649916]
 rect = Rect2(-8, -12, 16, 24)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1026029051]
 one_shot = true
 autostart = true
 

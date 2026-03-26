@@ -166,6 +166,8 @@ var items : Array[Dictionary] = [
 	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.0005, "worth": 250,},
 ]
 
+var sorted_items : Array[int] = []
+
 var inventory : Array[Dictionary] = [
 	{'id': 0, 'count': 0},
 	{'id': 0, 'count': 0},
@@ -206,7 +208,7 @@ var has_rich_people: bool = false
 #GAME
 #SAVE RELATED VARIABLES SET LATER
 var working_rats : int
-var money : int 
+var money : int
 var time : float
 var day : int
 var sleeping : bool
@@ -237,6 +239,16 @@ var current_save : int = 0
 func _ready() -> void:
 	load_data()
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	#SORT ITEMS BY PERCENTAGE (DON'T CHANGE)
+	var min_percentage : float = 2
+	var item_to_add : int = 0
+	for j in range(len(items)):
+		for i in range(len(items)):
+			if items[i]["chance"] < min_percentage:
+				item_to_add = i 
+				min_percentage = items[i]["chance"]
+		sorted_items.append(item_to_add)
 
 #SAVING AND LOADING
 var file_path: String = "user://save_data.save"
@@ -377,8 +389,8 @@ func get_item_with_chance(lucky_multiplier : int = 1) -> int:
 	
 	var to_return: int = 0
 	
-	for i in range(len(items)):
-		if randf_range(0.0, 1.0 / lucky_multiplier) <= items[i]['chance'] and i <= areas[area]['max_litter']:
+	for i in range(len(sorted_items)):
+		if randf_range(0.0, 1.0 / lucky_multiplier) <= items[sorted_items[i]]['chance'] and i <= areas[area]['max_litter']:
 			to_return = i
 	return to_return
 	
