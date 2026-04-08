@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://jjo26rmcgd4a"]
+[gd_scene format=4 uid="uid://jjo26rmcgd4a"]
 
 [ext_resource type="Texture2D" uid="uid://6xicn7mn56r0" path="res://sprites/STTRP_logo.png" id="1_6d6rd"]
 [ext_resource type="Script" uid="uid://cxkuuv3vfsnnu" path="res://scripts/titlescreen.gd" id="1_84han"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="13_hcbn3"]
 [ext_resource type="Script" uid="uid://bu8tlcju30cka" path="res://scripts/confirm_delete.gd" id="16_y7yat"]
 [ext_resource type="AudioStream" uid="uid://m2w5i2ccvghu" path="res://audio/sfx/plane_crash.mp3" id="17_t3dwt"]
-[ext_resource type="PackedScene" uid="uid://yfeqsc4o8gj7" path="res://scenes/fade.tscn" id="18_anfsg"]
+[ext_resource type="PackedScene" uid="uid://crhwl6opbfl82" path="res://scenes/fade.tscn" id="18_anfsg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tt55a"]
 texture = ExtResource("2_3jj3l")
@@ -100,7 +100,7 @@ anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_lsij0"]
 
-[node name="Titlescreen" type="Control"]
+[node name="Titlescreen" type="Control" unique_id=764644288]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,48 +110,48 @@ grow_vertical = 2
 theme = ExtResource("1_v7hj3")
 script = ExtResource("1_84han")
 
-[node name="Logo" type="Sprite2D" parent="."]
+[node name="Logo" type="Sprite2D" parent="." unique_id=2011530776]
 position = Vector2(315, 107)
 scale = Vector2(4, 4)
 texture = ExtResource("1_6d6rd")
 
-[node name="Ground" type="TileMapLayer" parent="."]
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1633162561]
 z_index = -4096
 position = Vector2(308, 239)
 scale = Vector2(2.4493442, 2.4493442)
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_t7v6v")
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="Sprites" type="Node2D" parent="." unique_id=1887739828]
 scale = Vector2(4, 4)
 
-[node name="TrashBin" type="Sprite2D" parent="Sprites"]
+[node name="TrashBin" type="Sprite2D" parent="Sprites" unique_id=1833615704]
 position = Vector2(122, 103.75)
 texture = ExtResource("3_rpvs4")
 
-[node name="GarbageBag" type="Sprite2D" parent="Sprites"]
+[node name="GarbageBag" type="Sprite2D" parent="Sprites" unique_id=341360315]
 position = Vector2(146, 104)
 texture = ExtResource("3_tt55a")
 
-[node name="SmallGarbageBagOpen" type="Sprite2D" parent="Sprites"]
+[node name="SmallGarbageBagOpen" type="Sprite2D" parent="Sprites" unique_id=244405550]
 position = Vector2(133, 110)
 texture = ExtResource("4_vhbaf")
 flip_h = true
 
-[node name="Dumpster" type="Sprite2D" parent="Sprites"]
+[node name="Dumpster" type="Sprite2D" parent="Sprites" unique_id=1056138661]
 position = Vector2(24, 104)
 texture = ExtResource("4_t7v6v")
 flip_h = true
 
-[node name="SmallGarbageBag" type="Sprite2D" parent="Sprites"]
+[node name="SmallGarbageBag" type="Sprite2D" parent="Sprites" unique_id=1755231884]
 position = Vector2(8, 110)
 texture = ExtResource("6_v6ms7")
 
-[node name="SmallGarbageBagOpen2" type="Sprite2D" parent="Sprites"]
+[node name="SmallGarbageBagOpen2" type="Sprite2D" parent="Sprites" unique_id=1282268997]
 position = Vector2(46, 110)
 texture = ExtResource("4_vhbaf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1173107846]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -164,22 +164,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_8or72")
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=1373068221]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "PLAY"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=804953157]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=803350674]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "QUIT"
 
-[node name="BottomButtons" type="Control" parent="."]
+[node name="BottomButtons" type="Control" parent="." unique_id=1312915009]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,7 +189,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("10_8or72")
 
-[node name="Website" type="Button" parent="BottomButtons"]
+[node name="Website" type="Button" parent="BottomButtons" unique_id=2068758477]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 2
@@ -204,7 +204,7 @@ icon = ExtResource("11_ybki2")
 icon_alignment = 1
 expand_icon = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BottomButtons/Website"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BottomButtons/Website" unique_id=1182625006]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
@@ -219,7 +219,7 @@ grow_vertical = 2
 bbcode_enabled = true
 text = "[center]Website"
 
-[node name="Saves" type="VBoxContainer" parent="BottomButtons"]
+[node name="Saves" type="VBoxContainer" parent="BottomButtons" unique_id=873625388]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -235,28 +235,28 @@ grow_vertical = 2
 alignment = 2
 script = ExtResource("10_8or72")
 
-[node name="1" parent="BottomButtons/Saves" instance=ExtResource("12_lsij0")]
+[node name="1" parent="BottomButtons/Saves" unique_id=1964823101 instance=ExtResource("12_lsij0")]
 layout_mode = 2
 button_pressed = true
 
-[node name="2" parent="BottomButtons/Saves" instance=ExtResource("12_lsij0")]
+[node name="2" parent="BottomButtons/Saves" unique_id=297336280 instance=ExtResource("12_lsij0")]
 layout_mode = 2
 
-[node name="3" parent="BottomButtons/Saves" instance=ExtResource("12_lsij0")]
+[node name="3" parent="BottomButtons/Saves" unique_id=1056643057 instance=ExtResource("12_lsij0")]
 layout_mode = 2
 
-[node name="Settings" parent="." instance=ExtResource("9_w77yj")]
+[node name="Settings" parent="." unique_id=1057089856 instance=ExtResource("9_w77yj")]
 visible = false
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=2081679424]
 stream = ExtResource("9_6ejck")
 volume_db = -3.021
 autoplay = true
 bus = &"Music"
 
-[node name="ClickAndHover" parent="." instance=ExtResource("13_hcbn3")]
+[node name="ClickAndHover" parent="." unique_id=1687305051 instance=ExtResource("13_hcbn3")]
 
-[node name="ConfirmDelete" type="Panel" parent="."]
+[node name="ConfirmDelete" type="Panel" parent="." unique_id=589343993]
 visible = false
 layout_mode = 0
 offset_left = 154.0
@@ -267,7 +267,7 @@ theme = ExtResource("1_v7hj3")
 theme_override_styles/panel = SubResource("StyleBoxFlat_anfsg")
 script = ExtResource("16_y7yat")
 
-[node name="Panel" type="Panel" parent="ConfirmDelete"]
+[node name="Panel" type="Panel" parent="ConfirmDelete" unique_id=1238324452]
 show_behind_parent = true
 layout_mode = 1
 offset_left = -176.0
@@ -276,7 +276,7 @@ offset_right = 510.0
 offset_bottom = 325.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rh5o5")
 
-[node name="Yes" type="Button" parent="ConfirmDelete"]
+[node name="Yes" type="Button" parent="ConfirmDelete" unique_id=2114865996]
 layout_mode = 0
 offset_left = 173.0
 offset_top = 100.0
@@ -288,7 +288,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_y7yat")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t3dwt")
 text = "yes"
 
-[node name="No" type="Button" parent="ConfirmDelete"]
+[node name="No" type="Button" parent="ConfirmDelete" unique_id=1586268551]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 100.0
@@ -297,7 +297,7 @@ offset_bottom = 158.0
 theme = ExtResource("1_v7hj3")
 text = "no"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ConfirmDelete"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ConfirmDelete" unique_id=1697377021]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 15.0
@@ -308,12 +308,12 @@ text = "Are you sure you want to delete this save?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlaneCrash" type="AudioStreamPlayer" parent="ConfirmDelete"]
+[node name="PlaneCrash" type="AudioStreamPlayer" parent="ConfirmDelete" unique_id=559266253]
 stream = ExtResource("17_t3dwt")
 volume_db = -4.9
 bus = &"Sounds"
 
-[node name="Fade" parent="." instance=ExtResource("18_anfsg")]
+[node name="Fade" parent="." unique_id=186705545 instance=ExtResource("18_anfsg")]
 visible = false
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]

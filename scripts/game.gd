@@ -27,13 +27,8 @@ func _ready() -> void:
 	
 	if game:
 		set_area_upgrade_text()
-	for i in range(Globals.working_rats):
-		var new_rat = RAT.instantiate()
-		new_rat.hired = true
+
 		
-		rat_spawner.add_child(new_rat)
-		new_rat.global_position = player.global_position + Vector2(randi_range(-50, 50), randi_range(-50, 50))
-	
 	Globals.set_ui_sounds(click_and_hover)
 	Globals.in_game = true
 	Globals.selected_slot += 1
@@ -41,9 +36,18 @@ func _ready() -> void:
 	await get_tree().create_timer(0).timeout
 	if Globals.selected_slot == -1:
 		Globals.selected_slot = 0
+		
 	#fix bufg NO ROMOVE!!!
 	Globals.selected_slot -= 1
 	Globals.emit_signal("slot_selected")
+	for i in range(Globals.working_rats):
+		var new_rat = RAT.instantiate()
+		new_rat.hired = true
+		
+		rat_spawner.add_child(new_rat)
+		new_rat.global_position = player.global_position + Vector2(randi_range(-50, 50), randi_range(-50, 50))
+		if randi_range(0, 1) == 0:
+			await get_tree().create_timer(0).timeout
 	while is_inside_tree(): #AUTOSAVE
 		await get_tree().create_timer(15).timeout
 		Globals.set_saves(Globals.current_save)

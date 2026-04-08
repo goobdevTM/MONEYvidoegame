@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cwq0qr0p3gujk"]
+[gd_scene format=4 uid="uid://cwq0qr0p3gujk"]
 
 [ext_resource type="Script" uid="uid://wue2yrthd0b3" path="res://scripts/game.gd" id="1_hos2y"]
 [ext_resource type="PackedScene" uid="uid://my0n35c0lp3w" path="res://scenes/click_and_hover.tscn" id="2_4w4jk"]
@@ -78,11 +78,11 @@ radius = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2a0u"]
 radius = 10.049875
 
-[node name="RichPlaza" type="Node2D"]
+[node name="RichPlaza" type="Node2D" unique_id=617154473]
 script = ExtResource("1_hos2y")
 rich_plaza = true
 
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Camera" type="Camera2D" parent="." unique_id=628404321 node_paths=PackedStringArray("player")]
 zoom = Vector2(4, 4)
 limit_left = -256
 limit_top = -192
@@ -91,88 +91,87 @@ limit_bottom = 192
 script = ExtResource("2_5g0d7")
 player = NodePath("../Level/TrashSpawner/Player")
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="." unique_id=44976193]
 
-[node name="Ground" type="TileMapLayer" parent="Level"]
+[node name="Ground" type="TileMapLayer" parent="Level" unique_id=199560437]
 z_index = -4096
 tile_map_data = PackedByteArray("AAD+/wAAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAAAAP//AQAAAAAAAAD/////AQAAAAAAAAD+////AQAAAAAAAAD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAACAP7/AQAAAAAAAAACAP//AQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAD//wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wAAAQAAAAAAAAD9////AQAAAAAAAAD9//7/AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_kgh3f")
 
-[node name="LitterSpawner" type="Node2D" parent="Level"]
+[node name="LitterSpawner" type="Node2D" parent="Level" unique_id=1254560793]
 
-[node name="RatSpawner" type="Node2D" parent="Level"]
+[node name="RatSpawner" type="Node2D" parent="Level" unique_id=1540063387]
 
-[node name="TrashSpawner" type="Node2D" parent="Level"]
+[node name="TrashSpawner" type="Node2D" parent="Level" unique_id=1681366550]
 script = ExtResource("4_cfjbj")
 
-[node name="Player" parent="Level/TrashSpawner" instance=ExtResource("7_42p0x")]
+[node name="Player" parent="Level/TrashSpawner" unique_id=662031032 instance=ExtResource("7_42p0x")]
 position = Vector2(140, 0)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player" unique_id=1657717471]
 shape = SubResource("CircleShape2D_dsnp2")
 
-[node name="Shadow" type="TileMapLayer" parent="Level"]
+[node name="Shadow" type="TileMapLayer" parent="Level" unique_id=85898393]
 tile_map_data = PackedByteArray("AAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAADAAwAAAAAAAAAAAACAAwAAAAAAAAAAAABAAwAAAAAAAAAAAAAAAwAAAAAAAAAAAD//wwAAAAAAAAAAAD+/wwAAAAAAAAAAAD9/wwAAAAAAAAAAAD8/wwAAAAAAAAAAAD7/wwAAAAAAAAAAAD6/wwAAAAAAAAAAAD5/wwAAAAAAAAAAAD4/wwAAAAAAAAAAAD3/wwAAAAAAAAAAAD2/wwAAAAAAAAAAAD1/wwAAAAAAAAAAAD0/wwAAAAAAAAAAADz/wwAAAAAAAAAAADy/wwAAAAAAAAAAADx/wwAAAAAAAAAAADw/wwAAAAAAAAAAADw/wsAAAAAAAAAAADw/woAAAAAAAAAAADw/wkAAAAAAAAAAADw/wgAAAAAAAAAAADw/wcAAAAAAAAAAADw/wYAAAAAAAAAAADw/wUAAAAAAAAAAADw/wQAAAAAAAAAAADw/wMAAAAAAAAAAADw/wIAAAAAAAAAAADw/wEAAAAAAAAAAADw/wAAAAAAAAAAAADw////AAAAAAAAAADw//7/AAAAAAAAAADw//3/AAAAAAAAAADw//z/AAAAAAAAAADw//v/AAAAAAAAAADw//r/AAAAAAAAAADw//n/AAAAAAAAAADw//j/AAAAAAAAAADw//f/AAAAAAAAAADw//b/AAAAAAAAAADw//X/AAAAAAAAAADw//T/AAAAAAAAAADx//T/AAAAAAAAAADy//T/AAAAAAAAAADz//T/AAAAAAAAAAD0//T/AAAAAAAAAAD1//T/AAAAAAAAAAD2//T/AAAAAAAAAAD3//T/AAAAAAAAAAD4//T/AAAAAAAAAAD5//T/AAAAAAAAAAD6//T/AAAAAAAAAAD7//T/AAAAAAAAAAD8//T/AAAAAAAAAAD9//T/AAAAAAAAAAD+//T/AAAAAAAAAAD///T/AAAAAAAAAAAAAPT/AAAAAAAAAAABAPT/AAAAAAAAAAACAPT/AAAAAAAAAAADAPT/AAAAAAAAAAAEAPT/AAAAAAAAAAAFAPT/AAAAAAAAAAAGAPT/AAAAAAAAAAAHAPT/AAAAAAAAAAAIAPT/AAAAAAAAAAAJAPT/AAAAAAAAAAAKAPT/AAAAAAAAAAALAPT/AAAAAAAAAAAMAPT/AAAAAAAAAAANAPT/AAAAAAAAAAAOAPT/AAAAAAAAAAAPAPT/AAAAAAAAAAAPAPX/AAAAAAAAAAAPAPb/AAAAAAAAAAAPAPf/AAAAAAAAAAAPAPj/AAAAAAAAAAAPAPn/AAAAAAAAAAAPAPr/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAPAP7/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_cfjbj")
 
-[node name="Bricks" type="TileMapLayer" parent="Level"]
+[node name="Bricks" type="TileMapLayer" parent="Level" unique_id=1243376913]
 tile_map_data = PackedByteArray("AAAPAAEAAgAAAAAAAAAPAAIAAgAAAAAAAAAPAAMAAgAAAAAAAAAPAAQAAgAAAAAAAAAPAAUAAgAAAAAAAAAPAAYAAgAAAAAAAAAPAAcAAgAAAAAAAAAPAP7/AgAAAAAAAAAPAP3/AgAAAAAAAAAPAPz/AgAAAAAAAAAPAPv/AgAAAAAAAAAPAPr/AgAAAAAAAAAPAPn/AgAAAAAAAAAPAPj/AgAAAAAAAAAPAPT/AgAAAAAAAAAPAPX/AgAAAAAAAAAPAPb/AgAAAAAAAAAPAPf/AgAAAAAAAAAPAAsAAgAAAAAAAAAPAAoAAgAAAAAAAAAPAAkAAgAAAAAAAAAPAAgAAgAAAAAAAAAPAAwAAgAAAAAAAAAOAAwAAgAAAAAAAAANAAwAAgAAAAAAAAAMAAwAAgAAAAAAAAALAAwAAgAAAAAAAAAKAAwAAgAAAAAAAAAJAAwAAgAAAAAAAAAIAAwAAgAAAAAAAAAHAAwAAgAAAAAAAAAGAAwAAgAAAAAAAAAFAAwAAgAAAAAAAAAEAAwAAgAAAAAAAAADAAwAAgAAAAAAAAACAAwAAgAAAAAAAAABAAwAAgAAAAAAAAAAAAwAAgAAAAAAAAD//wwAAgAAAAAAAAD+/wwAAgAAAAAAAAD9/wwAAgAAAAAAAAD8/wwAAgAAAAAAAAD7/wwAAgAAAAAAAAD6/wwAAgAAAAAAAAD5/wwAAgAAAAAAAAD4/wwAAgAAAAAAAAD3/wwAAgAAAAAAAAD2/wwAAgAAAAAAAAD1/wwAAgAAAAAAAAD0/wwAAgAAAAAAAADz/wwAAgAAAAAAAADy/wwAAgAAAAAAAADx/wwAAgAAAAAAAADw/wwAAgAAAAAAAADw/wsAAgAAAAAAAADw/woAAgAAAAAAAADw/wkAAgAAAAAAAADw/wgAAgAAAAAAAADw/wcAAgAAAAAAAADw/wYAAgAAAAAAAADw/wUAAgAAAAAAAADw/wQAAgAAAAAAAADw/wMAAgAAAAAAAADw/wIAAgAAAAAAAADw/wEAAgAAAAAAAADw/wAAAgAAAAAAAADw////AgAAAAAAAADw//7/AgAAAAAAAADw//3/AgAAAAAAAADw//z/AgAAAAAAAADw//v/AgAAAAAAAADw//r/AgAAAAAAAAAOAPT/AgAAAAAAAAANAPT/AgAAAAAAAAAMAPT/AgAAAAAAAAALAPT/AgAAAAAAAAAKAPT/AgAAAAAAAAAJAPT/AgAAAAAAAAAIAPT/AgAAAAAAAAAHAPT/AgAAAAAAAAAGAPT/AgAAAAAAAAAFAPT/AgAAAAAAAAAEAPT/AgAAAAAAAAADAPT/AgAAAAAAAAACAPT/AgAAAAAAAAABAPT/AgAAAAAAAAAAAPT/AgAAAAAAAAD///T/AgAAAAAAAAD+//T/AgAAAAAAAAD9//T/AgAAAAAAAAD8//T/AgAAAAAAAAD7//T/AgAAAAAAAAD6//T/AgAAAAAAAAD5//T/AgAAAAAAAAD4//T/AgAAAAAAAAD3//T/AgAAAAAAAAD2//T/AgAAAAAAAAD1//T/AgAAAAAAAAD0//T/AgAAAAAAAADz//T/AgAAAAAAAADy//T/AgAAAAAAAADx//T/AgAAAAAAAADw//T/AgAAAAAAAADw//X/AgAAAAAAAADw//b/AgAAAAAAAADw//f/AgAAAAAAAADw//j/AgAAAAAAAADw//n/AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_42p0x")
 
-[node name="EnterHome" type="Area2D" parent="Level"]
+[node name="EnterHome" type="Area2D" parent="Level" unique_id=1365792007]
 position = Vector2(96, 0)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("11_5pgt4")
 start_pos = Vector2(-140, 0)
 fade_dir = 1
-to_scene = "uid://buv7xaj8dmplv"
 
-[node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterHome" unique_id=492355809]
 position = Vector2(160, 0)
 shape = SubResource("WorldBoundaryShape2D_quxuj")
 
-[node name="Borders" type="StaticBody2D" parent="Level"]
+[node name="Borders" type="StaticBody2D" parent="Level" unique_id=195302920]
 collision_layer = 65
 collision_mask = 7
 
-[node name="Top" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Top" type="CollisionShape2D" parent="Level/Borders" unique_id=1608286783]
 position = Vector2(0, -176)
 shape = SubResource("WorldBoundaryShape2D_l2qw1")
 
-[node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Bottom" type="CollisionShape2D" parent="Level/Borders" unique_id=732128548]
 position = Vector2(0, 192)
 shape = SubResource("WorldBoundaryShape2D_aps22")
 
-[node name="Left" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Left" type="CollisionShape2D" parent="Level/Borders" unique_id=1554577729]
 position = Vector2(-241, 21)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_cfjbj")
 
-[node name="RightBottom" type="CollisionShape2D" parent="Level/Borders"]
+[node name="RightBottom" type="CollisionShape2D" parent="Level/Borders" unique_id=490540163]
 position = Vector2(249, 111.5)
 shape = SubResource("RectangleShape2D_0w0s1")
 
-[node name="RightTop" type="CollisionShape2D" parent="Level/Borders"]
+[node name="RightTop" type="CollisionShape2D" parent="Level/Borders" unique_id=1127804170]
 position = Vector2(249, -112)
 shape = SubResource("RectangleShape2D_0w0s1")
 
-[node name="Home" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Home" type="CollisionShape2D" parent="Level/Borders" unique_id=1532588854]
 position = Vector2(253, 0)
 shape = SubResource("WorldBoundaryShape2D_quxuj")
 
-[node name="HomeSign" type="Sprite2D" parent="Level"]
+[node name="HomeSign" type="Sprite2D" parent="Level" unique_id=2050103899]
 self_modulate = Color(0, 1, 0, 1)
 z_index = 10
 position = Vector2(232, -23)
 texture = ExtResource("9_0w0s1")
 
-[node name="TrashSign2" type="Sprite2D" parent="Level/HomeSign"]
+[node name="TrashSign2" type="Sprite2D" parent="Level/HomeSign" unique_id=2137387359]
 self_modulate = Color(0, 1, 0, 1)
 position = Vector2(0, 3)
 texture = ExtResource("9_0w0s1")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Level/HomeSign"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/HomeSign" unique_id=879769625]
 modulate = Color(1, 1, 0, 1)
 offset_left = -16.0
 offset_right = 148.0
@@ -182,48 +181,48 @@ theme = ExtResource("10_42p0x")
 text = "home"
 horizontal_alignment = 1
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=700455053]
 
-[node name="INVENTORY" parent="." instance=ExtResource("8_cfjbj")]
+[node name="INVENTORY" parent="." unique_id=539334580 instance=ExtResource("8_cfjbj")]
 
-[node name="Settings" parent="." instance=ExtResource("9_62evx")]
+[node name="Settings" parent="." unique_id=687770601 instance=ExtResource("9_62evx")]
 visible = false
 
-[node name="RichMusic" type="AudioStreamPlayer" parent="."]
+[node name="RichMusic" type="AudioStreamPlayer" parent="." unique_id=787501257]
 stream = ExtResource("13_0w0s1")
 volume_db = -9.062
 autoplay = true
 bus = &"Music"
 
-[node name="ClickAndHover" parent="." instance=ExtResource("2_4w4jk")]
+[node name="ClickAndHover" parent="." unique_id=185323487 instance=ExtResource("2_4w4jk")]
 
-[node name="RichBorder" type="StaticBody2D" parent="."]
+[node name="RichBorder" type="StaticBody2D" parent="." unique_id=852477497]
 collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RichBorder"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RichBorder" unique_id=2035765041]
 position = Vector2(256, 0)
 shape = SubResource("CircleShape2D_0w0s1")
 
-[node name="Fade" parent="." node_paths=PackedStringArray("borders") instance=ExtResource("15_42p0x")]
+[node name="Fade" parent="." unique_id=1119677791 node_paths=PackedStringArray("borders") instance=ExtResource("15_42p0x")]
 fade_direction = -1
 borders = [NodePath("../Level/Borders/Home")]
 
-[node name="Note" type="Node2D" parent="." groups=["note"]]
+[node name="Note" type="Node2D" parent="." unique_id=1306837615 groups=["note"]]
 visible = false
 z_index = -1
 
-[node name="HandArea" type="Area2D" parent="Note" groups=["for_hand", "note"]]
+[node name="HandArea" type="Area2D" parent="Note" unique_id=1231444365 groups=["for_hand", "note"]]
 position = Vector2(208, -32)
 collision_layer = 84
 
-[node name="Scroll" type="Sprite2D" parent="Note/HandArea"]
+[node name="Scroll" type="Sprite2D" parent="Note/HandArea" unique_id=1187009708]
 texture = ExtResource("16_f2a0u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Note/HandArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Note/HandArea" unique_id=1243816132]
 shape = SubResource("CircleShape2D_f2a0u")
 disabled = true
 
-[node name="Pop" type="AudioStreamPlayer" parent="."]
+[node name="Pop" type="AudioStreamPlayer" parent="." unique_id=1403912858]
 stream = ExtResource("17_tsjoh")
 bus = &"Sounds"
 

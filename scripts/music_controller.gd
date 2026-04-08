@@ -13,10 +13,14 @@ func _ready() -> void:
 			if get_child(i).is_in_group("main_songs"):
 				if rat_theme.playing:
 					await rat_theme.finished
-				get_child(i).play()
 				current_song = get_child(i)
+				current_song.play(Globals.song_time + 0.025)
 				Globals.song_playing = i
-				await get_child(i).finished
+				while current_song.playing:
+					await get_tree().create_timer(0.1).timeout
+					Globals.song_time = current_song.get_playback_position()
+				Globals.song_time = 0
+		Globals.song_playing = 0
 
 func play_rat_theme():
 	tween.stop()

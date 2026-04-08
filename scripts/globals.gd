@@ -9,6 +9,7 @@ var rat_rarity : int = 16 #16
 var rats_running : int = 0
 
 var song_playing : int = 0
+var song_time : float = 0
 
 #ALSO UPGRADES
 var upgrade_multipliers: Dictionary[String, float] = {

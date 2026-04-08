@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://7xb7pi6ik7sv"]
+[gd_scene format=4 uid="uid://7xb7pi6ik7sv"]
 
 [ext_resource type="Script" uid="uid://dwlq803v73ku" path="res://scripts/camera.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bo5p30nobsekf" path="res://sprites/ground.png" id="1_lbhrr"]
@@ -116,11 +116,11 @@ alpha_curve = SubResource("CurveTexture_cyvq0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_264po"]
 size = Vector2(326, 587)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=254201228]
 script = ExtResource("1_ssvqc")
 game = true
 
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Camera" type="Camera2D" parent="." unique_id=1220031036 node_paths=PackedStringArray("player")]
 zoom = Vector2(4, 4)
 limit_left = -384
 limit_top = -256
@@ -130,111 +130,110 @@ script = ExtResource("1_iywne")
 generate_trash = true
 player = NodePath("../Level/TrashSpawner/Player")
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="." unique_id=1015524656]
 script = ExtResource("2_ca42v")
 
-[node name="DeleteTrash" type="Area2D" parent="Level"]
+[node name="DeleteTrash" type="Area2D" parent="Level" unique_id=1682260628]
 collision_layer = 8
 collision_mask = 48
 
-[node name="LeftDelete" type="CollisionShape2D" parent="Level/DeleteTrash"]
+[node name="LeftDelete" type="CollisionShape2D" parent="Level/DeleteTrash" unique_id=581836777]
 position = Vector2(-256, 0)
 shape = SubResource("WorldBoundaryShape2D_1kice")
 
-[node name="RightDelete" type="CollisionShape2D" parent="Level/DeleteTrash"]
+[node name="RightDelete" type="CollisionShape2D" parent="Level/DeleteTrash" unique_id=411588877]
 position = Vector2(512, 0)
 shape = SubResource("WorldBoundaryShape2D_5newe")
 
-[node name="Bushes" type="TileMapLayer" parent="Level"]
+[node name="Bushes" type="TileMapLayer" parent="Level" unique_id=234338391]
 z_index = 4095
 position = Vector2(0, 136)
 tile_map_data = PackedByteArray("AAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAD4/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_e1j6l")
 rendering_quadrant_size = 32
 
-[node name="SmallBushes" type="TileMapLayer" parent="Level/Bushes"]
+[node name="SmallBushes" type="TileMapLayer" parent="Level/Bushes" unique_id=303743306]
 z_index = 4096
 tile_map_data = PackedByteArray("AAACAAMAAgAAAAAAAAABAAMAAgAAAAAAAAAAAAMAAgAAAAAAAAD//wMAAgAAAAAAAAD+/wMAAgAAAAAAAAD9/wMAAgAAAAAAAAADAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAAFAAMAAgAAAAAAAAAGAAMAAgAAAAAAAAAHAAMAAgAAAAAAAAD8/wMAAgAAAAAAAAD7/wMAAgAAAAAAAAD6/wMAAgAAAAAAAAD5/wMAAgAAAAAAAAD4/wMAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_e1j6l")
 
-[node name="Fence" type="TileMapLayer" parent="Level"]
+[node name="Fence" type="TileMapLayer" parent="Level" unique_id=246901665]
 z_index = -1
 position = Vector2(0, 128)
 tile_map_data = PackedByteArray("AADv/+j/AAAAAAAAAADv/+n/AAAAAAAAAADw/+j/AAAAAAAAAADw/+n/AAAAAAAAAADx/+j/AAAAAAAAAADx/+n/AAAAAAAAAADy/+j/AAAAAAAAAADy/+n/AAAAAAAAAADz/+j/AAAAAAAAAADz/+n/AAAAAAAAAAD0/+j/AAAAAAAAAAD0/+n/AAAAAAAAAAD1/+j/AAAAAAAAAAD1/+n/AAAAAAAAAAD2/+j/AAAAAAAAAAD2/+n/AAAAAAAAAAD3/+j/AAAAAAAAAAD3/+n/AAAAAAAAAAD4/+j/AAAAAAAAAAD4/+n/AAAAAAAAAAD5/+j/AAAAAAAAAAD5/+n/AAAAAAAAAAD6/+j/AAAAAAAAAAD6/+n/AAAAAAAAAAD7/+j/AAAAAAAAAAD7/+n/AAAAAAAAAAD8/+j/AAAAAAAAAAD8/+n/AAAAAAAAAAD9/+j/AAAAAAAAAAD9/+n/AAAAAAAAAAD+/+j/AAAAAAAAAAD+/+n/AAAAAAAAAAD//+j/AAAAAAAAAAD//+n/AAAAAAAAAAAAAOj/AAAAAAAAAAAAAOn/AAAAAAAAAAABAOj/AAAAAAAAAAABAOn/AAAAAAAAAAACAOj/AAAAAAAAAAACAOn/AAAAAAAAAAADAOj/AAAAAAAAAAADAOn/AAAAAAAAAAAEAOj/AAAAAAAAAAAEAOn/AAAAAAAAAAAFAOj/AAAAAAAAAAAFAOn/AAAAAAAAAAAGAOj/AAAAAAAAAAAGAOn/AAAAAAAAAAAHAOj/AAAAAAAAAAAHAOn/AAAAAAAAAAAIAOj/AAAAAAAAAAAIAOn/AAAAAAAAAAAJAOj/AAAAAAAAAAAJAOn/AAAAAAAAAAAKAOj/AAAAAAAAAAAKAOn/AAAAAAAAAAALAOj/AAAAAAAAAAALAOn/AAAAAAAAAAAMAOj/AAAAAAAAAAAMAOn/AAAAAAAAAAANAOj/AAAAAAAAAAANAOn/AAAAAAAAAAAOAOj/AAAAAAAAAAAOAOn/AAAAAAAAAAAPAOj/AAAAAAAAAAAPAOn/AAAAAAAAAAAQAOj/AAAAAAAAAAAQAOn/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_bhx41")
 rendering_quadrant_size = 32
 
-[node name="Ground" type="TileMapLayer" parent="Level"]
+[node name="Ground" type="TileMapLayer" parent="Level" unique_id=961471143]
 z_index = -4096
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_sww3w")
 
-[node name="NoiseOverlay" parent="Level" instance=ExtResource("8_rysoc")]
+[node name="NoiseOverlay" parent="Level" unique_id=1115173073 instance=ExtResource("8_rysoc")]
 
-[node name="LitterSpawner" type="Node2D" parent="Level"]
+[node name="LitterSpawner" type="Node2D" parent="Level" unique_id=1602985207]
 
-[node name="RatSpawner" type="Node2D" parent="Level"]
+[node name="RatSpawner" type="Node2D" parent="Level" unique_id=382834633]
 
-[node name="TrashSpawner" type="Node2D" parent="Level"]
+[node name="TrashSpawner" type="Node2D" parent="Level" unique_id=911738483]
 y_sort_enabled = true
 
-[node name="Player" parent="Level/TrashSpawner" instance=ExtResource("5_trtic")]
+[node name="Player" parent="Level/TrashSpawner" unique_id=944030887 instance=ExtResource("5_trtic")]
 position = Vector2(-360, 0)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/TrashSpawner/Player" unique_id=1488336794]
 shape = SubResource("CircleShape2D_sgl2t")
 
-[node name="Shadow" type="TileMapLayer" parent="Level"]
+[node name="Shadow" type="TileMapLayer" parent="Level" unique_id=1070301136]
 tile_map_data = PackedByteArray("AADo//7/AQAAAAAAAADo//3/AQAAAAAAAADo//z/AQAAAAAAAADo//v/AQAAAAAAAADo//r/AQAAAAAAAADo//n/AQAAAAAAAADo//j/AQAAAAAAAADo/w8AAQAAAAAAAADo/w4AAQAAAAAAAADo/w0AAQAAAAAAAADo/wwAAQAAAAAAAADo/wsAAQAAAAAAAADo/woAAQAAAAAAAADo/wkAAQAAAAAAAADo/wgAAQAAAAAAAADo/wcAAQAAAAAAAADo/wYAAQAAAAAAAADo/wUAAQAAAAAAAADo/wQAAQAAAAAAAADo/wMAAQAAAAAAAADo/wIAAQAAAAAAAADo/wEAAQAAAAAAAADo//D/AQAAAAAAAADo//H/AQAAAAAAAADo//L/AQAAAAAAAADo//P/AQAAAAAAAADo//T/AQAAAAAAAADo//X/AQAAAAAAAADo//b/AQAAAAAAAADo//f/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_v2yb1")
 
-[node name="Bricks" type="TileMapLayer" parent="Level"]
+[node name="Bricks" type="TileMapLayer" parent="Level" unique_id=1810988778]
 tile_map_data = PackedByteArray("AADo//D/AAAAAAAAAADo//H/AAAAAAAAAADo//L/AAAAAAAAAADo//P/AAAAAAAAAADo//T/AAAAAAAAAADo//X/AAAAAAAAAADo//b/AAAAAAAAAADo//f/AAAAAAAAAADo//j/AAAAAAAAAADo//n/AAAAAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAAAAADo//z/AAAAAAAAAADo//3/AAAAAAAAAADo//7/AAAAAAAAAADo/wEAAAAAAAAAAADo/wIAAAAAAAAAAADo/wMAAAAAAAAAAADo/wQAAAAAAAAAAADo/wUAAAAAAAAAAADo/wYAAAAAAAAAAADo/wcAAAAAAAAAAADo/wgAAAAAAAAAAADo/wkAAAAAAAAAAADo/woAAAAAAAAAAADo/wsAAAAAAAAAAADo/wwAAAAAAAAAAADo/w0AAAAAAAAAAADo/w4AAAAAAAAAAADo/w8AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_v2yb1")
 
-[node name="EnterHome" type="Area2D" parent="Level"]
+[node name="EnterHome" type="Area2D" parent="Level" unique_id=797717884]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("11_ca42v")
 start_pos = Vector2(140, 0)
 fade_dir = -1
-to_scene = "uid://buv7xaj8dmplv"
 
-[node name="Collision" type="CollisionShape2D" parent="Level/EnterHome"]
+[node name="Collision" type="CollisionShape2D" parent="Level/EnterHome" unique_id=2090790887]
 position = Vector2(-384, 0)
 shape = SubResource("WorldBoundaryShape2D_js0lu")
 
-[node name="Borders" type="StaticBody2D" parent="Level"]
+[node name="Borders" type="StaticBody2D" parent="Level" unique_id=443946570]
 collision_layer = 65
 collision_mask = 7
 
-[node name="Top" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Top" type="CollisionShape2D" parent="Level/Borders" unique_id=12283595]
 position = Vector2(0, -231)
 shape = SubResource("WorldBoundaryShape2D_gxtfn")
 
-[node name="Bottom" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Bottom" type="CollisionShape2D" parent="Level/Borders" unique_id=1760188773]
 position = Vector2(0, 246)
 shape = SubResource("WorldBoundaryShape2D_twgab")
 
-[node name="Home" type="CollisionShape2D" parent="Level/Borders"]
+[node name="Home" type="CollisionShape2D" parent="Level/Borders" unique_id=674201177]
 position = Vector2(-384, 0)
 shape = SubResource("WorldBoundaryShape2D_js0lu")
 
-[node name="RightBorder" type="StaticBody2D" parent="Level"]
+[node name="RightBorder" type="StaticBody2D" parent="Level" unique_id=401915131]
 collision_layer = 65
 collision_mask = 7
 
-[node name="Collision" type="CollisionShape2D" parent="Level/RightBorder"]
+[node name="Collision" type="CollisionShape2D" parent="Level/RightBorder" unique_id=215700777]
 shape = SubResource("WorldBoundaryShape2D_ssvqc")
 
-[node name="BuyThisArea" type="TileMapLayer" parent="Level/RightBorder"]
+[node name="BuyThisArea" type="TileMapLayer" parent="Level/RightBorder" unique_id=1704387040]
 tile_map_data = PackedByteArray("AAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAPf/AAAAAAAAAAABAPf/AAAAAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAAAAAABAPr/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAACAPf/AAAAAAAAAAACAPj/AAAAAAAAAAACAPn/AAAAAAAAAAACAPr/AAAAAAAAAAACAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAPf/AAAAAAAAAAADAPj/AAAAAAAAAAADAPn/AAAAAAAAAAADAPr/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAAAAAAAAAAEAPf/AAAAAAAAAAAEAPj/AAAAAAAAAAAEAPn/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAPf/AAAAAAAAAAAFAPj/AAAAAAAAAAAFAPn/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAPf/AAAAAAAAAAAGAPj/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAPr/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAPf/AAAAAAAAAAAHAPj/AAAAAAAAAAAHAPn/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAPf/AAAAAAAAAAAIAPj/AAAAAAAAAAAIAPn/AAAAAAAAAAAIAPr/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAPf/AAAAAAAAAAAJAPj/AAAAAAAAAAAJAPn/AAAAAAAAAAAJAPr/AAAAAAAAAAAJAPv/AAAAAAAAAAAJAPz/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAPf/AAAAAAAAAAAKAPj/AAAAAAAAAAAKAPn/AAAAAAAAAAAKAPr/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAALAPf/AAAAAAAAAAALAPj/AAAAAAAAAAALAPn/AAAAAAAAAAALAPr/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAALAP7/AAAAAAAAAAALAP//AAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAAMAPf/AAAAAAAAAAAMAPj/AAAAAAAAAAAMAPn/AAAAAAAAAAAMAPr/AAAAAAAAAAAMAPv/AAAAAAAAAAAMAPz/AAAAAAAAAAAMAP3/AAAAAAAAAAAMAP7/AAAAAAAAAAAMAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAANAPf/AAAAAAAAAAANAPj/AAAAAAAAAAANAPn/AAAAAAAAAAANAPr/AAAAAAAAAAANAPv/AAAAAAAAAAANAPz/AAAAAAAAAAANAP3/AAAAAAAAAAANAP7/AAAAAAAAAAANAP//AAAAAAAAAAANAAAAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAAOAPf/AAAAAAAAAAAOAPj/AAAAAAAAAAAOAPn/AAAAAAAAAAAOAPr/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAOAP7/AAAAAAAAAAAOAP//AAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAPf/AAAAAAAAAAAPAPj/AAAAAAAAAAAPAPn/AAAAAAAAAAAPAPr/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAPAP7/AAAAAAAAAAAPAP//AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAPf/AAAAAAAAAAAQAPj/AAAAAAAAAAAQAPn/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAARAPf/AAAAAAAAAAARAPj/AAAAAAAAAAARAPn/AAAAAAAAAAARAPr/AAAAAAAAAAARAPv/AAAAAAAAAAARAPz/AAAAAAAAAAARAP3/AAAAAAAAAAARAP7/AAAAAAAAAAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAASAPf/AAAAAAAAAAASAPj/AAAAAAAAAAASAPn/AAAAAAAAAAASAPr/AAAAAAAAAAASAPv/AAAAAAAAAAASAPz/AAAAAAAAAAASAP3/AAAAAAAAAAASAP7/AAAAAAAAAAASAP//AAAAAAAAAAASAAAAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_ssvqc")
 
-[node name="BuyArea" type="Node2D" parent="Level/RightBorder" groups=["buy_area"]]
+[node name="BuyArea" type="Node2D" parent="Level/RightBorder" unique_id=1320731118 groups=["buy_area"]]
 position = Vector2(-12, 33)
 
-[node name="BuyText" type="RichTextLabel" parent="Level/RightBorder/BuyArea"]
+[node name="BuyText" type="RichTextLabel" parent="Level/RightBorder/BuyArea" unique_id=1947358599]
 clip_contents = false
 offset_left = -55.0
 offset_top = 10.0
@@ -248,7 +247,7 @@ bbcode_enabled = true
 text = "[right]Area Name
 Area Cost"
 
-[node name="PoorParticles" type="GPUParticles2D" parent="Level/RightBorder/BuyArea/BuyText"]
+[node name="PoorParticles" type="GPUParticles2D" parent="Level/RightBorder/BuyArea/BuyText" unique_id=2127981296]
 position = Vector2(102, 104)
 emitting = false
 texture = ExtResource("15_1kice")
@@ -256,24 +255,24 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_37s47")
 
-[node name="HandArea" type="Area2D" parent="Level/RightBorder/BuyArea" groups=["for_hand"]]
+[node name="HandArea" type="Area2D" parent="Level/RightBorder/BuyArea" unique_id=1503390347 groups=["for_hand"]]
 collision_layer = 32
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/RightBorder/BuyArea/HandArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/RightBorder/BuyArea/HandArea" unique_id=298825982]
 position = Vector2(156, -34.5)
 shape = SubResource("RectangleShape2D_264po")
 
-[node name="HomeSign" type="Sprite2D" parent="Level"]
+[node name="HomeSign" type="Sprite2D" parent="Level" unique_id=1993375556]
 z_index = 10
 position = Vector2(-360, -25)
 texture = ExtResource("13_ssvqc")
 
-[node name="TrashSign2" type="Sprite2D" parent="Level/HomeSign"]
+[node name="TrashSign2" type="Sprite2D" parent="Level/HomeSign" unique_id=55590216]
 position = Vector2(0, 3)
 texture = ExtResource("13_ssvqc")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Level/HomeSign"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/HomeSign" unique_id=1332104461]
 offset_left = -16.0
 offset_right = 148.0
 offset_bottom = 40.0
@@ -282,18 +281,18 @@ theme = ExtResource("14_264po")
 text = "home"
 horizontal_alignment = 1
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=698963724]
 
-[node name="INVENTORY" parent="." instance=ExtResource("13_ir15t")]
+[node name="INVENTORY" parent="." unique_id=167119668 instance=ExtResource("13_ir15t")]
 
-[node name="Settings" parent="." instance=ExtResource("13_264po")]
+[node name="Settings" parent="." unique_id=1639338259 instance=ExtResource("13_264po")]
 visible = false
 
-[node name="MusicController" parent="." instance=ExtResource("14_trtic")]
+[node name="MusicController" parent="." unique_id=1998531604 instance=ExtResource("14_trtic")]
 
-[node name="ClickAndHover" parent="." instance=ExtResource("16_ca42v")]
+[node name="ClickAndHover" parent="." unique_id=125157720 instance=ExtResource("16_ca42v")]
 
-[node name="Fade" parent="." node_paths=PackedStringArray("borders") instance=ExtResource("21_5newe")]
+[node name="Fade" parent="." unique_id=2064086308 node_paths=PackedStringArray("borders") instance=ExtResource("21_5newe")]
 fade_direction = 1
 borders = [NodePath("../Level/Borders/Home")]
 

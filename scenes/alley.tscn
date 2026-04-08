@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bslssn1cserx4" path="res://scenes/player.tscn" id="12_pgk7r"]
 [ext_resource type="PackedScene" uid="uid://dxyfiauc044l2" path="res://scenes/storage_dumpster.tscn" id="13_73oun"]
 [ext_resource type="Script" uid="uid://drjcmy3jmic72" path="res://scripts/border.gd" id="14_suir8"]
+[ext_resource type="PackedScene" uid="uid://7xb7pi6ik7sv" path="res://scenes/game.tscn" id="15_gdncb"]
+[ext_resource type="PackedScene" uid="uid://cwq0qr0p3gujk" path="res://scenes/rich_plaza.tscn" id="16_2ugsq"]
 [ext_resource type="Texture2D" uid="uid://cwcgct6xuspwh" path="res://sprites/bed.png" id="17_022ap"]
 [ext_resource type="Script" uid="uid://dv5ia44hgt5gt" path="res://scripts/bed.gd" id="18_133u5"]
 [ext_resource type="PackedScene" uid="uid://qw7cd0hudi47" path="res://scenes/inventory.tscn" id="19_q1kkm"]
@@ -2285,6 +2287,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("14_suir8")
 start_pos = Vector2(-356, 0)
+to_scene = ExtResource("15_gdncb")
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterGame" unique_id=918902777]
 position = Vector2(160, 0)
@@ -2295,6 +2298,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("14_suir8")
 start_pos = Vector2(244, 0)
+to_scene = ExtResource("16_2ugsq")
 
 [node name="Collision" type="CollisionShape2D" parent="Level/EnterRich" unique_id=2087339853]
 position = Vector2(-160, 0)
@@ -2674,7 +2678,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_0grxe")
 text = "Nope!"
 
 [node name="Fade" parent="." unique_id=1749048039 node_paths=PackedStringArray("borders") instance=ExtResource("41_v61ha")]
-visible = false
 borders = [NodePath("../Level/Borders/Game"), NodePath("../Level/Borders/Rich")]
 use_global_dir = true
 

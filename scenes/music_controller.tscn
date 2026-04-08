@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://owe37mt1cy0v"]
+[gd_scene format=3 uid="uid://owe37mt1cy0v"]
 
 [ext_resource type="Script" uid="uid://droxdxl825kw2" path="res://scripts/music_controller.gd" id="1_ftu3d"]
 [ext_resource type="AudioStream" uid="uid://bbukbgfxf6nso" path="res://audio/music/RatTheme.ogg" id="2_nudl1"]
@@ -8,35 +8,35 @@
 [ext_resource type="AudioStream" uid="uid://cp3yrh48rmxy6" path="res://audio/music/Dumpster.ogg" id="6_obdaw"]
 [ext_resource type="AudioStream" uid="uid://dc33wk0to0pya" path="res://audio/music/TrashBags.ogg" id="7_r63yf"]
 
-[node name="MusicController" type="Node"]
+[node name="MusicController" type="Node" unique_id=536353714]
 script = ExtResource("1_ftu3d")
 
-[node name="RatTheme" type="AudioStreamPlayer" parent="."]
+[node name="RatTheme" type="AudioStreamPlayer" parent="." unique_id=1748406672]
 process_mode = 1
 stream = ExtResource("2_nudl1")
 bus = &"Music"
 
-[node name="Tissues" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+[node name="Tissues" type="AudioStreamPlayer" parent="." unique_id=1565546503 groups=["main_songs"]]
 process_mode = 1
 stream = ExtResource("3_hyjgr")
 bus = &"Music"
 
-[node name="SmellySocks" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+[node name="SmellySocks" type="AudioStreamPlayer" parent="." unique_id=1064030809 groups=["main_songs"]]
 process_mode = 1
 stream = ExtResource("4_1qrr5")
 bus = &"Music"
 
-[node name="SodaCan" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+[node name="SodaCan" type="AudioStreamPlayer" parent="." unique_id=958049835 groups=["main_songs"]]
 process_mode = 1
 stream = ExtResource("5_lttr1")
 bus = &"Music"
 
-[node name="Dumpster" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+[node name="Dumpster" type="AudioStreamPlayer" parent="." unique_id=1932218830 groups=["main_songs"]]
 process_mode = 1
 stream = ExtResource("6_obdaw")
 bus = &"Music"
 
-[node name="TrashBags" type="AudioStreamPlayer" parent="." groups=["main_songs"]]
+[node name="TrashBags" type="AudioStreamPlayer" parent="." unique_id=1096922480 groups=["main_songs"]]
 process_mode = 1
 stream = ExtResource("7_r63yf")
 bus = &"Music"

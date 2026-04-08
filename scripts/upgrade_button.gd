@@ -23,9 +23,7 @@ func _ready() -> void:
 		Globals.inventory_slots = Globals.get_upgrade_value(6)
 		money.text = "[right]$" + str(int(Globals.money))
 		cost = int(Globals.upgrades[upgrade]["base_cost"] * (Globals.upgrades[upgrade]["cost_multiplier"] * (Globals.upgrades[upgrade]["times_upgraded"] + 1)))
-		print(Globals.upgrades[upgrade]["texture"])
 		sprite.texture = Globals.upgrade_textures[Globals.upgrades[upgrade]["texture"]]
-		print("TEXTURE: " + str(Globals.upgrades[upgrade]["texture"]) + " UPGRADE: " + str(upgrade))
 		name_text.text = Globals.upgrades[upgrade]["name"]
 		description_text.text = Globals.upgrades[upgrade]["description"]
 		cost_text.text = "[center]$" + str(int(cost))

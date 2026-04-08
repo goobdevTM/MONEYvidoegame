@@ -8,6 +8,8 @@ func _ready() -> void:
 	Globals.selected_slot = 0
 	Globals.start_pos = Vector2(0, 0)
 	Globals.set_ui_sounds(click_and_hover)
+	Globals.song_playing = 0
+	Globals.song_time = 0
 	set_saves()
 	
 func set_saves() -> void:

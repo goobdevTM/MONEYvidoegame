@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cuwxqyo26k0jd"]
+[gd_scene format=3 uid="uid://cuwxqyo26k0jd"]
 
 [ext_resource type="Texture2D" uid="uid://dxbb748bfj7a0" path="res://sprites/rat.png" id="1_1l88y"]
 [ext_resource type="Script" uid="uid://b0hesspjb1xix" path="res://scripts/rat.gd" id="1_77a1s"]
@@ -73,33 +73,75 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Animation" id="Animation_acf8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_3csnj"]
+resource_name = "spawn"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6s34g"]
+_data = {
+&"RESET": SubResource("Animation_acf8p"),
+&"spawn": SubResource("Animation_3csnj")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_77a1s"]
 radius = 3.1622777
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_acf8p"]
 radius = 6.0827627
 
-[node name="Rat" type="CharacterBody2D"]
+[node name="Rat" type="CharacterBody2D" unique_id=1866062354]
 collision_layer = 4
 collision_mask = 64
 script = ExtResource("1_77a1s")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1583596154]
+scale = Vector2(1e-05, 1e-05)
 sprite_frames = SubResource("SpriteFrames_368s2")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1073187070]
+libraries/ = SubResource("AnimationLibrary_6s34g")
+autoplay = &"spawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1883456765]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_77a1s")
 
-[node name="HandArea" type="Area2D" parent="." groups=["for_hand"]]
+[node name="HandArea" type="Area2D" parent="." unique_id=558029132 groups=["for_hand"]]
 collision_layer = 84
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandArea" unique_id=1133629303]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_acf8p")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1781057188]
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
