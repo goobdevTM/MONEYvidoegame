@@ -165,6 +165,11 @@ var items : Array[Dictionary] = [
 	{'name': "Photo", 'coords': Vector2i(3,3), 'chance': 0.02, "worth": 10,},
 	{'name': "Child", 'coords': Vector2i(3,1), 'chance': 0.008, "worth": 25,},
 	{'name': "Evil Child", 'coords': Vector2i(3,2), 'chance': 0.0005, "worth": 250,},
+	{'name': "Rotten Apple", 'coords': Vector2i(0,4), 'chance': 0.1, "worth": 3,},
+	{'name': "Slop", 'coords': Vector2i(1,4), 'chance': 0.08, "worth": 25,}, #SLOP IS CRAFTED
+	{'name': "Glass Shard", 'coords': Vector2i(2,4), 'chance': 0.05, "worth": 15,},
+	{'name': "Garbage Album", 'coords': Vector2i(3,4), 'chance': 0.01, "worth": 1,},
+	{'name': "Wires", 'coords': Vector2i(0,5), 'chance': 0.08, "worth": 8,},
 ]
 
 var sorted_items : Array[int] = []
@@ -224,14 +229,15 @@ var question_speed_mult : float = 0.5
 var item_selling : Dictionary = {}
 var rich_difficulty : int = 0
 var areas : Array[Dictionary] = [
-	{'name': "First Area", 'length': 256, 'max_trash': -1, 'max_litter': 4, 'luck': 0.4, 'smelly_chance': -1, 'trash_amount': 12, 'cost': 0},
-	{'name': "Smelly Area", 'length': 380, 'max_trash': 0, 'max_litter': 6, 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 24, 'cost': 100},
-	{'name': "Dirty Area", 'length': 500, 'max_trash': 1, 'max_litter': 8, 'luck': 0.75, 'smelly_chance': 12, 'trash_amount': 29, 'cost': 250},
-	{'name': "Downright Nasty Area", 'length': 640, 'max_trash': 2, 'max_litter': 10, 'luck': 0.8, 'smelly_chance': 8, 'trash_amount': 36, 'cost': 750},
-	{'name': "Ew.. Disgusting Area", 'length': 800, 'max_trash': 3, 'max_litter': 12, 'luck': 1, 'smelly_chance': 7, 'trash_amount': 46, 'cost': 1500},
-	{'name': "Call the garbage man! Area", 'length': 1150, 'max_trash': 3, 'max_litter': 14, 'luck': 1.2, 'smelly_chance': 6, 'trash_amount': 52, 'cost': 2500},
-	{'name': "Puke-Inducing Area", 'length': 100000, 'max_trash': 4, 'max_litter': 16, 'luck': 1.55, 'smelly_chance': 3, 'trash_amount': 65, 'cost': 10000},
+	{'name': "First Area", 'length': 256, 'max_trash': -1, 'new_litter': [0,1,2,3], 'luck': 0.4, 'smelly_chance': -1, 'trash_amount': 12, 'cost': 0},
+	{'name': "Smelly Area", 'length': 380, 'max_trash': 0, 'new_litter': [4,5], 'luck': 0.6, 'smelly_chance': -1, 'trash_amount': 24, 'cost': 100},
+	{'name': "Dirty Area", 'length': 500, 'max_trash': 1, 'new_litter': [6,7], 'luck': 0.75, 'smelly_chance': 12, 'trash_amount': 29, 'cost': 250},
+	{'name': "Downright Nasty Area", 'length': 640, 'max_trash': 2, 'new_litter': [8,9], 'luck': 0.8, 'smelly_chance': 8, 'trash_amount': 36, 'cost': 750},
+	{'name': "Ew.. Disgusting Area", 'length': 800, 'max_trash': 3, 'new_litter': [10,11], 'luck': 1, 'smelly_chance': 7, 'trash_amount': 46, 'cost': 1500},
+	{'name': "Call the garbage man! Area", 'length': 1150, 'max_trash': 3, 'new_litter': [12,13], 'luck': 1.2, 'smelly_chance': 6, 'trash_amount': 52, 'cost': 2500},
+	{'name': "Puke-Inducing Area", 'length': 100000, 'max_trash': 4, 'new_litter': [14,15], 'luck': 1.55, 'smelly_chance': 3, 'trash_amount': 65, 'cost': 10000},
 ]
+var area_litter : Array[int]
 
 #SAVE
 var saves : Array[Dictionary] = [{},{},{}]
@@ -242,15 +248,16 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	#SORT ITEMS BY PERCENTAGE (DON'T CHANGE)
-	var min_percentage : float = 2
+	var max_percentage : float = 0
 	var item_to_add : int = 0
-	for j in range(len(items)):
-		for i in range(len(items)):
-			if items[i]["chance"] < min_percentage:
-				item_to_add = i 
-				min_percentage = items[i]["chance"]
+	for i in range(len(items)):
+		max_percentage = 0
+		for j in range(len(items)):
+			if items[j]['chance'] >= max_percentage and not sorted_items.has(j):
+				max_percentage = items[j]['chance']
+				item_to_add = j 
 		sorted_items.append(item_to_add)
-
+	print(sorted_items)
 #SAVING AND LOADING
 var file_path: String = "user://save_data.save"
 signal loaded_data
@@ -298,6 +305,11 @@ func load_data():
 		return warning
 	emit_signal("loaded_data")
 	
+func set_area_litter() -> void:
+	area_litter = []
+	for i in range(area + 1):
+		area_litter.append_array(areas[i]['new_litter'])
+	
 #SET SAVES VARAIBALE
 func set_saves(save : int) -> void:
 	saves[save]['working_rats'] = working_rats
@@ -328,6 +340,7 @@ func load_saves(save : int) -> void:
 		inventory = saves[save]['inventory']
 		storage = saves[save]['storage']
 		upgrades = saves[save]['upgrades']
+		set_area_litter()
 	else: #else reset
 		#STARTING VALUES
 		working_rats = 0
@@ -366,6 +379,7 @@ func load_saves(save : int) -> void:
 			{"name": "Dumpster Slot", "base_cost": 50, "var": upgrade_multipliers["dumpster_slots"], "cost_multiplier": 1.25, "upgrade_amount": 1, "description": "Adds an extra storage dumpster slot.", "texture": 5, "times_upgraded": 0},
 			{"name": "Max Per Slot", "base_cost": 20, "var": upgrade_multipliers["max_per_slot"], "cost_multiplier": 1.075, "upgrade_amount": 1, "description": "Increases the max amount of items per slot by 1", "texture": 6, "times_upgraded": 0},
 		]
+		set_area_litter()
 	
 func get_upgrade_value(index : int) -> float:
 	var value : float = 0
@@ -387,11 +401,11 @@ func _notification(what: int) -> void:
 
 #get random item int based on percentages
 func get_item_with_chance(lucky_multiplier : int = 1) -> int:
-	
+	set_area_litter()
 	var to_return: int = 0
-	
+	print(area_litter)
 	for i in range(len(sorted_items)):
-		if randf_range(0.0, 1.0 / lucky_multiplier) <= items[sorted_items[i]]['chance'] and i <= areas[area]['max_litter']:
+		if randf_range(0.0, 1.0 / lucky_multiplier) <= items[sorted_items[i]]['chance'] and area_litter.has(i):
 			to_return = i
 	return to_return
 	
